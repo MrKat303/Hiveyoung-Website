@@ -37,6 +37,7 @@ export default function EquipoPage() {
                         src={miembro.img}
                         alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
                         className="card-image"
+                        draggable="false"
                     />
                 ) : (
                     <div className="card-image-placeholder"></div>

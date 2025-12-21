@@ -161,6 +161,7 @@ const SomosClient = () => {
                             src="/images/somos/grupal (1).JPG"
                             alt="Equipo HiveYoung"
                             className="somos-hero-image"
+                            draggable="false"
                         />
                         <div className="somos-overlay"></div>
                     </motion.div>

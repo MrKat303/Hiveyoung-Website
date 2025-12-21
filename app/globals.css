@@ -41,6 +41,16 @@ main {
     -webkit-user-drag: none;
 }
 
+/* Prevent image dragging and right-click saving */
+img {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    user-drag: none;
+    /* Non-standard but helpful */
+}
+
 /* Scroll Reveal effect - Ultrasmooth, Slow & Elegant Bottom-to-Top */
 .reveal {
     opacity: 0;

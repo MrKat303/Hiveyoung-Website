@@ -28,6 +28,7 @@ function Navbar() {
                         src="/Logo.svg"
                         alt="HiveYoung - Principal articulador del ecosistema juvenil"
                         className="logo-image no-interaction"
+                        draggable="false"
                     />
                 </Link>
 

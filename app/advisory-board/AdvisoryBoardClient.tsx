@@ -44,7 +44,7 @@ export default function AdvisoryBoardClient() {
                             style={{ transitionDelay: `${index * 0.1}s` }}
                         >
                             <div className="advisory-image-container">
-                                <img src={advisor.img} alt={advisor.name} className="advisory-image" />
+                                <img src={advisor.img} alt={advisor.name} className="advisory-image" draggable="false" />
                             </div>
                             <div className={`advisory-content shadow-${advisor.color}`}>
                                 <div className="advisory-header">
