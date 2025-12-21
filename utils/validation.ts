@@ -1,5 +1,7 @@
 export const isValidEmail = (email: string): boolean => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Validación más estricta para evitar dominios extraños
+    // Permite .com, .cl, .org, .co, .net, .edu, .gov, .io, .me, etc.
+    const re = /^[^\s@]+@[^\s@]+\.(com|cl|org|co|net|edu|gov|io|me|info|biz)$/i;
     return re.test(email);
 };
 

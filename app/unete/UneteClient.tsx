@@ -116,7 +116,7 @@ const UneteClient = () => {
                                     placeholder="tu@email.com"
                                     className={emailError ? 'input-error' : ''}
                                     onChange={(e) => validarEmail(e.target.value)}
-                                    error={emailError ? "Ingresa un email válido" : null}
+                                    error={emailError ? "Usa un dominio válido (ej: .com, .cl, .org)" : null}
                                     required
                                 />
                                 <FormField
