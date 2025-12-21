@@ -1,0 +1,17 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 492" width="1920" height="492">
+	<title>Proyecto nuevo</title>
+	<style>
+		.s0 { fill: #3a1b4e } 
+		.s1 { fill: #74b8f7 } 
+		.s2 { fill: #ffc102 } 
+		.s3 { fill: #2fb67c } 
+		.s4 { fill: #c22459 } 
+	</style>
+	<path id="Capa 3" fill-rule="evenodd" class="s0" d="m1920 0v165l-1920 240v-405z"/>
+	<path id="Forma 1" fill-rule="evenodd" class="s1" d="m357 360v86l-357 45.1v-86.1z"/>
+	<path id="Forma 1 copy" class="s2" d="m357 274v86l-357 45.1v-86.1zm203-26v86.9l-356.9 44.5-0.1-86.4z"/>
+	<path id="Forma 1 copy 3" class="s2" d="m2037 151v86l-357 45.1v-86.1zm203-25v86l-357 45v-86z"/>
+	<path id="Forma 1 copy 5" class="s3" d="m1457 137v86l-357 45.1v-86.1zm203-25v86l-357 45v-86z"/>
+	<path id="Forma 1 copy 2" class="s4" d="m1316 155.1v-86.1zm560-155.1v85.8l-560 69.2v-86z"/>
+	<path id="Forma 1 copy 4" class="s3" d="m1717 105v86l-357 45.1v-86.1zm203-25.8v86.8l-357 45v-86z"/>
+</svg>

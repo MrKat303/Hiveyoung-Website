@@ -1,26 +1,54 @@
+/* Importación de Tailwind (si lo sigues usando, si no, puedes omitirlo) */
 @import "tailwindcss";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto !important;
+  height: 100%;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --site-max-width: 1200px;
+  --site-padding: 24px;
+  --site-padding-lg: 80px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #3a1b4e;
+  min-height: 100vh; /* Cambiado de 100% a 100vh para asegurar el flex */
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reemplazo de la clase .App de Vite */
+main {
+  flex: 1;
+}
+
+.no-interaction {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* Scroll Reveal effect */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+  will-change: transform, opacity;
+}
+
+.reveal.active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }

@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+.hero {
+    background-color: #3a1b4e;
+    font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.hero__section {
+    color: #fff;
+    padding-top: 80px;
+}
+
+.hero__container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: block;
+}
+
+.hero__left {
+    padding-top: 0;
+}
+
+.hero__title {
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 1.08;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.hero__accent {
+    color: #5cd494;
+}
+
+.hero__subtitle {
+    margin-top: 8px;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 400;
+    max-width: 560px;
+}
+
+.hero__cta {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hero__btn {
+    display: inline-block;
+    background: #5cd494;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 40px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hero__btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+.hero__btn--secondary {
+    background: transparent !important;
+    border: 2px solid #529CE8 !important;
+    color: #529CE8 !important;
+    padding: 8px 8px 8px 24px !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 12px;
+}
+
+.hero__btn--secondary:hover {
+    background: rgba(82, 156, 232, 0.1) !important;
+    transform: translateY(-2px);
+}
+
+.hero__btn-icon {
+    background-color: #529CE8;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hero__btn-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.hero__right {
+    display: none;
+}
+
+.hero__icons {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+}
+
+.hero__bottomOuter {
+    background-color: #3a1b4e;
+}
+
+.hero__bottomContainer {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.hero__bottom {
+    width: 100%;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* --- PARCHE MEJORADO PARA MÓVILES --- */
+
+@media (max-width: 767px) {
+    .hero__title br {
+        content: ' ' !important;
+        display: block !important;
+        margin-bottom: 0px !important;
+        height: 0 !important;
+    }
+
+    .hero__title br::before {
+        content: '\00a0';
+    }
+
+    .hero__title {
+        font-size: 32px !important;
+        line-height: 1.2 !important;
+        hyphens: none !important;
+        overflow-wrap: normal !important;
+        word-break: normal !important;
+        text-align: left;
+    }
+
+    .hero__cta {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+    }
+
+    .hero__btn {
+        flex: 0 1 auto !important;
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+        white-space: nowrap !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .hero__btn--secondary {
+        padding: 6px 6px 6px 14px !important;
+        gap: 8px !important;
+    }
+
+    .hero__btn-icon {
+        width: 26px !important;
+        height: 26px !important;
+    }
+
+    .hero__btn-icon svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+}
+
+@media (min-width: 640px) {
+    .hero__container {
+        padding: 0 80px;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero__title {
+        font-size: clamp(48px, 5vw, 72px);
+        line-height: 1.03;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 48px;
+        position: relative;
+        top: 80px;
+    }
+
+    .hero__right {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 400px;
+    }
+}
+
+.no-interaction {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}

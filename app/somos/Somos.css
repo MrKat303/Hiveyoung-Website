@@ -1,0 +1,333 @@
+.somos-page {
+    background-color: #f8f4eb;
+    color: #3a1b4e;
+    min-height: 100vh;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.somos-scroll-track {
+    height: 350vh;
+    position: relative;
+}
+
+.somos-sticky-view {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.somos-hero-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: -20%;
+    width: 140%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.somos-hero-image {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.somos-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.somos-hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.somos-hero-title {
+    color: #ffffff;
+    font-size: 100px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform-origin: center;
+}
+
+.somos-hero-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.somos-hero-intro p {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.6;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.somos-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    position: relative;
+    z-index: 10;
+}
+
+.section-spacer {
+    margin-top: 200px;
+}
+
+@media (max-width: 768px) {
+    .section-spacer {
+        margin-top: 150px;
+    }
+}
+
+.somos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 100px;
+}
+
+.mision-vision-card {
+    background: #3a1b4e;
+    color: #ffffff;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(58, 27, 78, 0.15);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mision-vision-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(58, 27, 78, 0.25);
+}
+
+.mision-vision-card h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fde4a8;
+}
+
+.mision-vision-card p {
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.valores-section {
+    text-align: center;
+}
+
+.valores-section h2 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 60px;
+}
+
+.valores-carousel-wrapper {
+    position: relative;
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.valores-viewport {
+    width: 960px;
+    overflow: hidden;
+    position: relative;
+}
+
+.valores-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 40px 0 60px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    align-items: stretch;
+    width: 100%;
+}
+
+.valores-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.valor-card {
+    flex: 0 0 300px;
+    min-width: 300px;
+    background: transparent;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.valor-card:hover {
+    background: transparent;
+}
+
+.carousel-arrow {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #3a1b4e;
+    color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+    background-color: #532d6d;
+    transform: scale(1.1);
+}
+
+.arrow-left {
+    margin-right: 15px;
+}
+
+.arrow-right {
+    margin-left: 15px;
+}
+
+.valor-icon-box {
+    width: 90px;
+    height: 90px;
+    background: #ffffff;
+    border: 2px solid #3a1b4e;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    box-shadow: 6px 6px 0px var(--valor-color, #3a1b4e);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.valor-card:hover .valor-icon-box {
+    transform: translateY(-5px);
+    box-shadow: 8px 8px 0px var(--valor-color, #3a1b4e);
+}
+
+.valor-icon {
+    font-size: 36px;
+    line-height: 1;
+    display: block;
+    margin: 0;
+}
+
+.valor-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #3a1b4e;
+}
+
+.valor-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.7;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .somos-hero-title {
+        font-size: 36px;
+        width: 90%;
+        line-height: 1.2;
+    }
+
+    .somos-hero-intro p {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .somos-container {
+        padding: 0 20px 60px;
+    }
+
+    .somos-scroll-track {
+        height: 250vh;
+    }
+
+    .valores-carousel-wrapper {
+        padding: 0;
+    }
+
+    .carousel-arrow {
+        display: none;
+    }
+
+    .somos-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .valores-grid {
+        justify-content: flex-start;
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 20px;
+    }
+
+    .valor-card {
+        flex: 0 0 80vw;
+        max-width: 320px;
+        min-width: unset;
+    }
+}
