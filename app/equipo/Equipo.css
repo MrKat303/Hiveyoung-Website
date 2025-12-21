@@ -88,6 +88,25 @@
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
+.equipo-card.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    filter: blur(8px);
+    visibility: hidden;
+    /* Forzamos la transición lenta aquí también para evitar conflictos */
+    transition:
+        opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.equipo-card.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+    visibility: visible;
+}
+
 .equipo-card:hover {
     transform: translate(-8px, -8px);
 }

@@ -2,53 +2,61 @@
 @import "tailwindcss";
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: auto !important;
-  height: 100%;
+    scroll-behavior: auto !important;
+    height: 100%;
 }
 
 :root {
-  --site-max-width: 1200px;
-  --site-padding: 24px;
-  --site-padding-lg: 80px;
+    --site-max-width: 1200px;
+    --site-padding: 24px;
+    --site-padding-lg: 80px;
 }
 
 body {
-  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #3a1b4e;
-  min-height: 100vh; /* Cambiado de 100% a 100vh para asegurar el flex */
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
+    font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #3a1b4e;
+    min-height: 100vh;
+    /* Cambiado de 100% a 100vh para asegurar el flex */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Reemplazo de la clase .App de Vite */
 main {
-  flex: 1;
+    flex: 1;
 }
 
 .no-interaction {
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  pointer-events: none;
-  -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 
-/* Scroll Reveal effect */
+/* Scroll Reveal effect - Ultrasmooth, Slow & Elegant Bottom-to-Top */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s cubic-bezier(0.5, 0, 0, 1);
-  will-change: transform, opacity;
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(50px);
+    visibility: hidden;
+    transition:
+        opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity, filter;
 }
 
 .reveal.active {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    filter: blur(0) !important;
+    visibility: visible !important;
 }
