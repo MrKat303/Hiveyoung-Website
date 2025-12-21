@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Home/Hero";
+import CongressCarousel from "@/components/Home/CongressCarousel";
 
 export const metadata: Metadata = {
   title: "HiveYoung | Principal articulador del ecosistema juvenil",
@@ -15,7 +16,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      {/* Aquí puedes agregar más secciones de la página de inicio a medida que las migremos */}
+      <CongressCarousel />
     </>
   );
 }

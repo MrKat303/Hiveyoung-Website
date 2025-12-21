@@ -1,0 +1,122 @@
+.about-section {
+    background-color: #f4ede4;
+    padding: 100px 20px 140px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative diagonal transition bars */
+.about-bars {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bar {
+    position: absolute;
+    height: 60px;
+    transform-origin: left bottom;
+}
+
+.bar-yellow {
+    background-color: #f9dea0;
+    width: 300px;
+    bottom: 80px;
+    left: 0;
+    transform: rotate(-8deg);
+}
+
+.bar-blue {
+    background-color: #6fc1ff;
+    width: 200px;
+    bottom: 120px;
+    left: 0;
+    transform: rotate(-8deg);
+}
+
+.bar-green {
+    background-color: #2eb67d;
+    width: 250px;
+    bottom: 80px;
+    right: 30%;
+    transform: rotate(-8deg);
+}
+
+.bar-orange {
+    background-color: #ffc100;
+    width: 180px;
+    bottom: 80px;
+    right: 0;
+    transform: rotate(-8deg);
+}
+
+/* Pink bar on the right side */
+.bar-pink {
+    background-color: #e85d75;
+    width: 320px;
+    bottom: 20px;
+    right: 0;
+    transform: rotate(-8deg);
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.about-tag {
+    display: inline-block;
+    background-color: #3a1b4e;
+    color: #ffffff;
+    padding: 10px 30px;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.about-text {
+    color: #3a1b4e;
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    line-height: 1.25;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.about-highlight {
+    font-weight: 800;
+    color: #3a1b4e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 80px 20px 100px;
+    }
+
+    .about-text {
+        font-size: 1.8rem;
+    }
+
+    .about-tag {
+        font-size: 1rem;
+        padding: 8px 24px;
+        margin-bottom: 30px;
+    }
+
+    .bar-yellow {
+        width: 50%;
+    }
+
+    .bar-blue {
+        width: 30%;
+    }
+}
