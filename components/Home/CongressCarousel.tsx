@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import useScrollReveal from '@/hooks/useScrollReveal';
 import './CongressCarousel.css';
 
 const images = [
@@ -13,6 +14,8 @@ const images = [
 export default function CongressCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
+
+    useScrollReveal();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -45,7 +48,7 @@ export default function CongressCarousel() {
 
     return (
         <section className="congress-section">
-            <div className="congress-carousel">
+            <div className="congress-carousel reveal">
                 {/* CEINA Logo */}
                 <div className="ceina-logo">
                     <img src="/images/congreso/logos/CEINA.png" alt="CEINA" draggable="false" />
