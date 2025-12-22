@@ -12,6 +12,7 @@ const images = [
 
 export default function CongressCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -22,11 +23,24 @@ export default function CongressCarousel() {
     }, []);
 
     const goToPrevious = () => {
+        if (isTransitioning) return;
+        setIsTransitioning(true);
         setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+        setTimeout(() => setIsTransitioning(false), 1000);
     };
 
     const goToNext = () => {
+        if (isTransitioning) return;
+        setIsTransitioning(true);
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setTimeout(() => setIsTransitioning(false), 1000);
+    };
+
+    const goToSlide = (index: number) => {
+        if (isTransitioning || index === currentIndex) return;
+        setIsTransitioning(true);
+        setCurrentIndex(index);
+        setTimeout(() => setIsTransitioning(false), 1000);
     };
 
     return (
@@ -39,7 +53,7 @@ export default function CongressCarousel() {
 
                 {/* Carousel Images */}
                 <div className="carousel-container">
-                    <button className="carousel-arrow carousel-arrow-left" onClick={goToPrevious} aria-label="Previous image">
+                    <button className="congress-carousel-arrow congress-carousel-arrow-left" onClick={goToPrevious} aria-label="Previous image">
                         <ChevronLeft size={32} />
                     </button>
 
@@ -53,7 +67,7 @@ export default function CongressCarousel() {
                         ))}
                     </div>
 
-                    <button className="carousel-arrow carousel-arrow-right" onClick={goToNext} aria-label="Next image">
+                    <button className="congress-carousel-arrow congress-carousel-arrow-right" onClick={goToNext} aria-label="Next image">
                         <ChevronRight size={32} />
                     </button>
                 </div>
@@ -63,8 +77,8 @@ export default function CongressCarousel() {
                     {images.map((_, index) => (
                         <button
                             key={index}
-                            className={`indicator ${index === currentIndex ? 'active' : ''}`}
-                            onClick={() => setCurrentIndex(index)}
+                            className={`congress-indicator ${index === currentIndex ? 'active' : ''}`}
+                            onClick={() => goToSlide(index)}
                             aria-label={`Go to slide ${index + 1}`}
                         />
                     ))}
@@ -72,8 +86,8 @@ export default function CongressCarousel() {
 
                 {/* Content Overlay */}
                 <div className="congress-content">
-                    <h2 className="congress-title">Congreso HiveYoung 2025</h2>
-                    <p className="congress-details">7 y 8 de Julio - CEINA</p>
+                    <div className="congress-info-badge">2025</div>
+                    <h2 className="congress-title">CONGRESO HIVEYOUNG</h2>
                     <a href="/congreso" className="congress-btn">
                         Revive el Congreso
                     </a>
