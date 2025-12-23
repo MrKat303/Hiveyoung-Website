@@ -86,18 +86,38 @@ const UneteClient = () => {
 
     return (
         <div className="unete-page">
-            <div className="unete-container">
-                <section className="unete-hero reveal">
-                    <h1 className="unete-title">¡Únete a HiveYoung!</h1>
-                </section>
+            <motion.section
+                className="unete-hero"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                <div className="unete-banner">
+                    <img
+                        src="/images/congreso/Voluntarios.jpg"
+                        alt="Voluntarios HiveYoung"
+                        className="unete-banner-img"
+                        draggable="false"
+                    />
+                    <div className="unete-banner-overlay">
+                        <h1 className="unete-banner-title">¡Únete a HiveYoung!</h1>
+                    </div>
+                </div>
+            </motion.section>
 
+            <motion.div
+                className="unete-container"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            >
                 <div className="unete-content-grid">
-                    <div className="unete-faq-wrapper reveal">
+                    <div className="unete-faq-wrapper">
                         <h2 className="faq-title">Preguntas Frecuentes</h2>
                         <Accordion items={localFaqs} />
                     </div>
 
-                    <div className="unete-form-wrapper reveal">
+                    <div className="unete-form-wrapper">
                         <form ref={form} className="unete-form" onSubmit={sendEmail}>
                             <div className="form-group">
                                 <FormField
@@ -203,7 +223,7 @@ const UneteClient = () => {
                         </form>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };

@@ -1,5 +1,13 @@
 /* Importación de Tailwind (si lo sigues usando, si no, puedes omitirlo) */
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@font-face {
+    font-family: 'Bernoru Black';
+    src: url('/fonts/Bernoru Black Ultra Expanded.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
 
 * {
     margin: 0;

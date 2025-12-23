@@ -2,25 +2,65 @@
     background-color: #f8f4eb;
     color: #3a1b4e;
     min-height: 100vh;
-    padding: 160px 40px 80px;
+    padding: 65px 0 80px;
+    /* 65px for navbar, 0 horizontal to allow full width hero */
     font-family: 'Poppins', sans-serif;
 }
 
 .unete-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 40px;
+    /* Restore padding for the rest of content */
 }
 
 .unete-hero {
-    text-align: center;
     margin-bottom: 60px;
+    width: 100%;
 }
 
-.unete-title {
-    font-size: 56px;
-    font-weight: 800;
+.unete-banner {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    /* Slightly reduced height */
+    /* Non-fullscreen height */
+    overflow: hidden;
+}
+
+.unete-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.unete-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(58, 27, 78, 0.2),
+            rgba(58, 27, 78, 0.6));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.unete-banner-title {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    /* Bold weight */
+    text-align: center;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    margin: 0;
     line-height: 1.1;
-    margin-bottom: 15px;
+    letter-spacing: -0.01em;
 }
 
 .unete-subtitle {
@@ -220,15 +260,31 @@
     }
 
     .unete-hero {
-        margin-bottom: 30px;
+        display: block;
+        margin-bottom: 40px;
+        text-align: center;
     }
 
-    .unete-title {
-        font-size: 30px;
-        line-height: 1.2;
-        text-align: center;
-        width: 100%;
-        display: block;
+    .unete-banner {
+        height: auto;
+        overflow: visible;
+    }
+
+    .unete-banner-img {
+        display: none;
+    }
+
+    .unete-banner-overlay {
+        position: static;
+        background: transparent;
+        padding: 0;
+    }
+
+    .unete-banner-title {
+        color: #3a1b4e;
+        font-size: 2.2rem;
+        text-shadow: none;
+        font-weight: 700;
     }
 
     .unete-form .form-row {
