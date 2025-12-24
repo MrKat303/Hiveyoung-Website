@@ -50,7 +50,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
 }
 
 .advisory-card:hover {
@@ -88,7 +88,7 @@
     border-radius: 16px;
     margin-bottom: 24px;
     text-align: left;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
