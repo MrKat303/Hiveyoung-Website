@@ -176,7 +176,7 @@ const speakersData = [
         id: 16,
         name: "Francisca Andler",
         company: "FA TRAINING",
-        role: "Coach y Comunicadora - FA Training",
+        role: "Coach y Comunicadora",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766700609/J6A3936-scaled_yutxzf.jpg",
         tags: ["Comunicación", "Liderazgo"],
         category: "Liderazgo"
@@ -225,6 +225,87 @@ const speakersData = [
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766704743/1753044500808_ucnssb.jpg",
         tags: ["Tecnología", "Innovación"],
         category: "Innovación"
+    },
+    {
+        id: 22,
+        name: "Catalina Pérez",
+        company: "OTROS PÉREZ",
+        role: "Socia Fundadora",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766705566/1667853109490_nrqypr.jpg",
+        tags: ["Diseño", "Publicidad"],
+        category: "Innovación"
+    },
+    {
+        id: 23,
+        name: "Ángel Morales",
+        company: "UDD VENTURES",
+        role: "Director Ejecutivo",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766705598/20190108w15_nmv9ob.jpg",
+        tags: ["Innovación", "Emprendimiento"],
+        category: "Emprendimiento"
+    },
+    {
+        id: 24,
+        name: "Jocelyn Jara",
+        company: "MASTERCARD",
+        role: "Account Manager",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766705570/1692647636035_sdfagh.jpg",
+        tags: ["Finanzas"],
+        category: "Finanzas"
+    },
+    {
+        id: 25,
+        name: "Antonia Guevara",
+        company: "PONTIFICIA UNIVERSIDAD CATÓLICA",
+        role: "Profesora Adjunta",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766705574/Antonia_Guevara_uodsv2.jpg",
+        tags: ["Publicidad", "Educación"],
+        category: "Innovación"
+    },
+    {
+        id: 26,
+        name: "Leonardo Maldonado",
+        company: "GULLIVER",
+        role: "Cofundador",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766705851/images_d2hysg.jpg",
+        tags: ["Innovación", "Tecnología"],
+        category: "Innovación"
+    },
+    {
+        id: 27,
+        name: "Macarena Rojas Abalos",
+        company: "ACHIPEC",
+        role: "Presidenta",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766705853/1681720639310_yvdlyt.jpg",
+        tags: ["Ciencia", "Tecnología"],
+        category: "Innovación"
+    },
+    {
+        id: 28,
+        name: "Sebastian Cifuentes",
+        company: "CENIA",
+        role: "Lead Machine Learning Engineer",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766705856/Sebastian-Cifuentes_zpza08.webp",
+        tags: ["Tecnología", "IA"],
+        category: "Innovación"
+    },
+    {
+        id: 29,
+        name: "Gabriela Prado",
+        company: "THE CHANGE LAB",
+        role: "Fundadora y CEO",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766706270/images_1_juvscg.jpg",
+        tags: ["Transformación", "Liderazgo"],
+        category: "Liderazgo"
+    },
+    {
+        id: 30,
+        name: "Romina Capetillo",
+        company: "",
+        role: "Educadora Financiera",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766706378/divulgadora_capetillo-900x500_jszyif.jpg",
+        tags: ["Finanzas", "Educación"],
+        category: "Finanzas"
     }
 ];
 
