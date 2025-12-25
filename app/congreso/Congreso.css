@@ -136,8 +136,8 @@
     z-index: 1000;
     display: flex;
     justify-content: center;
-    padding: 20px 20px 60px;
-    /* Added bottom padding to create gap with content */
+    padding: 20px 20px 0;
+    /* Reduced bottom padding to zero */
 }
 
 .hamburger-btn {
@@ -194,7 +194,8 @@
 .congreso-main {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 100px 24px 200px;
+    padding: 20px 24px 100px;
+    /* Highly reduced top padding */
     position: relative;
     z-index: 10;
 }
@@ -202,7 +203,7 @@
 /* --- SECTION HEADERS --- */
 .section-header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 10px;
 }
 
 .section-header h2 {
@@ -217,7 +218,7 @@
     font-size: 1.2rem;
     color: var(--text-dim);
     max-width: 750px;
-    margin: 0 auto 40px;
+    margin: 0 auto 5px;
     text-align: center;
     line-height: 1.6;
 }
@@ -534,12 +535,23 @@
 
 .momento-item {
     margin-bottom: 20px;
-    border-radius: 32px;
+    border-radius: 24px;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    display: grid;
-    place-items: center;
-    opacity: 0.3;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.momento-item:hover {
+    transform: scale(1.02);
+}
+
+.momento-item img {
+    transition: transform 0.5s ease;
+}
+
+.momento-item:hover img {
+    transform: scale(1.05);
 }
 
 /* --- RESPONSIVE ADJUSTMENTS --- */
@@ -658,7 +670,7 @@
     }
 
     .congreso-main {
-        padding: 60px 16px 120px;
+        padding: 30px 16px 100px;
     }
 
     .highlight-content h2 {
