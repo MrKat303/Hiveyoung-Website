@@ -13,7 +13,13 @@ import {
     Calendar,
     Users,
     Building2,
-    Star
+    Star,
+    HelpCircle,
+    MapPin,
+    ChevronDown,
+    Instagram,
+    Linkedin,
+    Youtube
 } from 'lucide-react';
 import './Congreso.css';
 
@@ -208,6 +214,7 @@ export default function CongresoPage() {
     const [activeCategory, setActiveCategory] = useState('Todos');
     const [currSlide, setCurrSlide] = useState(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
     React.useEffect(() => {
         const timer = setInterval(() => {
@@ -331,6 +338,101 @@ export default function CongresoPage() {
                                     </div>
                                 </div>
                             </section>
+
+                            {/* NUEVA SECCIÓN: UBICACIÓN */}
+                            <section className="venue-section">
+                                <div className="section-header">
+                                    <h2>¿Dónde nos vemos?</h2>
+                                    <p>El congreso se realizará en el corazón de Santiago.</p>
+                                </div>
+                                <div className="venue-grid">
+                                    <div className="venue-info">
+                                        <div className="venue-image">
+                                            <img
+                                                src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxE9yI6TjM60gmPzzyEPM6p4DixTpJogZiQ0joTicJtjbbqiHJmBjEAYYJtvMo_WLknkyUMtsgKb8z9SSz1PemTqjRuhJ9l_dOl2hY1T2gNxPTyWkYIzEgBhs0juAVNduF3PQqr=s680-w680-h510-rw"
+                                                alt="Sede CEINA"
+                                                style={{ objectPosition: 'center' }}
+                                            />
+                                        </div>
+                                        <div className="venue-details">
+                                            <MapPin className="pin-icon" />
+                                            <div style={{ flex: 1 }}>
+                                                <h3>CEINA</h3>
+                                                <p>Arturo Prat 33, Santiago Centro</p>
+                                                <a
+                                                    href="https://maps.app.goo.gl/YyRxe3QpG2qM7FpU7"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="map-link"
+                                                    style={{ color: '#ff8ab1', fontSize: '0.85rem', fontWeight: 600, marginTop: '8px', display: 'inline-block', textDecoration: 'none' }}
+                                                >
+                                                    Ver en Google Maps →
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="venue-map">
+                                        <iframe
+                                            src="https://www.google.com/maps?q=CEINA+Santiago&amp;output=embed"
+                                            width="100%"
+                                            height="100%"
+                                            style={{ border: 0 }}
+                                            allowFullScreen
+                                            loading="lazy"
+                                        ></iframe>
+                                    </div>
+                                </div>
+                            </section>
+
+                            {/* NUEVA SECCIÓN: FAQ */}
+                            <section className="faq-section">
+                                <div className="section-header">
+                                    <HelpCircle size={40} className="faq-icon" />
+                                    <h2>Preguntas Frecuentes</h2>
+                                </div>
+                                <div className="faq-list">
+                                    {[
+                                        { q: "¿Quiénes pueden asistir?", a: "El evento está abierto a todos los jóvenes escolares y universitarios, emprendedores y personas interesadas en aprender." },
+                                        { q: "¿Tiene costo la entrada?", a: "El Congreso HiveYoung es un evento gratuito, pero requiere inscripción previa ya que los cupos son limitados." },
+                                        { q: "¿Habrá comida durante el evento?", a: "Contaremos con estaciones de hidratación. La alimentación está considerada únicamente para colegios previamente registrados." },
+                                        { q: "¿Es presencial u online?", a: "Es un evento 100% presencial." },
+                                        { q: "¿Cuánto dura el congreso?", a: "El congreso se desarrolla durante una jornada completa, con una programación continua de charlas, talleres, conversatorios y actividades artísticas." },
+                                        { q: "¿Cómo puedo participar o colaborar?", a: "Puedes hacerlo a través del formulario de contacto del sitio web, ya sea como aliado o sponsor. Si te interesa participar como voluntario, puedes hacerlo desde la sección Únete." },
+                                        { q: "¿Qué debo llevar al evento?", a: "Te recomendamos llevar tu entrada digital, identificación personal y muchas ganas de aprender y participar." }
+                                    ].map((item, i) => (
+                                        <div
+                                            key={i}
+                                            className={`faq-item ${expandedFaq === i ? 'active' : ''}`}
+                                            onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
+                                        >
+                                            <div className="faq-question">
+                                                <h4>{item.q}</h4>
+                                                <ChevronDown
+                                                    size={20}
+                                                    style={{
+                                                        transform: expandedFaq === i ? 'rotate(180deg)' : 'rotate(0deg)',
+                                                        transition: 'transform 0.3s ease'
+                                                    }}
+                                                />
+                                            </div>
+                                            <AnimatePresence>
+                                                {expandedFaq === i && (
+                                                    <motion.div
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: 'auto', opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        className="faq-answer"
+                                                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                                    >
+                                                        <p>{item.a}</p>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+
                         </motion.div>
                     )}
 
@@ -482,6 +584,39 @@ export default function CongresoPage() {
                     )}
                 </AnimatePresence>
             </main>
+
+            <footer className="congreso-footer">
+                <div className="footer-content">
+                    <div className="footer-top">
+                        <div className="footer-brand">
+                            <img src="/Logo.svg" alt="HiveYoung Logo" style={{ height: '65px', width: 'auto' }} />
+                        </div>
+                        <nav className="footer-nav">
+                            {menuItems.map((item) => (
+                                <button
+                                    key={item.id}
+                                    className="footer-link"
+                                    onClick={() => handleSectionChange(item.id as Section)}
+                                    style={{ background: 'none', border: 'none' }}
+                                >
+                                    {item.label}
+                                </button>
+                            ))}
+                        </nav>
+                        <div className="footer-socials">
+                            <a href="https://instagram.com/hiveyoung" target="_blank" rel="noopener noreferrer" className="social-btn">
+                                <Instagram size={20} />
+                            </a>
+                            <a href="https://linkedin.com/company/hiveyoung" target="_blank" rel="noopener noreferrer" className="social-btn">
+                                <Linkedin size={20} />
+                            </a>
+                        </div>
+                    </div>
+                    <div className="footer-bottom">
+                        <p>&copy; 2025 HiveYoung. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }
