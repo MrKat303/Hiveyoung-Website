@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import "./Equipo.css";
-import { direccionEjecutiva, coordinadoresRegionales, Miembro } from "../../data/equipo";
+import { direccionEjecutiva, coordinadoresRegionales, Miembro } from "@/data/equipo";
 
 export default function EquipoPage() {
     useEffect(() => {

@@ -1,9 +1,15 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import "./Footer.css";
 
 export default function Footer() {
+    const pathname = usePathname();
+    const isCongresoPage = pathname === "/congreso";
+
     return (
-        <footer className="footer">
+        <footer className={`footer ${isCongresoPage ? "footer--glass" : ""}`}>
             <div className="footer__container">
                 <div className="footer__top">
                     <div className="footer__brand">

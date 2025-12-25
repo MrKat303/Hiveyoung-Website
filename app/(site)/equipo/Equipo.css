@@ -13,6 +13,9 @@
     text-align: center;
     margin-bottom: 80px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .equipo-header h1 {

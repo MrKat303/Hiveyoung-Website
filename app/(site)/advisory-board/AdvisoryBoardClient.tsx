@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import "./AdvisoryBoard.css";
-import { advisors } from "../../data/advisory";
+import { advisors } from "@/data/advisory";
 
 export default function AdvisoryBoardClient() {
     useEffect(() => {

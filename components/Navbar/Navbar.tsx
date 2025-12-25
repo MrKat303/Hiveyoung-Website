@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import "./Navbar.css";
 
@@ -9,6 +10,8 @@ import { navigationLinks } from "../../data/navigation";
 
 function Navbar() {
     const [menuAbierto, setMenuAbierto] = useState(false);
+    const pathname = usePathname();
+    const isCongresoPage = pathname === "/congreso";
 
     const toggleMenu = () => setMenuAbierto(!menuAbierto);
     const cerrarMenu = () => setMenuAbierto(false);
@@ -16,7 +19,7 @@ function Navbar() {
     const enlaces = navigationLinks;
 
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${isCongresoPage ? "navbar--glass-modern" : ""}`}>
             <div className="navbar-container">
 
                 <div className={`navbar-toggle ${menuAbierto ? "is-active" : ""}`} onClick={toggleMenu}>
