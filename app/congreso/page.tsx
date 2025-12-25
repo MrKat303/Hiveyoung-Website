@@ -41,7 +41,7 @@ const speakersData = [
         id: 1,
         name: "Alejandra Mustakis",
         company: "IF / MEDULAR / KAUEL",
-        role: "Emprendedora",
+        role: "Empresaria",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766676082/WhatsApp_Image_2025-12-25_at_12.20.36_keobdu.jpg",
         tags: ["Emprendimiento", "Liderazgo"],
         category: "Emprendimiento"
@@ -68,7 +68,7 @@ const speakersData = [
         id: 4,
         name: "Marcelo Guital",
         company: "GUITAL & PARTNERS",
-        role: "Fundador y CEO",
+        role: "Empresario",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766675905/KPW2LQRDUBBABFHBLOIE3BINNQ_rwyw9i.avif",
         tags: ["Emprendimiento", "Liderazgo"],
         category: "Emprendimiento"
@@ -123,7 +123,7 @@ const speakersData = [
         name: "Lorena Gallardo",
         company: "FUNDADORAS",
         role: "Fundadora y CEO",
-        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766678661/DSC_5647_gvdtdx.jpg",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766700649/DSC_5647_klke2g.jpg",
         tags: ["Emprendimiento", "Liderazgo"],
         category: "Emprendimiento"
     },
@@ -160,7 +160,70 @@ const speakersData = [
         company: "OTIC SOFOFA",
         role: "Gerente General",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766678940/1744395504810_tcm4xj.jpg",
-        tags: ["Innovación", "Capital Humano"],
+        tags: ["Talento", "Capital Humano"],
+        category: "Innovación"
+    },
+    {
+        id: 15,
+        name: "Claudia Cornejo",
+        company: "DELOITTE",
+        role: "Socia Human Capital",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766701378/cl-ccornejo_ivyc1a.webp",
+        tags: ["Capital Humano", "Talento"],
+        category: "Innovación"
+    },
+    {
+        id: 16,
+        name: "Francisca Andler",
+        company: "FA TRAINING",
+        role: "Coach y Comunicadora - FA Training",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766700609/J6A3936-scaled_yutxzf.jpg",
+        tags: ["Comunicación", "Liderazgo"],
+        category: "Liderazgo"
+    },
+    {
+        id: 17,
+        name: "Consuelo Urquiza",
+        company: "VIRTUS PARTNERS",
+        role: "Expert Advisor",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766700605/consuelo-urquiza_zjt17z.jpg",
+        tags: ["Tranformacion Digital", "Tranformacion Cultural"],
+        category: "Innovación"
+    },
+    {
+        id: 18,
+        name: "Sebastian Perez",
+        company: "MERCADO LIBRE",
+        role: "Regional Talent Acquisition",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766703680/width_400_vskvao.webp",
+        tags: ["Talento", "Capital Humano"],
+        category: "Innovación"
+    },
+    {
+        id: 19,
+        name: "Nicolás Behar",
+        company: "RECYLINK",
+        role: "CEO y cofundador",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766703571/Nicolas_Behar_pesi6s.webp",
+        tags: ["Sustentabilidad", "Tecnologia"],
+        category: "Innovación"
+    },
+    {
+        id: 20,
+        name: "Pablo Balzo",
+        company: "UNIVERSIDAD FINIS TERRAE",
+        role: "Director de Escuela de Publicidad",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766704587/pablo-balzo-director-carrera-publicidad-uft_tjluc7.jpg",
+        tags: ["Publicidad", "Educación"],
+        category: "Innovación"
+    },
+    {
+        id: 21,
+        name: "Polo Diaz Pinto",
+        company: "WIWO",
+        role: "Fundador y CEO",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766704743/1753044500808_ucnssb.jpg",
+        tags: ["Tecnología", "Innovación"],
         category: "Innovación"
     }
 ];
