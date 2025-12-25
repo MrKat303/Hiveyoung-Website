@@ -239,7 +239,12 @@ export default function CongresoPage() {
 
     return (
         <div className="congreso-page">
-            <div className="mesh-gradient-bg" />
+            <div className="mesh-gradient-bg">
+                <div className="glow-orb orb-1"></div>
+                <div className="glow-orb orb-2"></div>
+                <div className="glow-orb orb-3"></div>
+                <div className="noise-overlay"></div>
+            </div>
 
             {/* HERO CAROUSEL */}
             <header className="congreso-hero">
@@ -341,9 +346,9 @@ export default function CongresoPage() {
 
                             {/* NUEVA SECCIÓN: UBICACIÓN */}
                             <section className="venue-section">
-                                <div className="section-header">
+                                <div className="section-header venue-header">
                                     <h2>¿Dónde nos vemos?</h2>
-                                    <p>El congreso se realizará en el corazón de Santiago.</p>
+                                    <p>El Congreso se realiza en el corazón de Santiago.</p>
                                 </div>
                                 <div className="venue-grid">
                                     <div className="venue-info">
