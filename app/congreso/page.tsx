@@ -450,6 +450,12 @@ export default function CongresoPage() {
                             exit={{ opacity: 0, x: 20 }}
                             className="resumen-grid"
                         >
+                            <div className="highlights-hero-card">
+                                <div className="edition-badge">EDICIÓN 2025 • 7 Y 8 DE JULIO</div>
+                                <h2>El evento juvenil más <br className="br-desktop" />importante de Chile</h2>
+                                <p className="highlight-subtitle">(Hecho por y para jóvenes)</p>
+                            </div>
+
                             <div className="stats-container">
                                 {[
                                     { val: 2100, label: 'Asistentes', icon: <Users />, prefix: '+' },
@@ -466,24 +472,27 @@ export default function CongresoPage() {
                                 ))}
                             </div>
 
-                            <section className="highlights-section">
-                                <div className="highlight-content">
-                                    <h2>El epicentro de una <br className="br-desktop" />generación sin barreras</h2>
+                            <section className="highlights-section-new">
+                                <div className="highlights-intro-full">
+                                    <div className="divider-mini"></div>
+                                    <h3>El epicentro de una <br className="br-desktop" />generación sin barreras</h3>
                                     <p>El espacio donde líderes del emprendimiento, empresarial e innovación se unieron para activar a una generación sin límites.</p>
-                                    <div className="feature-list">
-                                        {['Charlas Inspiradoras', 'Talleres y Conversatorios', 'Feria Universitaria'].map((f, i) => (
-                                            <div key={i} className="feature-item">
-                                                <CheckCircle2 color="#ff8ab1" />
-                                                <span style={{ fontWeight: 600 }}>{f}</span>
-                                            </div>
-                                        ))}
-                                    </div>
                                 </div>
-                                <div className="highlight-visual">
-                                    <div style={{ padding: '40px', background: 'var(--glass-bg)', borderRadius: '40px', border: '1px solid var(--glass-border)', textAlign: 'center' }}>
-                                        <Star size={48} opacity={0.2} style={{ marginBottom: '20px' }} />
-                                        <h3>Próxima Edición</h3>
-                                        <p>CEINA – OCTUBRE 2026</p>
+
+                                <div className="highlights-bottom-grid">
+                                    {['Charlas Inspiradoras', 'Talleres y Conversatorios', 'Feria Universitaria'].map((f, i) => (
+                                        <div key={i} className="feature-item">
+                                            <CheckCircle2 color="#ff8ab1" />
+                                            <span style={{ fontWeight: 600 }}>{f}</span>
+                                        </div>
+                                    ))}
+
+                                    <div className="highlight-visual">
+                                        <div style={{ padding: '60px 40px', background: 'var(--glass-bg)', borderRadius: '40px', border: '1px solid var(--glass-border)', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                                            <Star size={64} opacity={0.2} style={{ marginBottom: '24px' }} />
+                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '8px' }}>Próxima Edición</h3>
+                                            <p style={{ fontSize: '1.1rem', opacity: 0.8 }}>CEINA – OCTUBRE 2026</p>
+                                        </div>
                                     </div>
                                 </div>
                             </section>
@@ -732,7 +741,7 @@ export default function CongresoPage() {
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </main>
+            </main >
 
             <footer className="congreso-footer">
                 <div className="footer-content">
@@ -766,6 +775,6 @@ export default function CongresoPage() {
                     </div>
                 </div>
             </footer>
-        </div>
+        </div >
     );
 }
