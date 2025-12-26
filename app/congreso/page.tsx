@@ -42,7 +42,7 @@ const speakersData = [
         name: "Alejandra Mustakis",
         company: "IF / MEDULAR / KAUEL",
         role: "Empresaria",
-        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766676082/WhatsApp_Image_2025-12-25_at_12.20.36_keobdu.jpg",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766716461/Alejandra1-1024x682_kzmeyz.jpg",
         tags: ["Emprendimiento", "Liderazgo"],
         category: "Emprendimiento"
     },
@@ -294,7 +294,7 @@ const speakersData = [
         name: "Gabriela Prado",
         company: "THE CHANGE LAB",
         role: "Fundadora y CEO",
-        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766706270/images_1_juvscg.jpg",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766715936/1689284424166_ytwi82.jpg",
         tags: ["Transformación", "Liderazgo"],
         category: "Liderazgo"
     },
@@ -459,7 +459,7 @@ export default function CongresoPage() {
                             <div className="stats-container">
                                 {[
                                     { val: 2100, label: 'Asistentes', icon: <Users />, prefix: '+' },
-                                    { val: 35, label: 'Speakers', icon: <Mic2 />, prefix: '+' },
+                                    { val: 30, label: 'Speakers', icon: <Mic2 />, prefix: '+' },
                                     { val: 40, label: 'Instituciones', icon: <Building2 />, prefix: '+' }
                                 ].map((s, i) => (
                                     <div key={i} className="stat-card">
