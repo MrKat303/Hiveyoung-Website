@@ -1,0 +1,60 @@
+/* --- MINI NAVBAR --- */
+.mini-navbar-wrapper {
+    position: sticky;
+    top: 30px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    padding: 20px 20px 0;
+    /* Reduced bottom padding to zero */
+}
+
+.hamburger-btn {
+    display: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.mini-navbar {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px) saturate(150%);
+    -webkit-backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px;
+    border-radius: 100px;
+    display: flex;
+    gap: 4px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+}
+
+.mini-nav-btn {
+    padding: 12px 24px;
+    border-radius: 100px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mini-nav-btn.active {
+    opacity: 1;
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}

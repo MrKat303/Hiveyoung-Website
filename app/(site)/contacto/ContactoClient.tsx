@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import useScrollReveal from "@/hooks/useScrollReveal";
 import { Mail, Phone, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '@/components/ui/Button';
@@ -18,28 +19,7 @@ const ContactoClient = () => {
         validate: () => !emailError
     });
 
-    useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: "0px 0px -100px 0px",
-            threshold: 0.2,
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                }
-            });
-        }, observerOptions);
-
-        const revealElements = document.querySelectorAll(".reveal");
-        revealElements.forEach((el) => observer.observe(el));
-
-        return () => {
-            revealElements.forEach((el) => observer.unobserve(el));
-        };
-    }, []);
+    useScrollReveal();
 
     const validarEmail = (valor: string) => {
         setEmailError(valor !== "" && !isValidEmail(valor));

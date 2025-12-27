@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Handshake, Heart, Globe, Lightbulb, Megaphone, ChevronLeft, ChevronRight } from 'lucide-react';
+import { SOMOS_VALUES } from '@/data/somos-values';
 import './Somos.css';
 
 const SomosClient = () => {
@@ -41,54 +42,12 @@ const SomosClient = () => {
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
     };
 
-    const values = [
-        {
-            icon: <Handshake size={40} strokeWidth={2} color="#2eb67d" />,
-            title: "Colaboración",
-            color: "#2eb67d",
-            description: "Construimos puentes y alianzas estratégicas. Entendemos que el impacto colectivo es más fuerte que el esfuerzo individual."
-        },
-        {
-            icon: <Heart size={40} strokeWidth={2} color="#529ce8" />,
-            title: "Compromiso",
-            color: "#529ce8",
-            description: "Nos entregamos con pasión y responsabilidad a nuestra causa, trabajando incansablemente por el bienestar de las juventudes."
-        },
-        {
-            icon: <Globe size={40} strokeWidth={2} color="#c22359" />,
-            title: "Diversidad e Inclusión",
-            color: "#c22359",
-            description: "Valoramos y celebramos la riqueza de las diferencias, creando espacios seguros donde todas las identidades pueden florecer."
-        },
-        {
-            icon: <Lightbulb size={40} strokeWidth={2} color="#ffc100" />,
-            title: "Creatividad e Innovación",
-            color: "#ffc100",
-            description: "Abrazamos el cambio y buscamos soluciones disruptivas. No tenemos miedo a pensar diferente para resolver los desafíos del futuro."
-        },
-        {
-            icon: <Megaphone size={40} strokeWidth={2} color="#ee6352" />,
-            title: "Incidencia",
-            color: "#ee6352",
-            description: "Alzamos la voz y actuamos para influir en las políticas públicas, posicionando a los jóvenes en el centro de la toma de decisiones."
-        }
-    ];
+    const values = SOMOS_VALUES;
 
     // Extended values for infinite carousel
     const extendedValues = [...values, ...values, ...values, ...values, ...values, ...values];
 
-    // Auto-play Logic
-    useEffect(() => {
-        let interval: NodeJS.Timeout;
-        if (!isHovering && isInView) {
-            interval = setInterval(() => {
-                scrollCarousel('right');
-            }, 5000);
-        }
-        return () => clearInterval(interval);
-    }, [isHovering, isInView]);
-
-    const getSingleSetWidth = () => {
+    const getSingleSetWidth = useCallback(() => {
         if (!carouselRef.current || !carouselRef.current.children.length) return 0;
         const container = carouselRef.current;
         const firstCard = container.children[0] as HTMLElement;
@@ -99,20 +58,9 @@ const SomosClient = () => {
             : firstCard.offsetWidth;
 
         return itemStride * 5;
-    };
-
-    useEffect(() => {
-        if (carouselRef.current) {
-            requestAnimationFrame(() => {
-                const setWidth = getSingleSetWidth();
-                if (carouselRef.current) {
-                    carouselRef.current.scrollLeft = setWidth;
-                }
-            });
-        }
     }, []);
 
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         if (!carouselRef.current) return;
         const { scrollLeft } = carouselRef.current;
         const singleSetWidth = getSingleSetWidth();
@@ -123,9 +71,9 @@ const SomosClient = () => {
         } else if (scrollLeft >= (singleSetWidth * 5) - 5) {
             carouselRef.current.scrollLeft = scrollLeft - (singleSetWidth * 4);
         }
-    };
+    }, [getSingleSetWidth]);
 
-    const scrollCarousel = (direction: 'left' | 'right') => {
+    const scrollCarousel = useCallback((direction: 'left' | 'right') => {
         if (carouselRef.current && !isTransitioning.current) {
             isTransitioning.current = true;
             const { current } = carouselRef;
@@ -142,7 +90,29 @@ const SomosClient = () => {
                 isTransitioning.current = false;
             }, 400);
         }
-    };
+    }, [getSingleSetWidth]);
+
+    // Auto-play Logic
+    useEffect(() => {
+        let interval: NodeJS.Timeout;
+        if (!isHovering && isInView) {
+            interval = setInterval(() => {
+                scrollCarousel('right');
+            }, 5000);
+        }
+        return () => clearInterval(interval);
+    }, [isHovering, isInView, scrollCarousel]);
+
+    useEffect(() => {
+        if (carouselRef.current) {
+            requestAnimationFrame(() => {
+                const setWidth = getSingleSetWidth();
+                if (carouselRef.current) {
+                    carouselRef.current.scrollLeft = setWidth;
+                }
+            });
+        }
+    }, [getSingleSetWidth]);
 
     return (
         <div className="somos-page">
@@ -154,7 +124,7 @@ const SomosClient = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
                         style={{
-                            borderRadius: borderRadius as any,
+                            borderRadius: typeof borderRadius === 'number' ? `${borderRadius}px` : borderRadius,
                             overflow: 'hidden'
                         }}
                     >

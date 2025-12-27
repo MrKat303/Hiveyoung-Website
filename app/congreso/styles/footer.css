@@ -1,0 +1,87 @@
+/* --- CONGRESO FOOTER --- */
+.congreso-footer {
+    background: rgba(8, 8, 16, 0.5);
+    backdrop-filter: blur(40px);
+    border-top: 1px solid var(--glass-border);
+    padding: 40px 24px 30px;
+    margin-top: 20px;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-brand h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.4));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 32px;
+}
+
+.footer-link {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.footer-link:hover {
+    color: white;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 16px;
+}
+
+.social-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.social-btn:hover {
+    background: var(--glass-accent);
+    transform: translateY(-4px);
+    color: #ff8ab1;
+}
+
+.footer-bottom {
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    /* Centered */
+    align-items: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    text-align: center;
+}

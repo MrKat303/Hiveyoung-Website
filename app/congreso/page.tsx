@@ -15,7 +15,21 @@ import {
     Instagram,
     Linkedin
 } from 'lucide-react';
-import './Congreso.css';
+// Modular CSS imports
+import './styles/variables.css';
+import './styles/base.css';
+import './styles/hero.css';
+import './styles/navbar.css';
+import './styles/main.css';
+import './styles/section.css';
+import './styles/stats.css';
+import './styles/agenda.css';
+import './styles/speakers.css';
+import './styles/momentos.css';
+import './styles/venue.css';
+import './styles/faq.css';
+import './styles/footer.css';
+import './styles/responsive.css';
 
 // Componentes extraídos
 import { HeroCarousel } from './components/HeroCarousel';
@@ -60,7 +74,17 @@ export default function CongresoPage() {
                 <div className="noise-overlay"></div>
             </div>
 
-            <HeroCarousel images={HERO_IMAGES} />
+
+            <div className="congreso-hero">
+                <HeroCarousel images={HERO_IMAGES} />
+                <div style={{ position: 'relative', zIndex: 10 }}>
+                    <h1 className="hero-title">
+                        Congreso<br />
+                        <span>HiveYoung</span>
+                    </h1>
+                    <p className="hero-tagline">El punto de encuentro <br /> de la nueva generación</p>
+                </div>
+            </div>
 
             <div className="mini-navbar-wrapper">
                 <button className="hamburger-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>

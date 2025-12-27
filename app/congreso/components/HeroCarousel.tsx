@@ -1,48 +1,48 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useCarousel } from "@/hooks/useCarousel";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 interface HeroCarouselProps {
     images: string[];
 }
 
-export const HeroCarousel: React.FC<HeroCarouselProps> = ({ images }) => {
-    const [currSlide, setCurrSlide] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrSlide((prev) => (prev + 1) % images.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, [images.length]);
+export const HeroCarousel = ({ images }: HeroCarouselProps) => {
+    const { currentIndex, goToNext, goToPrevious, goToIndex } = useCarousel(images.length, {
+        autoPlayInterval: 5000,
+    });
 
     return (
-        <header className="congreso-hero">
-            <div className="hero-carousel">
-                <AnimatePresence mode='wait'>
-                    <motion.div
-                        key={currSlide}
-                        className="hero-slide"
-                        initial={{ opacity: 0, scale: 1.1 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5 }}
-                        style={{ backgroundImage: `url(${images[currSlide]})` }}
-                    />
-                </AnimatePresence>
-            </div>
+        <div className="hero-carousel">
+            {images.map((img, index) => (
+                <div
+                    key={index}
+                    className="hero-slide"
+                    style={{
+                        backgroundImage: `url(${img})`,
+                        opacity: index === currentIndex ? 1 : 0,
+                        transition: 'opacity 1s ease-in-out',
+                        zIndex: index === currentIndex ? 2 : 1
+                    }}
+                />
+            ))}
 
-            <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                style={{ zIndex: 2 }}
-            >
-                <h1 className="hero-title">
-                    Congreso <br />
-                    <span>HiveYoung</span>
-                </h1>
-                <p className="hero-tagline">UNA GENERACIÓN SIN BARRERAS</p>
-            </motion.div>
-        </header>
+            <button className="congress-carousel-arrow congress-carousel-arrow-left" onClick={goToPrevious}>
+                <ChevronLeft size={32} />
+            </button>
+
+            <button className="congress-carousel-arrow congress-carousel-arrow-right" onClick={goToNext}>
+                <ChevronRight size={32} />
+            </button>
+
+            <div className="carousel-indicators">
+                {images.map((_, index) => (
+                    <button
+                        key={index}
+                        className={`congress-indicator ${index === currentIndex ? 'active' : ''}`}
+                        onClick={() => goToIndex(index)}
+                    />
+                ))}
+            </div>
+        </div>
     );
 };

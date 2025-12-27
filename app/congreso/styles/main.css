@@ -1,0 +1,9 @@
+/* --- MAIN CONTENT --- */
+.congreso-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 24px 100px;
+    /* Highly reduced top padding */
+    position: relative;
+    z-index: 10;
+}

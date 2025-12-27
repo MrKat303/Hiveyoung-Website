@@ -1,0 +1,10 @@
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-accent: rgba(255, 255, 255, 0.08);
+    --glass-heavy: rgba(255, 255, 255, 0.12);
+    --brand-pink: #c22359;
+    --brand-pink-glow: rgba(194, 35, 89, 0.3);
+    --text-main: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.6);
+}

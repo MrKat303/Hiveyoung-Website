@@ -6,48 +6,17 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import './CongressCarousel.css';
 
-const images = [
-    'https://res.cloudinary.com/dlipwrbvd/image/upload/v1766510857/Orquesta_1_yzgvao.jpg',
-    'https://res.cloudinary.com/dlipwrbvd/image/upload/v1766512697/Participacion_udtvn3.jpg',
-    'https://res.cloudinary.com/dlipwrbvd/image/upload/v1766536322/Guys_1_x2jbh7.jpg',
-    'https://res.cloudinary.com/dlipwrbvd/image/upload/v1766512767/IMG_1994-Mejorado-NR_obmhj3.jpg',
-    'https://res.cloudinary.com/dlipwrbvd/image/upload/v1766512618/Panel_zz5lbb.jpg',
-    'https://res.cloudinary.com/dlipwrbvd/image/upload/v1766536932/Universidades_jvuaal.jpg',
-];
+import { CONGRESS_CAROUSEL_IMAGES } from '@/data/congress-carousel';
+import { useCarousel } from '@/hooks/useCarousel';
 
 export default function CongressCarousel() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isTransitioning, setIsTransitioning] = useState(false);
+    const images = CONGRESS_CAROUSEL_IMAGES;
+    const { currentIndex, goToNext, goToPrevious, goToIndex } = useCarousel(images.length);
 
     useScrollReveal();
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 5000); // Auto-advance every 5 seconds
-
-        return () => clearInterval(interval);
-    }, []);
-
-    const goToPrevious = () => {
-        if (isTransitioning) return;
-        setIsTransitioning(true);
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-        setTimeout(() => setIsTransitioning(false), 1000);
-    };
-
-    const goToNext = () => {
-        if (isTransitioning) return;
-        setIsTransitioning(true);
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        setTimeout(() => setIsTransitioning(false), 1000);
-    };
-
     const goToSlide = (index: number) => {
-        if (isTransitioning || index === currentIndex) return;
-        setIsTransitioning(true);
-        setCurrentIndex(index);
-        setTimeout(() => setIsTransitioning(false), 1000);
+        goToIndex(index);
     };
 
     return (
