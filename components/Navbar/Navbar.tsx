@@ -10,24 +10,24 @@ import "./Navbar.css";
 import { navigationLinks } from "../../data/navigation";
 
 function Navbar() {
-    const [menuAbierto, setMenuAbierto] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathname = usePathname();
     const isCongresoPage = pathname === "/congreso";
 
-    const toggleMenu = () => setMenuAbierto(!menuAbierto);
-    const cerrarMenu = () => setMenuAbierto(false);
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const closeMenu = () => setIsMenuOpen(false);
 
-    const enlaces = navigationLinks;
+    const links = navigationLinks;
 
     return (
         <nav className={`navbar ${isCongresoPage ? "navbar--glass-modern" : ""}`}>
             <div className="navbar-container">
 
-                <div className={`navbar-toggle ${menuAbierto ? "is-active" : ""}`} onClick={toggleMenu}>
-                    {menuAbierto ? <X size={32} /> : <Menu size={32} />}
+                <div className={`navbar-toggle ${isMenuOpen ? "is-active" : ""}`} onClick={toggleMenu}>
+                    {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
                 </div>
 
-                <Link className="navbar-logo" href="/" onClick={cerrarMenu}>
+                <Link className="navbar-logo" href="/" onClick={closeMenu}>
                     <Image
                         src="/Logo.svg"
                         alt="HiveYoung - Principal articulador del ecosistema juvenil"
@@ -39,14 +39,14 @@ function Navbar() {
                     />
                 </Link>
 
-                <ul className={`navbar-menu ${menuAbierto ? "active" : ""}`}>
-                    {enlaces.map((link, index) => (
+                <ul className={`navbar-menu ${isMenuOpen ? "active" : ""}`}>
+                    {links.map((link, index) => (
                         <li
                             key={index}
-                            style={{ transitionDelay: menuAbierto ? `${index * 0.1}s` : "0s" }}
-                            className={`${menuAbierto ? "fade-in" : ""} ${link.dropdown ? "nav-item-dropdown" : ""}`}
+                            style={{ transitionDelay: isMenuOpen ? `${index * 0.1}s` : "0s" }}
+                            className={`${isMenuOpen ? "fade-in" : ""} ${link.dropdown ? "nav-item-dropdown" : ""}`}
                         >
-                            <Link href={link.path} onClick={cerrarMenu}>
+                            <Link href={link.path} onClick={closeMenu}>
                                 {link.name}
                                 {link.dropdown && <ChevronDown size={14} style={{ marginLeft: '4px' }} />}
                             </Link>
@@ -55,7 +55,7 @@ function Navbar() {
                                 <ul className="dropdown-menu">
                                     {link.dropdown.map((sub, i) => (
                                         <li key={i}>
-                                            <Link href={sub.path} onClick={cerrarMenu}>
+                                            <Link href={sub.path} onClick={closeMenu}>
                                                 {sub.name}
                                             </Link>
                                         </li>

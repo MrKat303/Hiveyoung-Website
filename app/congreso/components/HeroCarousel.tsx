@@ -18,12 +18,22 @@ export const HeroCarousel = ({ images }: HeroCarouselProps) => {
                     key={index}
                     className="hero-slide"
                     style={{
-                        backgroundImage: `url(${img})`,
                         opacity: index === currentIndex ? 1 : 0,
                         transition: 'opacity 1s ease-in-out',
                         zIndex: index === currentIndex ? 2 : 1
                     }}
-                />
+                >
+                    <Image
+                        src={img}
+                        alt={`Congress slide ${index + 1}`}
+                        fill
+                        priority={index === 0}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        className="object-cover"
+                        sizes="100vw"
+                    />
+                </div>
+
             ))}
 
             <button className="congress-carousel-arrow congress-carousel-arrow-left" onClick={goToPrevious}>

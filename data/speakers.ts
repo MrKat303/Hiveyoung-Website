@@ -159,7 +159,7 @@ export const speakers: Speaker[] = [
         company: "VIRTUS PARTNERS",
         role: "Expert Advisor",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766700605/consuelo-urquiza_zjt17z.jpg",
-        tags: ["Tranformacion Digital", "Tranformacion Cultural"],
+        tags: ["Transformación Digital", "Transformación Cultural"],
         category: "Innovación"
     },
     {
