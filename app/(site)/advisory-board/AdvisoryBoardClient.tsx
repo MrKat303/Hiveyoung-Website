@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 import "./AdvisoryBoard.css";
 import { advisors } from "@/data/advisory";
 
@@ -44,7 +45,7 @@ export default function AdvisoryBoardClient() {
                             style={{ transitionDelay: `${index * 0.1}s` }}
                         >
                             <div className="advisory-image-container">
-                                <img src={advisor.img} alt={advisor.name} className="advisory-image" draggable="false" />
+                                <Image src={advisor.img} alt={advisor.name} width={300} height={300} className="advisory-image" draggable={false} />
                             </div>
                             <div className={`advisory-content shadow-${advisor.color}`}>
                                 <div className="advisory-header">

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import './CongressCarousel.css';
@@ -54,7 +55,7 @@ export default function CongressCarousel() {
             <div className="congress-carousel reveal">
                 {/* CEINA Logo */}
                 <div className="ceina-logo">
-                    <img src="/images/congreso/logos/CEINA.png" alt="CEINA" draggable="false" />
+                    <Image src="/images/congreso/logos/CEINA.png" alt="CEINA" width={200} height={80} draggable={false} />
                 </div>
 
                 {/* Carousel Images */}

@@ -24,10 +24,10 @@ export const useEmailForm = (templateId: string, options: UseEmailFormOptions = 
 
         try {
             await emailjs.sendForm(
-                'service_7ir6qmg',
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
                 templateId,
                 formRef.current,
-                'qft3lkIskRJjHOela'
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
             );
 
             setStatus('success');

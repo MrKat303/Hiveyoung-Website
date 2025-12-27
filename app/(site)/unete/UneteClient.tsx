@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Button from '@/components/ui/Button';
@@ -93,11 +94,14 @@ const UneteClient = () => {
                 transition={{ duration: 0.8, ease: "easeOut" }}
             >
                 <div className="unete-banner">
-                    <img
+                    <Image
                         src="/images/congreso/Voluntarios.jpg"
                         alt="Voluntarios HiveYoung"
+                        width={1920}
+                        height={600}
                         className="unete-banner-img"
-                        draggable="false"
+                        draggable={false}
+                        priority
                     />
                     <div className="unete-banner-overlay">
                         <h1 className="unete-banner-title">¡Únete a HiveYoung!</h1>

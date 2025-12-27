@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import "./Footer.css";
 
@@ -13,7 +14,7 @@ export default function Footer() {
             <div className="footer__container">
                 <div className="footer__top">
                     <div className="footer__brand">
-                        <img src="/Logo.svg" alt="HiveYoung - Ecosistema Juvenil" className="footer__logo" draggable="false" />
+                        <Image src="/Logo.svg" alt="HiveYoung - Ecosistema Juvenil" width={150} height={50} className="footer__logo" draggable={false} />
                         <p className="footer__email">hiveyoung@gmail.com</p>
                     </div>
 

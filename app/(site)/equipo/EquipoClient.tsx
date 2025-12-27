@@ -33,11 +33,13 @@ export default function EquipoPage() {
         <div key={miembro.id} className="equipo-card reveal">
             <div className="card-image-container">
                 {miembro.img ? (
-                    <img
+                    <Image
                         src={miembro.img}
                         alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
+                        width={300}
+                        height={300}
                         className="card-image"
-                        draggable="false"
+                        draggable={false}
                     />
                 ) : (
                     <div className="card-image-placeholder"></div>

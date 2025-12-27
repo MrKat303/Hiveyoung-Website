@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Handshake, Heart, Globe, Lightbulb, Megaphone, ChevronLeft, ChevronRight } from 'lucide-react';
 import './Somos.css';
@@ -157,11 +158,13 @@ const SomosClient = () => {
                             overflow: 'hidden'
                         }}
                     >
-                        <img
+                        <Image
                             src="/images/somos/grupal (1).JPG"
                             alt="Equipo HiveYoung"
+                            width={1200}
+                            height={800}
                             className="somos-hero-image"
-                            draggable="false"
+                            draggable={false}
                         />
                         <div className="somos-overlay"></div>
                     </motion.div>

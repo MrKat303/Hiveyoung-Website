@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import "./Navbar.css";
@@ -27,11 +28,14 @@ function Navbar() {
                 </div>
 
                 <Link className="navbar-logo" href="/" onClick={cerrarMenu}>
-                    <img
+                    <Image
                         src="/Logo.svg"
                         alt="HiveYoung - Principal articulador del ecosistema juvenil"
+                        width={150}
+                        height={50}
                         className="logo-image no-interaction"
-                        draggable="false"
+                        draggable={false}
+                        priority
                     />
                 </Link>
 
