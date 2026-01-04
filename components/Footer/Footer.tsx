@@ -27,8 +27,8 @@ export default function Footer() {
 
                         <div className="footer__col">
                             <h4>REDES SOCIALES</h4>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="https://www.instagram.com/hiveyoung.cl/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="https://cl.linkedin.com/company/hiveyoung" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         </div>
                     </div>
                 </div>

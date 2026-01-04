@@ -13,7 +13,7 @@ export const advisors: Advisor[] = [
         name: "Gina Ocqueteau",
         role: "Presidenta / Directora",
         institution: "SQM / Enel",
-        img: "/images/advisory/Gina.jpg",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456574/Gina_c2nkcj.jpg",
         color: "purple"
     },
     {
@@ -21,7 +21,7 @@ export const advisors: Advisor[] = [
         name: "Rosario Navarro",
         role: "Presidenta",
         institution: "SOFOFA",
-        img: "/images/advisory/rosario.avif",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456901/rosario_ef85fk.avif",
         color: "green"
     },
     {
@@ -29,7 +29,7 @@ export const advisors: Advisor[] = [
         name: "Pablo Riccheri",
         role: "Global Managing Partner",
         institution: "Cambridge Business Association",
-        img: "/images/advisory/Pablo.jpg",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456572/Pablo_se0hgf.jpg",
         color: "yellow"
     },
     {
@@ -37,7 +37,7 @@ export const advisors: Advisor[] = [
         name: "Catherine Ruz",
         role: "Socia Directora y Fundadora",
         institution: "Grey Capital",
-        img: "/images/advisory/caty.jpg",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456575/caty_jj8xqd.jpg",
         color: "pink"
     },
     {
@@ -45,7 +45,7 @@ export const advisors: Advisor[] = [
         name: "Fernanda Vicente",
         role: "Cofundadora y CEO",
         institution: "Money Queen",
-        img: "/images/advisory/fernanda.jpg",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456570/fernanda_szdo98.jpg",
         color: "blue"
     }
 ];

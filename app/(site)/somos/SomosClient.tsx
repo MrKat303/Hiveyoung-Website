@@ -129,7 +129,7 @@ const SomosClient = () => {
                         }}
                     >
                         <Image
-                            src="/images/somos/grupal (1).JPG"
+                            src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456528/grupal_1_hrhwef.jpg"
                             alt="Equipo HiveYoung"
                             width={1200}
                             height={800}

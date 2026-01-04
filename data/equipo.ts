@@ -6,11 +6,11 @@ export interface Miembro {
 }
 
 export const direccionEjecutiva: Miembro[] = [
-    { id: 1, nombre: "Cristian Suárez", cargo: "Cofundador", img: "/images/equipo/cristian.jpg" },
-    { id: 2, nombre: "Vicente Olguín", cargo: "Cofundador", img: "/images/equipo/vicente.jpeg" },
-    { id: 3, nombre: "Lucas Galleguillos", cargo: "Cofundador", img: "/images/equipo/lucas.jpg" },
-    { id: 4, nombre: "Alessandra Mussuto", cargo: "Directora", img: "/images/equipo/ale.jpg" },
-    { id: 5, nombre: "Dante Espinoza", cargo: "Director", img: "/images/equipo/dante.jpg" },
+    { id: 1, nombre: "Cristian Suárez", cargo: "Cofundador", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456546/cristian_xjy5pr.jpg" },
+    { id: 2, nombre: "Vicente Olguín", cargo: "Cofundador", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456547/vicente_acjaaq.jpg" },
+    { id: 3, nombre: "Lucas Galleguillos", cargo: "Cofundador", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456544/lucas_gyxijc.jpg" },
+    { id: 4, nombre: "Alessandra Mussuto", cargo: "Directora", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456543/ale_g5nl2k.jpg" },
+    { id: 5, nombre: "Dante Espinoza", cargo: "Director", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456542/dante_ywvrbw.jpg" },
     { id: 6, nombre: "Lucas Valenzuela", cargo: "Asistente VP", img: "/images/equipo/valenzuela.jpg" },
     { id: 7, nombre: "Sergio Álvarez", cargo: "Director", img: null },
     { id: 8, nombre: "Sofía Cornejo", cargo: "Directora", img: null },
