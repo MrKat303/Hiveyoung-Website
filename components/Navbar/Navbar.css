@@ -191,6 +191,48 @@
     color: white !important;
 }
 
+.navbar-btn--blue {
+    background-color: #3b82f6 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.navbar-btn--blue:hover {
+    background-color: #2563eb !important;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.navbar-tab {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.45rem 1.2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #3b82f6;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-tab:hover {
+    color: #3b82f6;
+}
+
+.navbar-tab:hover::after {
+    width: 80%;
+}
+
 /* --- ICONO HAMBURGUESA --- */
 .navbar-toggle {
     display: none;

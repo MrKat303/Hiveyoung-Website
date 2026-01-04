@@ -64,10 +64,23 @@ function Navbar() {
                             )}
                         </li>
                     ))}
+                    <li
+                        className={`mobile-only ${isMenuOpen ? "fade-in" : ""}`}
+                        style={{ transitionDelay: isMenuOpen ? `${links.length * 0.1}s` : "0s" }}
+                    >
+                        <Link href="/unete" onClick={closeMenu}>Únete</Link>
+                    </li>
+                    <li
+                        className={`mobile-only ${isMenuOpen ? "fade-in" : ""}`}
+                        style={{ transitionDelay: isMenuOpen ? `${(links.length + 1) * 0.1}s` : "0s" }}
+                    >
+                        <Link href="/login" onClick={closeMenu} style={{ color: '#3b82f6', fontWeight: 'bold' }}>Login</Link>
+                    </li>
                 </ul>
 
                 <div className="navbar-btns desktop-only">
                     <Link className="navbar-btn navbar-btn--outline" href="/unete">Únete</Link>
+                    <Link className="navbar-tab" href="/login">Login</Link>
                 </div>
             </div>
         </nav>
