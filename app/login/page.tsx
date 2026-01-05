@@ -52,9 +52,12 @@ export default function LoginPage() {
                 stagger: 0.1,
                 ease: "power3.out"
             }, "-=0.8")
-            .from(".back-button", {
+            .fromTo(".button-container", {
                 opacity: 0,
                 scale: 0.8,
+            }, {
+                opacity: 1,
+                scale: 1,
                 duration: 0.8,
                 ease: "back.out(1.7)"
             }, "-=0.5");
@@ -79,8 +82,8 @@ export default function LoginPage() {
                     ))}
                 </div>
 
-                <div style={{ marginTop: '2rem' }}>
-                    <Link href="/" className="back-button">
+                <div className="button-container">
+                    <Link href="/" className="back-button back-button-link">
                         VOLVER A HIVEYOUNG
                     </Link>
                 </div>

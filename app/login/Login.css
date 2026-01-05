@@ -13,18 +13,9 @@
     --white: #ffffff;
 }
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: var(--purple);
-    font-family: 'Inter', sans-serif;
-}
-
 .countdown-container {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,6 +24,7 @@ body {
     text-align: center;
     padding: 2rem;
     position: relative;
+    overflow: hidden;
 }
 
 /* SUBTLE NOISE FOR TEXTURE */
@@ -96,11 +88,20 @@ body {
     opacity: 0.8;
 }
 
+.button-container {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    z-index: 40;
+}
+
 .back-button {
     background: var(--green);
     color: var(--purple);
     border: none;
-    padding: 1rem 2.5rem;
+    padding: 1.2rem 3rem;
     font-family: 'Syncopate', sans-serif;
     font-size: 0.7rem;
     font-weight: 900;
