@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
 import './Login.css';
 
 export default function LoginPage() {
-    const containerRef = useRef<HTMLDivElement>(null);
     const [timeLeft, setTimeLeft] = useState({
         days: '00',
         hours: '00',
@@ -16,11 +15,13 @@ export default function LoginPage() {
     });
 
     useEffect(() => {
+        // Apply lock to prevent scrolling on this page only
+        document.documentElement.classList.add('login-body-lock');
+
         const targetDate = new Date('2026-03-09T00:00:00').getTime();
         const timer = setInterval(() => {
             const now = new Date().getTime();
             const distance = targetDate - now;
-
             if (distance < 0) {
                 clearInterval(timer);
             } else {
@@ -33,60 +34,71 @@ export default function LoginPage() {
             }
         }, 1000);
 
-        return () => clearInterval(timer);
+        return () => {
+            clearInterval(timer);
+            // Clean up: restore scrolling when leaving the page
+            document.documentElement.classList.remove('login-body-lock');
+        };
     }, []);
 
     useGSAP(() => {
-        const tl = gsap.timeline();
+        const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
 
-        tl.from(".main-title", {
+        tl.from(".hero-logo", {
             opacity: 0,
             y: 30,
-            duration: 1.2,
-            ease: "power3.out"
+            scale: 0.95,
+            filter: "blur(8px)",
+            duration: 1
         })
-            .from(".timer-unit", {
+            .to([".logo-us", ".logo-curve"], {
+                fill: "#A1E8AF",
+                duration: 0.6
+            }, "-=0.6")
+            .from(".hero-title", {
                 opacity: 0,
-                y: 50,
-                duration: 1,
-                stagger: 0.1,
-                ease: "power3.out"
+                y: 15,
+                letterSpacing: "0.8em",
+                duration: 0.8
             }, "-=0.8")
-            .fromTo(".button-container", {
+            .from(".countdown-unit", {
                 opacity: 0,
-                scale: 0.8,
-            }, {
-                opacity: 1,
-                scale: 1,
+                y: 30,
+                stagger: 0.08,
                 duration: 0.8,
-                ease: "back.out(1.7)"
-            }, "-=0.5");
-    }, { scope: containerRef });
+                filter: "blur(4px)",
+            }, "-=0.7");
+    }, []);
 
     return (
-        <div className="countdown-container" ref={containerRef}>
-            <div className="content-box">
-                <h1 className="main-title">EL FUTURO DE LA COLABORACION...</h1>
+        <div className="login-container">
+            <Link href="/">
+                <img src="/images/congreso/logos/tribuss.svg" alt="Tribuss" className="hero-logo" />
+            </Link>
 
-                <div className="timer-grid">
-                    {[
-                        { value: timeLeft.days, label: 'DIAS' },
-                        { value: timeLeft.hours, label: 'HORAS' },
-                        { value: timeLeft.minutes, label: 'MINUTOS' },
-                        { value: timeLeft.seconds, label: 'SEGUNDOS' }
-                    ].map((unit, i) => (
-                        <div key={i} className="timer-unit">
-                            <span className="unit-value">{unit.value}</span>
-                            <span className="unit-label">{unit.label}</span>
-                        </div>
-                    ))}
-                </div>
+            <p className="hero-title">El futuro de la colaboración</p>
 
-                <div className="button-container">
-                    <Link href="/" className="back-button back-button-link">
-                        VOLVER A HIVEYOUNG
-                    </Link>
-                </div>
+            <div className="countdown-main">
+                {[
+                    { value: timeLeft.days, label: 'Días' },
+                    { value: timeLeft.hours, label: 'Horas' },
+                    { value: timeLeft.minutes, label: 'Min' },
+                    { value: timeLeft.seconds, label: 'Seg' }
+                ].map((item, i) => (
+                    <div key={i} className="countdown-unit">
+                        <div className="countdown-value">{item.value}</div>
+                        <div className="countdown-label">{item.label}</div>
+                    </div>
+                ))}
+            </div>
+
+            <div className="button-group">
+                <Link href="#" className="cta-button primary">
+                    Lista de espera
+                </Link>
+                <Link href="/" className="cta-button secondary">
+                    Volver
+                </Link>
             </div>
         </div>
     );

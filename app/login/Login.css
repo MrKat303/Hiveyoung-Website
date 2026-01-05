@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
 
 * {
     margin: 0;
@@ -7,122 +7,151 @@
 }
 
 :root {
-    --purple: #662c92;
-    --green: #a1e8af;
-    --orange: #ff715b;
+    --purple: #662C92;
+    --green: #A1E8AF;
+    --cream: #f2e5df;
     --white: #ffffff;
 }
 
-.countdown-container {
-    width: 100%;
-    min-height: 100vh;
+/* Global styles removed to prevent leaking to other pages */
+.login-body-lock {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+.login-container {
+    width: 100vw;
+    height: 100vh;
+    background: var(--purple);
+    color: var(--white);
+    font-family: 'Syncopate', sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    background: var(--purple);
+    align-items: center;
     text-align: center;
     padding: 2rem;
     position: relative;
     overflow: hidden;
 }
 
-/* SUBTLE NOISE FOR TEXTURE */
-.countdown-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.1;
-    pointer-events: none;
-    z-index: 1;
+.hero-logo {
+    width: 110px;
+    margin-bottom: 2rem;
+    display: block;
 }
 
-.content-box {
-    position: relative;
-    z-index: 20;
-    max-width: 900px;
-    width: 100%;
-}
-
-.main-title {
-    font-family: 'Syncopate', sans-serif;
-    font-size: clamp(0.8rem, 2vw, 1.2rem);
-    letter-spacing: 0.3em;
+.hero-title {
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.6em;
     color: var(--green);
     margin-bottom: 2rem;
     text-transform: uppercase;
-    opacity: 0.9;
 }
 
-.timer-grid {
+.countdown-main {
     display: flex;
-    gap: clamp(1rem, 4vw, 3rem);
-    margin-bottom: 3rem;
+    gap: clamp(1rem, 3vw, 2.5rem);
     justify-content: center;
+    margin-bottom: 3.5rem;
 }
 
-.timer-unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.countdown-unit {
+    text-align: center;
 }
 
-.unit-value {
-    font-family: 'Syncopate', sans-serif;
-    font-size: clamp(2rem, 10vw, 5rem);
+.countdown-value {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
     line-height: 1;
     color: var(--white);
-    font-weight: 700;
+    letter-spacing: -1px;
 }
 
-.unit-label {
-    font-family: 'Syncopate', sans-serif;
-    font-size: 0.7rem;
+.countdown-label {
+    font-size: 0.45rem;
+    font-weight: 700;
     letter-spacing: 0.3em;
     color: var(--green);
-    margin-top: 1rem;
-    opacity: 0.8;
+    margin-top: 0.8rem;
+    text-transform: uppercase;
 }
 
-.button-container {
-    margin-top: 2.5rem;
+.button-group {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    gap: clamp(1rem, 2vw, 2.5rem);
+    margin-top: 3.5rem;
     position: relative;
-    z-index: 40;
+    z-index: 1000;
 }
 
-.back-button {
-    background: var(--green);
-    color: var(--purple);
-    border: none;
-    padding: 1.2rem 3rem;
-    font-family: 'Syncopate', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 900;
-    letter-spacing: 0.2em;
+.cta-button {
+    padding: 1.1rem 2.8rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    text-decoration: none;
+    border-radius: 4px;
     display: inline-block;
-    position: relative;
-    z-index: 30;
+    min-width: 220px;
+    text-align: center;
 }
 
-.back-button:hover {
-    transform: scale(1.05);
-    background: var(--white);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+.cta-button.primary {
+    background: var(--green);
+    color: var(--purple) !important;
+    border: none;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: var(--white) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button.primary:hover {
+    filter: brightness(1.1);
+}
+
+.cta-button.secondary:hover {
+    border-color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 @media (max-width: 768px) {
-    .timer-grid {
-        gap: 1.5rem;
+    .login-container {
+        padding: 3rem 1.5rem;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .countdown-value {
+        font-size: 2.2rem;
+    }
+
+    .hero-logo {
+        width: 90px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 1.2rem;
+    }
+
+    .cta-button {
+        width: 100%;
+        min-width: unset;
+        padding: 1rem;
     }
 }
