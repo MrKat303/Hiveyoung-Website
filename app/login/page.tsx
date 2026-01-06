@@ -45,29 +45,42 @@ export default function LoginPage() {
         const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
 
         tl.from(".hero-logo", {
-            opacity: 0,
-            y: 30,
-            scale: 0.95,
-            filter: "blur(8px)",
-            duration: 1
+            autoAlpha: 0,
+            y: -50,
+            scale: 1.2,
+            filter: "blur(20px)",
+            duration: 1,
         })
-            .to([".logo-us", ".logo-curve"], {
-                fill: "#A1E8AF",
-                duration: 0.6
-            }, "-=0.6")
             .from(".hero-title", {
-                opacity: 0,
-                y: 15,
-                letterSpacing: "0.8em",
-                duration: 0.8
-            }, "-=0.8")
+                autoAlpha: 0,
+                y: 20,
+                letterSpacing: "1.5em",
+                filter: "blur(10px)",
+                duration: 0.8,
+            }, "-=0.7")
             .from(".countdown-unit", {
-                opacity: 0,
-                y: 30,
+                autoAlpha: 0,
+                scale: 0.5,
+                y: 40,
+                rotationX: -90,
                 stagger: 0.08,
                 duration: 0.8,
-                filter: "blur(4px)",
-            }, "-=0.7");
+                filter: "blur(10px)",
+            }, "-=0.6")
+            .from(".hero-description", {
+                autoAlpha: 0,
+                y: 20,
+                filter: "blur(5px)",
+                duration: 0.6,
+            }, "-=0.5")
+            .from(".button-group .cta-button", {
+                autoAlpha: 0,
+                y: 30,
+                scale: 0.9,
+                stagger: 0.1,
+                duration: 0.7,
+                ease: "back.out(1.7)"
+            }, "-=0.4");
     }, []);
 
     return (
@@ -91,6 +104,10 @@ export default function LoginPage() {
                     </div>
                 ))}
             </div>
+
+            <p className="hero-description">
+                Un nuevo espacio digital que conecta talento joven, ideas y colaboración.
+            </p>
 
             <div className="button-group">
                 <Link href="#" className="cta-button primary">
