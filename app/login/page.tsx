@@ -5,8 +5,10 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
 import './Login.css';
+import WaitlistModal from './WaitlistModal';
 
 export default function LoginPage() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [timeLeft, setTimeLeft] = useState({
         days: '00',
         hours: '00',
@@ -110,13 +112,21 @@ export default function LoginPage() {
             </p>
 
             <div className="button-group">
-                <Link href="#" className="cta-button primary">
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="cta-button primary"
+                >
                     Lista de espera
-                </Link>
+                </button>
                 <Link href="/" className="cta-button secondary">
                     Volver
                 </Link>
             </div>
+
+            <WaitlistModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
         </div>
     );
 }
