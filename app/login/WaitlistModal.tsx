@@ -137,7 +137,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     </div>
                 ) : (
                     <form className="waitlist-form" onSubmit={handleSubmit}>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 0.5fr', gap: '1.2rem' }}>
+                        <div className="form-row form-row-name-age">
                             <div className="form-group">
                                 <label>Nombre Completo</label>
                                 <input name="nombre" type="text" placeholder="Tu nombre" required />
@@ -148,7 +148,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                             </div>
                         </div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.2rem' }}>
+                        <div className="form-row">
                             <div className="form-group">
                                 <label>Correo Electrónico</label>
                                 <input name="email" type="email" placeholder="hola@ejemplo.com" required />
@@ -159,7 +159,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                             </div>
                         </div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.2rem' }}>
+                        <div className="form-row">
                             <div className="form-group">
                                 <label>Institución</label>
                                 <input name="institucion" type="text" placeholder="Universidad / Empresa" required />
@@ -170,7 +170,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                             </div>
                         </div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.2rem' }}>
+                        <div className="form-row">
                             <div className="form-group">
                                 <label>Ciudad</label>
                                 <input name="ciudad" type="text" placeholder="Santiago" required />

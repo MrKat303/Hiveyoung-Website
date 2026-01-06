@@ -260,6 +260,16 @@
     /* Tightened gap to avoid scroll */
 }
 
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.form-row-name-age {
+    grid-template-columns: 1.5fr 0.5fr;
+}
+
 .form-group {
     display: flex;
     flex-direction: column;
@@ -330,16 +340,53 @@
     cursor: not-allowed;
 }
 
-@media (max-width: 600px) {
-    .waitlist-form {
-        grid-template-columns: 1fr;
-    }
-
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
     .modal-content {
-        padding: 2rem;
+        padding: 2rem 1.5rem;
+        width: 92%;
+        border-radius: 12px;
+        max-height: 95vh;
+        overflow-y: auto;
+        /* Allow scroll on small mobile if needed */
     }
 
     .modal-title {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .modal-header p {
+        font-size: 0.75rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .form-row,
+    .form-row-name-age {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+
+    .form-group label {
+        font-size: 0.6rem;
+    }
+
+    .form-group input {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .submit-button {
+        padding: 0.8rem;
+        font-size: 0.8rem;
+        margin-top: 0.8rem;
+    }
+
+    .success-message {
+        padding: 2rem 0 !important;
+    }
+
+    .success-message p {
+        font-size: 1.2rem !important;
     }
 }
