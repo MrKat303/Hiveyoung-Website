@@ -1,12 +1,26 @@
 "use client";
 
+import { useRef } from "react";
 import useScrollReveal from "@/hooks/useScrollReveal";
 import Image from "next/image";
 import "./Equipo.css";
-import { direccionEjecutiva, coordinadoresRegionales, Miembro } from "@/data/equipo";
+import { direccionEjecutiva, coordinadoresRegionales, directorio, Miembro } from "@/data/equipo";
 
 export default function EquipoPage() {
     useScrollReveal();
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    const scrollLeft = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+        }
+    };
+
+    const scrollRight = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+        }
+    };
 
     const renderCard = (miembro: Miembro) => (
         <div key={miembro.id} className="equipo-card reveal">
@@ -27,6 +41,32 @@ export default function EquipoPage() {
             <div className="card-content">
                 <h3>{miembro.nombre}</h3>
                 <p>{miembro.cargo}</p>
+            </div>
+        </div>
+    );
+
+    const renderDirectorioCard = (miembro: Miembro) => (
+        <div key={miembro.id} className="directorio-card reveal">
+            <div className="directorio-image-wrapper">
+                {miembro.img ? (
+                    <Image
+                        src={miembro.img}
+                        alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
+                        fill
+                        className="directorio-image"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        draggable={false}
+                    />
+                ) : (
+                    <div className="directorio-image-placeholder">
+                        <span className="placeholder-initial">{miembro.nombre.charAt(0)}</span>
+                    </div>
+                )}
+            </div>
+            <div className="directorio-info-overlay">
+                <h3>{miembro.nombre}</h3>
+                <p>{miembro.cargo}</p>
+                <div className="overlay-line"></div>
             </div>
         </div>
     );
@@ -56,6 +96,25 @@ export default function EquipoPage() {
                     </div>
                     <div className="equipo-grid">
                         {coordinadoresRegionales.map(renderCard)}
+                    </div>
+                </section>
+
+                <section className="equipo-seccion directorio-section">
+                    <div className="titulo-wrapper reveal">
+                        <h2 className="seccion-titulo">Directorio</h2>
+                        <div className="titulo-subrayado-verde"></div>
+                    </div>
+
+                    <div className="directorio-carousel-container reveal">
+                        <button className="carousel-btn prev" onClick={scrollLeft} aria-label="Anterior">
+                            &lt;
+                        </button>
+                        <div className="directorio-grid carousel-track" ref={scrollRef}>
+                            {directorio.map(renderDirectorioCard)}
+                        </div>
+                        <button className="carousel-btn next" onClick={scrollRight} aria-label="Siguiente">
+                            &gt;
+                        </button>
                     </div>
                 </section>
             </div>
