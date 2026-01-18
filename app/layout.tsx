@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "HiveYoung | Principal articulador del ecosistema juvenil",
   description: "HiveYoung es el principal articulador del ecosistema juvenil en Chile, potenciando el talento y liderazgo de las nuevas generaciones.",
+  icons: {
+    icon: '/Favicon.png?v=2',
+  },
 };
 
 export default function RootLayout({
