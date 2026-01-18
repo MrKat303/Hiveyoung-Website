@@ -5,6 +5,7 @@ import useScrollReveal from "@/hooks/useScrollReveal";
 import Image from "next/image";
 import "./Equipo.css";
 import { direccionEjecutiva, coordinadoresRegionales, directorio, Miembro } from "@/data/equipo";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function EquipoPage() {
     useScrollReveal();
@@ -107,13 +108,13 @@ export default function EquipoPage() {
 
                     <div className="directorio-carousel-container reveal">
                         <button className="carousel-btn prev" onClick={scrollLeft} aria-label="Anterior">
-                            &lt;
+                            <ChevronLeft size={28} />
                         </button>
                         <div className="directorio-grid carousel-track" ref={scrollRef}>
                             {directorio.map(renderDirectorioCard)}
                         </div>
                         <button className="carousel-btn next" onClick={scrollRight} aria-label="Siguiente">
-                            &gt;
+                            <ChevronRight size={28} />
                         </button>
                     </div>
                 </section>

@@ -3,7 +3,7 @@
     min-height: 100vh;
     padding: 140px 5% 100px;
     font-family: 'Poppins', sans-serif;
-    color: #2d1b4d;
+    color: #3A1B4E;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -165,7 +165,7 @@
 
 .card-content p {
     font-size: 15px;
-    color: #6a5d8a;
+    color: #3A1B4E;
     margin-bottom: 10px;
 }
 
@@ -266,7 +266,6 @@
 
 .directorio-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(45, 27, 77, 0.2);
     z-index: 2;
 }
 
@@ -363,34 +362,37 @@
 
 /* CAROUSEL BUTTONS */
 .carousel-btn {
-    background-color: #3A1B4E;
-    color: #59c985;
-    border: 2px solid #59c985;
+    background-color: #ffffff;
+    color: #3A1B4E;
+    border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 10;
     flex-shrink: 0;
 }
 
 .carousel-btn:hover {
-    background-color: #59c985;
-    color: #3A1B4E;
+    background-color: #3A1B4E;
+    color: #59c985;
     transform: scale(1.1);
 }
 
+.carousel-btn:active {
+    transform: scale(0.95);
+}
+
 .carousel-btn.prev {
-    margin-right: 15px;
+    margin-right: 20px;
 }
 
 .carousel-btn.next {
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 @media (max-width: 768px) {
