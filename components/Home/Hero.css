@@ -24,7 +24,7 @@
 .hero__title {
     font-weight: 600;
     font-size: 56px;
-    line-height: 1.08;
+    line-height: 1.15;
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
@@ -192,7 +192,7 @@
 @media (min-width: 768px) {
     .hero__title {
         font-size: clamp(48px, 5vw, 72px);
-        line-height: 1.03;
+        line-height: 1.15;
     }
 }
 
