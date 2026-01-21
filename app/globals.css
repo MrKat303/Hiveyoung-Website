@@ -86,3 +86,25 @@ img {
     filter: blur(0) !important;
     visibility: visible !important;
 }
+
+/* Page Reveal Curtains */
+.curtain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    /* Topmost */
+    display: flex;
+    pointer-events: none;
+}
+
+.curtain-col {
+    flex: 1;
+    height: 100%;
+    background: #2eb67d;
+    /* HiveYoung Green Updated */
+    transform-origin: top center;
+    /* border-right: 1px solid rgba(0,0,0,0.02); */
+}
