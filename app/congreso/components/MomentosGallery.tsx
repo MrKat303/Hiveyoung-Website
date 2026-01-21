@@ -17,11 +17,11 @@ export const MomentosGallery: React.FC = () => {
                 <p>Revive la energía y los mejores instantes del congreso.</p>
             </div>
             <div className="momentos-grid">
-                {MOMENTOS_IMAGES.map((url, i) => (
+                {MOMENTOS_IMAGES.map((img, i) => (
                     <div key={i} className="momento-item">
                         <Image
-                            src={url}
-                            alt={`Momento ${i + 1}`}
+                            src={img.url}
+                            alt={img.alt}
                             width={800}
                             height={600}
                             style={{ width: '100%', height: 'auto', display: 'block' }}

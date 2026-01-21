@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 interface HeroCarouselProps {
-    images: string[];
+    images: { url: string; alt: string }[];
 }
 
 export const HeroCarousel = ({ images }: HeroCarouselProps) => {
@@ -24,8 +24,8 @@ export const HeroCarousel = ({ images }: HeroCarouselProps) => {
                     }}
                 >
                     <Image
-                        src={img}
-                        alt={`Congress slide ${index + 1}`}
+                        src={img.url}
+                        alt={img.alt}
                         fill
                         priority={index === 0}
                         loading={index === 0 ? "eager" : "lazy"}

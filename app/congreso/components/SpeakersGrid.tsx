@@ -79,7 +79,7 @@ export const SpeakersGrid: React.FC<SpeakersGridProps> = ({
                             {speaker.img && (
                                 <Image
                                     src={speaker.img}
-                                    alt={speaker.name}
+                                    alt={`${speaker.name} - ${speaker.role} en ${speaker.company}`}
                                     width={200}
                                     height={200}
                                     style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
