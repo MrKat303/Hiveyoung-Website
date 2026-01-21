@@ -68,13 +68,13 @@ function Navbar() {
                         className={`mobile-only ${isMenuOpen ? "fade-in" : ""}`}
                         style={{ transitionDelay: isMenuOpen ? `${links.length * 0.1}s` : "0s" }}
                     >
-                        <Link href="/unete" onClick={closeMenu}>Únete</Link>
+                        <Link href="/unete" onClick={closeMenu}>Unete</Link>
                     </li>
 
                 </ul>
 
                 <div className="navbar-btns desktop-only">
-                    <Link className="navbar-btn navbar-btn--outline" href="/unete">Únete</Link>
+                    <Link className="navbar-btn navbar-btn--outline" href="/unete">Unete</Link>
 
                 </div>
             </div>

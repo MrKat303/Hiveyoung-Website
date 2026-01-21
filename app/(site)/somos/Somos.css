@@ -111,49 +111,165 @@
 }
 
 .section-spacer {
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 @media (max-width: 768px) {
     .section-spacer {
-        margin-top: 150px;
+        margin-top: 80px;
     }
 }
 
-.somos-grid {
+/* --- NEW HISTORIA, MISION & VISION LAYOUT --- */
+.somos-new-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 100px;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 30px;
+    margin-bottom: 70px;
 }
 
-.mision-vision-card {
-    background: #3a1b4e;
+.historia-main-card {
+    position: relative;
+    height: 600px;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.historia-bg-image {
+    object-fit: cover;
+    z-index: 1;
+}
+
+.historia-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    padding: 60px;
+}
+
+.historia-card-content {
     color: #ffffff;
-    padding: 40px;
-    border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(58, 27, 78, 0.15);
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 500px;
 }
 
-.mision-vision-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(58, 27, 78, 0.25);
-}
-
-.mision-vision-card h2 {
-    font-size: 32px;
-    font-weight: 700;
+.historia-card-content h2 {
+    font-size: 48px;
+    font-weight: 800;
     margin-bottom: 20px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.historia-card-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.historia-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 100px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.historia-btn:hover {
+    background: #ffffff;
+    color: #3a1b4e;
+    transform: translateY(-3px);
+}
+
+.mision-vision-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mv-card {
+    flex: 1;
+    border-radius: 40px;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+.mision-card {
+    background-color: #dcfce7;
+    /* Light mint background */
+    color: #064e3b;
+}
+
+.vision-card {
+    background-color: #3a1b4e;
+    /* Brand purple */
+    color: #ffffff;
+}
+
+.mv-card h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.mv-card p {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.mision-card h2 {
+    color: #065f46;
+}
+
+.vision-card h2 {
     color: #fde4a8;
 }
 
-.mision-vision-card p {
-    font-size: 16px;
-    line-height: 1.7;
-    opacity: 0.9;
-    color: #ffffff;
+/* REPLACING OLD STYLES */
+/* (Keeping some for compatibility if needed elsewhere, but targeting the new grid) */
+
+@media (max-width: 1024px) {
+    .somos-new-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .historia-main-card {
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .historia-card-content h2 {
+        font-size: 36px;
+    }
+
+    .historia-card-overlay {
+        padding: 40px;
+    }
+
+    .mv-card {
+        padding: 40px;
+    }
+
+    .mv-card h2 {
+        font-size: 28px;
+    }
 }
 
 .valores-section {

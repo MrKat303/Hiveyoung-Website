@@ -9,9 +9,15 @@ export interface NavLink {
 
 export const navigationLinks: NavLink[] = [
     { name: "Inicio", path: "/" },
-    { name: "¿Quiénes somos?", path: "/somos" },
     {
-        name: "Equipo",
+        name: "Quienes Somos",
+        path: "/somos",
+        dropdown: [
+            { name: "Nuestra Historia", path: "/historia" },
+        ],
+    },
+    {
+        name: "Nuestro Equipo",
         path: "/equipo",
         dropdown: [
             { name: "Advisory Board", path: "/advisory-board" },

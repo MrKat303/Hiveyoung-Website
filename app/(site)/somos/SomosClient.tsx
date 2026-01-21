@@ -5,9 +5,11 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SOMOS_VALUES } from '@/data/somos-values';
+import useScrollReveal from '@/hooks/useScrollReveal';
 import './Somos.css';
 
 const SomosClient = () => {
+    useScrollReveal();
     const targetRef = useRef<HTMLDivElement>(null);
     const carouselRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(carouselRef);
@@ -165,37 +167,68 @@ const SomosClient = () => {
             </div>
 
             <div className="somos-container">
-                <div className="somos-grid section-spacer">
+                <div className="somos-new-grid section-spacer">
+                    {/* LEFT: NUESTRA HISTORIA */}
                     <motion.div
-                        className="mision-vision-card"
+                        className="historia-main-card"
                         variants={fadeInUp}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-50px" }}
                     >
-                        <h2>Nuestra Misión</h2>
-                        <p>
-                            Articular y potenciar el ecosistema juvenil, conectando a líderes emergentes con oportunidades de desarrollo,
-                            mentores de clase mundial y organizaciones clave. Trabajamos para derribar barreras y maximizar el impacto
-                            de las iniciativas lideradas por jóvenes.
-                        </p>
+                        <Image
+                            src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1766681079/IMG_2062-Mejorado-NR_shgago.jpg"
+                            alt="Nuestra Historia HiveYoung"
+                            fill
+                            className="historia-bg-image"
+                        />
+                        <div className="historia-card-overlay">
+                            <div className="historia-card-content">
+                                <h2>Nuestra Historia</h2>
+                                <p>Descubre cómo un grupo de jóvenes decidió transformar el ecosistema juvenil en Chile.</p>
+                                <a href="/historia" className="historia-btn">
+                                    Conocer nuestra historia
+                                    <ChevronRight size={18} />
+                                </a>
+                            </div>
+                        </div>
                     </motion.div>
 
-                    <motion.div
-                        className="mision-vision-card"
-                        variants={fadeInUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ delay: 0.2 }}
-                    >
-                        <h2>Nuestra Visión</h2>
-                        <p>
-                            Ser la plataforma líder en Latinoamérica que impulsa el talento joven, construyendo una red colaborativa
-                            resiliente que transforma desafíos locales y globales en oportunidades, generando cambios sistémicos
-                            y sostenibles para el futuro.
-                        </p>
-                    </motion.div>
+                    {/* RIGHT: MISION & VISION STACKED */}
+                    <div className="mision-vision-stack">
+                        <motion.div
+                            className="mv-card mision-card"
+                            variants={fadeInUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-50px" }}
+                        >
+                            <div className="mv-card-inner">
+                                <h2>Nuestra Misión</h2>
+                                <p>
+                                    Articular y potenciar el ecosistema juvenil, conectando a líderes emergentes con oportunidades de desarrollo,
+                                    mentores de clase mundial y organizaciones clave.
+                                </p>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            className="mv-card vision-card"
+                            variants={fadeInUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ delay: 0.1 }}
+                        >
+                            <div className="mv-card-inner">
+                                <h2>Nuestra Visión</h2>
+                                <p>
+                                    Ser la plataforma líder en Latinoamérica que impulsa el talento joven, construyendo una red colaborativa
+                                    resiliente que transforma desafíos regionales en oportunidades.
+                                </p>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
 
                 <section className="valores-section">

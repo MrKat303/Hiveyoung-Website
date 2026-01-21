@@ -3,10 +3,10 @@ import Hero from "@/components/Home/Hero";
 import CongressCarousel from "@/components/Home/CongressCarousel";
 
 export const metadata: Metadata = {
-  title: "HiveYoung | Principal articulador del ecosistema juvenil",
+  title: "HiveYoung",
   description: "Únete a HiveYoung, el principal articulador del ecosistema juvenil en Chile. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
   openGraph: {
-    title: "HiveYoung | Principal articulador del ecosistema juvenil",
+    title: "HiveYoung",
     description: "Únete a HiveYoung, el principal articulador del ecosistema juvenil en Chile. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
     url: "https://hiveyoung.cl/",
   },
