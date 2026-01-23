@@ -15,7 +15,19 @@ const optimizeCld = (url: string) => {
     return url.replace('upload/', 'upload/f_auto,q_auto/');
 }
 
-const historyItems = [
+interface HistoryItem {
+    id: string;
+    year: string;
+    title: string;
+    subtitle: string;
+    desc: string;
+    img: string;
+    theme: string;
+    fit?: string;
+    type?: string;
+}
+
+const historyItems: HistoryItem[] = [
     {
         id: 'founders',
         year: "2024",
@@ -77,58 +89,53 @@ const historyItems = [
 export default function HistoriaClient() {
     const mainRef = useRef<HTMLDivElement>(null);
     const heroRef = useRef<HTMLDivElement>(null);
-    const quoteRef = useRef<HTMLDivElement>(null);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
+        const mm = gsap.matchMedia();
 
-            // Initial Set: Keep opacity at 1 to prevent issues, animation controls it
+        // Common animations (Reveal Title) - Using context for scoping
+        const ctx = gsap.context(() => {
             gsap.set('.hero-title-text', { opacity: 0, y: 50 });
-
-            // 1. Reveal Title (Entrance)
             gsap.to('.hero-title-text', {
                 opacity: 1, y: 0, duration: 1.2, delay: 0.1, ease: 'power3.out'
             });
+        }, mainRef);
 
-            // 2. Zoom Effect - Explicit fromTO for guaranteed reversibility
+        // DESKTOP LOGIC
+        mm.add("(min-width: 901px)", () => {
+            // 1. Hero Zoom & Pin
             if (heroRef.current) {
                 const zoomTl = gsap.timeline({
                     scrollTrigger: {
                         trigger: heroRef.current,
                         start: 'top top',
                         end: '+=800',
-                        scrub: 0.5, // Smooth scrub
+                        scrub: 0.5,
                         pin: true,
                     }
                 });
-
-                // Using fromTo forces GSAP to know exactly where to go back to (scale 1, opacity 1)
-                // This fixes the "Doesn't appear when scrolling back" issue
                 zoomTl.fromTo('.hero-title-text',
                     { scale: 1, opacity: 1 },
                     { scale: 20, opacity: 0, ease: 'power2.in', immediateRender: false }
                 );
             }
 
-            // 3. BG & Quote
-            if (quoteRef.current) {
+            // 2. BG Transition
+            if (scrollContainerRef.current) {
                 gsap.to('.historia-bg-wrapper', {
                     backgroundColor: '#3a1b4e',
-                    scrollTrigger: { trigger: quoteRef.current, start: 'top 80%', end: 'center center', scrub: true }
-                });
-                gsap.fromTo('.quote-paragraph',
-                    { opacity: 0, y: 50 },
-                    {
-                        opacity: 1, y: 0, duration: 1, ease: 'power2.out', scrollTrigger: {
-                            trigger: quoteRef.current, start: 'top 65%', toggleActions: 'play none none reverse'
-                        }
+                    scrollTrigger: {
+                        trigger: scrollContainerRef.current,
+                        start: "top 90%",
+                        end: "top 20%",
+                        scrub: true
                     }
-                );
+                });
             }
 
-            // 4. Horizontal Scroll
+            // 3. Horizontal Scroll
             const track = trackRef.current;
             const container = scrollContainerRef.current;
 
@@ -157,17 +164,59 @@ export default function HistoriaClient() {
                     { scaleX: 1, ease: "none" },
                     0
                 );
+            }
+        });
 
-                // Force initial layout
-                tlHorizontal.progress(0);
+        // MOBILE LOGIC
+        mm.add("(max-width: 900px)", () => {
+            // Hero fade
+            if (heroRef.current) {
+                gsap.to('.hero-title-text', {
+                    opacity: 0,
+                    scale: 0.9,
+                    scrollTrigger: {
+                        trigger: heroRef.current,
+                        start: 'top top',
+                        end: 'center top',
+                        scrub: true
+                    }
+                });
             }
 
-        }, mainRef);
+            // BG Transition
+            if (scrollContainerRef.current) {
+                gsap.to('.historia-bg-wrapper', {
+                    backgroundColor: '#3a1b4e',
+                    scrollTrigger: {
+                        trigger: scrollContainerRef.current,
+                        start: "top 80%",
+                        end: "top 20%",
+                        scrub: true
+                    }
+                });
+            }
 
-        return () => ctx.revert();
+            // Re-select panels inside the effect to ensure matchMedia handles them
+            const panels = gsap.utils.toArray('.horizontal-panel') as HTMLElement[];
+            panels.forEach((panel) => {
+                const grid = panel.querySelector('.fullscreen-grid');
+                if (grid) {
+                    gsap.fromTo(grid,
+                        { opacity: 0, y: 50 },
+                        {
+                            opacity: 1, y: 0, duration: 0.8,
+                            scrollTrigger: {
+                                trigger: panel,
+                                start: "top 80%",
+                            }
+                        }
+                    );
+                }
+            });
+        });
+
+        return () => mm.revert();
     }, []);
-
-    const quote = "Cuando los jóvenes se organizan, las ideas dejan de ser sueños y se convierten en acción";
 
     return (
         <div ref={mainRef} className="historia-container">
@@ -176,16 +225,6 @@ export default function HistoriaClient() {
             <section ref={heroRef} className="story-panel section-hero">
                 <div className="hero-content-center">
                     <h1 className="hero-title-text" style={{ opacity: 1 }}>NUESTRA<br />HISTORIA</h1>
-                </div>
-            </section>
-
-            <section ref={quoteRef} className="story-panel section-quote">
-                <div className="quote-wrapper">
-                    <p className="quote-paragraph">
-                        Cuando los jóvenes se organizan,<br />
-                        las ideas dejan de ser sueños<br />
-                        y se convierten en <span className="text-highlight">acción</span>.
-                    </p>
                 </div>
             </section>
 
@@ -211,22 +250,18 @@ export default function HistoriaClient() {
                                     <p>{item.desc}</p>
                                 </div>
                                 <div className="panel-image-col">
-                                    {/* @ts-ignore */}
                                     {item.type === 'placeholder' ? (
                                         <div className="placeholder-full"><span>Próximamente</span></div>
                                     ) : (
-                                        <>
-                                            {/* @ts-ignore */}
-                                            {(item.fit === 'contain') ? (
-                                                <div className="contain-img-wrapper">
-                                                    <img src={optimizeCld(item.img)} alt={item.title} className="story-img-contain" />
-                                                </div>
-                                            ) : (
-                                                <div className="cover-img-base">
-                                                    <Image src={optimizeCld(item.img)} alt={item.title} fill className="story-img-cover" />
-                                                </div>
-                                            )}
-                                        </>
+                                        <div className={item.fit === 'contain' ? "contain-img-wrapper" : "cover-img-base"}>
+                                            <Image
+                                                src={optimizeCld(item.img)}
+                                                alt={item.title}
+                                                fill
+                                                className={item.fit === 'contain' ? "story-img-contain-new" : "story-img-cover"}
+                                                style={item.fit === 'contain' ? { objectFit: 'contain' } : { objectFit: 'cover' }}
+                                            />
+                                        </div>
                                     )}
                                 </div>
                             </div>
