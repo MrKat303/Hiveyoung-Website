@@ -4,17 +4,45 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import gsap from 'gsap';
+import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import { SOMOS_VALUES } from '@/data/somos-values';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import './Somos.css';
 
 const SomosClient = () => {
     useScrollReveal();
+    const mainRef = useRef<HTMLDivElement>(null);
     const targetRef = useRef<HTMLDivElement>(null);
     const carouselRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(carouselRef);
     const [isHovering, setIsHovering] = useState(false);
     const isTransitioning = useRef(false);
+
+    useEffect(() => {
+        gsap.registerPlugin(DrawSVGPlugin);
+
+        const ctx = gsap.context(() => {
+            gsap.set('.somos-drawn-text', { opacity: 0, strokeDasharray: 3000, strokeDashoffset: 3000 });
+
+            const tl = gsap.timeline({ delay: 0.5 });
+
+            tl.to('.somos-drawn-text', {
+                opacity: 1,
+                strokeDashoffset: 0,
+                duration: 1.5,
+                ease: 'power2.out',
+                stagger: 0.1
+            })
+                .to('.somos-drawn-text', {
+                    fill: "white",
+                    duration: 0.6,
+                    ease: "power1.inOut"
+                }, "-=0.8");
+        }, mainRef);
+
+        return () => ctx.revert();
+    }, []);
 
     // Track scroll within the extended hero section
     const { scrollYProgress } = useScroll({
@@ -117,7 +145,7 @@ const SomosClient = () => {
     }, [getSingleSetWidth]);
 
     return (
-        <div className="somos-page">
+        <div className="somos-page" ref={mainRef}>
             <div className="somos-scroll-track" ref={targetRef}>
                 <div className="somos-sticky-view">
                     <motion.div
@@ -142,19 +170,42 @@ const SomosClient = () => {
                     </motion.div>
 
                     <div className="somos-hero-content">
-                        <motion.h1
-                            className="somos-hero-title absolute-center"
-                            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                            style={{ opacity: opacityTitle, y: yTitle, filter: blurTitle }}
+                        <motion.div
+                            className="somos-hero-title-wrapper"
+                            style={{
+                                opacity: opacityTitle,
+                                y: yTitle,
+                                filter: blurTitle
+                            }}
                         >
-                            ¿Quiénes Somos?
-                        </motion.h1>
+                            <svg className="somos-hero-title-svg" viewBox="0 0 3000 800" preserveAspectRatio="xMidYMid meet">
+                                <text
+                                    x="50%"
+                                    y="50%"
+                                    dominantBaseline="middle"
+                                    textAnchor="middle"
+                                    className="somos-drawn-text"
+                                    fill="transparent"
+                                    stroke="white"
+                                    strokeWidth="4.5"
+                                    style={{
+                                        fontSize: '280px',
+                                        fontWeight: 900,
+                                        fontFamily: 'Poppins, sans-serif',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '10px'
+                                    }}
+                                >¿Quiénes Somos?</text>
+                            </svg>
+                        </motion.div>
 
                         <motion.div
-                            className="somos-hero-intro absolute-center"
-                            style={{ opacity: opacityIntro, y: yIntro, filter: blurIntro }}
+                            className="somos-hero-intro"
+                            style={{
+                                opacity: opacityIntro,
+                                y: yIntro,
+                                filter: blurIntro
+                            }}
                         >
                             <p>
                                 HiveYoung nace con el propósito de conectar, potenciar y visibilizar el talento joven en Chile y Latinoamérica.

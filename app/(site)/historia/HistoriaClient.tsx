@@ -4,6 +4,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import './Historia.css';
 
 const optimizeCld = (url: string) => {
@@ -89,15 +90,27 @@ export default function HistoriaClient() {
     const trackRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
         const mm = gsap.matchMedia();
 
         // Common animations (Reveal Title) - Using context for scoping
         const ctx = gsap.context(() => {
-            gsap.set('.hero-title-text', { opacity: 0, y: 50 });
-            gsap.to('.hero-title-text', {
-                opacity: 1, y: 0, duration: 1.2, delay: 0.1, ease: 'power3.out'
-            });
+            gsap.set('.drawn-text', { opacity: 0, strokeDasharray: 1000, strokeDashoffset: 1000 });
+
+            const tl = gsap.timeline({ delay: 0.2 });
+
+            tl.to('.drawn-text', {
+                opacity: 1,
+                strokeDashoffset: 0,
+                duration: 2.5,
+                ease: 'power2.out',
+                stagger: 0.1
+            })
+                .to('.drawn-text', {
+                    fill: "#3a1b4e",
+                    duration: 1.2,
+                    ease: "power1.inOut"
+                }, "-=1.5");
         }, mainRef);
 
         // DESKTOP LOGIC
@@ -111,11 +124,18 @@ export default function HistoriaClient() {
                         end: '+=800',
                         scrub: 0.5,
                         pin: true,
+                        anticipatePin: 1,
                     }
                 });
-                zoomTl.fromTo('.hero-title-text',
+                zoomTl.fromTo('.title-wrapper',
                     { scale: 1, opacity: 1 },
-                    { scale: 20, opacity: 0, ease: 'power2.in', immediateRender: false }
+                    {
+                        scale: 18,
+                        opacity: 0,
+                        ease: 'power2.in',
+                        immediateRender: false,
+                        force3D: true
+                    }
                 );
             }
 
@@ -175,11 +195,18 @@ export default function HistoriaClient() {
                         end: '+=600',
                         scrub: 0.5,
                         pin: true,
+                        anticipatePin: 1,
                     }
                 });
-                heroTl.fromTo('.hero-title-text',
+                heroTl.fromTo('.title-wrapper',
                     { scale: 1, opacity: 1 },
-                    { scale: 8, opacity: 0, ease: 'power2.in', immediateRender: false }
+                    {
+                        scale: 6,
+                        opacity: 0,
+                        ease: 'power2.in',
+                        immediateRender: false,
+                        force3D: true
+                    }
                 );
             }
 
@@ -290,7 +317,30 @@ export default function HistoriaClient() {
 
             <section ref={heroRef} className="story-panel section-hero">
                 <div className="hero-content-center">
-                    <h1 className="hero-title-text" style={{ opacity: 1 }}>NUESTRA<br />HISTORIA</h1>
+                    <div className="title-wrapper">
+                        <svg className="hero-title-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid meet">
+                            <text
+                                x="50%"
+                                y="42%"
+                                textAnchor="middle"
+                                className="drawn-text"
+                                fill="transparent"
+                                stroke="#3a1b4e"
+                                strokeWidth="1.5"
+                                style={{ fontSize: '120px', fontWeight: 900, fontFamily: 'Poppins, sans-serif' }}
+                            >NUESTRA</text>
+                            <text
+                                x="50%"
+                                y="88%"
+                                textAnchor="middle"
+                                className="drawn-text"
+                                fill="transparent"
+                                stroke="#3a1b4e"
+                                strokeWidth="1.5"
+                                style={{ fontSize: '120px', fontWeight: 900, fontFamily: 'Poppins, sans-serif' }}
+                            >HISTORIA</text>
+                        </svg>
+                    </div>
                 </div>
             </section>
 
