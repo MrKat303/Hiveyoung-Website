@@ -6,10 +6,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Historia.css';
 
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
 const optimizeCld = (url: string) => {
     if (!url.includes('upload/')) return url;
     return url.replace('upload/', 'upload/f_auto,q_auto/');
@@ -93,6 +89,7 @@ export default function HistoriaClient() {
     const trackRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
         const mm = gsap.matchMedia();
 
         // Common animations (Reveal Title) - Using context for scoping
@@ -169,21 +166,24 @@ export default function HistoriaClient() {
 
         // MOBILE LOGIC
         mm.add("(max-width: 900px)", () => {
-            // Hero fade
+            // 1. Hero Zoom Effect (like desktop but adapted for mobile)
             if (heroRef.current) {
-                gsap.to('.hero-title-text', {
-                    opacity: 0,
-                    scale: 0.9,
+                const heroTl = gsap.timeline({
                     scrollTrigger: {
                         trigger: heroRef.current,
                         start: 'top top',
-                        end: 'center top',
-                        scrub: true
+                        end: '+=600',
+                        scrub: 0.5,
+                        pin: true,
                     }
                 });
+                heroTl.fromTo('.hero-title-text',
+                    { scale: 1, opacity: 1 },
+                    { scale: 8, opacity: 0, ease: 'power2.in', immediateRender: false }
+                );
             }
 
-            // BG Transition
+            // 2. BG Transition
             if (scrollContainerRef.current) {
                 gsap.to('.historia-bg-wrapper', {
                     backgroundColor: '#3a1b4e',
@@ -196,18 +196,84 @@ export default function HistoriaClient() {
                 });
             }
 
-            // Re-select panels inside the effect to ensure matchMedia handles them
+            // 3. Vertical Timeline Progress Bar
+            if (scrollContainerRef.current) {
+                gsap.to('.mobile-timeline-progress', {
+                    scaleY: 1,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: scrollContainerRef.current,
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: true
+                    }
+                });
+            }
+
+            // 4. Enhanced Panel Animations
             const panels = gsap.utils.toArray('.horizontal-panel') as HTMLElement[];
-            panels.forEach((panel) => {
+            panels.forEach((panel, index) => {
                 const grid = panel.querySelector('.fullscreen-grid');
-                if (grid) {
-                    gsap.fromTo(grid,
-                        { opacity: 0, y: 50 },
+                const dot = panel.querySelector('.mobile-timeline-dot');
+                const yearLabel = panel.querySelector('.year-label');
+                const textCol = panel.querySelector('.panel-text-col');
+                const imageCol = panel.querySelector('.panel-image-col');
+
+                // Timeline dot animation
+                if (dot) {
+                    gsap.fromTo(dot,
+                        { scale: 0, opacity: 0 },
                         {
-                            opacity: 1, y: 0, duration: 0.8,
+                            scale: 1, opacity: 1, duration: 0.5,
                             scrollTrigger: {
                                 trigger: panel,
-                                start: "top 80%",
+                                start: "top 70%",
+                            }
+                        }
+                    );
+                }
+
+                // Year label reveal
+                if (yearLabel) {
+                    gsap.fromTo(yearLabel,
+                        { opacity: 0, x: -30 },
+                        {
+                            opacity: 0.4, x: 0, duration: 0.8,
+                            scrollTrigger: {
+                                trigger: panel,
+                                start: "top 75%",
+                            }
+                        }
+                    );
+                }
+
+                // Image slide up with blur
+                if (imageCol) {
+                    gsap.fromTo(imageCol,
+                        { opacity: 0, y: 80, filter: 'blur(10px)' },
+                        {
+                            opacity: 1, y: 0, filter: 'blur(0px)', duration: 1,
+                            ease: 'power3.out',
+                            scrollTrigger: {
+                                trigger: panel,
+                                start: "top 70%",
+                            }
+                        }
+                    );
+                }
+
+                // Text content staggered reveal
+                if (textCol) {
+                    const textElements = textCol.querySelectorAll('h3, h4, p');
+                    gsap.fromTo(textElements,
+                        { opacity: 0, y: 40 },
+                        {
+                            opacity: 1, y: 0, duration: 0.8,
+                            stagger: 0.1,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: panel,
+                                start: "top 60%",
                             }
                         }
                     );
@@ -239,9 +305,16 @@ export default function HistoriaClient() {
                     <div className="story-line"></div>
                     <div className="story-line-progress"></div>
 
+                    {/* Mobile Timeline */}
+                    <div className="mobile-timeline">
+                        <div className="mobile-timeline-line"></div>
+                        <div className="mobile-timeline-progress"></div>
+                    </div>
+
                     {historyItems.map((item, index) => (
                         <div key={item.id} className={`horizontal-panel panel-theme-${item.theme}`}>
                             <div className="timeline-dot"></div>
+                            <div className="mobile-timeline-dot"></div>
                             <div className={`fullscreen-grid ${index % 2 !== 0 ? 'reverse' : ''}`}>
                                 <div className="panel-text-col">
                                     <div className="year-label">{item.year}</div>

@@ -181,7 +181,7 @@ export default function CongresoPage() {
                                         {[1, 2, 3].map((i) => (
                                             <div key={i} className="agenda-card">
                                                 <span className="a-timestamp">{9 + i}:00 AM</span>
-                                                <h4 className="a-title">Texto 1</h4>
+                                                <h4 className="a-title">Sesión Informativa</h4>
                                             </div>
                                         ))}
                                     </div>

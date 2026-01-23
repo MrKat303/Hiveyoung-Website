@@ -17,17 +17,27 @@ export const useEmailForm = (templateId: string, options: UseEmailFormOptions = 
             return;
         }
 
-        if (!formRef.current) return;
+        const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+        const templateIdFinal = templateId; // already passed as arg
+        const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+        if (!serviceId || !publicKey || !formRef.current) {
+            if (!serviceId || !publicKey) {
+                console.error('EmailJS is not configured.');
+            }
+            setStatus('error');
+            return;
+        }
 
         setIsSending(true);
         setStatus('idle');
 
         try {
             await emailjs.sendForm(
-                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-                templateId,
+                serviceId,
+                templateIdFinal,
                 formRef.current,
-                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+                publicKey
             );
 
             setStatus('success');

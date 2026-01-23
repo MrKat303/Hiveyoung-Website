@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, User } from "lucide-react";
 import "./Navbar.css";
 
 import { navigationLinks } from "../../data/navigation";
@@ -75,7 +75,9 @@ function Navbar() {
 
                 <div className="navbar-btns desktop-only">
                     <Link className="navbar-btn navbar-btn--outline" href="/unete">Unete</Link>
-
+                    <Link href="/login" className="login-icon-circle">
+                        <User size={20} />
+                    </Link>
                 </div>
             </div>
         </nav>

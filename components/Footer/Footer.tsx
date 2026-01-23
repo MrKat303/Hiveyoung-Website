@@ -36,7 +36,7 @@ export default function Footer() {
                 <div className="footer__divider" />
 
                 <p className="footer__copyright">
-                    HiveYoung © 2025 Copyright
+                    HiveYoung © {new Date().getFullYear()} Copyright
                 </p>
             </div>
         </footer>

@@ -38,7 +38,13 @@ export default function AdvisoryBoardClient() {
                             <div className={`advisory-content shadow-${advisor.color}`}>
                                 <div className="advisory-header">
                                     <h3 className="advisory-name">{advisor.name}</h3>
-                                    <a href="#" className="advisory-linkedin" aria-label={`LinkedIn de ${advisor.name}`}>
+                                    <a
+                                        href={advisor.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="advisory-linkedin"
+                                        aria-label={`LinkedIn de ${advisor.name}`}
+                                    >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="14"

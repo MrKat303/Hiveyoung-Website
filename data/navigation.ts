@@ -23,6 +23,5 @@ export const navigationLinks: NavLink[] = [
             { name: "Advisory Board", path: "/advisory-board" },
         ],
     },
-    { name: "Proyectos", path: "/proyectos" },
     { name: "Contacto", path: "/contacto" },
 ];
