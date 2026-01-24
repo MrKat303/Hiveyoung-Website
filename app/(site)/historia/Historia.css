@@ -7,8 +7,8 @@
     font-family: 'Poppins', sans-serif;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    overscroll-behavior-y: none;
-    /* Prevents rubberbanding */
+    overscroll-behavior-y: auto;
+    /* Allow native momentum */
 }
 
 .historia-container::-webkit-scrollbar,
@@ -87,6 +87,8 @@ body::-webkit-scrollbar {
     height: 100%;
     position: relative;
     align-items: center;
+    will-change: transform;
+    /* Hint for GPU promotion */
 }
 
 /* LINES */

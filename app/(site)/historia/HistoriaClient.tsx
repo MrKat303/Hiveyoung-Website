@@ -344,7 +344,7 @@ export default function HistoriaClient() {
                 </div>
             </section>
 
-            <section ref={scrollContainerRef} className="horizontal-scroll-container" style={{ width: '100vw', height: '100dvh', overflow: 'hidden' }}>
+            <section ref={scrollContainerRef} className="horizontal-scroll-container" style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
                 <div ref={trackRef} className="horizontal-track" style={{
                     display: 'flex',
                     flexFlow: 'row nowrap',
