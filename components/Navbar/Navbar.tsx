@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -31,11 +31,11 @@ function Navbar() {
     const isCongresoPage = pathname === "/congreso";
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-    const closeMenu = () => setIsMenuOpen(false);
+    const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
     // Close menu when route changes
     useEffect(() => {
-        closeMenu();
+        setIsMenuOpen(false);
     }, [pathname]);
 
     // Lock scroll when menu is open
@@ -70,8 +70,8 @@ function Navbar() {
                 type: "spring" as const,
                 stiffness: 300,
                 damping: 30,
-                staggerChildren: 0.12,
-                delayChildren: 0.2
+                staggerChildren: 0.1,
+                delayChildren: 0.15
             }
         }
     };
@@ -87,7 +87,7 @@ function Navbar() {
             }
         },
         closed: {
-            x: 80,
+            x: 30,
             opacity: 0,
             transition: {
                 type: "spring" as const,

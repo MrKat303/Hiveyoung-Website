@@ -91,11 +91,6 @@
     pointer-events: none;
 }
 
-@media (max-width: 768px) {
-    .somos-hero-title-wrapper {
-        width: 100%;
-    }
-}
 
 .somos-hero-intro {
     position: absolute;
@@ -421,7 +416,10 @@
 
 @media (max-width: 768px) {
     .somos-hero-title-wrapper {
-        width: 95%;
+        width: 100%;
+        left: 0;
+        padding: 0 5%;
+        margin: 0 auto;
     }
 
     .somos-hero-intro p {

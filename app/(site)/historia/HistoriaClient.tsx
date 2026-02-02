@@ -94,7 +94,7 @@ export default function HistoriaClient() {
         const mm = gsap.matchMedia();
 
         // Common animations (Reveal Title) - Using context for scoping
-        const ctx = gsap.context(() => {
+        gsap.context(() => {
             gsap.set('.drawn-text', { opacity: 0, strokeDasharray: 1000, strokeDashoffset: 1000 });
 
             const tl = gsap.timeline({ delay: 0.2 });
@@ -239,8 +239,7 @@ export default function HistoriaClient() {
 
             // 4. Enhanced Panel Animations
             const panels = gsap.utils.toArray('.horizontal-panel') as HTMLElement[];
-            panels.forEach((panel, index) => {
-                const grid = panel.querySelector('.fullscreen-grid');
+            panels.forEach((panel) => {
                 const dot = panel.querySelector('.mobile-timeline-dot');
                 const yearLabel = panel.querySelector('.year-label');
                 const textCol = panel.querySelector('.panel-text-col');

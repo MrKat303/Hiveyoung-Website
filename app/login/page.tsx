@@ -179,7 +179,7 @@ const LoginPage = () => {
                                 { label: 'Horas', value: timeLeft.hours },
                                 { label: 'Min', value: timeLeft.minutes },
                                 { label: 'Seg', value: timeLeft.seconds }
-                            ].map((item, idx) => (
+                            ].map((item) => (
                                 <motion.div
                                     key={item.label}
                                     variants={itemVariants}
