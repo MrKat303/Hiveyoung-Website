@@ -11,16 +11,79 @@
     overflow: hidden;
 }
 
-/* Stable background elements without animation/shining */
+/* Stable background elements with slow pulse for softness */
 .login-container::before {
     content: '';
     position: absolute;
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, rgba(255, 196, 212, 0.03) 0%, transparent 70%);
-    top: -20%;
-    right: -10%;
-    filter: blur(80px);
+    width: 70vw;
+    height: 70vw;
+    background: radial-gradient(circle, rgba(255, 196, 212, 0.05) 0%, transparent 70%);
+    top: -25%;
+    right: -15%;
+    filter: blur(100px);
+    animation: backgroundPulse 15s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundPulse {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.1) translate(-50px, 30px);
+        opacity: 0.8;
+    }
+}
+
+/* Disruptive Shutter Overlay */
+.shutter-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.shutter-panel {
+    /* Match main brand color */
+    border: 1px solid rgba(255, 196, 212, 0.1);
+}
+
+.shutter-panel.top-left {
+    transform-origin: top left;
+    background-color: #3a1b4e;
+}
+
+.shutter-panel.top-right {
+    transform-origin: top right;
+    background-color: #ffc4d4;
+}
+
+.shutter-panel.bottom-left {
+    transform-origin: bottom left;
+    background-color: #5CD494;
+}
+
+.shutter-panel.bottom-right {
+    transform-origin: bottom right;
+    background-color: #f4ede4;
+}
+
+.intro-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1001;
+    pointer-events: none;
 }
 
 .login-split-layout {
@@ -30,9 +93,10 @@
     height: 85vh;
     max-height: 580px;
     background: #45245e;
-    /* Solid Brand Purple Shade */
     border-radius: 40px;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 196, 212, 0.05);
+    /* Soft border */
     overflow: hidden;
     position: relative;
     z-index: 10;
@@ -251,4 +315,43 @@
     .countdown-section h2 {
         font-size: 2rem;
     }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+        text-shadow: none;
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+        text-shadow: 2px 0 #ffc4d4, -2px 0 #5CD494;
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+        text-shadow: -2px 0 #ffc4d4, 2px 0 #5CD494;
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+        text-shadow: 2px 0 #ffc4d4, -2px 0 #5CD494;
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+        text-shadow: -2px 0 #ffc4d4, 2px 0 #5CD494;
+    }
+
+    100% {
+        transform: translate(0);
+        text-shadow: none;
+    }
+}
+
+.login-main-title,
+.countdown-section h2 {
+    animation: glitch 0.4s ease-in-out forwards;
+    animation-delay: 1.2s;
+    /* Start after the main entry */
 }

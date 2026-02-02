@@ -67,7 +67,9 @@ export default function EquipoPage() {
             <div className="directorio-info-overlay">
                 <h3>{miembro.nombre}</h3>
                 <p>{miembro.cargo}</p>
-                <div className="overlay-line"></div>
+                <svg className="overlay-line" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 3C15 1.5 35 4.5 48 3" stroke="#59c985" strokeWidth="2.5" strokeLinecap="round" />
+                </svg>
             </div>
         </div>
     );
@@ -83,7 +85,9 @@ export default function EquipoPage() {
                 <section className="equipo-seccion">
                     <div className="titulo-wrapper reveal">
                         <h2 className="seccion-titulo">Dirección Ejecutiva</h2>
-                        <div className="titulo-subrayado-verde"></div>
+                        <svg className="titulo-subrayado-verde reveal" viewBox="0 0 120 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 5C35 3 65 7 95 5C108 4 115 6 117 5" stroke="#59c985" strokeWidth="4" strokeLinecap="round" />
+                        </svg>
                     </div>
                     <div className="equipo-grid">
                         {direccionEjecutiva.map(renderCard)}
@@ -93,7 +97,9 @@ export default function EquipoPage() {
                 <section className="equipo-seccion">
                     <div className="titulo-wrapper reveal">
                         <h2 className="seccion-titulo">Coordinadores Regionales</h2>
-                        <div className="titulo-subrayado-verde"></div>
+                        <svg className="titulo-subrayado-verde reveal" viewBox="0 0 120 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 5C35 3 65 7 95 5C108 4 115 6 117 5" stroke="#59c985" strokeWidth="4" strokeLinecap="round" />
+                        </svg>
                     </div>
                     <div className="equipo-grid">
                         {coordinadoresRegionales.map(renderCard)}
@@ -103,7 +109,9 @@ export default function EquipoPage() {
                 <section className="equipo-seccion directorio-section">
                     <div className="titulo-wrapper reveal">
                         <h2 className="seccion-titulo">Directorio</h2>
-                        <div className="titulo-subrayado-verde"></div>
+                        <svg className="titulo-subrayado-verde reveal" viewBox="0 0 120 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 5C35 3 65 7 95 5C108 4 115 6 117 5" stroke="#59c985" strokeWidth="4" strokeLinecap="round" />
+                        </svg>
                     </div>
 
                     <div className="directorio-carousel-container reveal">
