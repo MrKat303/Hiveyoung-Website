@@ -33,11 +33,6 @@ function Navbar() {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
-    // Close menu when route changes
-    useEffect(() => {
-        setIsMenuOpen(false);
-    }, [pathname]);
-
     // Lock scroll when menu is open
     useEffect(() => {
         if (isMenuOpen) {
@@ -116,7 +111,7 @@ function Navbar() {
                 <ul className="navbar-menu desktop-only">
                     {links.map((link, index) => (
                         <li key={index} className={link.dropdown ? "nav-item-dropdown" : ""}>
-                            <Link href={link.path}>
+                            <Link href={link.path} onClick={closeMenu}>
                                 {link.name}
                                 {link.dropdown && <ChevronDown size={14} style={{ marginLeft: '4px' }} />}
                             </Link>
@@ -124,7 +119,7 @@ function Navbar() {
                                 <ul className="dropdown-menu">
                                     {link.dropdown.map((sub, i) => (
                                         <li key={i}>
-                                            <Link href={sub.path}>{sub.name}</Link>
+                                            <Link href={sub.path} onClick={closeMenu}>{sub.name}</Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -135,8 +130,8 @@ function Navbar() {
 
                 {/* Desktop Buttons */}
                 <div className="navbar-btns desktop-only">
-                    <Link className="navbar-btn navbar-btn--outline" href="/unete">Unete</Link>
-                    <Link href="/login" className="login-icon-circle">
+                    <Link className="navbar-btn navbar-btn--outline" href="/unete" onClick={closeMenu}>Unete</Link>
+                    <Link href="/login" className="login-icon-circle" onClick={closeMenu}>
                         <User size={20} />
                     </Link>
                 </div>

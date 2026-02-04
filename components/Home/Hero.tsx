@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import TextType from './TextType';
 import "./Hero.css";
@@ -89,11 +90,13 @@ export default function Hero() {
                         style={{ opacity: textOpacity, y: textY }}
                         className="hero__right"
                     >
-                        <img
+                        <Image
                             className="hero__icons no-interaction"
                             src="/hero.svg"
                             alt="Ecosistema juvenil HiveYoung - Conectando líderes del cambio"
-                            draggable="false"
+                            width={500}
+                            height={500}
+                            draggable={false}
                         />
                     </motion.div>
 
@@ -102,11 +105,13 @@ export default function Hero() {
 
             <div className="hero__bottomOuter" aria-hidden="true">
                 <div className="hero__bottomContainer">
-                    <img
+                    <Image
                         className="hero__bottom no-interaction"
                         src="/bottom.svg"
                         alt=""
-                        draggable="false"
+                        width={1920}
+                        height={200}
+                        draggable={false}
                     />
                 </div>
             </div>

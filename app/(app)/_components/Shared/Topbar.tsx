@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, Bell, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useProfile } from '@/hooks/useProfile';
 import { supabase } from '@/utils/supabase/client';
@@ -13,7 +14,6 @@ export default function Topbar() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState<{ id: string, full_name: string | null, avatar_url: string | null, email: string, role: string | null }[]>([]);
-  const [isSearching, setIsSearching] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   
@@ -34,7 +34,6 @@ export default function Topbar() {
     const delayDebounceFn = setTimeout(async () => {
       const search = searchTerm.trim();
       if (search.length > 2) {
-        setIsSearching(true);
         console.log('Searching for:', search);
         const { data, error } = await supabase
           .from('profiles')
@@ -50,7 +49,6 @@ export default function Topbar() {
           setResults(data);
           setShowResults(true);
         }
-        setIsSearching(false);
       } else {
         setResults([]);
         setShowResults(false);
@@ -98,9 +96,9 @@ export default function Topbar() {
                   className="search-result-item"
                   onClick={() => handleSelectUser(user.id)}
                 >
-                  <div className="result-avatar">
+                  <div className="result-avatar relative overflow-hidden">
                     {user.avatar_url ? (
-                      <img src={user.avatar_url} alt="" />
+                      <Image src={user.avatar_url} alt="" fill className="object-cover" />
                     ) : (
                       <span>{user.full_name?.[0] || user.email?.[0] || '?'}</span>
                     )}
@@ -123,9 +121,9 @@ export default function Topbar() {
           <Bell size={18} />
         </button>
         <Link href="/profile" className="user-profile-preview no-underline">
-          <div className="avatar-placeholder overflow-hidden">
+          <div className="avatar-placeholder overflow-hidden relative">
             {profile?.avatar_url ? (
-              <img src={profile.avatar_url} alt="Profile" className="w-full h-full object-cover" />
+              <Image src={profile.avatar_url} alt="Profile" fill className="object-cover" />
             ) : (
               initial
             )}

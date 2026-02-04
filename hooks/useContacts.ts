@@ -25,8 +25,8 @@ export function useContacts() {
 
       if (error) throw error
       setContacts(data || [])
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An unknown error occurred')
     } finally {
       setLoading(false)
     }
@@ -55,8 +55,8 @@ export function useContacts() {
         if (error) throw error
         setContacts([data, ...contacts])
         return { success: true }
-    } catch (err: any) {
-        return { success: false, error: err.message }
+    } catch (err) {
+        return { success: false, error: err instanceof Error ? err.message : 'An unknown error occurred' }
     }
   }
   
@@ -66,8 +66,8 @@ export function useContacts() {
           if (error) throw error
           setContacts(contacts.filter(c => c.id !== id))
           return { success: true }
-      } catch (err: any) {
-          return { success: false, error: err.message }
+      } catch (err) {
+          return { success: false, error: err instanceof Error ? err.message : 'An unknown error occurred' }
       }
   }
 
