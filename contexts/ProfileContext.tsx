@@ -46,7 +46,8 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const refreshProfile = useCallback(async () => {
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data } = await supabase.auth.getUser();
+    const user = data?.user;
     if (user) {
       await fetchProfile(user.id);
     } else {
@@ -77,7 +78,8 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 
   const updateProfile = async (newProfile: Partial<Profile>) => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data } = await supabase.auth.getUser();
+      const user = data?.user;
       if (!user) throw new Error('No estás autenticado');
 
       const updates = {
@@ -103,7 +105,8 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 
   const uploadAvatar = async (file: File) => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data } = await supabase.auth.getUser();
+      const user = data?.user;
       if (!user) throw new Error('No estás autenticado');
 
       const fileExt = file.name.split('.').pop();

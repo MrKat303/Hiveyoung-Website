@@ -46,9 +46,14 @@ function ProfileEditForm({ profile, onClose, onSave, saving }: ProfileEditFormPr
       return;
     }
 
+    const controller = new AbortController();
+
     const fetchLocations = async () => {
       try {
-        const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(locationQuery)}&limit=5`);
+        const response = await fetch(
+          `https://photon.komoot.io/api/?q=${encodeURIComponent(locationQuery)}&limit=5`,
+          { signal: controller.signal }
+        );
         const data = await response.json();
         const suggestions = data.features.map((f: { properties: { name?: string, city?: string, state?: string, country?: string } }) => {
           const p = f.properties;
@@ -61,8 +66,11 @@ function ProfileEditForm({ profile, onClose, onSave, saving }: ProfileEditFormPr
     };
 
     const timer = setTimeout(fetchLocations, 400);
-    return () => clearTimeout(timer);
-  }, [locationQuery, locationSuggestions.length]);
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+  }, [locationQuery]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
