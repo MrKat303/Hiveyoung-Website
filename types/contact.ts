@@ -8,4 +8,9 @@ export type Contact = {
   related_user_id: string | null; // "Persona" - registered user
   added_by: string;
   created_at: string;
+  profiles?: {
+    id: string;
+    full_name: string | null;
+    avatar_url: string | null;
+  };
 }

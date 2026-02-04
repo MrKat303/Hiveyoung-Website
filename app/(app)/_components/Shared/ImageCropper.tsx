@@ -14,7 +14,7 @@ interface ImageCropperProps {
 export default function ImageCropper({ image, onCropComplete, onCancel }: ImageCropperProps) {
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [zoom, setZoom] = useState(1)
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null)
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState<{ x: number, y: number, width: number, height: number } | null>(null)
 
   const onCropChange = (crop: { x: number; y: number }) => {
     setCrop(crop)
@@ -24,12 +24,13 @@ export default function ImageCropper({ image, onCropComplete, onCancel }: ImageC
     setZoom(zoom)
   }
 
-  const onCropAreaComplete = useCallback((_: any, clippedPixels: any) => {
+  const onCropAreaComplete = useCallback((_: unknown, clippedPixels: { x: number, y: number, width: number, height: number }) => {
     setCroppedAreaPixels(clippedPixels)
   }, [])
 
   const handleConfirm = async () => {
     try {
+      if (!croppedAreaPixels) return;
       const croppedImage = await getCroppedImg(image, croppedAreaPixels)
       if (croppedImage) {
         onCropComplete(croppedImage)

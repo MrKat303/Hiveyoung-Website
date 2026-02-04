@@ -57,8 +57,8 @@ export default function ContactsPage() {
 
   // User search for "Persona"
   const [userQuery, setUserQuery] = useState('');
-  const [userResults, setUserResults] = useState<any[]>([]);
-  const [selectedUser, setSelectedUser] = useState<any>(null);
+  const [userResults, setUserResults] = useState<{ id: string, full_name: string | null, avatar_url: string | null }[]>([]);
+  const [selectedUser, setSelectedUser] = useState<{ id: string, full_name: string | null, avatar_url: string | null } | null>(null);
 
   useEffect(() => {
     fetchContacts();
@@ -208,7 +208,7 @@ export default function ContactsPage() {
             </thead>
             <tbody>
               {filteredContacts.length > 0 ? (
-                filteredContacts.map((contact: any) => (
+                filteredContacts.map((contact: Contact) => (
                   <tr key={contact.id}>
                     <td data-label="Nombre" className="font-bold">{contact.name}</td>
                     <td data-label="Organización">{contact.organization || '-'}</td>
@@ -224,10 +224,10 @@ export default function ContactsPage() {
                             {contact.profiles.avatar_url ? (
                               <img src={contact.profiles.avatar_url} alt="" />
                             ) : (
-                              <span>{contact.profiles.full_name[0]}</span>
+                              <span>{contact.profiles.full_name?.[0] || '?'}</span>
                             )}
                           </div>
-                          <span>{contact.profiles.full_name.split(' ')[0]}</span>
+                          <span>{contact.profiles.full_name?.split(' ')[0] || '-'}</span>
                         </div>
                       ) : '-'}
                     </td>
@@ -351,7 +351,7 @@ export default function ContactsPage() {
                               className="p-4 hover:bg-gray-50 cursor-pointer flex items-center gap-3 border-b last:border-0 transition-colors"
                             >
                               <div className="w-8 h-8 rounded-full bg-[#3a1b4e10] overflow-hidden flex items-center justify-center font-bold text-xs text-[#3a1b4e]">
-                                {u.avatar_url ? <img src={u.avatar_url} className="w-full h-full object-cover" /> : u.full_name[0]}
+                                {u.avatar_url ? <img src={u.avatar_url} className="w-full h-full object-cover" alt="" /> : (u.full_name ? u.full_name[0] : '?')}
                               </div>
                               <span className="text-sm font-semibold text-gray-700">{u.full_name}</span>
                             </div>

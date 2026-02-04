@@ -65,10 +65,11 @@ const LoginPage = () => {
             });
             if (authError) throw authError;
             router.push('/profile');
-        } catch (err: any) {
-            setError(err.message === 'Invalid login credentials' 
+        } catch (err: unknown) {
+            const error = err as Error;
+            setError(error.message === 'Invalid login credentials' 
                 ? 'Usuario o contraseña incorrectos' 
-                : err.message || 'Ocurrió un error inesperado');
+                : error.message || 'Ocurrió un error inesperado');
         } finally {
             setLoading(false);
         }

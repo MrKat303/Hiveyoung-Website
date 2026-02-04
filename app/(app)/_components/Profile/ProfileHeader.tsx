@@ -7,11 +7,12 @@ import {
   Sparkles,
   Loader2
 } from 'lucide-react';
-import { Profile } from '@/types/profile';
+import Image from 'next/image';
+import type { Profile } from '@/types/profile';
 import { SkillBadge } from './SkillBadge';
 import { SocialLinks } from './SocialLinks';
 import { MusicPlayer } from './MusicPlayer';
-import '@/app/(app)/profile/Profile.css'; // Reusing existing styles
+import '@/app/(app)/profile/Profile.css';
 
 type ProfileHeaderProps = {
   profile: Profile | null;
@@ -29,25 +30,38 @@ export const ProfileHeader = ({
   uploading = false
 }: ProfileHeaderProps) => {
   const initials = profile?.full_name 
-    ? profile.full_name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)
+    ? profile.full_name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)
     : profile?.email?.[0].toUpperCase() || '?';
 
   return (
     <>
       {/* Banner Area */}
       <div className="profile-banner">
-        <img src="/Logo.svg" alt="Hiveyoung" className="banner-logo-linkdin" />
+        <Image 
+          src="/Logo.svg" 
+          alt="Hiveyoung" 
+          width={120} 
+          height={24} 
+          className="banner-logo-linkdin"
+        />
       </div>
 
       {/* Content Block */}
       <div className="profile-header-main">
         <div className="avatar-and-actions">
           <div className="profile-avatar-linkedin">
-            <div className="inner-avatar-circle">
+            <div className="inner-avatar-circle overflow-hidden relative">
               {uploading ? (
-                <Loader2 className="animate-spin text-[#3A1B4E]" size={32} />
+                <div className="flex items-center justify-center w-full h-full">
+                  <Loader2 className="animate-spin text-[#3A1B4E]" size={32} />
+                </div>
               ) : profile?.avatar_url ? (
-                <img src={profile.avatar_url} alt="Profile" className="w-full h-full object-cover" />
+                <Image 
+                  src={profile.avatar_url} 
+                  alt="Profile" 
+                  fill
+                  className="object-cover"
+                />
               ) : (
                 <span className="text-5xl font-black text-[#3A1B4E] select-none">{initials}</span>
               )}
@@ -63,7 +77,7 @@ export const ProfileHeader = ({
 
           <div className="header-action-btns">
             {isOwnProfile && onEditProfile && (
-              <button className="edit-pencil-btn" onClick={onEditProfile}>
+              <button className="edit-pencil-btn" onClick={onEditProfile} aria-label="Editar perfil">
                 <Pencil size={24} />
               </button>
             )}
@@ -100,8 +114,8 @@ export const ProfileHeader = ({
             </div>
             <div className="skills-tags-container">
               {profile?.skills && profile.skills.length > 0 ? (
-                profile.skills.map((skill, i) => (
-                  <SkillBadge key={i} skill={skill} />
+                profile.skills.map((skill: string, idx: number) => (
+                  <SkillBadge key={`${skill}-${idx}`} skill={skill} />
                 ))
               ) : (
                 <span className="no-skills-text">SIN SKILLS</span>

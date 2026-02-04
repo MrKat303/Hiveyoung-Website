@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useProfile } from '@/hooks/useProfile';
+import { useToast } from '@/hooks/useToast';
 import { normalizeSkillName } from '@/app/(app)/_utils/skillUtils';
 import { 
   Camera, 
@@ -21,6 +22,7 @@ import './Profile.css';
 
 export default function ProfilePage() {
   const { profile, loading, updateProfile, uploadAvatar } = useProfile();
+  const { showToast } = useToast();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageToCrop, setImageToCrop] = useState<string | null>(null);
   const [formData, setFormData] = useState({
@@ -38,7 +40,6 @@ export default function ProfilePage() {
   });
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -61,7 +62,7 @@ export default function ProfilePage() {
 
   // Location Autocomplete
   const [locationQuery, setLocationQuery] = useState('');
-  const [locationSuggestions, setLocationSuggestions] = useState<any[]>([]);
+  const [locationSuggestions, setLocationSuggestions] = useState<string[]>([]);
 
   useEffect(() => {
     if (locationQuery.length < 3) {
@@ -73,11 +74,11 @@ export default function ProfilePage() {
       try {
         const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(locationQuery)}&limit=5`);
         const data = await response.json();
-        const suggestions = data.features.map((f: any) => {
+        const suggestions = data.features.map((f: { properties: { name?: string, city?: string, state?: string, country?: string } }) => {
           const p = f.properties;
           return [p.name, p.city, p.state, p.country].filter(Boolean).join(', ');
         });
-        setLocationSuggestions([...new Set(suggestions)]);
+        setLocationSuggestions([...new Set(suggestions)] as string[]);
       } catch (err) {
         console.error('Error fetching locations:', err);
       }
@@ -90,19 +91,17 @@ export default function ProfilePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
-    setMessage(null);
 
     const { success, error } = await updateProfile(formData);
 
     if (success) {
-      setMessage({ type: 'success', text: '¡Perfil actualizado!' });
+      showToast('Perfil actualizado correctamente', 'success');
       setTimeout(() => {
-        setMessage(null);
         setIsModalOpen(false);
       }, 1000);
     } else {
       console.error('Update Error:', error);
-      setMessage({ type: 'error', text: 'Error al actualizar: ' + error });
+      showToast('Error al actualizar: ' + error, 'error');
     }
     setSaving(false);
   };
@@ -125,8 +124,9 @@ export default function ProfilePage() {
     const file = new File([croppedBlob], "avatar.jpg", { type: "image/jpeg" });
     const { success } = await uploadAvatar(file);
     if (success) {
-      setMessage({ type: 'success', text: 'Foto actualizada' });
-      setTimeout(() => setMessage(null), 3000);
+      showToast('Foto actualizada correctamente', 'success');
+    } else {
+      showToast('Error al subir la foto', 'error');
     }
     setUploading(false);
   };
@@ -142,8 +142,7 @@ export default function ProfilePage() {
       const input = normalizeSkillName(skillInput);
 
       if (formData.skills.length >= 7) {
-        setMessage({ type: 'error', text: 'Máximo 7 skills permitidas' });
-        setTimeout(() => setMessage(null), 3000);
+        showToast('Máximo 7 habilidades permitidas', 'warning');
         return;
       }
       if (input && !formData.skills.includes(input)) {
@@ -303,19 +302,12 @@ export default function ProfilePage() {
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {message && (
-                  <div className={`mt-4 p-3 rounded flex items-center gap-2 text-sm font-bold ${message.type === 'success' ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-500'}`}>
-                    {message.type === 'success' ? <Check size={18} /> : <AlertCircle size={18} />}
-                    {message.text}
-                  </div>
-                )}
-
-                <div className="modal-footer-ln">
-                  <button type="submit" disabled={saving} className="ln-save-btn">
-                    {saving ? 'Guardando...' : 'Guardar'}
-                  </button>
-                </div>
+              <div className="modal-footer-ln">
+                <button type="submit" disabled={saving} className="ln-save-btn">
+                  {saving ? 'Guardando...' : 'Guardar'}
+                </button>
               </div>
             </form>
           </div>

@@ -12,7 +12,7 @@ export default function Topbar() {
   const { profile } = useProfile();
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<{ id: string, full_name: string | null, avatar_url: string | null, email: string, role: string | null }[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
@@ -102,7 +102,7 @@ export default function Topbar() {
                     {user.avatar_url ? (
                       <img src={user.avatar_url} alt="" />
                     ) : (
-                      <span>{user.full_name?.[0] || user.email[0]}</span>
+                      <span>{user.full_name?.[0] || user.email?.[0] || '?'}</span>
                     )}
                   </div>
                   <div className="result-info">

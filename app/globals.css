@@ -34,3 +34,40 @@ body {
 main {
     flex: 1;
 }
+
+/* Toast Animations */
+@keyframes toast-in-right {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.animate-toast-in {
+    animation: toast-in-right 0.3s ease-out forwards;
+}
+
+@layer utilities {
+    .animate-in {
+        animation-duration: 300ms;
+        animation-fill-mode: forwards;
+    }
+
+    .slide-in-from-right-full {
+        animation-name: toast-in-right;
+    }
+
+    .fade-in {
+        opacity: 0;
+        animation-name: fade-in;
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
