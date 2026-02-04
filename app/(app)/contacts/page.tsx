@@ -5,18 +5,11 @@ import { supabase } from '@/utils/supabase/client';
 import { 
   Plus, 
   Search, 
-  UserPlus, 
   X, 
-  Briefcase, 
   Building2, 
-  Phone, 
-  Tag, 
   Users,
   Loader2,
-  Check,
-  AlertCircle,
   FolderOpen,
-  Briefcase as BusinessIcon,
   Globe,
   Gavel,
   Megaphone,
@@ -26,9 +19,19 @@ import { Contact } from '@/types/contact';
 import { useProfile } from '@/hooks/useProfile';
 import './Contacts.css';
 
+interface ProfileSummary {
+  id: string;
+  full_name: string;
+  avatar_url: string | null;
+}
+
+interface ContactWithProfile extends Contact {
+  profiles: ProfileSummary | null;
+}
+
 export default function ContactsPage() {
   const { profile } = useProfile();
-  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [contacts, setContacts] = useState<ContactWithProfile[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,8 +60,8 @@ export default function ContactsPage() {
 
   // User search for "Persona"
   const [userQuery, setUserQuery] = useState('');
-  const [userResults, setUserResults] = useState<any[]>([]);
-  const [selectedUser, setSelectedUser] = useState<any>(null);
+  const [userResults, setUserResults] = useState<ProfileSummary[]>([]);
+  const [selectedUser, setSelectedUser] = useState<ProfileSummary | null>(null);
 
   useEffect(() => {
     fetchContacts();
@@ -76,7 +79,7 @@ export default function ContactsPage() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setContacts(data || []);
+      setContacts((data as ContactWithProfile[]) || []);
     } catch (err) {
       console.error('Error fetching contacts:', err);
     } finally {
@@ -93,7 +96,7 @@ export default function ContactsPage() {
           .select('id, full_name, avatar_url')
           .ilike('full_name', `%${userQuery}%`)
           .limit(5);
-        setUserResults(data || []);
+        setUserResults((data as ProfileSummary[]) || []);
       } else {
         setUserResults([]);
       }
@@ -208,7 +211,7 @@ export default function ContactsPage() {
             </thead>
             <tbody>
               {filteredContacts.length > 0 ? (
-                filteredContacts.map((contact: any) => (
+                filteredContacts.map((contact) => (
                   <tr key={contact.id}>
                     <td data-label="Nombre" className="font-bold">{contact.name}</td>
                     <td data-label="Organización">{contact.organization || '-'}</td>

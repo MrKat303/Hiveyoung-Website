@@ -9,7 +9,6 @@ export default function AppLayout({
 }: {
   children: React.ReactNode;
 }) {
-  console.log('AppLayout rendering');
   return (
     <div className="app-layout">
       <Sidebar />

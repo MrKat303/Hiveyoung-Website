@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useProfile } from '@/hooks/useProfile';
 import { 
   Camera, 
@@ -10,35 +10,23 @@ import {
   Loader2, 
   Pencil, 
   X, 
-  Instagram, 
-  Linkedin, 
-  Github, 
-  MessageSquare,
-  Star,
-  Code,
-  Layout,
-  Terminal,
-  Database,
-  Smartphone,
-  Figma,
-  Cpu,
-  Brain,
-  Globe2,
-  Brush,
-  Zap,
   MoreHorizontal,
-  Music,
-  DollarSign,
-  TrendingUp,
-  Mic,
-  Lightbulb,
-  Target,
-  Users,
-  Briefcase,
   Sparkles
 } from 'lucide-react';
 import ImageCropper from '@/components/App/ImageCropper';
+import SocialIcons from '@/components/App/SocialIcons';
+import MusicPlayer from '@/components/App/MusicPlayer';
+import { getSkillIcon } from '@/utils/skills';
 import './Profile.css';
+
+interface PhotonFeature {
+  properties: {
+    name?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+  };
+}
 
 export default function ProfilePage() {
   const { profile, loading, updateProfile, uploadAvatar } = useProfile();
@@ -62,9 +50,12 @@ export default function ProfilePage() {
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const initialized = useRef(false);
+
+  // Sync form data with profile when it loads or modal opens
   useEffect(() => {
-    if (profile) {
-      setFormData({
+    if (profile && (!initialized.current || isModalOpen)) {
+      const data = {
         full_name: profile.full_name || '',
         location: profile.location || '',
         role: profile.role || 'user',
@@ -76,37 +67,57 @@ export default function ProfilePage() {
         github_url: profile.github_url || '',
         music_url: profile.music_url || '',
         skills: profile.skills || [],
+      };
+
+      setFormData(prev => {
+        const isDifferent = Object.keys(data).some(key =>
+          (data as any)[key] !== (prev as any)[key]
+        );
+        if (isDifferent) return data;
+        return prev;
       });
+
+      if (!isModalOpen) initialized.current = true;
     }
   }, [profile, isModalOpen]);
 
   // Location Autocomplete
   const [locationQuery, setLocationQuery] = useState('');
-  const [locationSuggestions, setLocationSuggestions] = useState<any[]>([]);
+  const [locationSuggestions, setLocationSuggestions] = useState<string[]>([]);
+
+  const fetchLocations = useCallback(async (query: string) => {
+    try {
+      const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&limit=5`);
+      const data = await response.json();
+      const suggestions = data.features.map((f: PhotonFeature) => {
+        const p = f.properties;
+        return [p.name, p.city, p.state, p.country].filter(Boolean).join(', ');
+      });
+      setLocationSuggestions([...new Set(suggestions as string[])]);
+    } catch (err) {
+      console.error('Error fetching locations:', err);
+    }
+  }, []);
 
   useEffect(() => {
     if (locationQuery.length < 3) {
-      setLocationSuggestions([]);
       return;
     }
 
-    const fetchLocations = async () => {
-      try {
-        const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(locationQuery)}&limit=5`);
-        const data = await response.json();
-        const suggestions = data.features.map((f: any) => {
-          const p = f.properties;
-          return [p.name, p.city, p.state, p.country].filter(Boolean).join(', ');
-        });
-        setLocationSuggestions([...new Set(suggestions)]);
-      } catch (err) {
-        console.error('Error fetching locations:', err);
-      }
-    };
-
-    const timer = setTimeout(fetchLocations, 400);
+    const timer = setTimeout(() => {
+      fetchLocations(locationQuery);
+    }, 400);
     return () => clearTimeout(timer);
-  }, [locationQuery]);
+  }, [locationQuery, fetchLocations]);
+
+  const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setFormData(prev => ({ ...prev, location: val }));
+    setLocationQuery(val);
+    if (val.length < 3) {
+      setLocationSuggestions([]);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -161,7 +172,7 @@ export default function ProfilePage() {
       let input = skillInput.trim();
       const lowerInput = input.toLowerCase();
 
-      // Intelligence: Auto-correction Map for common typos or abbreviations
+      // Intelligence: Auto-correction Map
       const corrections: { [key: string]: string } = {
         'fhotoshop': 'Photoshop',
         'fotoshop': 'Photoshop',
@@ -198,11 +209,8 @@ export default function ProfilePage() {
       };
 
       if (corrections[lowerInput]) {
-        // If typo found, use corrected version
         input = corrections[lowerInput];
       } else {
-        // Intelligence: Formatting - First letter Uppercase, rest Lowercase
-        // This ensures the input looks professional
         input = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
       }
 
@@ -220,123 +228,6 @@ export default function ProfilePage() {
 
   const removeSkill = (skillToRemove: string) => {
     setFormData({ ...formData, skills: formData.skills.filter(s => s !== skillToRemove) });
-  };
-
-  const getSkillIcon = (skill: string) => {
-    const s = skill.toLowerCase().trim();
-    
-    // Direct CDN URLs for Office & Design tools (these are more reliable)
-    const directIconUrls: { [key: string]: string } = {
-      'excel': 'https://img.icons8.com/color/48/microsoft-excel-2019--v1.png',
-      'word': 'https://img.icons8.com/color/48/microsoft-word-2019--v2.png',
-      'powerpoint': 'https://img.icons8.com/color/48/microsoft-powerpoint-2019--v1.png',
-      'photoshop': 'https://img.icons8.com/color/48/adobe-photoshop--v1.png',
-      'illustrator': 'https://img.icons8.com/color/48/adobe-illustrator--v1.png',
-      'canva': 'https://img.icons8.com/fluency/48/canva.png',
-      'notion': 'https://img.icons8.com/fluency/48/notion.png',
-      'slack': 'https://img.icons8.com/color/48/slack-new.png',
-      'affinity': 'https://img.icons8.com/color/48/affinity-designer.png',
-      'adobe': 'https://img.icons8.com/color/48/adobe-creative-cloud--v1.png',
-      'blender': 'https://img.icons8.com/color/48/blender-3d.png',
-    };
-
-    // Check for direct icon URLs first
-    if (directIconUrls[s]) {
-      return (
-        <img 
-          src={directIconUrls[s]}
-          alt={skill}
-          className="w-3.5 h-3.5 object-contain"
-        />
-      );
-    }
-    
-    // Simple Icons mapping with hex colors for programming languages & frameworks
-    const simpleIconsMap: { [key: string]: { slug: string; color: string } } = {
-      // Languages
-      'javascript': { slug: 'javascript', color: 'F7DF1E' },
-      'typescript': { slug: 'typescript', color: '3178C6' },
-      'python': { slug: 'python', color: '3776AB' },
-      'java': { slug: 'openjdk', color: '437291' },
-      'c++': { slug: 'cplusplus', color: '00599C' },
-      'c#': { slug: 'csharp', color: '239120' },
-      'dart': { slug: 'dart', color: '0175C2' },
-      'rust': { slug: 'rust', color: '000000' },
-      'go': { slug: 'go', color: '00ADD8' },
-      'php': { slug: 'php', color: '777BB4' },
-      'ruby': { slug: 'ruby', color: 'CC342D' },
-      'swift': { slug: 'swift', color: 'F05138' },
-      'kotlin': { slug: 'kotlin', color: '7F52FF' },
-      'lua': { slug: 'lua', color: '2C2D72' },
-      'perl': { slug: 'perl', color: '39457E' },
-      'solidity': { slug: 'solidity', color: '363636' },
-      
-      // Frameworks
-      'react': { slug: 'react', color: '61DAFB' },
-      'next.js': { slug: 'nextdotjs', color: '000000' },
-      'node.js': { slug: 'nodedotjs', color: '339933' },
-      'vue': { slug: 'vuedotjs', color: '4FC08D' },
-      'angular': { slug: 'angular', color: 'DD0031' },
-      'flutter': { slug: 'flutter', color: '02569B' },
-      'django': { slug: 'django', color: '092E20' },
-      'laravel': { slug: 'laravel', color: 'FF2D20' },
-      'spring': { slug: 'spring', color: '6DB33F' },
-      'unity': { slug: 'unity', color: '000000' },
-      
-      // Databases
-      'mongodb': { slug: 'mongodb', color: '47A248' },
-      'mysql': { slug: 'mysql', color: '4479A1' },
-      'postgresql': { slug: 'postgresql', color: '4169E1' },
-      'supabase': { slug: 'supabase', color: '3ECF8E' },
-      'firebase': { slug: 'firebase', color: 'FFCA28' },
-      'redis': { slug: 'redis', color: 'DC382D' },
-      
-      // Design Tools
-      'figma': { slug: 'figma', color: 'F24E1E' },
-      
-      // Dev Tools & Cloud
-      'github': { slug: 'github', color: '181717' },
-      'docker': { slug: 'docker', color: '2496ED' },
-      'arduino': { slug: 'arduino', color: '00979D' },
-      'git': { slug: 'git', color: 'F05032' },
-      'vscode': { slug: 'visualstudiocode', color: '007ACC' },
-      'vercel': { slug: 'vercel', color: '000000' },
-      'aws': { slug: 'amazonaws', color: 'FF9900' },
-      'azure': { slug: 'microsoftazure', color: '0078D4' },
-      
-      // Web
-      'html': { slug: 'html5', color: 'E34F26' },
-      'css': { slug: 'css3', color: '1572B6' },
-      'tailwind': { slug: 'tailwindcss', color: '06B6D4' },
-      'sass': { slug: 'sass', color: 'CC6699' },
-      'bootstrap': { slug: 'bootstrap', color: '7952B3' },
-    };
-
-    // Check for exact match first
-    let iconData = simpleIconsMap[s];
-    
-    // Only do partial matching for multi-character keywords (avoid matching single letters)
-    if (!iconData) {
-      const keywords = Object.keys(simpleIconsMap)
-        .filter(k => k.length > 2) // Skip single/double letter keywords like 'r', 'c', 'go'
-        .sort((a,b) => b.length - a.length);
-      const match = keywords.find(k => s.includes(k));
-      if (match) iconData = simpleIconsMap[match];
-    }
-    
-    if (iconData) {
-      return (
-        <img 
-          src={`https://cdn.simpleicons.org/${iconData.slug}/${iconData.color}`}
-          alt={skill}
-          className="w-3.5 h-3.5 object-contain"
-          style={{ filter: 'none' }}
-        />
-      );
-    }
-    
-    // Default: Generic lightning bolt for everything else (Scrum, Gantt, soft skills, etc)
-    return <Zap size={14} className="text-amber-400" />;
   };
 
   if (loading) return (
@@ -398,31 +289,13 @@ export default function ProfilePage() {
                 {profile?.location || 'Mundo Hiveyoung'}
               </div>
               
-              {/* Social Icons - moved here from footer */}
-              <div className="social-icons-strip">
-                {profile?.linkedin_url && (
-                  <a href={profile.linkedin_url.startsWith('http') ? profile.linkedin_url : `https://${profile.linkedin_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="LinkedIn">
-                    <Linkedin size={18} />
-                  </a>
-                )}
-                {profile?.instagram_url && (
-                  <a href={profile.instagram_url.startsWith('http') ? profile.instagram_url : `https://${profile.instagram_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="Instagram">
-                    <Instagram size={18} />
-                  </a>
-                )}
-                {profile?.github_url && (
-                  <a href={profile.github_url.startsWith('http') ? profile.github_url : `https://${profile.github_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="GitHub">
-                    <Github size={18} />
-                  </a>
-                )}
-                {profile?.discord_id && (
-                  <div className="social-link-icon group relative cursor-help" title={`Discord: ${profile.discord_id}`}>
-                    <MessageSquare size={18} />
-                  </div>
-                )}
-              </div>
+              <SocialIcons
+                linkedin_url={profile?.linkedin_url}
+                instagram_url={profile?.instagram_url}
+                github_url={profile?.github_url}
+                discord_id={profile?.discord_id}
+              />
               
-              {/* Short Bio */}
               {profile?.bio_short && (
                 <p className="bio-short-text">
                   {profile.bio_short}
@@ -430,7 +303,6 @@ export default function ProfilePage() {
               )}
             </div>
 
-            {/* Skills section on the right - Always visible */}
             <div className="profile-skills-side">
               <div className="skills-header-mini">
                 <span>Skills</span>
@@ -451,33 +323,8 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          {/* Music player - inside header block */}
           <div className="profile-header-footer">
-
-            {profile?.music_url && (
-              <div className="profile-music-wrapper">
-                {profile.music_url.includes('music.apple.com') ? (
-                  <iframe 
-                    allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
-                    frameBorder="0" 
-                    height="150" 
-                    style={{ width: '100%', overflow: 'hidden', borderRadius: '12px' }} 
-                    src={`https://embed.music.apple.com/es/album/${profile.music_url.split('album/')[1]?.split('?')[0]}${profile.music_url.includes('?i=') ? '&i=' + profile.music_url.split('?i=')[1] : ''}`}
-                  ></iframe>
-                ) : profile.music_url.includes('spotify.com') ? (
-                  <iframe 
-                    style={{ borderRadius: '12px' }} 
-                    src={`https://open.spotify.com/embed/track/${profile.music_url.split('track/')[1]?.split('?')[0]}?utm_source=generator&theme=0`} 
-                    width="100%" 
-                    height="80" 
-                    frameBorder="0" 
-                    allowFullScreen 
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                    loading="lazy"
-                  ></iframe>
-                ) : null}
-              </div>
-            )}
+            <MusicPlayer music_url={profile?.music_url} />
           </div>
         </div>
 
@@ -519,11 +366,7 @@ export default function ProfilePage() {
                         className="ln-input" 
                         value={formData.location} 
                         placeholder="Eje: Santiago, Chile"
-                        onChange={e => {
-                          setFormData({...formData, location: e.target.value});
-                          setLocationQuery(e.target.value);
-                          if (e.target.value === '') setLocationSuggestions([]);
-                        }} 
+                        onChange={handleLocationChange}
                       />
                       {locationSuggestions.length > 0 && (
                         <div className="absolute z-[110] w-full mt-1 bg-white border border-gray-100 rounded-xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">

@@ -4,12 +4,12 @@ import React, { useState, useEffect, use } from 'react';
 import { supabase } from '@/utils/supabase/client';
 import { 
   MapPin, 
-  Instagram, 
-  Linkedin, 
-  Github, 
-  MessageSquare,
-  MoreHorizontal
+  MoreHorizontal,
+  Sparkles
 } from 'lucide-react';
+import SocialIcons from '@/components/App/SocialIcons';
+import MusicPlayer from '@/components/App/MusicPlayer';
+import { getSkillIcon } from '@/utils/skills';
 import '../Profile.css';
 import { Profile } from '@/types/profile';
 
@@ -23,18 +23,13 @@ export default function PublicProfilePage({ params }: { params: Promise<{ id: st
       if (!id) return;
       try {
         setLoading(true);
-        console.log('Fetching profile for ID:', id);
         const { data, error } = await supabase
           .from('profiles')
           .select('*')
           .eq('id', id)
           .single();
 
-        if (error) {
-          console.error('Supabase error:', error);
-          throw error;
-        }
-        console.log('Profile data found:', data);
+        if (error) throw error;
         setProfile(data);
       } catch (err) {
         console.error('Error loading public profile:', err);
@@ -90,62 +85,52 @@ export default function PublicProfilePage({ params }: { params: Promise<{ id: st
             </div>
           </div>
 
-          <div className="identity-info">
-            <h1>{profile.full_name || 'Sin Nombre'}</h1>
-            <p className="headline">{profile.role || 'Miembro @ Hiveyoung'}</p>
-            <div className="meta-text">
-              {profile.location || 'Mundo Hiveyoung'}
-            </div>
-            
-            {/* Social Icons */}
-            <div className="social-icons-strip">
-              {profile.linkedin_url && (
-                <a href={profile.linkedin_url.startsWith('http') ? profile.linkedin_url : `https://${profile.linkedin_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="LinkedIn">
-                  <Linkedin size={18} />
-                </a>
-              )}
-              {profile.instagram_url && (
-                <a href={profile.instagram_url.startsWith('http') ? profile.instagram_url : `https://${profile.instagram_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="Instagram">
-                  <Instagram size={18} />
-                </a>
-              )}
-              {profile.github_url && (
-                <a href={profile.github_url.startsWith('http') ? profile.github_url : `https://${profile.github_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="GitHub">
-                  <Github size={18} />
-                </a>
-              )}
-              {profile.discord_id && (
-                <div className="social-link-icon group relative cursor-help" title={`Discord: ${profile.discord_id}`}>
-                  <MessageSquare size={18} />
-                </div>
+          <div className="profile-info-container">
+            <div className="identity-info">
+              <h1>{profile.full_name || 'Sin Nombre'}</h1>
+              <p className="headline">{profile.role || 'Miembro @ Hiveyoung'}</p>
+              <div className="meta-text" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <MapPin size={14} className="text-gray-500" />
+                {profile.location || 'Mundo Hiveyoung'}
+              </div>
+
+              <SocialIcons
+                linkedin_url={profile.linkedin_url}
+                instagram_url={profile.instagram_url}
+                github_url={profile.github_url}
+                discord_id={profile.discord_id}
+              />
+
+              {profile.bio_short && (
+                <p className="bio-short-text">
+                  {profile.bio_short}
+                </p>
               )}
             </div>
 
-            {/* Music Player */}
-            {profile.music_url && (
-              <div style={{ marginTop: '24px', width: '100%', maxWidth: '660px' }}>
-                {profile.music_url.includes('music.apple.com') ? (
-                  <iframe 
-                    allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
-                    frameBorder="0" 
-                    height="150" 
-                    style={{ width: '100%', overflow: 'hidden', borderRadius: '12px' }} 
-                    src={`https://embed.music.apple.com/es/album/${profile.music_url.split('album/')[1]?.split('?')[0]}${profile.music_url.includes('?i=') ? '&i=' + profile.music_url.split('?i=')[1] : ''}`}
-                  ></iframe>
-                ) : profile.music_url.includes('spotify.com') ? (
-                  <iframe 
-                    style={{ borderRadius: '12px' }} 
-                    src={`https://open.spotify.com/embed/track/${profile.music_url.split('track/')[1]?.split('?')[0]}?utm_source=generator&theme=0`} 
-                    width="100%" 
-                    height="80" 
-                    frameBorder="0" 
-                    allowFullScreen 
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                    loading="lazy"
-                  ></iframe>
-                ) : null}
+            {/* Skills section - Added to public profile */}
+            <div className="profile-skills-side">
+              <div className="skills-header-mini">
+                <span>Skills</span>
+                <Sparkles size={14} className="text-amber-500" />
               </div>
-            )}
+              <div className="skills-tags-container">
+                {profile.skills && profile.skills.length > 0 ? (
+                  profile.skills.map((skill, i) => (
+                    <span key={i} className="skill-pill-mini">
+                      {getSkillIcon(skill)}
+                      {skill}
+                    </span>
+                  ))
+                ) : (
+                  <span className="no-skills-text">SIN SKILLS</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="profile-header-footer">
+            <MusicPlayer music_url={profile.music_url} />
           </div>
         </div>
 
