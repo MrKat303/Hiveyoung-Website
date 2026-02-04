@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Zap } from 'lucide-react';
 
 export const getSkillIcon = (skill: string) => {
@@ -22,11 +23,14 @@ export const getSkillIcon = (skill: string) => {
   // Check for direct icon URLs first
   if (directIconUrls[s]) {
     return (
-      <img 
-        src={directIconUrls[s]}
-        alt={skill}
-        className="w-3.5 h-3.5 object-contain"
-      />
+      <div className="w-3.5 h-3.5 relative">
+        <Image
+          src={directIconUrls[s]}
+          alt={skill}
+          fill
+          className="object-contain"
+        />
+      </div>
     );
   }
   
@@ -105,12 +109,15 @@ export const getSkillIcon = (skill: string) => {
   
   if (iconData) {
     return (
-      <img 
-        src={`https://cdn.simpleicons.org/${iconData.slug}/${iconData.color}`}
-        alt={skill}
-        className="w-3.5 h-3.5 object-contain"
-        style={{ filter: 'none' }}
-      />
+      <div className="w-3.5 h-3.5 relative">
+        <Image
+          src={`https://cdn.simpleicons.org/${iconData.slug}/${iconData.color}`}
+          alt={skill}
+          fill
+          className="object-contain"
+          style={{ filter: 'none' }}
+        />
+      </div>
     );
   }
   

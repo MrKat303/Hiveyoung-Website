@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Users, User, Home } from 'lucide-react';
+import { Users, User } from 'lucide-react';
 import './MobileNav.css';
 
 export default function MobileNav() {

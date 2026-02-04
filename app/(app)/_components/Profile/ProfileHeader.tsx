@@ -30,7 +30,7 @@ export const ProfileHeader = ({
   uploading = false
 }: ProfileHeaderProps) => {
   const initials = profile?.full_name 
-    ? profile.full_name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)
+    ? profile.full_name.split(' ').filter(Boolean).map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)
     : profile?.email?.[0].toUpperCase() || '?';
 
   return (

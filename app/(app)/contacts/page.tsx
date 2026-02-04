@@ -1,22 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { supabase } from '@/utils/supabase/client';
 import { 
   Plus, 
   Search, 
-  UserPlus, 
   X, 
-  Briefcase, 
   Building2, 
-  Phone, 
-  Tag, 
   Users,
   Loader2,
-  Check,
-  AlertCircle,
   FolderOpen,
-  Briefcase as BusinessIcon,
   Globe,
   Gavel,
   Megaphone,
@@ -61,7 +55,7 @@ export default function ContactsPage() {
   const [selectedUser, setSelectedUser] = useState<{ id: string, full_name: string | null, avatar_url: string | null } | null>(null);
 
   useEffect(() => {
-    fetchContacts();
+    void fetchContacts();
   }, []);
 
   async function fetchContacts() {
@@ -98,7 +92,9 @@ export default function ContactsPage() {
         setUserResults([]);
       }
     };
-    const timer = setTimeout(searchUsers, 300);
+    const timer = setTimeout(() => {
+      void searchUsers();
+    }, 300);
     return () => clearTimeout(timer);
   }, [userQuery]);
 
@@ -220,9 +216,9 @@ export default function ContactsPage() {
                     <td data-label="Persona">
                       {contact.profiles ? (
                         <div className="related-person">
-                          <div className="person-avatar">
+                          <div className="person-avatar relative overflow-hidden">
                             {contact.profiles.avatar_url ? (
-                              <img src={contact.profiles.avatar_url} alt="" />
+                              <Image src={contact.profiles.avatar_url} alt="" fill className="object-cover" />
                             ) : (
                               <span>{contact.profiles.full_name?.[0] || '?'}</span>
                             )}
@@ -350,8 +346,8 @@ export default function ContactsPage() {
                               onClick={() => { setSelectedUser(u); setUserQuery(''); }}
                               className="p-4 hover:bg-gray-50 cursor-pointer flex items-center gap-3 border-b last:border-0 transition-colors"
                             >
-                              <div className="w-8 h-8 rounded-full bg-[#3a1b4e10] overflow-hidden flex items-center justify-center font-bold text-xs text-[#3a1b4e]">
-                                {u.avatar_url ? <img src={u.avatar_url} className="w-full h-full object-cover" alt="" /> : (u.full_name ? u.full_name[0] : '?')}
+                              <div className="w-8 h-8 rounded-full bg-[#3a1b4e10] overflow-hidden relative flex items-center justify-center font-bold text-xs text-[#3a1b4e]">
+                                {u.avatar_url ? <Image src={u.avatar_url} fill className="object-cover" alt="" /> : (u.full_name ? u.full_name[0] : '?')}
                               </div>
                               <span className="text-sm font-semibold text-gray-700">{u.full_name}</span>
                             </div>

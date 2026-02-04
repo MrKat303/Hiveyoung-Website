@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Users, User, LogOut } from 'lucide-react';
+import { Users, User, LogOut } from 'lucide-react';
 import { supabase } from '@/utils/supabase/client';
 import './Sidebar.css';
 
@@ -24,7 +25,7 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        <img src="/Logo.svg" alt="Hiveyoung" className="sidebar-logo-img" />
+        <Image src="/Logo.svg" alt="Hiveyoung" className="sidebar-logo-img" width={120} height={40} />
       </div>
       <nav className="sidebar-nav">
         {menuItems.map((item) => {

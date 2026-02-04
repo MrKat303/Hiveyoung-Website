@@ -37,16 +37,17 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
         // Handle case where user exists in Auth but not in Profiles table yet
         setProfile(null);
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error('Error fetching profile:', err);
-      setError(err.message);
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
     } finally {
       setLoading(false);
     }
   }, []);
 
   const refreshProfile = useCallback(async () => {
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data } = await supabase.auth.getUser();
+    const user = data?.user;
     if (user) {
       await fetchProfile(user.id);
     } else {
@@ -57,13 +58,13 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Initial fetch
-    refreshProfile();
+    void refreshProfile();
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       console.log('Auth event:', event);
       if (session?.user) {
-        fetchProfile(session.user.id);
+        void fetchProfile(session.user.id);
       } else {
         setProfile(null);
         setLoading(false);
@@ -77,13 +78,14 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 
   const updateProfile = async (newProfile: Partial<Profile>) => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data } = await supabase.auth.getUser();
+      const user = data?.user;
       if (!user) throw new Error('No estás autenticado');
 
       const updates = {
         ...newProfile,
         id: user.id,
-        email: user.email!,
+        email: user.email || '',
         updated_at: new Date().toISOString(),
       };
 
@@ -95,15 +97,16 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       
       setProfile(prev => prev ? { ...prev, ...updates } as Profile : (updates as Profile));
       return { success: true };
-    } catch (err: any) {
+    } catch (err) {
       console.error('Error updating profile:', err);
-      return { success: false, error: err.message };
+      return { success: false, error: err instanceof Error ? err.message : 'An unknown error occurred' };
     }
   };
 
   const uploadAvatar = async (file: File) => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: userData } = await supabase.auth.getUser();
+      const user = userData?.user;
       if (!user) throw new Error('No estás autenticado');
 
       const fileExt = file.name.split('.').pop();
@@ -128,9 +131,9 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       if (!success) throw new Error(updateError);
 
       return { success: true, url: publicUrl };
-    } catch (err: any) {
+    } catch (err) {
       console.error('Error uploading avatar:', err);
-      return { success: false, error: err.message };
+      return { success: false, error: err instanceof Error ? err.message : 'An unknown error occurred' };
     }
   };
 

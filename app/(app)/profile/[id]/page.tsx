@@ -35,7 +35,7 @@ export default function PublicProfilePage({ params }: { params: Promise<{ id: st
         setLoading(false);
       }
     }
-    loadProfile();
+    void loadProfile();
   }, [id]);
 
   if (loading) return (
