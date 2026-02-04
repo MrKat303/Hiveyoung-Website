@@ -120,7 +120,8 @@
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  table-layout: fixed; /* Essential to prevent long emails from breaking the structure */
+  table-layout: fixed;
+  min-width: 900px; /* Prevent the table from becoming too narrow on smaller laptop screens */
 }
 
 .contacts-table th {
@@ -152,13 +153,13 @@
 .contacts-table tr:hover {
   background-color: #f1f5f9 !important;
 }
-/* Exact column control */
-.contacts-table td:nth-child(1), .contacts-table th:nth-child(1) { width: 25%; } /* Nombre */
-.contacts-table td:nth-child(2), .contacts-table th:nth-child(2) { width: 150px; } /* Teléfono */
-.contacts-table td:nth-child(3), .contacts-table th:nth-child(3) { width: 22%; } /* Correo */
-.contacts-table td:nth-child(4), .contacts-table th:nth-child(4) { width: 18%; } /* Organización */
-.contacts-table td:nth-child(5), .contacts-table th:nth-child(5) { width: 20%; } /* Etiquetas */
-.contacts-table td:nth-child(6), .contacts-table th:nth-child(6) { width: 70px; text-align: right; position: relative; overflow: visible; } /* Acciones */
+/* Exact column control - Optimized for desktop readability */
+.contacts-table td:nth-child(1), .contacts-table th:nth-child(1) { width: 30%; } /* Nombre */
+.contacts-table td:nth-child(2), .contacts-table th:nth-child(2) { width: 140px; } /* Teléfono */
+.contacts-table td:nth-child(3), .contacts-table th:nth-child(3) { width: 20%; } /* Correo */
+.contacts-table td:nth-child(4), .contacts-table th:nth-child(4) { width: 15%; } /* Organización */
+.contacts-table td:nth-child(5), .contacts-table th:nth-child(5) { width: 15%; } /* Etiquetas */
+.contacts-table td:nth-child(6), .contacts-table th:nth-child(6) { width: 80px; text-align: right; position: relative; overflow: visible; } /* Acciones */
 
 .clickable-cell {
   cursor: pointer;
@@ -199,6 +200,10 @@
 .name-cell span:first-of-type {
   font-size: 1rem;
   line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .name-cell span:last-of-type {
@@ -206,6 +211,11 @@
   color: #94a3b8;
   font-weight: 500;
   margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-transform: uppercase; /* Forzar mayúsculas */
 }
 
 .contact-avatar {
@@ -221,6 +231,14 @@
   color: #4a5568;
   overflow: hidden;
   flex-shrink: 0;
+}
+
+.actions-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  width: 100%;
 }
 
 .contact-avatar img {
@@ -317,9 +335,9 @@
 }
 
 .action-dots svg {
-  width: 32px !important;
-  height: 32px !important;
-  stroke-width: 2.5px;
+  width: 48px !important; /* GIGANTIC */
+  height: 48px !important;
+  stroke-width: 2px; /* Thinner stroke for large icons looks more elegant */
 }
 
 /* Category Folders Navigation - Pill Style */
@@ -613,6 +631,7 @@
   font-size: 0.7rem;
   color: #718096;
   font-weight: 500;
+  text-transform: uppercase; /* Forzar mayúsculas */
 }
 
 .card-info-grid {

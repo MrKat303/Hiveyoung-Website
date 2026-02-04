@@ -163,10 +163,10 @@ export default function ContactsPage() {
   };
 
   const filteredContacts = contacts.filter(c => {
-    const matchesSearch = 
-      c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.organization?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.email?.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = searchTerm === '' || (
+      c.name.toLowerCase().split(' ').some(word => word.startsWith(searchTerm.toLowerCase())) ||
+      (c.organization?.toLowerCase().split(' ') || []).some(word => word.startsWith(searchTerm.toLowerCase()))
+    );
     
     const matchesFolder = selectedFolderId === 'Todos' || c.folder_id === selectedFolderId;
 
@@ -187,7 +187,7 @@ export default function ContactsPage() {
             <Search className="search-icon-inside" size={16} />
             <input 
               type="text" 
-              placeholder="Buscar..."
+              placeholder="Buscar por nombre u organización..."
               className="search-field"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}

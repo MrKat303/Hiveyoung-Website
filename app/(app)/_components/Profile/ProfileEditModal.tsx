@@ -5,7 +5,7 @@ import { X, MapPin } from 'lucide-react';
 import { normalizeSkillName } from '@/app/(app)/_utils/skillUtils';
 import { getSkillIcon } from '@/app/(app)/_utils/skillIcons';
 import { useToast } from '@/hooks/useToast';
-import styles from './ProfileModal.module.css';
+import styles from '@/app/(app)/_components/Profile/ProfileModal.module.css';
 
 type ProfileEditModalProps = {
   isOpen: boolean;
