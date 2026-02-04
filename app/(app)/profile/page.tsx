@@ -54,12 +54,15 @@ function ProfileEditForm({ profile, onClose, onSave, saving }: ProfileEditFormPr
           `https://photon.komoot.io/api/?q=${encodeURIComponent(locationQuery)}&limit=5`,
           { signal: controller.signal }
         );
+        if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
-        const suggestions = data.features.map((f: { properties: { name?: string, city?: string, state?: string, country?: string } }) => {
-          const p = f.properties;
-          return [p.name, p.city, p.state, p.country].filter(Boolean).join(', ');
-        });
-        setLocationSuggestions([...new Set(suggestions)] as string[]);
+        if (data && Array.isArray(data.features)) {
+          const suggestions = data.features.map((f: { properties: { name?: string, city?: string, state?: string, country?: string } }) => {
+            const p = f.properties;
+            return [p.name, p.city, p.state, p.country].filter(Boolean).join(', ');
+          });
+          setLocationSuggestions([...new Set(suggestions)] as string[]);
+        }
       } catch (err) {
         console.error('Error fetching locations:', err);
       }

@@ -10,8 +10,8 @@ export function useContacts() {
   const fetchContacts = async () => {
     try {
       setLoading(true)
-      const { data } = await supabase.auth.getUser()
-      const user = data?.user
+      const { data: userData } = await supabase.auth.getUser()
+      const user = userData?.user
 
       if (!user) {
         setLoading(false)
@@ -39,8 +39,8 @@ export function useContacts() {
 
   const addContact = async (contact: Omit<Contact, 'id' | 'user_id' | 'created_at'>) => {
     try {
-        const { data } = await supabase.auth.getUser()
-        const user = data?.user
+        const { data: userData } = await supabase.auth.getUser()
+        const user = userData?.user
         if (!user) throw new Error('No user logged in')
 
         const newContact = { 

@@ -85,7 +85,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       const updates = {
         ...newProfile,
         id: user.id,
-        email: user.email!,
+        email: user.email || '',
         updated_at: new Date().toISOString(),
       };
 
@@ -105,8 +105,8 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 
   const uploadAvatar = async (file: File) => {
     try {
-      const { data } = await supabase.auth.getUser();
-      const user = data?.user;
+      const { data: userData } = await supabase.auth.getUser();
+      const user = userData?.user;
       if (!user) throw new Error('No estás autenticado');
 
       const fileExt = file.name.split('.').pop();
