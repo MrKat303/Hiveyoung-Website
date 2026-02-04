@@ -1,0 +1,541 @@
+/* LinkedIn-Specific Premium Implementation */
+
+.profile-page {
+    animation: fadeIn 0.6s ease-out;
+    background-color: white;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-container {
+    width: 100%;
+    max-width: 850px;
+    background: white;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08); /* LinkedIn subtle border */
+    position: relative;
+    height: fit-content;
+}
+
+/* Banner Area */
+.profile-banner {
+    height: 196px;
+    background: linear-gradient(135deg, #3A1B4E 0%, #2A1239 100%);
+    position: relative;
+}
+
+.banner-logo-linkdin {
+    position: absolute;
+    right: 24px;
+    bottom: 12px;
+    height: 72px;
+    width: auto;
+    pointer-events: none;
+}
+
+/* Header Content Block */
+.profile-header-main {
+    padding: 0 24px 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar-and-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: -100px; /* Overlap banner */
+    margin-bottom: 24px;
+}
+
+.profile-avatar-linkedin {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: white;
+    padding: 4px; /* Space for the inner border effect */
+    border: 4px solid white; /* Thick white border */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.inner-avatar-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f3f2ef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none; /* Removed blue border */
+}
+
+.avatar-camera-btn {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.profile-avatar-linkedin:hover .avatar-camera-btn {
+    opacity: 1;
+}
+
+.header-action-btns {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.edit-pencil-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5e5e5e;
+    background: transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.edit-pencil-btn:hover {
+    background: #f3f3f3;
+    color: #1a1a1b;
+}
+
+/* User Identity Grid */
+.identity-grid {
+    display: block; /* Single column now */
+}
+
+.identity-info h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1b;
+    margin: 0;
+}
+
+.identity-info .headline {
+    font-size: 1rem;
+    color: #1a1a1b;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+.identity-info .meta-text {
+    font-size: 0.875rem;
+    color: #666666;
+    margin-top: 4px;
+}
+
+.identity-info .contact-btn {
+    color: #3A1B4E; /* Changed to Purple */
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    margin-top: 4px;
+    display: block;
+    cursor: pointer;
+}
+
+.identity-info .contact-btn:hover {
+    text-decoration: underline;
+}
+
+/* Organizations / Side Info - Removed as requested */
+.side-orgs {
+    display: none;
+}
+
+/* Social Bar */
+.social-icons-strip {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.social-link-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f1f1;
+    color: #5e5e5e;
+    transition: all 0.2s;
+}
+
+.social-link-icon:hover {
+    background: #e8e8e8;
+    color: #3A1B4E;
+    transform: translateY(-2px);
+}
+
+/* Bio / Extracto Section */
+.profile-section-block {
+    margin-top: 12px;
+    padding: 24px;
+    border-top: 8px solid #f3f2ef; /* Thick LinkedIn separator */
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1b;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.section-title.flex {
+    display: flex;
+    align-items: center;
+}
+
+.section-content {
+    font-size: 0.875rem;
+    color: #1a1a1b;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+/* Modal Window */
+.modal-window-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(2px);
+}
+
+.modal-content-card {
+    background: white;
+    width: 100%;
+    max-width: 744px;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+.modal-header-ln {
+    padding: 16px 24px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header-ln h2 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #1a1a1b;
+}
+
+.modal-body-ln {
+    padding: 24px;
+    overflow-y: auto;
+    max-height: 65vh; /* Fixed height to force scroll */
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+.modal-body-ln::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body-ln::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
+
+.ln-form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ln-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ln-label {
+    font-size: 0.875rem;
+    color: #666666;
+    font-weight: 500;
+}
+
+.ln-input {
+    width: 100%;
+    padding: 8px 12px;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #1a1a1b;
+    transition: border-color 0.2s;
+}
+
+.ln-input:focus {
+    outline: none;
+    border-color: #0a66c2;
+    box-shadow: 0 0 0 1px #0a66c2;
+}
+
+.ln-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 4px;
+    font-size: 1rem;
+    min-height: 120px;
+    resize: vertical;
+    color: #1a1a1b;
+}
+
+.modal-footer-ln {
+    padding: 12px 24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ln-save-btn {
+    background: #0a66c2;
+    color: white;
+    border: none;
+    border-radius: 1.6rem;
+    padding: 6px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ln-save-btn:hover {
+    background: #004182;
+}
+
+@media (max-width: 768px) {
+    .profile-page {
+        padding: 0;
+    }
+
+    .profile-header-main {
+        padding-bottom: 8px;
+    }
+
+    .profile-container {
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+    }
+
+    .profile-banner {
+        height: 120px;
+    }
+
+    .banner-logo-linkdin {
+        height: 32px;
+        right: 12px;
+        bottom: 8px;
+    }
+
+    .avatar-and-actions {
+        margin-top: -65px;
+        padding: 0 16px;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 0;
+    }
+
+    .profile-avatar-linkedin {
+        width: 125px;
+        height: 125px;
+        border-width: 1.5px; /* Delgadito como pidió el usuario */
+        border-radius: 50%;
+    }
+
+    .header-action-btns {
+        position: static;
+        margin-bottom: 0;
+    }
+
+    .edit-pencil-btn {
+        width: 36px;
+        height: 36px;
+        background: white;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .identity-info {
+        text-align: left; /* Align text to left */
+        padding: 0 16px;
+        margin-top: 12px;
+    }
+
+    .identity-info h1 {
+        font-size: 1.25rem;
+    }
+
+    .identity-info .headline {
+        font-size: 0.875rem;
+    }
+
+    .identity-info .meta-text {
+        font-size: 0.75rem;
+    }
+
+    .social-icons-strip {
+        justify-content: flex-start; /* Align icons to left */
+        gap: 8px;
+        margin-top: 16px;
+        margin-bottom: 12px;
+    }
+
+    .social-link-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* Fix Player on Mobile Layer */
+    .profile-header-main div[style*="marginTop"] {
+        margin-top: 12px !important;
+        padding-right: 16px; /* Avoid side touching */
+    }
+
+    .profile-header-main iframe {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .profile-section-block {
+        padding: 16px;
+        margin-top: 0;
+        border-top: 4px solid #f3f2ef; /* Separador más delgado para menos espacio vacío */
+    }
+
+    .section-title {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .section-content {
+        font-size: 0.8125rem;
+    }
+
+    .modal-window-overlay {
+        padding: 0;
+        background: white; /* Cambiar a blanco para que no se vea nada detrás */
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1000;
+    }
+
+    .modal-content-card {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        border: none;
+        box-shadow: none;
+    }
+
+    .ln-form-grid {
+        gap: 12px; /* Menos espacio entre campos para aprovechar mejor la pantalla */
+    }
+
+    .modal-header-ln {
+        flex-shrink: 0;
+        padding: 12px 20px;
+        background: white;
+        border-bottom: 2px solid #f3f2ef;
+    }
+
+    .modal-body-ln {
+        flex: 1;
+        overflow-y: auto;
+        padding: 24px 20px;
+        -webkit-overflow-scrolling: touch;
+        background: white;
+        display: block; /* Volver a block para evitar estiramientos de flex */
+    }
+
+    /* Footer integrado al final del scroll */
+    .modal-footer-ln {
+        margin-top: 32px;
+        padding: 0 0 40px 0; /* Padding inferior para que no quede pegado al borde del celu */
+        background: transparent;
+        border-top: none; /* Quitar línea divisoria para que parezca un solo form */
+        display: block;
+    }
+
+    .ln-input-group {
+        gap: 6px;
+    }
+
+    .ln-label {
+        color: #1a1a1b;
+        font-weight: 600;
+        font-size: 0.8125rem;
+    }
+
+    .ln-input {
+        background: #f8f9fa;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        height: 44px; /* Better touch target */
+    }
+
+    .ln-save-btn {
+        width: 100%;
+        background: #3a1b4e; /* Morado como pidió el usuario */
+        color: white;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 24px;
+        font-size: 1rem;
+        font-weight: 700;
+        border: none;
+    }
+
+    .ln-save-btn:hover {
+        background: #2A1239;
+    }
+}

@@ -1,5 +1,5 @@
-/* Importación de Tailwind (si lo sigues usando, si no, puedes omitirlo) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
 
 @font-face {
     font-family: 'Bernoru Black';
@@ -7,26 +7,6 @@
     font-weight: 900;
     font-style: normal;
     font-display: swap;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: auto !important;
-    height: 100%;
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE y Edge */
-}
-
-html::-webkit-scrollbar {
-    display: none;
-    /* Chrome, Safari y Opera */
 }
 
 :root {
@@ -37,74 +17,20 @@ html::-webkit-scrollbar {
 
 body {
     font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #3a1b4e;
+    background-color: #f8fafc; /* Changed to slate-50 for cleaner look, overriding the hard purple */
     min-height: 100vh;
-    /* Cambiado de 100% a 100vh para asegurar el flex */
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
 }
 
-/* Reemplazo de la clase .App de Vite */
+/* Base styles cleanup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 main {
     flex: 1;
-}
-
-.no-interaction {
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    pointer-events: none;
-    -webkit-user-drag: none;
-}
-
-/* Prevent image dragging and right-click saving */
-img {
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-touch-callout: none;
-    /* Non-standard but helpful */
-}
-
-/* Scroll Reveal effect - Ultrasmooth, Slow & Elegant Bottom-to-Top */
-.reveal {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translateY(50px);
-    visibility: hidden;
-    transition:
-        opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 2.2s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 2.2s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity, filter;
-}
-
-.reveal.active {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    filter: blur(0) !important;
-    visibility: visible !important;
-}
-
-/* Page Reveal Curtains */
-.curtain-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    /* Topmost */
-    display: flex;
-    pointer-events: none;
-}
-
-.curtain-col {
-    flex: 1;
-    height: 100%;
-    background: #2eb67d;
-    /* HiveYoung Green Updated */
-    transform-origin: top center;
-    /* border-right: 1px solid rgba(0,0,0,0.02); */
 }

@@ -424,7 +424,32 @@
     display: none;
 }
 
+.auth-error {
+    color: #e53e3e;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.toggle-auth-btn {
+    background: transparent;
+    border: none;
+    color: #3a1b4e;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.toggle-auth-btn:hover {
+    opacity: 1;
+}
+
 .login-main-title,
 .countdown-section h2 {
     animation: none;
 }
+
