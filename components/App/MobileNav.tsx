@@ -10,6 +10,7 @@ export default function MobileNav() {
   const pathname = usePathname();
 
   const navItems = [
+    { href: '/contacts', label: 'Contactos', icon: Users },
     { href: '/profile', label: 'Perfil', icon: User },
   ];
 

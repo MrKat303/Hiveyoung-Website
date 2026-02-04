@@ -64,9 +64,9 @@
     height: 160px;
     border-radius: 50%;
     background: white;
-    padding: 4px; /* Space for the inner border effect */
-    border: 4px solid white; /* Thick white border */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 2px;
+    border: 2px solid white;
+    box-shadow: none;
     position: relative;
 }
 
@@ -196,6 +196,100 @@
     background: #e8e8e8;
     color: #3A1B4E;
     transform: translateY(-2px);
+}
+
+/* Skills/Identity Row Layout */
+.profile-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: -10px;
+}
+
+.bio-short-text {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    max-width: 500px;
+}
+
+.no-skills-text {
+    font-size: 10px;
+    color: #ccc;
+    font-weight: bold;
+}
+
+.identity-skills-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+}
+
+.profile-skills-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    min-width: 150px;
+}
+
+.skills-header-mini {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: #666666;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.skills-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.skill-pill-mini {
+    background-color: #fff4ed; /* Light peach/cream like image */
+    color: #4a4a4a;
+    padding: 6px 14px;
+    border-radius: 9999px; /* Fully rounded pill */
+    font-size: 0.8125rem;
+    font-weight: 500;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.skill-pill-mini:hover {
+    transform: scale(1.05);
+}
+
+/* Footer & Music */
+.profile-header-footer {
+    border-top: 1px solid #f3f2ef;
+    margin-top: 20px;
+    padding-top: 16px;
+}
+
+.profile-music-wrapper {
+    margin-top: 16px; 
+    width: 100%; 
+    max-width: 660px;
 }
 
 /* Bio / Extracto Section */
@@ -385,9 +479,12 @@
     }
 
     .profile-avatar-linkedin {
-        width: 110px; /* Un poco más pequeña como pidió el usuario */
+        width: 110px;
         height: 110px;
-        border-width: 1.5px;
+        border: 2px solid white;
+        padding: 2px;
+        background: white;
+        box-shadow: none;
         border-radius: 50%;
     }
 
@@ -404,40 +501,99 @@
     }
 
     .identity-info {
-        text-align: left; /* Align text to left */
-        padding: 0 16px;
+        text-align: left;
+        padding: 0;
         margin-top: 4px;
     }
 
+    /* Contenedor principal de info + skills en móvil */
+    .profile-info-container {
+        flex-direction: column !important;
+        gap: 16px !important;
+        padding: 16px !important;
+        margin-top: 0 !important;
+        border: none !important;
+        background: transparent !important;
+    }
+
+    .bio-short-text {
+        margin-top: 10px !important;
+        font-size: 0.875rem !important;
+        max-width: 100% !important;
+        line-height: 1.6 !important;
+    }
+
+    .identity-skills-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .profile-skills-side {
+        max-width: 100%;
+        align-items: flex-start;
+        text-align: left;
+        padding: 0;
+        width: 100%;
+    }
+
+    .skills-tags-container {
+        justify-content: flex-start;
+        width: 100%;
+    }
+
     .identity-info h1 {
-        font-size: 1.25rem;
+        font-size: 1.375rem;
+        font-weight: 700;
+        margin-bottom: 4px;
     }
 
     .identity-info .headline {
-        font-size: 0.875rem;
+        font-size: 0.9375rem;
+        margin-bottom: 6px;
     }
 
     .identity-info .meta-text {
-        font-size: 0.75rem;
+        font-size: 0.8125rem;
+        margin-bottom: 4px;
+    }
+
+    /* Skills header en móvil */
+    .skills-header-mini {
+        font-size: 0.875rem !important;
+        font-weight: 700 !important;
+        color: #1a1a1b !important;
+        margin-bottom: 10px !important;
     }
 
     .social-icons-strip {
-        justify-content: flex-start; /* Align icons to left */
-        gap: 8px;
-        margin-top: 8px;
-        margin-bottom: 8px;
+        justify-content: flex-start;
+        gap: 10px;
+        margin-top: 10px !important;
+        margin-bottom: 12px !important;
     }
 
     .social-link-icon {
-        width: 32px;
-        height: 32px;
+        width: 34px;
+        height: 34px;
+    }
+
+    /* Skill pills en móvil */
+    .skill-pill-mini {
+        font-size: 0.8125rem;
+        padding: 7px 12px;
+        gap: 6px;
     }
 
     /* Fix Player on Mobile Layer */
-    .profile-header-main div[style*="marginTop"] {
-        margin-top: 4px !important;
-        padding: 0 !important;
-        width: 100% !important;
+    .profile-header-footer {
+        border-top: none !important;
+        margin-top: 16px !important;
+        padding-top: 0 !important;
+    }
+
+    .profile-music-wrapper {
+        margin-top: 0 !important;
+        padding: 0 16px;
     }
 
     .profile-header-main iframe {
@@ -447,8 +603,8 @@
 
     .profile-section-block {
         padding: 16px;
-        margin-top: 0;
-        border-top: 4px solid #f3f2ef; /* Separador más delgado para menos espacio vacío */
+        margin-top: 8px;
+        border-top: 8px solid #f3f2ef;
     }
 
     .section-title {

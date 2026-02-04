@@ -46,6 +46,7 @@ export function useProfile() {
             discord_id: null,
             github_url: null,
             music_url: null,
+            skills: [],
             updated_at: new Date().toISOString()
           }
           setProfile(fallback)

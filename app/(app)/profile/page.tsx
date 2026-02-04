@@ -14,10 +14,28 @@ import {
   Linkedin, 
   Github, 
   MessageSquare,
-  ChevronDown,
-  Globe,
+  Star,
+  Code,
+  Layout,
+  Terminal,
+  Database,
+  Smartphone,
+  Figma,
+  Cpu,
+  Brain,
+  Globe2,
+  Brush,
+  Zap,
   MoreHorizontal,
-  Music
+  Music,
+  DollarSign,
+  TrendingUp,
+  Mic,
+  Lightbulb,
+  Target,
+  Users,
+  Briefcase,
+  Sparkles
 } from 'lucide-react';
 import ImageCropper from '@/components/App/ImageCropper';
 import './Profile.css';
@@ -32,11 +50,13 @@ export default function ProfilePage() {
     location: '',
     role: '',
     bio: '',
+    bio_short: '',
     instagram_url: '',
     linkedin_url: '',
     discord_id: '',
     github_url: '',
     music_url: '',
+    skills: [] as string[],
   });
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -51,14 +71,44 @@ export default function ProfilePage() {
         location: profile.location || '',
         role: profile.role || 'user',
         bio: profile.bio || '',
+        bio_short: profile.bio_short || '',
         instagram_url: profile.instagram_url || '',
         linkedin_url: profile.linkedin_url || '',
         discord_id: profile.discord_id || '',
         github_url: profile.github_url || '',
         music_url: profile.music_url || '',
+        skills: profile.skills || [],
       });
     }
   }, [profile, isModalOpen]);
+
+  // Location Autocomplete
+  const [locationQuery, setLocationQuery] = useState('');
+  const [locationSuggestions, setLocationSuggestions] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (locationQuery.length < 3) {
+      setLocationSuggestions([]);
+      return;
+    }
+
+    const fetchLocations = async () => {
+      try {
+        const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(locationQuery)}&limit=5`);
+        const data = await response.json();
+        const suggestions = data.features.map((f: any) => {
+          const p = f.properties;
+          return [p.name, p.city, p.state, p.country].filter(Boolean).join(', ');
+        });
+        setLocationSuggestions([...new Set(suggestions)]);
+      } catch (err) {
+        console.error('Error fetching locations:', err);
+      }
+    };
+
+    const timer = setTimeout(fetchLocations, 400);
+    return () => clearTimeout(timer);
+  }, [locationQuery]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,7 +124,8 @@ export default function ProfilePage() {
         setIsModalOpen(false);
       }, 1000);
     } else {
-      setMessage({ type: 'error', text: 'Error: ' + error });
+      console.error('Update Error:', error);
+      setMessage({ type: 'error', text: 'Error al actualizar: ' + error });
     }
     setSaving(false);
   };
@@ -101,6 +152,193 @@ export default function ProfilePage() {
       setTimeout(() => setMessage(null), 3000);
     }
     setUploading(false);
+  };
+
+  const [skillInput, setSkillInput] = useState('');
+
+  const handleAddSkill = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && skillInput.trim()) {
+      e.preventDefault();
+      
+      let input = skillInput.trim();
+      const lowerInput = input.toLowerCase();
+
+      // Intelligence: Auto-correction Map for common typos or abbreviations
+      const corrections: { [key: string]: string } = {
+        'fhotoshop': 'Photoshop',
+        'fotoshop': 'Photoshop',
+        'potoshop': 'Photoshop',
+        'ilustrator': 'Illustrator',
+        'illustretor': 'Illustrator',
+        'ilustreitor': 'Illustrator',
+        'js': 'JavaScript',
+        'ts': 'TypeScript',
+        'python': 'Python',
+        'pyton': 'Python',
+        'pithon': 'Python',
+        'jav': 'Java',
+        'noud': 'Node.js',
+        'node': 'Node.js',
+        'supabes': 'Supabase',
+        'nextjs': 'Next.js',
+        'reactjs': 'React',
+        'vsc': 'VS Code',
+        'vscode': 'VS Code',
+        'gitgub': 'GitHub',
+        'gitub': 'GitHub',
+        'html': 'HTML',
+        'css': 'CSS',
+        'cpp': 'C++',
+        'cplusplus': 'C++',
+        'csharp': 'C#',
+        'excel': 'Excel',
+        'canva': 'Canva',
+        'adobe': 'Adobe',
+        'photoshop': 'Photoshop',
+        'ps': 'Photoshop',
+        'affinity': 'Affinity',
+      };
+
+      if (corrections[lowerInput]) {
+        // If typo found, use corrected version
+        input = corrections[lowerInput];
+      } else {
+        // Intelligence: Formatting - First letter Uppercase, rest Lowercase
+        // This ensures the input looks professional
+        input = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+      }
+
+      if (formData.skills.length >= 7) {
+        setMessage({ type: 'error', text: 'Máximo 7 skills permitidas' });
+        setTimeout(() => setMessage(null), 3000);
+        return;
+      }
+      if (!formData.skills.includes(input)) {
+        setFormData({ ...formData, skills: [...formData.skills, input] });
+      }
+      setSkillInput('');
+    }
+  };
+
+  const removeSkill = (skillToRemove: string) => {
+    setFormData({ ...formData, skills: formData.skills.filter(s => s !== skillToRemove) });
+  };
+
+  const getSkillIcon = (skill: string) => {
+    const s = skill.toLowerCase().trim();
+    
+    // Direct CDN URLs for Office & Design tools (these are more reliable)
+    const directIconUrls: { [key: string]: string } = {
+      'excel': 'https://img.icons8.com/color/48/microsoft-excel-2019--v1.png',
+      'word': 'https://img.icons8.com/color/48/microsoft-word-2019--v2.png',
+      'powerpoint': 'https://img.icons8.com/color/48/microsoft-powerpoint-2019--v1.png',
+      'photoshop': 'https://img.icons8.com/color/48/adobe-photoshop--v1.png',
+      'illustrator': 'https://img.icons8.com/color/48/adobe-illustrator--v1.png',
+      'canva': 'https://img.icons8.com/fluency/48/canva.png',
+      'notion': 'https://img.icons8.com/fluency/48/notion.png',
+      'slack': 'https://img.icons8.com/color/48/slack-new.png',
+      'affinity': 'https://img.icons8.com/color/48/affinity-designer.png',
+      'adobe': 'https://img.icons8.com/color/48/adobe-creative-cloud--v1.png',
+      'blender': 'https://img.icons8.com/color/48/blender-3d.png',
+    };
+
+    // Check for direct icon URLs first
+    if (directIconUrls[s]) {
+      return (
+        <img 
+          src={directIconUrls[s]}
+          alt={skill}
+          className="w-3.5 h-3.5 object-contain"
+        />
+      );
+    }
+    
+    // Simple Icons mapping with hex colors for programming languages & frameworks
+    const simpleIconsMap: { [key: string]: { slug: string; color: string } } = {
+      // Languages
+      'javascript': { slug: 'javascript', color: 'F7DF1E' },
+      'typescript': { slug: 'typescript', color: '3178C6' },
+      'python': { slug: 'python', color: '3776AB' },
+      'java': { slug: 'openjdk', color: '437291' },
+      'c++': { slug: 'cplusplus', color: '00599C' },
+      'c#': { slug: 'csharp', color: '239120' },
+      'dart': { slug: 'dart', color: '0175C2' },
+      'rust': { slug: 'rust', color: '000000' },
+      'go': { slug: 'go', color: '00ADD8' },
+      'php': { slug: 'php', color: '777BB4' },
+      'ruby': { slug: 'ruby', color: 'CC342D' },
+      'swift': { slug: 'swift', color: 'F05138' },
+      'kotlin': { slug: 'kotlin', color: '7F52FF' },
+      'lua': { slug: 'lua', color: '2C2D72' },
+      'perl': { slug: 'perl', color: '39457E' },
+      'solidity': { slug: 'solidity', color: '363636' },
+      
+      // Frameworks
+      'react': { slug: 'react', color: '61DAFB' },
+      'next.js': { slug: 'nextdotjs', color: '000000' },
+      'node.js': { slug: 'nodedotjs', color: '339933' },
+      'vue': { slug: 'vuedotjs', color: '4FC08D' },
+      'angular': { slug: 'angular', color: 'DD0031' },
+      'flutter': { slug: 'flutter', color: '02569B' },
+      'django': { slug: 'django', color: '092E20' },
+      'laravel': { slug: 'laravel', color: 'FF2D20' },
+      'spring': { slug: 'spring', color: '6DB33F' },
+      'unity': { slug: 'unity', color: '000000' },
+      
+      // Databases
+      'mongodb': { slug: 'mongodb', color: '47A248' },
+      'mysql': { slug: 'mysql', color: '4479A1' },
+      'postgresql': { slug: 'postgresql', color: '4169E1' },
+      'supabase': { slug: 'supabase', color: '3ECF8E' },
+      'firebase': { slug: 'firebase', color: 'FFCA28' },
+      'redis': { slug: 'redis', color: 'DC382D' },
+      
+      // Design Tools
+      'figma': { slug: 'figma', color: 'F24E1E' },
+      
+      // Dev Tools & Cloud
+      'github': { slug: 'github', color: '181717' },
+      'docker': { slug: 'docker', color: '2496ED' },
+      'arduino': { slug: 'arduino', color: '00979D' },
+      'git': { slug: 'git', color: 'F05032' },
+      'vscode': { slug: 'visualstudiocode', color: '007ACC' },
+      'vercel': { slug: 'vercel', color: '000000' },
+      'aws': { slug: 'amazonaws', color: 'FF9900' },
+      'azure': { slug: 'microsoftazure', color: '0078D4' },
+      
+      // Web
+      'html': { slug: 'html5', color: 'E34F26' },
+      'css': { slug: 'css3', color: '1572B6' },
+      'tailwind': { slug: 'tailwindcss', color: '06B6D4' },
+      'sass': { slug: 'sass', color: 'CC6699' },
+      'bootstrap': { slug: 'bootstrap', color: '7952B3' },
+    };
+
+    // Check for exact match first
+    let iconData = simpleIconsMap[s];
+    
+    // Only do partial matching for multi-character keywords (avoid matching single letters)
+    if (!iconData) {
+      const keywords = Object.keys(simpleIconsMap)
+        .filter(k => k.length > 2) // Skip single/double letter keywords like 'r', 'c', 'go'
+        .sort((a,b) => b.length - a.length);
+      const match = keywords.find(k => s.includes(k));
+      if (match) iconData = simpleIconsMap[match];
+    }
+    
+    if (iconData) {
+      return (
+        <img 
+          src={`https://cdn.simpleicons.org/${iconData.slug}/${iconData.color}`}
+          alt={skill}
+          className="w-3.5 h-3.5 object-contain"
+          style={{ filter: 'none' }}
+        />
+      );
+    }
+    
+    // Default: Generic lightning bolt for everything else (Scrum, Gantt, soft skills, etc)
+    return <Zap size={14} className="text-amber-400" />;
   };
 
   if (loading) return (
@@ -153,41 +391,73 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          <div className="identity-info">
-            <h1>{profile?.full_name || 'Sin Nombre'}</h1>
-            <p className="headline">{profile?.role || 'Miembro @ Hiveyoung'}</p>
-            <div className="meta-text">
-              {profile?.location || 'Mundo Hiveyoung'}
-            </div>
-            <span className="contact-btn">Información de contacto</span>
-            
-            {/* Space for Social Icons as requested */}
-            <div className="social-icons-strip">
-              {profile?.linkedin_url && (
-                <a href={profile.linkedin_url.startsWith('http') ? profile.linkedin_url : `https://${profile.linkedin_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="LinkedIn">
-                  <Linkedin size={18} />
-                </a>
-              )}
-              {profile?.instagram_url && (
-                <a href={profile.instagram_url.startsWith('http') ? profile.instagram_url : `https://${profile.instagram_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="Instagram">
-                  <Instagram size={18} />
-                </a>
-              )}
-              {profile?.github_url && (
-                <a href={profile.github_url.startsWith('http') ? profile.github_url : `https://${profile.github_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="GitHub">
-                  <Github size={18} />
-                </a>
-              )}
-              {profile?.discord_id && (
-                <div className="social-link-icon group relative cursor-help" title={`Discord: ${profile.discord_id}`}>
-                  <MessageSquare size={18} />
-                </div>
+          <div className="profile-info-container">
+            <div className="identity-info">
+              <h1>{profile?.full_name || 'Sin Nombre'}</h1>
+              <p className="headline">{profile?.role || 'Miembro @ Hiveyoung'}</p>
+              <div className="meta-text" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <MapPin size={14} className="text-gray-500" />
+                {profile?.location || 'Mundo Hiveyoung'}
+              </div>
+              
+              {/* Social Icons - moved here from footer */}
+              <div className="social-icons-strip">
+                {profile?.linkedin_url && (
+                  <a href={profile.linkedin_url.startsWith('http') ? profile.linkedin_url : `https://${profile.linkedin_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="LinkedIn">
+                    <Linkedin size={18} />
+                  </a>
+                )}
+                {profile?.instagram_url && (
+                  <a href={profile.instagram_url.startsWith('http') ? profile.instagram_url : `https://${profile.instagram_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="Instagram">
+                    <Instagram size={18} />
+                  </a>
+                )}
+                {profile?.github_url && (
+                  <a href={profile.github_url.startsWith('http') ? profile.github_url : `https://${profile.github_url}`} target="_blank" rel="noreferrer" className="social-link-icon" title="GitHub">
+                    <Github size={18} />
+                  </a>
+                )}
+                {profile?.discord_id && (
+                  <div className="social-link-icon group relative cursor-help" title={`Discord: ${profile.discord_id}`}>
+                    <MessageSquare size={18} />
+                  </div>
+                )}
+              </div>
+              
+              {/* Short Bio */}
+              {profile?.bio_short && (
+                <p className="bio-short-text">
+                  {profile.bio_short}
+                </p>
               )}
             </div>
 
-            {/* Visible Music Player */}
+            {/* Skills section on the right - Always visible */}
+            <div className="profile-skills-side">
+              <div className="skills-header-mini">
+                <span>Skills</span>
+                <Sparkles size={14} className="text-amber-500" />
+              </div>
+              <div className="skills-tags-container">
+                {profile?.skills && profile.skills.length > 0 ? (
+                  profile.skills.map((skill, i) => (
+                    <span key={i} className="skill-pill-mini">
+                      {getSkillIcon(skill)}
+                      {skill}
+                    </span>
+                  ))
+                ) : (
+                  <span className="no-skills-text">SIN SKILLS</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Music player - inside header block */}
+          <div className="profile-header-footer">
+
             {profile?.music_url && (
-              <div style={{ marginTop: '24px', width: '100%', maxWidth: '660px' }}>
+              <div className="profile-music-wrapper">
                 {profile.music_url.includes('music.apple.com') ? (
                   <iframe 
                     allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
@@ -244,9 +514,37 @@ export default function ProfilePage() {
                     <label className="ln-label">Titular *</label>
                     <input className="ln-input" value={formData.role} onChange={e => setFormData({...formData, role: e.target.value})} />
                   </div>
-                  <div className="ln-input-group">
+                  <div className="ln-input-group relative">
                     <label className="ln-label">Ubicación</label>
-                    <input className="ln-input" value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} />
+                    <div className="relative">
+                      <input 
+                        className="ln-input" 
+                        value={formData.location} 
+                        placeholder="Eje: Santiago, Chile"
+                        onChange={e => {
+                          setFormData({...formData, location: e.target.value});
+                          setLocationQuery(e.target.value);
+                          if (e.target.value === '') setLocationSuggestions([]);
+                        }} 
+                      />
+                      {locationSuggestions.length > 0 && (
+                        <div className="absolute z-[110] w-full mt-1 bg-white border border-gray-100 rounded-xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                          {locationSuggestions.map((loc, idx) => (
+                            <div 
+                              key={idx} 
+                              onClick={() => {
+                                setFormData({...formData, location: loc});
+                                setLocationSuggestions([]);
+                              }}
+                              className="p-4 hover:bg-gray-50 cursor-pointer flex items-center gap-3 border-b last:border-0 transition-colors"
+                            >
+                              <MapPin size={16} className="text-[#3a1b4e] opacity-50" />
+                              <span className="text-sm font-medium text-gray-700">{loc}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div className="ln-input-group">
                     <label className="ln-label">Teléfono</label>
@@ -273,8 +571,38 @@ export default function ProfilePage() {
                     <input className="ln-input" value={formData.music_url} onChange={e => setFormData({...formData, music_url: e.target.value})} placeholder="Pega el link de tu canción favorita..." />
                   </div>
                   <div className="ln-input-group full-width">
-                    <label className="ln-label">Descripción (Acerca de)</label>
+                    <label className="ln-label">Bio Corta (aparece en perfil)</label>
+                    <input 
+                      className="ln-input" 
+                      value={formData.bio_short} 
+                      onChange={e => setFormData({...formData, bio_short: e.target.value})} 
+                      placeholder="Una frase que te describa..."
+                      maxLength={120}
+                    />
+                    <span style={{ fontSize: '11px', color: '#999', marginTop: '4px' }}>{formData.bio_short.length}/120 caracteres</span>
+                  </div>
+                  <div className="ln-input-group full-width">
+                    <label className="ln-label">Descripción Completa (Acerca de)</label>
                     <textarea className="ln-textarea" value={formData.bio} onChange={e => setFormData({...formData, bio: e.target.value})} />
+                  </div>
+                  <div className="ln-input-group full-width">
+                    <label className="ln-label">Skills (Escribe y presiona Enter)</label>
+                    <input 
+                      className="ln-input" 
+                      value={skillInput} 
+                      onChange={e => setSkillInput(e.target.value)} 
+                      onKeyDown={handleAddSkill}
+                      placeholder="Ej: UI Design, Python, Finanzas..."
+                    />
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {formData.skills.map((skill, i) => (
+                        <div key={i} className="bg-purple-50 text-[#3a1b4e] px-3 py-1 rounded-full text-sm font-bold flex items-center gap-2 border border-purple-100/50">
+                          {getSkillIcon(skill)}
+                          {skill}
+                          <X size={14} className="cursor-pointer hover:text-red-500 transition-colors" onClick={() => removeSkill(skill)} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 

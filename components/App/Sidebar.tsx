@@ -18,6 +18,7 @@ export default function Sidebar() {
 
   const menuItems = [
     { href: '/profile', label: 'Perfil', icon: User },
+    { href: '/contacts', label: 'Contactos', icon: Users },
   ];
 
   return (
