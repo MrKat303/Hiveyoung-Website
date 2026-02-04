@@ -1,7 +1,7 @@
 import React from 'react';
-import Sidebar from '@/components/App/Sidebar';
-import Topbar from '@/components/App/Topbar';
-import MobileNav from '@/components/App/MobileNav';
+import Sidebar from '@/app/(app)/_components/Shared/Sidebar';
+import Topbar from '@/app/(app)/_components/Shared/Topbar';
+import MobileNav from '@/app/(app)/_components/Shared/MobileNav';
 import './DashboardLayout.css';
 
 export default function AppLayout({
