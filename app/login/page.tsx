@@ -36,81 +36,43 @@ const LoginPage = () => {
 
     // Animation Variants
     const containerVariants: Variants = {
-        hidden: { opacity: 0, scale: 0.8, rotate: -2, filter: 'blur(10px)' },
+        hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            scale: 1,
-            rotate: 0,
-            filter: 'blur(0px)',
             transition: {
-                duration: 1.2,
-                delay: 0.4,
-                ease: [0.22, 1, 0.36, 1],
-                staggerChildren: 0.15
+                duration: 0.8,
+                staggerChildren: 0.1
             }
         }
     };
 
     const itemVariants: Variants = {
-        hidden: { opacity: 0, y: 30, scale: 0.9 },
+        hidden: { opacity: 0, y: 20 },
         visible: {
             opacity: 1,
             y: 0,
-            scale: 1,
             transition: {
-                type: "spring",
-                damping: 20,
-                stiffness: 100,
-                duration: 0.6
+                duration: 0.5,
+                ease: "easeOut"
             }
         }
     };
 
     const sectionVariants: Variants = {
-        hiddenLeft: { opacity: 0, x: -100, skewX: -10 },
-        hiddenRight: { opacity: 0, x: 100, skewX: 10 },
+        hidden: { opacity: 0, y: 10 },
         visible: {
             opacity: 1,
-            x: 0,
-            skewX: 0,
+            y: 0,
             transition: {
-                duration: 1.2,
-                ease: [0.22, 1, 0.36, 1],
-                delay: 0.5
+                duration: 0.8,
+                ease: "easeOut",
+                delay: 0.2
             }
         }
     };
 
-    const shutterVariants: Variants = {
-        initial: { scale: 1 },
-        animate: (i: number) => ({
-            scale: 0,
-            opacity: 0,
-            transition: {
-                duration: 0.8,
-                ease: [0.85, 0, 0.15, 1],
-                delay: 0.2 + (i * 0.05)
-            }
-        })
-    };
-
     return (
         <div className="login-container">
-            {/* Disruptive Intro Elements */}
-            <motion.div
-                className="intro-flash"
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-            />
-
-            <div className="shutter-overlay">
-                <motion.div className="shutter-panel top-left" variants={shutterVariants} custom={0} initial="initial" animate="animate" />
-                <motion.div className="shutter-panel top-right" variants={shutterVariants} custom={1} initial="initial" animate="animate" />
-                <motion.div className="shutter-panel bottom-left" variants={shutterVariants} custom={2} initial="initial" animate="animate" />
-                <motion.div className="shutter-panel bottom-right" variants={shutterVariants} custom={3} initial="initial" animate="animate" />
-            </div>
-
             <motion.div
                 className="login-split-layout"
                 variants={containerVariants}
@@ -121,8 +83,6 @@ const LoginPage = () => {
                 <motion.div
                     className="login-section"
                     variants={sectionVariants}
-                    initial="hiddenLeft"
-                    animate="visible"
                 >
                     <div className="login-header">
                         <motion.h1 variants={itemVariants} className="login-main-title">
@@ -158,8 +118,6 @@ const LoginPage = () => {
                 <motion.div
                     className="countdown-section"
                     variants={sectionVariants}
-                    initial="hiddenRight"
-                    animate="visible"
                 >
                     <div className="countdown-overlay">
                         <motion.div

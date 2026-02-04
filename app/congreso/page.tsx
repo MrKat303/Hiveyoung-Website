@@ -226,7 +226,7 @@ export default function CongresoPage() {
                             ))}
                         </nav>
                         <div className="footer-socials">
-                            <a href="https://instagram.com/hiveyoung" target="_blank" rel="noopener noreferrer" className="social-btn">
+                            <a href="https://instagram.com/hiveyoung.cl" target="_blank" rel="noopener noreferrer" className="social-btn">
                                 <Instagram size={20} />
                             </a>
                             <a href="https://linkedin.com/company/hiveyoung" target="_blank" rel="noopener noreferrer" className="social-btn">
