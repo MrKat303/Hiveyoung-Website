@@ -17,7 +17,6 @@ export default function Sidebar() {
   };
 
   const menuItems = [
-    { href: '/contacts', label: 'Contactos', icon: Users },
     { href: '/profile', label: 'Perfil', icon: User },
   ];
 
