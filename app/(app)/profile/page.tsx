@@ -46,7 +46,6 @@ export default function ProfilePage() {
   const [imageToCrop, setImageToCrop] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     full_name: '',
-    phone: '',
     location: '',
     role: '',
     bio: '',
@@ -67,7 +66,6 @@ export default function ProfilePage() {
     if (profile) {
       setFormData({
         full_name: profile.full_name || '',
-        phone: profile.phone || '',
         location: profile.location || '',
         role: profile.role || 'user',
         bio: profile.bio || '',
@@ -545,10 +543,6 @@ export default function ProfilePage() {
                         </div>
                       )}
                     </div>
-                  </div>
-                  <div className="ln-input-group">
-                    <label className="ln-label">Teléfono</label>
-                    <input className="ln-input" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
                   </div>
                   <div className="ln-input-group">
                     <label className="ln-label">LinkedIn URL</label>

@@ -40,6 +40,7 @@ export function useProfile() {
             location: null,
             role: 'user',
             bio: null,
+            bio_short: null,
             avatar_url: null,
             instagram_url: null,
             linkedin_url: null,

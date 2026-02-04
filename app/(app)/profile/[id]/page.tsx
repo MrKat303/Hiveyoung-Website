@@ -96,7 +96,6 @@ export default function PublicProfilePage({ params }: { params: Promise<{ id: st
             <div className="meta-text">
               {profile.location || 'Mundo Hiveyoung'}
             </div>
-            <span className="contact-btn">Información de contacto</span>
             
             {/* Social Icons */}
             <div className="social-icons-strip">
