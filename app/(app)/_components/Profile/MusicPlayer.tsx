@@ -1,6 +1,8 @@
 import React from 'react';
 import { getMusicEmbedData } from '@/app/(app)/_utils/musicUtils';
 
+import styles from './MusicPlayer.module.css';
+
 type MusicPlayerProps = {
   url: string | null;
   className?: string;
@@ -12,7 +14,7 @@ export const MusicPlayer = ({ url, className }: MusicPlayerProps) => {
   if (!embedData) return null;
 
   return (
-    <div className={`profile-music-wrapper ${className || ''}`}>
+    <div className={`${styles.profile_music_wrapper} ${className || ''}`}>
       {embedData.provider === 'apple' ? (
         <iframe 
           allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 

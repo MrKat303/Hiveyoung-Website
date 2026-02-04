@@ -5,102 +5,70 @@ import { supabase } from '@/utils/supabase/client';
 import { 
   Plus, 
   Search, 
-  UserPlus, 
   X, 
-  Briefcase, 
-  Building2, 
-  Phone, 
-  Tag, 
-  Users,
+  FolderOpen, 
   Loader2,
-  Check,
-  AlertCircle,
-  FolderOpen,
-  Briefcase as BusinessIcon,
-  Globe,
-  Gavel,
-  Megaphone,
-  Heart
+  Filter,
+  MoreHorizontal,
+  Mail,
+  Phone as PhoneIcon,
+  Building2,
+  User,
+  Tag,
+  Edit2,
+  Trash2,
+  Copy,
+  Check
 } from 'lucide-react';
-import { Contact } from '@/types/contact';
+import * as Icons from 'lucide-react';
+import { Contact, ContactFolder } from '@/types/contact';
 import { useProfile } from '@/hooks/useProfile';
+import { useContacts } from '@/hooks/useContacts';
 import './Contacts.css';
 
 export default function ContactsPage() {
   const { profile } = useProfile();
-  const [contacts, setContacts] = useState<Contact[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [saving, setSaving] = useState(false);
-  const [selectedFolder, setSelectedFolder] = useState('Todos');
-
-  const folders = [
-    { name: 'Todos', icon: FolderOpen },
-    { name: 'Política', icon: Gavel },
-    { name: 'Sector Público', icon: Globe },
-    { name: 'Sector Privado', icon: Building2 },
-    { name: 'Medios de Comunicación', icon: Megaphone },
-    { name: 'Aliados', icon: Heart },
-    { name: 'Fundaciones', icon: Users },
-  ];
+  const { contacts, loading, addContact, updateContact, deleteContact, fetchContacts } = useContacts();
   
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingContactId, setEditingContactId] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFolderId, setSelectedFolderId] = useState('Todos');
+  const [folders, setFolders] = useState<ContactFolder[]>([]);
+  const [saving, setSaving] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [copyFeedback, setCopyFeedback] = useState<string | null>(null);
+
   // Form State
   const [formData, setFormData] = useState({
     name: '',
     organization: '',
     role: '',
-    contact_info: '',
-    category: '',
-    related_user_id: ''
+    phone: '',
+    email: '',
+    avatar_url: '',
+    folder_id: '',
+    tags: [] as string[]
   });
 
-  // User search for "Persona"
-  const [userQuery, setUserQuery] = useState('');
-  const [userResults, setUserResults] = useState<{ id: string, full_name: string | null, avatar_url: string | null }[]>([]);
-  const [selectedUser, setSelectedUser] = useState<{ id: string, full_name: string | null, avatar_url: string | null } | null>(null);
+  const [currentTag, setCurrentTag] = useState('');
+  const predefinedTags = ['Innovación', 'Venture', 'Emprendimiento', 'Ciencia', 'Arte'];
 
   useEffect(() => {
-    fetchContacts();
+    fetchFolders();
   }, []);
 
-  async function fetchContacts() {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from('contacts')
-        .select(`
-          *,
-          profiles:related_user_id (id, full_name, avatar_url)
-        `)
-        .order('created_at', { ascending: false });
-
-      if (error) throw error;
-      setContacts(data || []);
-    } catch (err) {
-      console.error('Error fetching contacts:', err);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  // Handle User Search for "Persona"
+  // Close dropdown when clicking outside
   useEffect(() => {
-    const searchUsers = async () => {
-      if (userQuery.length > 2) {
-        const { data } = await supabase
-          .from('profiles')
-          .select('id, full_name, avatar_url')
-          .ilike('full_name', `%${userQuery}%`)
-          .limit(5);
-        setUserResults(data || []);
-      } else {
-        setUserResults([]);
-      }
-    };
-    const timer = setTimeout(searchUsers, 300);
-    return () => clearTimeout(timer);
-  }, [userQuery]);
+    const handleClickOutside = () => setActiveDropdown(null);
+    window.addEventListener('click', handleClickOutside);
+    return () => window.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  async function fetchFolders() {
+    const { data } = await supabase.from('contact_folders').select('*').order('name');
+    if (data) setFolders(data);
+  }
 
   async function handleAddContact(e: React.FormEvent) {
     e.preventDefault();
@@ -108,24 +76,29 @@ export default function ContactsPage() {
 
     try {
       setSaving(true);
-      const { error } = await supabase
-        .from('contacts')
-        .insert([{
-          name: formData.name,
-          organization: formData.organization,
-          role: formData.role,
-          contact_info: formData.contact_info,
-          category: formData.category,
-          related_user_id: selectedUser?.id || null,
-          added_by: profile.id
-        }]);
+      const contactData = {
+        name: formData.name,
+        organization: formData.organization,
+        role: formData.role,
+        phone: formData.phone,
+        email: formData.email,
+        avatar_url: formData.avatar_url || null,
+        folder_id: formData.folder_id || null,
+        tags: formData.tags.length > 0 ? formData.tags : null
+      };
 
-      if (error) throw error;
+      let result;
+      if (editingContactId) {
+        result = await updateContact(editingContactId, contactData);
+      } else {
+        result = await addContact(contactData);
+      }
+
+      if (!result.success) throw new Error(result.error);
       
       setIsModalOpen(false);
-      setFormData({ name: '', organization: '', role: '', contact_info: '', category: '', related_user_id: '' });
-      setSelectedUser(null);
-      setUserQuery('');
+      setEditingContactId(null);
+      setFormData({ name: '', organization: '', role: '', phone: '', email: '', avatar_url: '', folder_id: '', tags: [] });
       fetchContacts();
     } catch (err) {
       console.error('Error saving contact:', err);
@@ -134,40 +107,124 @@ export default function ContactsPage() {
     }
   }
 
+  const handleEdit = (contact: Contact) => {
+    setEditingContactId(contact.id);
+    setFormData({
+      name: contact.name,
+      organization: contact.organization || '',
+      role: contact.role || '',
+      phone: contact.phone || '',
+      email: contact.email || '',
+      avatar_url: contact.avatar_url || '',
+      folder_id: contact.folder_id || '',
+      tags: contact.tags || []
+    });
+    setIsModalOpen(true);
+    setActiveDropdown(null);
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm('¿Estás seguro de que quieres eliminar este contacto?')) return;
+    try {
+      const { success } = await deleteContact(id);
+      if (success) {
+        fetchContacts();
+      }
+    } catch (err) {
+      console.error('Error deleting contact:', err);
+    }
+  };
+
+  const copyToClipboard = async (text: string, id: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyFeedback(id);
+      setTimeout(() => setCopyFeedback(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
+  const toggleTag = (tag: string) => {
+    const newTags = formData.tags.includes(tag)
+      ? formData.tags.filter(t => t !== tag)
+      : [...formData.tags, tag];
+    setFormData({ ...formData, tags: newTags });
+  };
+
+  const handleManualTag = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && currentTag.trim()) {
+      e.preventDefault();
+      if (!formData.tags.includes(currentTag.trim())) {
+        setFormData({ ...formData, tags: [...formData.tags, currentTag.trim()] });
+      }
+      setCurrentTag('');
+    }
+  };
+
   const filteredContacts = contacts.filter(c => {
     const matchesSearch = 
       c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.organization?.toLowerCase().includes(searchTerm.toLowerCase());
+      c.organization?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      c.email?.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesFolder = selectedFolder === 'Todos' || c.category === selectedFolder;
+    const matchesFolder = selectedFolderId === 'Todos' || c.folder_id === selectedFolderId;
 
     return matchesSearch && matchesFolder;
   });
+
+  const getIcon = (iconName: string | null) => {
+    const Icon = Icons[iconName as keyof typeof Icons] as React.ElementType || Icons.Folder;
+    return <Icon size={14} className="folder-icon" />;
+  };
 
   return (
     <div className="contacts-page">
       <div className="contacts-header">
         <h1>Contactos</h1>
-        <button className="add-contact-btn" onClick={() => setIsModalOpen(true)}>
-          <Plus size={20} />
-          <span>Nuevo Contacto</span>
-        </button>
+        <div className="header-actions">
+          <div className="search-input-wrapper">
+            <Search className="search-icon-inside" size={16} />
+            <input 
+              type="text" 
+              placeholder="Buscar..."
+              className="search-field"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <div className="secondary-actions-mobile">
+            <button className="filter-btn">
+              <Filter size={16} />
+              <span>Filtrar</span>
+            </button>
+            <button className="add-contact-btn" onClick={() => setIsModalOpen(true)}>
+              <Plus size={18} />
+              <span>Agregar Contacto</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="contacts-folders">
+        <div 
+          className={`folder-tab ${selectedFolderId === 'Todos' ? 'active' : ''}`}
+          onClick={() => setSelectedFolderId('Todos')}
+        >
+          <FolderOpen size={16} className="folder-icon" />
+          <span>Todos</span>
+          <span className="folder-count">{contacts.length}</span>
+        </div>
         {folders.map((folder) => {
-          const Icon = folder.icon;
-          const count = folder.name === 'Todos' 
-            ? contacts.length 
-            : contacts.filter(c => c.category === folder.name).length;
+          const count = contacts.filter(c => c.folder_id === folder.id).length;
           
           return (
             <div 
-              key={folder.name} 
-              className={`folder-tab ${selectedFolder === folder.name ? 'active' : ''}`}
-              onClick={() => setSelectedFolder(folder.name)}
+              key={folder.id} 
+              className={`folder-tab ${selectedFolderId === folder.id ? 'active' : ''}`}
+              onClick={() => setSelectedFolderId(folder.id)}
             >
-              <Icon size={16} className="folder-icon" />
+              {getIcon(folder.icon)}
               <span>{folder.name}</span>
               <span className="folder-count">{count}</span>
             </div>
@@ -175,74 +232,216 @@ export default function ContactsPage() {
         })}
       </div>
 
-      <div className="search-container mb-8">
-        <div className="search-input-wrapper">
-          <Search className="search-icon-inside" size={18} />
-          <input 
-            type="text" 
-            placeholder={`Buscar en ${selectedFolder.toLowerCase()}...`}
-            className="search-field"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-      </div>
-
       {loading ? (
         <div className="flex flex-col items-center justify-center p-20 gap-4">
           <Loader2 className="animate-spin text-[#3a1b4e]" size={40} />
-          <p className="text-gray-400 font-medium tracking-wider">Cargando la libreta...</p>
+          <p className="text-gray-400 font-medium tracking-wider text-sm">Cargando contactos...</p>
         </div>
       ) : (
-        <div className="contacts-grid">
-          <table className="contacts-table">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Organización</th>
-                <th>Rol</th>
-                <th>Contacto</th>
-                <th>Categoría</th>
-                <th>Persona (Relación)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredContacts.length > 0 ? (
-                filteredContacts.map((contact: Contact) => (
-                  <tr key={contact.id}>
-                    <td data-label="Nombre" className="font-bold">{contact.name}</td>
-                    <td data-label="Organización">{contact.organization || '-'}</td>
-                    <td data-label="Rol">{contact.role || '-'}</td>
-                    <td data-label="Contacto">{contact.contact_info || '-'}</td>
-                    <td data-label="Categoría">
-                      {contact.category && <span className="category-chip">{contact.category}</span>}
-                    </td>
-                    <td data-label="Persona">
-                      {contact.profiles ? (
-                        <div className="related-person">
-                          <div className="person-avatar">
-                            {contact.profiles.avatar_url ? (
-                              <img src={contact.profiles.avatar_url} alt="" />
+        <>
+          {/* Vista de Escritorio (Tabla) */}
+          <div className="contacts-grid desktop-only">
+            <table className="contacts-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Teléfono</th>
+                  <th>Correo</th>
+                  <th>Organización</th>
+                  <th>Etiquetas</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredContacts.length > 0 ? (
+                  filteredContacts.map((contact: Contact) => (
+                    <tr key={contact.id}>
+                      <td>
+                        <div className="name-cell">
+                          <div className="contact-avatar">
+                            {contact.avatar_url ? (
+                              <img src={contact.avatar_url} alt={contact.name} />
                             ) : (
-                              <span>{contact.profiles.full_name?.[0] || '?'}</span>
+                              contact.name[0].toUpperCase()
                             )}
                           </div>
-                          <span>{contact.profiles.full_name?.split(' ')[0] || '-'}</span>
+                          <div className="flex flex-col">
+                             <span>{contact.name}</span>
+                             <span className="text-[10px] text-gray-400 font-normal">{contact.role || '-'}</span>
+                          </div>
                         </div>
-                      ) : '-'}
+                      </td>
+                      <td 
+                        className="clickable-cell" 
+                        onClick={() => contact.phone && copyToClipboard(contact.phone, `${contact.id}-phone`)}
+                      >
+                        <div className="flex items-center gap-2">
+                          {contact.phone || '-'}
+                          {copyFeedback === `${contact.id}-phone` && <Check size={12} className="text-green-500" />}
+                        </div>
+                      </td>
+                      <td 
+                        className="clickable-cell" 
+                        onClick={() => contact.email && copyToClipboard(contact.email, `${contact.id}-email`)}
+                      >
+                        <div className="flex items-center gap-2">
+                          {contact.email || '-'}
+                          {copyFeedback === `${contact.id}-email` && <Check size={12} className="text-green-500" />}
+                        </div>
+                      </td>
+                      <td>{contact.organization || '-'}</td>
+                      <td>
+                        <div className="flex flex-wrap gap-1">
+                          {contact.tags?.map(tag => (
+                            <span key={tag} className="px-2 py-0.5 bg-purple-50 text-[#3a1b4e] text-[10px] font-bold rounded-md border border-purple-100">
+                              {tag}
+                            </span>
+                          )) || '-'}
+                        </div>
+                      </td>
+                      <td>
+                        <div className="actions-wrapper">
+                          <MoreHorizontal 
+                            size={24} 
+                            className="action-dots" 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveDropdown(activeDropdown === contact.id ? null : contact.id);
+                            }}
+                          />
+                          {activeDropdown === contact.id && (
+                            <div className="actions-dropdown">
+                              <button 
+                                className="dropdown-item"
+                                onClick={() => handleEdit(contact)}
+                              >
+                                <Edit2 size={14} />
+                                <span>Editar</span>
+                              </button>
+                              <button 
+                                className="dropdown-item delete"
+                                onClick={() => handleDelete(contact.id)}
+                              >
+                                <Trash2 size={14} />
+                                <span>Eliminar</span>
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={6} className="text-center py-20 text-gray-400">
+                      No se encontraron contactos.
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan={6} className="text-center py-20 text-gray-400">
-                    No se encontraron contactos en esta búsqueda.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Vista de Móvil (Cards) */}
+          <div className="contacts-mobile-list mobile-only">
+            {filteredContacts.length > 0 ? (
+              filteredContacts.map((contact: Contact) => (
+                <div key={contact.id} className="contact-card-mobile">
+                  <div className="card-header">
+                    <div className="name-cell">
+                      <div className="contact-avatar">
+                        {contact.avatar_url ? (
+                          <img src={contact.avatar_url} alt={contact.name} />
+                        ) : (
+                          contact.name[0].toUpperCase()
+                        )}
+                      </div>
+                      <div className="flex flex-col">
+                         <span className="contact-name">{contact.name}</span>
+                         <span className="contact-role">{contact.role || 'Sin cargo'}</span>
+                      </div>
+                    </div>
+                    <div className="actions-wrapper">
+                      <MoreHorizontal 
+                        size={24} 
+                        className="action-dots" 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveDropdown(activeDropdown === contact.id ? null : contact.id);
+                        }}
+                      />
+                      {activeDropdown === contact.id && (
+                        <div className="actions-dropdown">
+                          <button 
+                            className="dropdown-item"
+                            onClick={() => handleEdit(contact)}
+                          >
+                            <Edit2 size={14} />
+                            <span>Editar</span>
+                          </button>
+                          <button 
+                            className="dropdown-item delete"
+                            onClick={() => handleDelete(contact.id)}
+                          >
+                            <Trash2 size={14} />
+                            <span>Eliminar</span>
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="card-info-grid">
+                    {contact.organization && (
+                      <div className="info-item">
+                        <span className="info-label">Organización</span>
+                        <span className="info-value">{contact.organization}</span>
+                      </div>
+                    )}
+                    {contact.phone && (
+                      <div 
+                        className="info-item clickable-info"
+                        onClick={() => copyToClipboard(contact.phone!, `${contact.id}-phone-mobile`)}
+                      >
+                        <span className="info-label">Teléfono</span>
+                        <div className="flex items-center justify-between">
+                          <span className="info-value">{contact.phone}</span>
+                          {copyFeedback === `${contact.id}-phone-mobile` ? <Check size={14} className="text-green-500" /> : <Copy size={12} className="text-gray-400" />}
+                        </div>
+                      </div>
+                    )}
+                    {contact.email && (
+                      <div 
+                        className="info-item clickable-info"
+                        onClick={() => copyToClipboard(contact.email!, `${contact.id}-email-mobile`)}
+                      >
+                        <span className="info-label">Correo</span>
+                        <div className="flex items-center justify-between">
+                          <span className="info-value">{contact.email}</span>
+                          {copyFeedback === `${contact.id}-email-mobile` ? <Check size={14} className="text-green-500" /> : <Copy size={12} className="text-gray-400" />}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {contact.tags && contact.tags.length > 0 && (
+                    <div className="card-tags">
+                      {contact.tags.map(tag => (
+                        <span key={tag} className="mobile-tag-chip">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))
+            ) : (
+              <div className="empty-state-mobile">
+                No se encontraron contactos.
+              </div>
+            )}
+          </div>
+        </>
       )}
 
       {/* Modal Agregar Contacto */}
@@ -250,31 +449,65 @@ export default function ContactsPage() {
         <div className="modal-overlay">
           <div className="modal-content">
             <div className="modal-header">
-              <h2>Nuevo Contacto</h2>
+              <h2>{editingContactId ? 'Editar Contacto' : 'Nuevo Contacto'}</h2>
               <button 
-                onClick={() => setIsModalOpen(false)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                onClick={() => {
+                  setIsModalOpen(false);
+                  setEditingContactId(null);
+                  setFormData({ name: '', organization: '', role: '', phone: '', email: '', avatar_url: '', folder_id: '', tags: [] });
+                }}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-400"
               >
-                <X size={20} />
+                <X size={24} />
               </button>
             </div>
 
             <div className="modal-body">
               <form onSubmit={handleAddContact} className="space-y-6">
-                <div className="form-group">
-                  <label className="form-label">Nombre Completo *</label>
-                  <input 
-                    required
-                    placeholder="Eje: Juan Pérez"
-                    className="form-input"
-                    value={formData.name}
-                    onChange={e => setFormData({...formData, name: e.target.value})}
-                  />
-                </div>
+                <div className="form-grid">
+                  <div className="form-group full-width">
+                    <label className="form-label">Nombre Completo *</label>
+                    <input 
+                      required
+                      placeholder="Ej: Juan Pérez"
+                      className="form-input"
+                      value={formData.name}
+                      onChange={e => setFormData({...formData, name: e.target.value})}
+                    />
+                  </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                  <div className="form-group full-width">
+                    <label className="form-label">URL de la Foto</label>
+                    <input 
+                      placeholder="https://ejemplo.com/foto.jpg"
+                      className="form-input"
+                      value={formData.avatar_url}
+                      onChange={e => setFormData({...formData, avatar_url: e.target.value})}
+                    />
+                  </div>
+
                   <div className="form-group">
-                    <label className="form-label">Organización</label>
+                    <label className="form-label">Teléfono</label>
+                    <input 
+                      placeholder="+56 9 ..."
+                      className="form-input"
+                      value={formData.phone}
+                      onChange={e => setFormData({...formData, phone: e.target.value})}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Correo</label>
+                    <input 
+                      type="email"
+                      placeholder="ejemplo@correo.com"
+                      className="form-input"
+                      value={formData.email}
+                      onChange={e => setFormData({...formData, email: e.target.value})}
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Organización / Institución</label>
                     <input 
                       placeholder="Empresa o Institución"
                       className="form-input"
@@ -283,86 +516,64 @@ export default function ContactsPage() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Rol</label>
+                    <label className="form-label">Cargo / Rol</label>
                     <input 
-                      placeholder="Cargo o Puesto"
+                      placeholder="Ej: Director, Gerente..."
                       className="form-input"
                       value={formData.role}
                       onChange={e => setFormData({...formData, role: e.target.value})}
                     />
                   </div>
-                </div>
 
-                <div className="form-group">
-                  <label className="form-label">Email / Teléfono</label>
-                  <input 
-                    placeholder="contacto@ejemplo.com"
-                    className="form-input"
-                    value={formData.contact_info}
-                    onChange={e => setFormData({...formData, contact_info: e.target.value})}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Categoría</label>
-                  <select 
-                    className="form-select"
-                    value={formData.category}
-                    onChange={e => setFormData({...formData, category: e.target.value})}
-                  >
-                    <option value="">Selecciona una categoría</option>
-                    {folders.filter(f => f.name !== 'Todos').map(f => (
-                      <option key={f.name} value={f.name}>{f.name}</option>
-                    ))}
-                    <option value="Otro">Otro</option>
-                  </select>
-                </div>
-
-                {/* Selector de Persona (Usuario Registrado) */}
-                <div className="form-group relative">
-                  <label className="form-label">Persona (Relación en Hiveyoung)</label>
-                  {selectedUser ? (
-                    <div className="flex items-center justify-between p-3 bg-purple-50 border border-purple-100 rounded-xl">
-                      <div className="flex items-center gap-3">
-                        <Users size={16} className="text-[#3a1b4e]" />
-                        <span className="text-sm font-bold text-[#3a1b4e]">{selectedUser.full_name}</span>
+                  <div className="form-group full-width">
+                    <label className="form-label">Etiquetas</label>
+                    <div className="tags-selection-wrapper">
+                      <div className="predefined-tags-list">
+                        {predefinedTags.map(tag => (
+                          <button
+                            key={tag}
+                            type="button"
+                            onClick={() => toggleTag(tag)}
+                            className={`tag-pill-btn ${formData.tags.includes(tag) ? 'active' : ''}`}
+                          >
+                            {tag}
+                          </button>
+                        ))}
                       </div>
-                      <button onClick={() => setSelectedUser(null)} className="text-purple-400 hover:text-purple-700">
-                        <X size={16} />
-                      </button>
+                      <input 
+                        placeholder="Escribe otra etiqueta y presiona Enter..."
+                        className="form-input tag-input-field"
+                        value={currentTag}
+                        onChange={e => setCurrentTag(e.target.value)}
+                        onKeyDown={handleManualTag}
+                      />
+                      <div className="selected-custom-tags">
+                         {formData.tags.filter(t => !predefinedTags.includes(t)).map(tag => (
+                           <span key={tag} className="custom-tag-chip">
+                             {tag}
+                             <X size={10} className="remove-tag-icon" onClick={() => toggleTag(tag)} />
+                           </span>
+                         ))}
+                      </div>
                     </div>
-                  ) : (
-                    <>
-                      <div className="relative">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-                        <input 
-                          placeholder="Busca un miembro del equipo..."
-                          className="form-input pl-10"
-                          value={userQuery}
-                          onChange={e => setUserQuery(e.target.value)}
-                        />
-                      </div>
-                      {userResults.length > 0 && (
-                        <div className="absolute z-10 w-full mt-2 bg-white border border-gray-100 rounded-xl shadow-2xl overflow-hidden">
-                          {userResults.map(u => (
-                            <div 
-                              key={u.id} 
-                              onClick={() => { setSelectedUser(u); setUserQuery(''); }}
-                              className="p-4 hover:bg-gray-50 cursor-pointer flex items-center gap-3 border-b last:border-0 transition-colors"
-                            >
-                              <div className="w-8 h-8 rounded-full bg-[#3a1b4e10] overflow-hidden flex items-center justify-center font-bold text-xs text-[#3a1b4e]">
-                                {u.avatar_url ? <img src={u.avatar_url} className="w-full h-full object-cover" alt="" /> : (u.full_name ? u.full_name[0] : '?')}
-                              </div>
-                              <span className="text-sm font-semibold text-gray-700">{u.full_name}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  )}
+                  </div>
+
+                  <div className="form-group full-width">
+                    <label className="form-label">Categoría / Carpeta</label>
+                    <select 
+                      className="form-select"
+                      value={formData.folder_id}
+                      onChange={e => setFormData({...formData, folder_id: e.target.value})}
+                    >
+                      <option value="">Sin carpeta</option>
+                      {folders.map(f => (
+                        <option key={f.id} value={f.id}>{f.name}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
-                <div className="pt-2">
+                <div className="pt-4">
                   <button 
                     type="submit" 
                     disabled={saving || !formData.name}
@@ -373,7 +584,7 @@ export default function ContactsPage() {
                         <Loader2 className="animate-spin" size={18} />
                         <span>Guardando...</span>
                       </div>
-                    ) : 'Crear Contacto'}
+                    ) : (editingContactId ? 'Actualizar Contacto' : 'Crear Contacto')}
                   </button>
                 </div>
               </form>

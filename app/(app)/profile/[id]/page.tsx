@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, use } from 'react';
 import { supabase } from '@/utils/supabase/client';
-import '../Profile.css';
+import styles from '../ProfilePage.module.css';
 import { Profile } from '@/types/profile';
 import { ProfileHeader } from '@/app/(app)/_components/Profile/ProfileHeader';
 
@@ -52,17 +52,17 @@ export default function PublicProfilePage({ params }: { params: Promise<{ id: st
   );
 
   return (
-    <div className="profile-page">
-      <div className="profile-container shadow-sm border border-gray-100">
+    <div className={styles.profile_page}>
+      <div className={`${styles.profile_container} shadow-sm border border-gray-100`}>
         <ProfileHeader 
           profile={profile} 
           isOwnProfile={false} 
         />
 
         {/* Acerca de / Extracto */}
-        <div className="profile-section-block">
-          <span className="section-title">Acerca de</span>
-          <div className="section-content">
+        <div className={styles.profile_section_block}>
+          <span className={styles.section_title}>Acerca de</span>
+          <div className={styles.section_content}>
             {profile.bio || 'Este perfil profesional no tiene descripción disponible en este momento.'}
           </div>
         </div>

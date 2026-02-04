@@ -18,7 +18,8 @@ import {
 import ImageCropper from '@/app/(app)/_components/Shared/ImageCropper';
 import { ProfileHeader } from '@/app/(app)/_components/Profile/ProfileHeader';
 import { getSkillIcon } from '@/app/(app)/_utils/skillIcons'; // Still used for input suggestion preview
-import './Profile.css';
+import { ProfileEditModal } from '@/app/(app)/_components/Profile/ProfileEditModal';
+import styles from './ProfilePage.module.css';
 
 export default function ProfilePage() {
   const { profile, loading, updateProfile, uploadAvatar } = useProfile();
@@ -58,41 +59,11 @@ export default function ProfilePage() {
         skills: profile.skills || [],
       });
     }
-  }, [profile, isModalOpen]);
+  }, [profile]);
 
-  // Location Autocomplete
-  const [locationQuery, setLocationQuery] = useState('');
-  const [locationSuggestions, setLocationSuggestions] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (locationQuery.length < 3) {
-      setLocationSuggestions([]);
-      return;
-    }
-
-    const fetchLocations = async () => {
-      try {
-        const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(locationQuery)}&limit=5`);
-        const data = await response.json();
-        const suggestions = data.features.map((f: { properties: { name?: string, city?: string, state?: string, country?: string } }) => {
-          const p = f.properties;
-          return [p.name, p.city, p.state, p.country].filter(Boolean).join(', ');
-        });
-        setLocationSuggestions([...new Set(suggestions)] as string[]);
-      } catch (err) {
-        console.error('Error fetching locations:', err);
-      }
-    };
-
-    const timer = setTimeout(fetchLocations, 400);
-    return () => clearTimeout(timer);
-  }, [locationQuery]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (updatedData: any) => {
     setSaving(true);
-
-    const { success, error } = await updateProfile(formData);
+    const { success, error } = await updateProfile(updatedData);
 
     if (success) {
       showToast('Perfil actualizado correctamente', 'success');
@@ -131,31 +102,6 @@ export default function ProfilePage() {
     setUploading(false);
   };
 
-
-
-  const [skillInput, setSkillInput] = useState('');
-
-  const handleAddSkill = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && skillInput.trim()) {
-      e.preventDefault();
-      
-      const input = normalizeSkillName(skillInput);
-
-      if (formData.skills.length >= 7) {
-        showToast('Máximo 7 habilidades permitidas', 'warning');
-        return;
-      }
-      if (input && !formData.skills.includes(input)) {
-        setFormData({ ...formData, skills: [...formData.skills, input] });
-      }
-      setSkillInput('');
-    }
-  };
-
-  const removeSkill = (skillToRemove: string) => {
-    setFormData({ ...formData, skills: formData.skills.filter(s => s !== skillToRemove) });
-  };
-
   if (loading) return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center gap-6 bg-white">
       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3A1B4E]"></div>
@@ -164,8 +110,8 @@ export default function ProfilePage() {
   );
 
   return (
-    <div className="profile-page">
-      <div className="profile-container shadow-sm border border-gray-100">
+    <div className={styles.profile_page}>
+      <div className={`${styles.profile_container} shadow-sm border border-gray-100`}>
         <ProfileHeader 
           profile={profile}
           isOwnProfile={true}
@@ -174,7 +120,6 @@ export default function ProfilePage() {
           uploading={uploading}
         />
         
-        {/* Hidden File Input for Avatar */}
         <input 
           type="file" 
           ref={fileInputRef} 
@@ -183,136 +128,21 @@ export default function ProfilePage() {
           onChange={handleFileChange} 
         />
 
-        {/* Acerca de / Extracto */}
-        <div className="profile-section-block">
-          <span className="section-title">Acerca de</span>
-          <div className="section-content">
+        <div className={styles.profile_section_block}>
+          <span className={styles.section_title}>Acerca de</span>
+          <div className={styles.section_content}>
             {profile?.bio || 'Este perfil profesional no tiene descripción disponible en este momento.'}
           </div>
         </div>
       </div>
 
-      {/* LinkedIn-Style Edit Modal */}
-      {isModalOpen && (
-        <div className="modal-window-overlay" onClick={() => setIsModalOpen(false)}>
-          <div className="modal-content-card animate-in zoom-in-95 duration-200" onClick={e => e.stopPropagation()}>
-            <div className="modal-header-ln">
-              <h2>Editar presentación</h2>
-              <div className="cursor-pointer text-gray-400 hover:text-black" onClick={() => setIsModalOpen(false)}>
-                <X size={24} />
-              </div>
-            </div>
-
-            <form onSubmit={handleSubmit}>
-              <div className="modal-body-ln">
-                <div className="ln-form-grid">
-                  <div className="ln-input-group full-width">
-                    <label className="ln-label">Nombre *</label>
-                    <input className="ln-input" value={formData.full_name} onChange={e => setFormData({...formData, full_name: e.target.value})} required />
-                  </div>
-                  <div className="ln-input-group full-width">
-                    <label className="ln-label">Titular *</label>
-                    <input className="ln-input" value={formData.role} onChange={e => setFormData({...formData, role: e.target.value})} />
-                  </div>
-                  <div className="ln-input-group relative">
-                    <label className="ln-label">Ubicación</label>
-                    <div className="relative">
-                      <input 
-                        className="ln-input" 
-                        value={formData.location} 
-                        placeholder="Eje: Santiago, Chile"
-                        onChange={e => {
-                          setFormData({...formData, location: e.target.value});
-                          setLocationQuery(e.target.value);
-                          if (e.target.value === '') setLocationSuggestions([]);
-                        }} 
-                      />
-                      {locationSuggestions.length > 0 && (
-                        <div className="absolute z-[110] w-full mt-1 bg-white border border-gray-100 rounded-xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
-                          {locationSuggestions.map((loc, idx) => (
-                            <div 
-                              key={idx} 
-                              onClick={() => {
-                                setFormData({...formData, location: loc});
-                                setLocationSuggestions([]);
-                              }}
-                              className="p-4 hover:bg-gray-50 cursor-pointer flex items-center gap-3 border-b last:border-0 transition-colors"
-                            >
-                              <MapPin size={16} className="text-[#3a1b4e] opacity-50" />
-                              <span className="text-sm font-medium text-gray-700">{loc}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <div className="ln-input-group">
-                    <label className="ln-label">LinkedIn URL</label>
-                    <input className="ln-input" value={formData.linkedin_url} onChange={e => setFormData({...formData, linkedin_url: e.target.value})} />
-                  </div>
-                  <div className="ln-input-group">
-                    <label className="ln-label">Instagram URL</label>
-                    <input className="ln-input" value={formData.instagram_url} onChange={e => setFormData({...formData, instagram_url: e.target.value})} />
-                  </div>
-                  <div className="ln-input-group">
-                    <label className="ln-label">GitHub URL</label>
-                    <input className="ln-input" value={formData.github_url} onChange={e => setFormData({...formData, github_url: e.target.value})} />
-                  </div>
-                  <div className="ln-input-group">
-                    <label className="ln-label">Usuario Discord</label>
-                    <input className="ln-input" value={formData.discord_id} onChange={e => setFormData({...formData, discord_id: e.target.value})} />
-                  </div>
-                  <div className="ln-input-group full-width">
-                    <label className="ln-label">Apple Music / Spotify URL</label>
-                    <input className="ln-input" value={formData.music_url} onChange={e => setFormData({...formData, music_url: e.target.value})} placeholder="Pega el link de tu canción favorita..." />
-                  </div>
-                  <div className="ln-input-group full-width">
-                    <label className="ln-label">Bio Corta (aparece en perfil)</label>
-                    <input 
-                      className="ln-input" 
-                      value={formData.bio_short} 
-                      onChange={e => setFormData({...formData, bio_short: e.target.value})} 
-                      placeholder="Una frase que te describa..."
-                      maxLength={120}
-                    />
-                    <span style={{ fontSize: '11px', color: '#999', marginTop: '4px' }}>{formData.bio_short.length}/120 caracteres</span>
-                  </div>
-                  <div className="ln-input-group full-width">
-                    <label className="ln-label">Descripción Completa (Acerca de)</label>
-                    <textarea className="ln-textarea" value={formData.bio} onChange={e => setFormData({...formData, bio: e.target.value})} />
-                  </div>
-                  <div className="ln-input-group full-width">
-                    <label className="ln-label">Skills (Escribe y presiona Enter)</label>
-                    <input 
-                      className="ln-input" 
-                      value={skillInput} 
-                      onChange={e => setSkillInput(e.target.value)} 
-                      onKeyDown={handleAddSkill}
-                      placeholder="Ej: UI Design, Python, Finanzas..."
-                    />
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {formData.skills.map((skill, i) => (
-                        <div key={i} className="bg-purple-50 text-[#3a1b4e] px-3 py-1 rounded-full text-sm font-bold flex items-center gap-2 border border-purple-100/50">
-                          {getSkillIcon(skill)}
-                          {skill}
-                          <X size={14} className="cursor-pointer hover:text-red-500 transition-colors" onClick={() => removeSkill(skill)} />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="modal-footer-ln">
-                <button type="submit" disabled={saving} className="ln-save-btn">
-                  {saving ? 'Guardando...' : 'Guardar'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      <ProfileEditModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        initialData={formData}
+        onSave={handleSubmit}
+        saving={saving}
+      />
 
       {imageToCrop && (
         <ImageCropper 

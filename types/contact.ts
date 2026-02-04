@@ -1,16 +1,21 @@
+export type ContactFolder = {
+  id: string;
+  name: string;
+  icon: string | null;
+  created_at: string;
+}
+
 export type Contact = {
   id: string;
   name: string;
   organization: string | null;
   role: string | null;
-  contact_info: string | null;
-  category: string | null;
-  related_user_id: string | null; // "Persona" - registered user
+  phone: string | null;
+  email: string | null;
+  avatar_url: string | null;
+  folder_id: string | null;
+  tags: string[] | null;
   added_by: string;
   created_at: string;
-  profiles?: {
-    id: string;
-    full_name: string | null;
-    avatar_url: string | null;
-  };
+  folder?: ContactFolder;
 }

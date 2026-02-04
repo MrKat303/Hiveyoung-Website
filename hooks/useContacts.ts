@@ -19,8 +19,7 @@ export function useContacts() {
 
       const { data, error } = await supabase
         .from('contacts')
-        .select('*')
-        .eq('user_id', user.id)
+        .select('*, folder:folder_id(*)')
         .order('created_at', { ascending: false })
 
       if (error) throw error
@@ -36,20 +35,20 @@ export function useContacts() {
     fetchContacts()
   }, [])
 
-  const addContact = async (contact: Omit<Contact, 'id' | 'user_id' | 'created_at'>) => {
+  const addContact = async (contact: Omit<Contact, 'id' | 'added_by' | 'created_at' | 'folder'>) => {
     try {
         const { data: { user } } = await supabase.auth.getUser()
         if (!user) throw new Error('No user logged in')
 
         const newContact = { 
             ...contact, 
-            user_id: user.id 
+            added_by: user.id 
         }
 
         const { data, error } = await supabase
             .from('contacts')
             .insert([newContact])
-            .select()
+            .select('*, folder:folder_id(*)')
             .single()
 
         if (error) throw error
@@ -60,6 +59,23 @@ export function useContacts() {
     }
   }
   
+  const updateContact = async (id: string, contact: Partial<Omit<Contact, 'id' | 'added_by' | 'created_at' | 'folder'>>) => {
+    try {
+        const { data, error } = await supabase
+            .from('contacts')
+            .update(contact)
+            .eq('id', id)
+            .select('*, folder:folder_id(*)')
+            .single()
+
+        if (error) throw error
+        setContacts(contacts.map(c => c.id === id ? data : c))
+        return { success: true }
+    } catch (err: any) {
+        return { success: false, error: err.message }
+    }
+  }
+
   const deleteContact = async (id: string) => {
       try {
           const { error } = await supabase.from('contacts').delete().eq('id', id)
@@ -71,5 +87,5 @@ export function useContacts() {
       }
   }
 
-  return { contacts, loading, error, addContact, deleteContact, fetchContacts }
+  return { contacts, loading, error, addContact, updateContact, deleteContact, fetchContacts }
 }
