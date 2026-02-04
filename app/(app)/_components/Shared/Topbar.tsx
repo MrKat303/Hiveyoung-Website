@@ -31,24 +31,26 @@ export default function Topbar() {
   }, []);
 
   useEffect(() => {
-    const delayDebounceFn = setTimeout(async () => {
+    const delayDebounceFn = setTimeout(() => {
       const search = searchTerm.trim();
       if (search.length > 2) {
         console.log('Searching for:', search);
-        const { data, error } = await supabase
-          .from('profiles')
-          .select('id, full_name, avatar_url, email, role')
-          .or(`full_name.ilike.%${search}%,email.ilike.%${search}%`)
-          .limit(5);
+        void (async () => {
+          const { data, error } = await supabase
+            .from('profiles')
+            .select('id, full_name, avatar_url, email, role')
+            .or(`full_name.ilike.%${search}%,email.ilike.%${search}%`)
+            .limit(5);
 
-        if (error) {
-          console.error('Search error:', error);
-        }
+          if (error) {
+            console.error('Search error:', error);
+          }
 
-        if (data) {
-          setResults(data);
-          setShowResults(true);
-        }
+          if (data) {
+            setResults(data);
+            setShowResults(true);
+          }
+        })();
       } else {
         setResults([]);
         setShowResults(false);

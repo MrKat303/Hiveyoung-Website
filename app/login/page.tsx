@@ -50,7 +50,7 @@ const LoginPage = () => {
                 id_search: finalEmail 
             });
             
-            if (rpcError || !data || data.length === 0) {
+            if (rpcError || !Array.isArray(data) || data.length === 0) {
                 setError('No se encontró un usuario con ese ID');
                 setLoading(false);
                 return;

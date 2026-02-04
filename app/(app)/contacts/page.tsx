@@ -55,7 +55,7 @@ export default function ContactsPage() {
   const [selectedUser, setSelectedUser] = useState<{ id: string, full_name: string | null, avatar_url: string | null } | null>(null);
 
   useEffect(() => {
-    fetchContacts();
+    void fetchContacts();
   }, []);
 
   async function fetchContacts() {
@@ -92,7 +92,9 @@ export default function ContactsPage() {
         setUserResults([]);
       }
     };
-    const timer = setTimeout(searchUsers, 300);
+    const timer = setTimeout(() => {
+      void searchUsers();
+    }, 300);
     return () => clearTimeout(timer);
   }, [userQuery]);
 

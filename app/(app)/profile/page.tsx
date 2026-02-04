@@ -64,11 +64,14 @@ function ProfileEditForm({ profile, onClose, onSave, saving }: ProfileEditFormPr
           setLocationSuggestions([...new Set(suggestions)] as string[]);
         }
       } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') return;
         console.error('Error fetching locations:', err);
       }
     };
 
-    const timer = setTimeout(fetchLocations, 400);
+    const timer = setTimeout(() => {
+      void fetchLocations();
+    }, 400);
     return () => {
       clearTimeout(timer);
       controller.abort();
@@ -259,6 +262,9 @@ export default function ProfilePage() {
     const reader = new FileReader();
     reader.onload = () => {
       setImageToCrop(reader.result as string);
+    };
+    reader.onerror = () => {
+      showToast('Error al leer el archivo', 'error');
     };
     reader.readAsDataURL(file);
     e.target.value = '';
