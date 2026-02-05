@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Users, User, LogOut } from 'lucide-react';
+import { LayoutDashboard, Users, User, LogOut, MessageSquare } from 'lucide-react';
 import { supabase } from '@/utils/supabase/client';
 import './Sidebar.css';
 
@@ -19,6 +19,7 @@ export default function Sidebar() {
   const menuItems = [
     { href: '/profile', label: 'Perfil', icon: User },
     { href: '/contacts', label: 'Contactos', icon: Users },
+    { href: '/chat', label: 'Chat', icon: MessageSquare },
   ];
 
   return (

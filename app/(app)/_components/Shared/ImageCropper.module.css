@@ -1,0 +1,259 @@
+.cropper_container {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999; /* Even higher */
+  background-color: white; /* Solid white to hide EVERYTHING behind */
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.cropper_header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #f0f0f0;
+  background: white;
+}
+
+.undo_btn {
+  color: #3a1b4e;
+  font-weight: 600;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.header_title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 500;
+  font-size: 16px;
+  color: #333;
+}
+
+.cropper_area_wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.controls_wrapper {
+  background-color: white;
+  padding: 24px 24px 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.02);
+}
+
+.slider_group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.slider_labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider_name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.slider_value {
+  font-size: 12px;
+  font-weight: 700;
+  color: #3a1b4e;
+}
+
+.slider_container {
+  position: relative;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.slider_track_center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 12px;
+  background-color: #3a1b4e;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.custom_slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: #e5e7eb;
+  outline: none;
+  border-radius: 2px;
+}
+
+.custom_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #3a1b4e;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(58, 27, 78, 0.3);
+  transition: transform 0.1s ease;
+}
+
+.custom_slider::-webkit-slider-thumb:active {
+  transform: scale(1.1);
+}
+
+.save_btn {
+  width: 100%;
+  height: 56px;
+  background-color: #3a1b4e;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(58, 27, 78, 0.25);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.save_btn:hover {
+  background-color: #2a1239;
+  transform: translateY(-1px);
+}
+
+.save_btn:active {
+  transform: translateY(0);
+}
+
+/* react-easy-crop custom classes override */
+.container_class {
+  background-color: #f8f9fa !important;
+}
+
+.crop_area_class {
+  border: 2px solid white !important;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5) !important;
+}
+
+.cropper_card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  margin: auto;
+  flex-shrink: 0;
+}
+
+/* Tablet and Desktop optimizations */
+@media (min-width: 641px) {
+  .cropper_container {
+    background: white;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999999 !important;
+    padding: 40px;
+  }
+
+  .cropper_card {
+    width: 500px !important;
+    height: auto !important;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    display: block !important; /* Changed from flex to block to avoid collapsing children */
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+  }
+
+  .cropper_header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .cropper_area_wrapper {
+    width: 500px !important;
+    height: 380px !important; /* Explicit height */
+    background-color: #000 !important;
+    position: relative !important;
+    display: block !important;
+  }
+
+  .controls_wrapper {
+    width: 100%;
+    padding: 30px;
+    background: white;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .cropper_container {
+    background: white;
+    position: fixed;
+    inset: 0;
+    z-index: 9999999;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cropper_card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100dvh;
+  }
+
+  .cropper_area_wrapper {
+    width: 100%;
+    flex: 1;
+    min-height: 50vh;
+  }
+
+  .controls_wrapper {
+    padding: 24px;
+    padding-bottom: 60px;
+  }
+}

@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/utils/supabase/client';
+import { useProfile } from '@/hooks/useProfile';
 import { 
   Camera, 
   MapPin, 
   Pencil, 
   MoreHorizontal,
   Sparkles,
-  Loader2
+  Loader2,
+  MessageCircle
 } from 'lucide-react';
+// ... (imports)
 import Image from 'next/image';
 import type { Profile } from '@/types/profile';
 import { SkillBadge } from './SkillBadge';
@@ -29,9 +34,34 @@ export const ProfileHeader = ({
   onAvatarClick,
   uploading = false
 }: ProfileHeaderProps) => {
+  const router = useRouter();
+  const { profile: myProfile } = useProfile();
+  const [contacting, setContacting] = useState(false);
+
   const initials = profile?.full_name 
     ? profile.full_name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)
     : profile?.email?.[0].toUpperCase() || '?';
+
+  const handleSendMessage = async () => {
+    if (!myProfile || !profile || contacting) return;
+    setContacting(true);
+
+    try {
+      // Use a database function (RPC) to handle the atomic creation/fetch of the conversation
+      // This avoids RLS race conditions where we create a chat but can't select it yet
+      const { data: convoId, error } = await supabase
+        .rpc('get_or_create_conversation', { other_user_id: profile.id });
+
+      if (error) throw error;
+      
+      router.push(`/chat?id=${convoId}`);
+    } catch (err) {
+      console.error('Error starting chat:', JSON.stringify(err, null, 2));
+      alert('Error al iniciar el chat');
+    } finally {
+      setContacting(false);
+    }
+  };
 
   return (
     <>
@@ -76,13 +106,25 @@ export const ProfileHeader = ({
           </div>
 
           <div className={styles.header_action_btns}>
+            {!isOwnProfile && (
+              <button 
+                className={styles.edit_pencil_btn} 
+                onClick={handleSendMessage} 
+                disabled={contacting}
+                title="Enviar mensaje"
+                style={{ backgroundColor: '#3a1b4e', color: 'white', border: 'none' }}
+              >
+                {contacting ? <Loader2 size={24} className="animate-spin" /> : <MessageCircle size={24} />}
+              </button>
+            )}
+
             {isOwnProfile && onEditProfile && (
               <button className={styles.edit_pencil_btn} onClick={onEditProfile} aria-label="Editar perfil">
                 <Pencil size={24} />
               </button>
             )}
             <div className={styles.edit_pencil_btn}>
-              < MoreHorizontal size={24} />
+              <MoreHorizontal size={24} />
             </div>
           </div>
         </div>
