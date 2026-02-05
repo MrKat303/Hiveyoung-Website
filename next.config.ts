@@ -15,10 +15,6 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'celestinas.cl',
       },
-      {
-        protocol: 'https',
-        hostname: 'yjgfuvpxufvlnvgtmsop.supabase.co',
-      },
     ],
   },
 };
