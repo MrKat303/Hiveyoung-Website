@@ -136,9 +136,9 @@ function Navbar() {
                 {/* Desktop Buttons */}
                 <div className="navbar-btns desktop-only">
                     <Link className="navbar-btn navbar-btn--outline" href="/unete">Unete</Link>
-                    <Link href="/login" className="login-icon-circle">
+                    <a href="https://hiveyoungapp.vercel.app/login" className="login-icon-circle">
                         <User size={20} />
-                    </Link>
+                    </a>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -198,9 +198,9 @@ function Navbar() {
                                             <Link href="/unete" className="mobile-btn-primary" onClick={closeMenu}>
                                                 Unete
                                             </Link>
-                                            <Link href="/login" className="mobile-btn-outline" onClick={closeMenu}>
+                                            <a href="https://hiveyoungapp.vercel.app/login" className="mobile-btn-outline" onClick={closeMenu}>
                                                 <User size={18} style={{ marginRight: '8px' }} /> Iniciar Sesión
-                                            </Link>
+                                            </a>
                                         </div>
                                         <div className="mobile-socials">
                                             <a href="https://www.instagram.com/hiveyoung/" target="_blank" rel="noopener noreferrer">

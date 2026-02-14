@@ -345,7 +345,7 @@
     height: 100vh;
     background: linear-gradient(135deg, #3a1b4e 0%, #2a1338 100%);
     z-index: 1100;
-    padding: 110px 40px 60px;
+    padding: 110px 40px calc(100px + env(safe-area-inset-bottom));
     box-shadow: -20px 0 40px rgba(0, 0, 0, 0.4);
     overflow-y: auto;
     display: flex;
@@ -367,7 +367,7 @@
 }
 
 .mobile-link-item a {
-    font-size: 1.15rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: white;
     text-decoration: none;
@@ -390,7 +390,7 @@
 }
 
 .mobile-link-subitem a {
-    font-size: 0.9rem;
+    font-size: 1.15rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.6);
     text-decoration: none;

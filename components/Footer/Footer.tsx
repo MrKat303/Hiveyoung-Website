@@ -56,7 +56,7 @@ export default function Footer() {
                             <nav className="footer__links">
                                 <Link href="/unete" className="footer__link">Únete</Link>
                                 <Link href="/contacto" className="footer__link">Contacto</Link>
-                                <Link href="/login" className="footer__link">Login</Link>
+                                <a href="https://hiveyoungapp.vercel.app/login" className="footer__link">Login</a>
                             </nav>
                         </div>
                     </div>
