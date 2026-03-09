@@ -5,16 +5,8 @@
     overflow-x: hidden;
     color: #3a1b4e;
     font-family: 'Poppins', sans-serif;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
     overscroll-behavior-y: auto;
     /* Allow native momentum */
-}
-
-.historia-container::-webkit-scrollbar,
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-    display: none !important;
 }
 
 .historia-bg-wrapper {
@@ -72,65 +64,34 @@ body::-webkit-scrollbar {
     letter-spacing: -2px;
 }
 
-/* HORIZONTAL SCROLL */
+/* VERTICAL STACKING WITH OBSERVER */
 .horizontal-scroll-container {
     width: 100%;
     height: 100vh;
     overflow: hidden;
     position: relative;
-    display: flex;
-    align-items: center;
+    background-color: transparent;
 }
 
 .horizontal-track {
-    display: flex;
-    height: 100%;
     position: relative;
-    align-items: center;
-    will-change: transform;
-    /* Hint for GPU promotion */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-/* LINES */
-.story-line {
-    position: absolute;
-    top: 90%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    pointer-events: none;
-}
-
-.panel-theme-dark .story-line {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.story-line-progress {
-    position: absolute;
-    top: 90%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #2eb67d;
-    box-shadow: 0 0 15px rgba(46, 182, 125, 0.6);
-    z-index: 11;
-    pointer-events: none;
-    transform-origin: left center;
-    transform: scaleX(0);
-}
-
-/* FULLSCREEN PANEL */
 .horizontal-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
     z-index: 1;
+    overflow: hidden;
+    background-color: inherit;
 }
 
 /* Panel Themes */
@@ -149,17 +110,9 @@ body::-webkit-scrollbar {
     color: white;
 }
 
+/* Removing timeline dots from desktop as we'll use a different progress indicator or just the reveal */
 .timeline-dot {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px;
-    height: 12px;
-    background-color: #2eb67d;
-    border: 2px solid white;
-    border-radius: 50%;
-    z-index: 12;
+    display: none;
 }
 
 /* Fullscreen Grid */
@@ -176,13 +129,14 @@ body::-webkit-scrollbar {
 
 /* Text col */
 .panel-text-col {
-    flex: 0.7;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 6vw;
     position: relative;
     z-index: 3;
+    min-width: 40%;
 }
 
 .panel-text-col h3 {
@@ -225,12 +179,14 @@ body::-webkit-scrollbar {
 
 /* Image Col */
 .panel-image-col {
-    flex: 1.3;
+    flex: 1;
     height: 100%;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    min-width: 50%;
 }
 
 .cover-img-base {
@@ -242,12 +198,30 @@ body::-webkit-scrollbar {
 
 .story-img-cover {
     object-fit: cover;
-    transition: transform 1s ease;
+    transition: opacity 0.5s ease;
 }
 
 .panel-image-col:hover .story-img-cover {
-    transform: scale(1.05);
+    opacity: 0.9;
 }
+
+/* Smoke effect mask at the bottom of the images */
+.panel-image-col::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: linear-gradient(to bottom, transparent, var(--bg-current, #f4ede4));
+    z-index: 2;
+    pointer-events: none;
+    transition: background 0.5s ease;
+}
+
+.panel-theme-dark .panel-image-col::after { --bg-current: #3a1b4e; }
+.panel-theme-green .panel-image-col::after { --bg-current: #2eb67d; }
+.panel-theme-light .panel-image-col::after { --bg-current: #f4ede4; }
 
 .contain-img-wrapper {
     width: 100%;
@@ -296,6 +270,10 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 900px) {
+    /* INDICADOR DE SCROLL PREMIUM (HIDDEN ON MOBILE) */
+    .mobile-timeline {
+        display: none !important;
+    }
 
     /* Hero adjustments for mobile zoom */
     .section-hero {
@@ -304,209 +282,129 @@ body::-webkit-scrollbar {
     }
 
     .hero-title-text {
-        font-size: 18vw;
-        letter-spacing: -2px;
-        text-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        font-size: 16vw;
+        letter-spacing: -0.03em;
+        line-height: 1;
     }
 
-    .horizontal-scroll-container {
-        height: auto !important;
-        overflow-x: hidden !important;
-        overflow-y: visible !important;
-        display: block;
-        position: relative;
-    }
-
-    .horizontal-track {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        height: auto !important;
-        transform: none !important;
-    }
-
-    /* Mobile Vertical Timeline */
-    .mobile-timeline {
-        display: block;
-        position: fixed;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 3px;
-        height: 60vh;
-        z-index: 100;
-        pointer-events: none;
-    }
-
-    .mobile-timeline-line {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 3px;
-    }
-
-    .mobile-timeline-progress {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, #2eb67d 0%, #4ecdc4 100%);
-        border-radius: 3px;
-        transform-origin: top center;
-        transform: scaleY(0);
-        box-shadow: 0 0 20px rgba(46, 182, 125, 0.5);
-    }
-
-    .mobile-timeline-dot {
-        display: block;
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        width: 14px;
-        height: 14px;
-        background: #2eb67d;
-        border: 3px solid white;
-        border-radius: 50%;
-        z-index: 101;
-        box-shadow: 0 0 15px rgba(46, 182, 125, 0.6);
-    }
-
-    /* Hide desktop timeline */
-    .story-line,
-    .story-line-progress,
-    .timeline-dot {
-        display: none;
-    }
-
-    /* Panel Styling */
+    /* Refined layout for stacked mobile panels */
     .horizontal-panel {
-        width: 100% !important;
-        height: auto !important;
-        min-height: 100vh;
-        min-height: 100dvh;
-        padding: 40px 20px 60px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* Push content to bottom for thumb-friendly reach */
+        height: 100vh;
+        height: 100dvh;
+    }
+
+    .fullscreen-grid {
+        display: flex;
+        flex-direction: column;
+        height: 100% !important;
+        width: 100%;
+        gap: 0;
+        padding: 0;
         position: relative;
     }
 
-    .fullscreen-grid,
-    .fullscreen-grid.reverse {
-        flex-direction: column;
-        height: auto !important;
-        gap: 30px;
-        padding-left: 30px;
-    }
-
-    /* Image Column */
+    /* Background image effect for mobile */
     .panel-image-col {
-        flex: none;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 60vh;
-        /* Re-added height to support 'fill' images */
+        height: 55%; /* Take top half */
+        z-index: 1;
         border-radius: 0;
-        overflow: visible;
         box-shadow: none;
-        order: 1;
-        background: transparent !important;
+        overflow: hidden;
     }
 
-    .cover-img-base {
-        border-radius: 16px;
-        height: 100%;
+    /* Subtle gradient overlay to blend image with background is inherited from global, we just adjust height */
+    .panel-image-col::after {
+        height: 40%;
     }
 
-    .story-img-cover {
-        border-radius: 16px;
+    .story-img-cover, .story-img-contain-new {
+        height: 100% !important;
+        width: 100% !important;
+        object-fit: cover !important;
     }
 
-    .contain-img-wrapper {
-        border-radius: 0;
-        background: transparent !important;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-    }
-
-    .story-img-contain,
-    .story-img-contain-new {
-        max-width: 100%;
-        max-height: 100%;
-        width: 100%;
-        height: 100%;
-    }
-
-    /* Text Column */
+    /* Interactive Text Content Box */
     .panel-text-col {
-        flex: none;
+        position: relative;
+        z-index: 5;
         width: 100%;
-        padding: 20px 0;
+        padding: 5vh 8vw 12vh;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
         align-items: flex-start;
-        text-align: left;
-        order: 2;
+        justify-content: flex-start;
+        flex: 1;
+        margin-top: 48vh; /* Se ajusta para dar espacio al título de fondo */
+    }
+
+    /* Year as large stroke text like PC but smaller */
+    .year-label {
+        font-size: 4.5rem;
+        font-weight: 900;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+        position: absolute;
+        top: -1.5rem;
+        left: 8vw;
+        letter-spacing: -2px;
+        margin-bottom: 0;
+        background: transparent;
+        backdrop-filter: none;
+        border: none;
+        box-shadow: none;
+        z-index: -1;
+        opacity: 0.6 !important;
+    }
+
+
+
+    .panel-theme-light .year-label {
+        -webkit-text-stroke: 1.5px rgba(58, 27, 78, 0.4); /* Morado más visible */
+        opacity: 0.8 !important;
     }
 
     .panel-text-col h3 {
-        font-size: 2.2rem;
-        margin-bottom: 10px;
+        font-size: 2.6rem;
+        font-weight: 900;
         line-height: 1.1;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.02em;
+        color: white;
+        position: relative;
     }
+
+    .panel-theme-light .panel-text-col h3 { color: #3a1b4e; }
 
     .panel-text-col h4 {
         font-size: 0.9rem;
-        letter-spacing: 2px;
-        margin-bottom: 15px;
-        opacity: 0.7;
-    }
-
-    .panel-text-col p {
-        font-size: 1rem;
-        line-height: 1.7;
-        opacity: 0.9;
-    }
-
-    /* Year Label as Badge */
-    .year-label {
-        font-size: 1.2rem;
         font-weight: 700;
-        position: relative;
-        top: 0;
-        left: 0;
-        transform: none;
-        margin-bottom: 15px;
-        display: inline-block;
-        padding: 8px 16px;
-        background: rgba(46, 182, 125, 0.2);
-        border: 1px solid rgba(46, 182, 125, 0.4);
-        border-radius: 30px;
-        color: #2eb67d;
-        -webkit-text-stroke: 0;
-        opacity: 1 !important;
-    }
-
-    .panel-theme-light .year-label {
-        background: rgba(58, 27, 78, 0.1);
-        border-color: rgba(58, 27, 78, 0.2);
-        color: #3a1b4e;
-    }
-
-    .panel-theme-green .year-label {
-        background: rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        margin-bottom: 2rem; /* Más espacio bajo el subtítulo */
+        opacity: 0.7;
         color: white;
     }
 
-    /* Placeholder */
-    .placeholder-full {
-        margin: 20px;
-        border-radius: 24px;
-        background: rgba(255, 255, 255, 0.05);
+    .panel-theme-light .panel-text-col h4 { color: #3a1b4e; }
+
+    .panel-text-col p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        font-weight: 400;
+        opacity: 0.9;
+        color: white;
+        max-width: 100%;
     }
 
-    .placeholder-full span {
-        font-size: 1.2rem;
-    }
+    .panel-theme-light .panel-text-col p { color: #3a1b4e; }
+
 }

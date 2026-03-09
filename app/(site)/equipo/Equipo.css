@@ -226,9 +226,55 @@
 /* --- DIRECTORIO CARDS (Based on Image 2) --- */
 .directorio-card-new {
     min-width: 280px;
-    height: 360px;
-    position: relative;
+    height: 380px;
+    perspective: 1000px;
+    cursor: pointer;
     scroll-snap-align: center;
+}
+
+.directorio-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.directorio-card-front, .directorio-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.directorio-card-back {
+    transform: rotateY(180deg);
+    background-color: #fdfaf3; /* Pastel/Cream color */
+    color: #3A1B4E; /* Purple text */
+    padding: 24px;
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.directorio-card-back .linkedin-link-simple {
+    color: #3A1B4E;
+    border-color: rgba(58, 27, 78, 0.2);
+    background: rgba(58, 27, 78, 0.05);
+}
+
+.directorio-card-back .linkedin-link-simple:hover {
+    background: #3A1B4E;
+    color: white;
+}
+
+.directorio-card-back h3, .directorio-card-back .descripcion {
+    color: #3A1B4E;
+}
+
+.directorio-card-front {
+    z-index: 2;
 }
 
 .directorio-image-container {
@@ -308,8 +354,9 @@
 }
 
 .label-linkedin:hover {
-    background: #3A1B4E;
+    background: #59c985;
     color: white;
+    border-color: #59c985;
 }
 
 /* Animations and reveals */

@@ -92,36 +92,89 @@ import { useGSAP } from "@gsap/react";
     };
 
     const DirectorioCard = ({ miembro }: { miembro: Miembro }) => {
+        const cardRef = useRef<HTMLDivElement>(null);
+        const innerRef = useRef<HTMLDivElement>(null);
+
+        useGSAP(() => {
+            if (!innerRef.current || !cardRef.current) return;
+            
+            const tl = gsap.timeline({ 
+                paused: true,
+                defaults: { duration: 0.6, ease: "expo.inOut" }
+            });
+
+            tl.to(innerRef.current, { rotateY: 180 })
+              .to(cardRef.current, { y: -10 }, 0);
+
+            const enter = () => tl.play();
+            const leave = () => tl.reverse();
+
+            cardRef.current.addEventListener("mouseenter", enter);
+            cardRef.current.addEventListener("mouseleave", leave);
+            
+            return () => {
+                cardRef.current?.removeEventListener("mouseenter", enter);
+                cardRef.current?.removeEventListener("mouseleave", leave);
+            };
+        }, { scope: cardRef });
+
         return (
-            <div className="directorio-card-new reveal">
-                <div className="directorio-image-container">
-                    {miembro.img ? (
-                        <Image
-                            src={miembro.img}
-                            alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
-                            fill
-                            className="directorio-image-new"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            draggable={false}
-                        />
-                    ) : (
-                        <div className="directorio-placeholder-new">
-                            <span>{miembro.nombre.charAt(0)}</span>
+            <div ref={cardRef} className="directorio-card-new reveal">
+                <div ref={innerRef} className="directorio-card-inner">
+                    {/* Front Face */}
+                    <div className="directorio-card-front">
+                        <div className="directorio-image-container">
+                            {miembro.img ? (
+                                <Image
+                                    src={miembro.img}
+                                    alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
+                                    fill
+                                    className="directorio-image-new"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    draggable={false}
+                                />
+                            ) : (
+                                <div className="directorio-placeholder-new">
+                                    <span>{miembro.nombre.charAt(0)}</span>
+                                </div>
+                            )}
+                            
+                            <div className="directorio-floating-label">
+                                <div className="label-text-content">
+                                    <h4>{miembro.nombre}</h4>
+                                    <span>{miembro.cargo}</span>
+                                </div>
+                                <div className="label-linkedin">
+                                    {miembro.linkedin ? (
+                                        <Linkedin size={18} fill="currentColor" />
+                                    ) : (
+                                        <Linkedin size={18} opacity={0.3} />
+                                    )}
+                                </div>
+                            </div>
                         </div>
-                    )}
-                    
-                    <div className="directorio-floating-label">
-                        <div className="label-text-content">
-                            <h4>{miembro.nombre}</h4>
-                            <span>{miembro.cargo}</span>
-                        </div>
-                        <div className="label-linkedin">
+                    </div>
+
+                    {/* Back Face */}
+                    <div className="directorio-card-back">
+                        <div className="back-content-simple">
+                            <h3>{miembro.nombre}</h3>
+                            <p className="descripcion">
+                                {miembro.descripcion || "Liderando con visión y compromiso."}
+                            </p>
                             {miembro.linkedin ? (
-                                <a href={miembro.linkedin} target="_blank" rel="noopener noreferrer">
-                                    <Linkedin size={18} fill="currentColor" />
+                                <a 
+                                    href={miembro.linkedin} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="linkedin-link-simple"
+                                >
+                                    <Linkedin size={24} />
                                 </a>
                             ) : (
-                                <Linkedin size={18} opacity={0.3} />
+                                <div className="linkedin-link-simple disabled">
+                                    <Linkedin size={24} />
+                                </div>
                             )}
                         </div>
                     </div>
