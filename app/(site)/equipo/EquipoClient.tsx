@@ -1,11 +1,134 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useScrollReveal from "@/hooks/useScrollReveal";
 import Image from "next/image";
 import "./Equipo.css";
 import { direccionEjecutiva, coordinadoresRegionales, directorio, Miembro } from "@/data/equipo";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+    const CreativeCard = ({ miembro, className = "equipo-card" }: { miembro: Miembro; className?: string }) => {
+        const cardRef = useRef<HTMLDivElement>(null);
+        const innerRef = useRef<HTMLDivElement>(null);
+
+        useGSAP(() => {
+            if (!innerRef.current || !cardRef.current) return;
+            
+            const tl = gsap.timeline({ 
+                paused: true,
+                defaults: { duration: 0.6, ease: "expo.inOut" }
+            });
+
+            tl.to(innerRef.current, { rotateY: 180 })
+              .to(cardRef.current, { scale: 1.05, y: -10 }, 0);
+
+            const enter = () => tl.play();
+            const leave = () => tl.reverse();
+
+            cardRef.current.addEventListener("mouseenter", enter);
+            cardRef.current.addEventListener("mouseleave", leave);
+            
+            return () => {
+                cardRef.current?.removeEventListener("mouseenter", enter);
+                cardRef.current?.removeEventListener("mouseleave", leave);
+            };
+        }, { scope: cardRef });
+
+        return (
+            <div ref={cardRef} className={`${className} creative-card-wrapper reveal`}>
+                <div ref={innerRef} className="creative-card-inner">
+                    {/* Front */}
+                    <div className="creative-card-front">
+                        <div className="creative-image-container">
+                            {miembro.img ? (
+                                <Image
+                                    src={miembro.img}
+                                    alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
+                                    fill
+                                    className="creative-image"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    draggable={false}
+                                />
+                            ) : (
+                                <div className="creative-image-placeholder">
+                                    <span className="placeholder-initial">{miembro.nombre.charAt(0)}</span>
+                                </div>
+                            )}
+                        </div>
+                        <div className="creative-info-simple">
+                            <h3 className="creative-name-simple">{miembro.nombre}</h3>
+                            <p className="creative-role-simple">{miembro.cargo}</p>
+                        </div>
+                    </div>
+                    {/* Back */}
+                    <div className="creative-card-back">
+                        <div className="back-content-simple">
+                            <h3>{miembro.nombre}</h3>
+                            <p className="descripcion">
+                                {miembro.descripcion || "Apasionado por transformar la comunidad y crear un impacto positivo."}
+                            </p>
+                            
+                            {miembro.linkedin ? (
+                                <a 
+                                    href={miembro.linkedin} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="linkedin-link-simple"
+                                >
+                                    <Linkedin size={24} />
+                                </a>
+                            ) : (
+                                <div className="linkedin-link-simple disabled">
+                                    <Linkedin size={24} />
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    const DirectorioCard = ({ miembro }: { miembro: Miembro }) => {
+        return (
+            <div className="directorio-card-new reveal">
+                <div className="directorio-image-container">
+                    {miembro.img ? (
+                        <Image
+                            src={miembro.img}
+                            alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
+                            fill
+                            className="directorio-image-new"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            draggable={false}
+                        />
+                    ) : (
+                        <div className="directorio-placeholder-new">
+                            <span>{miembro.nombre.charAt(0)}</span>
+                        </div>
+                    )}
+                    
+                    <div className="directorio-floating-label">
+                        <div className="label-text-content">
+                            <h4>{miembro.nombre}</h4>
+                            <span>{miembro.cargo}</span>
+                        </div>
+                        <div className="label-linkedin">
+                            {miembro.linkedin ? (
+                                <a href={miembro.linkedin} target="_blank" rel="noopener noreferrer">
+                                    <Linkedin size={18} fill="currentColor" />
+                                </a>
+                            ) : (
+                                <Linkedin size={18} opacity={0.3} />
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
 
 export default function EquipoPage() {
     useScrollReveal();
@@ -23,57 +146,6 @@ export default function EquipoPage() {
         }
     };
 
-    const renderCard = (miembro: Miembro) => (
-        <div key={miembro.id} className="equipo-card reveal">
-            <div className="card-image-container">
-                {miembro.img ? (
-                    <Image
-                        src={miembro.img}
-                        alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
-                        width={300}
-                        height={300}
-                        className="card-image"
-                        draggable={false}
-                    />
-                ) : (
-                    <div className="card-image-placeholder"></div>
-                )}
-            </div>
-            <div className="card-content">
-                <h3>{miembro.nombre}</h3>
-                <p>{miembro.cargo}</p>
-            </div>
-        </div>
-    );
-
-    const renderDirectorioCard = (miembro: Miembro) => (
-        <div key={miembro.id} className="directorio-card reveal">
-            <div className="directorio-image-wrapper">
-                {miembro.img ? (
-                    <Image
-                        src={miembro.img}
-                        alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
-                        fill
-                        className="directorio-image"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        draggable={false}
-                    />
-                ) : (
-                    <div className="directorio-image-placeholder">
-                        <span className="placeholder-initial">{miembro.nombre.charAt(0)}</span>
-                    </div>
-                )}
-            </div>
-            <div className="directorio-info-overlay">
-                <h3>{miembro.nombre}</h3>
-                <p>{miembro.cargo}</p>
-                <svg className="overlay-line" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 3C15 1.5 35 4.5 48 3" stroke="#59c985" strokeWidth="2.5" strokeLinecap="round" />
-                </svg>
-            </div>
-        </div>
-    );
-
     return (
         <div className="equipo-page">
             <header className="equipo-header reveal">
@@ -90,7 +162,7 @@ export default function EquipoPage() {
                         </svg>
                     </div>
                     <div className="equipo-grid">
-                        {direccionEjecutiva.map(renderCard)}
+                        {direccionEjecutiva.map((m) => <CreativeCard key={m.id} miembro={m} />)}
                     </div>
                 </section>
 
@@ -102,7 +174,7 @@ export default function EquipoPage() {
                         </svg>
                     </div>
                     <div className="equipo-grid">
-                        {coordinadoresRegionales.map(renderCard)}
+                        {coordinadoresRegionales.map((m) => <CreativeCard key={m.id} miembro={m} />)}
                     </div>
                 </section>
 
@@ -119,7 +191,7 @@ export default function EquipoPage() {
                             <ChevronLeft size={28} />
                         </button>
                         <div className="directorio-grid carousel-track" ref={scrollRef}>
-                            {directorio.map(renderDirectorioCard)}
+                            {directorio.map((m) => <DirectorioCard key={m.id} miembro={m} />)}
                         </div>
                         <button className="carousel-btn next" onClick={scrollRight} aria-label="Siguiente">
                             <ChevronRight size={28} />
