@@ -1,5 +1,5 @@
 .equipo-page {
-    background-color: #f8f4eb;
+    background-color: #f4ede4;
     min-height: 100vh;
     padding: 140px 5% 100px;
     font-family: 'Poppins', sans-serif;
@@ -26,9 +26,39 @@
 }
 
 .equipo-header p {
-    font-size: 18px;
-    opacity: 0.8;
+    font-size: 19px;
+    opacity: 0.85;
+    line-height: 1.62; /* Better readability */
+    max-width: 850px; /* Prevents text from stretching too far */
+    margin: 0 auto;
 }
+
+.highlight-text {
+    position: relative;
+    font-weight: 700;
+    color: #3A1B4E !important; /* Text back to purple */
+    padding: 0 4px;
+    display: inline-block;
+}
+
+.highlight-text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 0;
+    height: 14px; /* Essential height */
+    background-color: #59c985 !important;
+    opacity: 0.4;
+    z-index: -1;
+    transition: width 1s cubic-bezier(0.19, 1, 0.22, 1);
+    transition-delay: 0.1s;
+}
+
+.reveal.active .highlight-text::after {
+    width: 100%;
+}
+
 
 .equipo-container {
     width: 100%;
@@ -43,7 +73,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 120px;
+    margin-bottom: 80px; /* Reduced from 120px for better flow */
 }
 
 .equipo-seccion:last-child {
@@ -54,7 +84,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px; /* Reduced from 60px */
+    text-align: center; /* Enforce centering for long titles on mobile */
 }
 
 .seccion-titulo {
@@ -83,21 +114,30 @@
 .equipo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 30px;
     width: 100%;
     justify-items: center;
-    align-items: start; /* Prevent items from stretching to different row heights */
+    align-items: start; /* Let cards define their own fixed height */
 }
 
 /* --- CREATIVE CARDS (Based on Image 1) --- */
 .creative-card-wrapper {
     perspective: 1000px;
-    width: 100%;
-    max-width: 320px;
-    height: 420px; /* Fixed height for all top cards */
+    width: 320px;
+    height: 420px; /* Locked height for perfect alignment */
     cursor: pointer;
     margin: 0 auto;
     display: block;
+    flex-shrink: 0;
+}
+
+.creative-card-smaller {
+    width: 260px !important;
+    height: 360px !important;
+}
+
+.creative-card-smaller .creative-name-simple {
+    font-size: 21px;
 }
 
 .creative-card-inner {
@@ -137,11 +177,12 @@
 .creative-image-container {
     position: relative;
     width: 100%;
-    padding-top: 100%; /* Perfect square */
+    aspect-ratio: 1 / 1; /* Guaranteed square */
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 20px;
     background: #e5e0d5;
+    flex-shrink: 0; /* Prevents image area from shrinking */
 }
 
 .creative-image, .creative-image-placeholder {
@@ -155,10 +196,11 @@
 
 .creative-info-simple {
     text-align: center;
-    flex-grow: 1; /* Pushes content to fill available space */
+    flex-grow: 1; /* Fills remaining space */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center text vertically in the remaining space */
+    justify-content: center; /* Centers name/role in that remaining space */
+    padding-bottom: 10px;
 }
 
 .creative-name-simple {
@@ -225,11 +267,12 @@
 
 /* --- DIRECTORIO CARDS (Based on Image 2) --- */
 .directorio-card-new {
-    min-width: 280px;
-    height: 380px;
+    width: 270px;
+    height: 400px; /* Slightly adjusted to align with others' feel */
     perspective: 1000px;
     cursor: pointer;
     scroll-snap-align: center;
+    flex-shrink: 0;
 }
 
 .directorio-card-inner {
@@ -308,18 +351,22 @@
 
 .directorio-floating-label {
     position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    height: auto;
+    min-height: 50px;
     background: white;
     border-radius: 12px;
-    padding: 14px 18px;
+    padding: 10px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 5;
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-sizing: border-box; /* Crucial for labels to stay within width */
 }
 
 .directorio-card-new:hover .directorio-floating-label {
@@ -371,16 +418,48 @@
     transform: translateY(0);
 }
 
+.equipo-general-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+}
+
 /* --- RESPONSIVO --- */
 @media (max-width: 1024px) {
     .equipo-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    .equipo-general-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
 }
 
 @media (max-width: 768px) {
+    .equipo-seccion {
+        margin-bottom: 60px; /* Even tighter spacing on mobile */
+    }
+
+    .titulo-wrapper {
+        margin-bottom: 30px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .seccion-titulo {
+        font-size: 28px;
+        text-align: center;
+    }
+
     .equipo-grid {
         grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .equipo-general-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .creative-card-smaller {
+        width: 100% !important;
+        max-width: 280px !important;
     }
 
     .equipo-header h1 {
@@ -396,15 +475,23 @@
 .directorio-section {
     position: relative;
     padding: 80px 20px;
-    margin: 80px auto;
+    margin: 80px auto; 
     background-color: #3A1B4E;
     width: 100%;
-    max-width: 1150px; /* Same as equipo-container */
+    max-width: 1150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
     box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .directorio-section {
+        padding: 40px 15px;
+        margin: 40px auto;
+        border-radius: 0; /* Full width looks better on mobile */
+    }
 }
 
 .directorio-section .seccion-titulo {
@@ -425,6 +512,7 @@
 
 .directorio-grid {
     display: flex;
+    align-items: center; /* Enforce same vertical center for all cards */
     gap: 30px;
     width: 100%;
     overflow-x: auto;

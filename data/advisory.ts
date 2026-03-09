@@ -53,5 +53,14 @@ export const advisors: Advisor[] = [
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456570/fernanda_szdo98.jpg",
         color: "blue",
         linkedin: "https://www.linkedin.com/in/fernandavicentem/"
+    },
+    {
+        id: 6,
+        name: "Anne Traub",
+        role: "Presidenta",
+        institution: "Empresas Familiares",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773092678/IMG-20251015-WA0001-e1760729547727_nol1kh.jpg",
+        color: "purple",
+        linkedin: "https://cl.linkedin.com/in/anne-traub-m%C3%B6dinger-122226188"
     }
 ];

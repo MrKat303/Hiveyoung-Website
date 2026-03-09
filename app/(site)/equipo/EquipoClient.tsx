@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import useScrollReveal from "@/hooks/useScrollReveal";
 import Image from "next/image";
 import "./Equipo.css";
-import { direccionEjecutiva, coordinadoresRegionales, directorio, Miembro } from "@/data/equipo";
+import { direccionEjecutiva, coordinadoresRegionales, directorio, equipoGeneral, Miembro } from "@/data/equipo";
 import { ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -59,7 +59,9 @@ import { useGSAP } from "@gsap/react";
                         </div>
                         <div className="creative-info-simple">
                             <h3 className="creative-name-simple">{miembro.nombre}</h3>
-                            <p className="creative-role-simple">{miembro.cargo}</p>
+                            {miembro.cargo !== "Equipo" && (
+                                <p className="creative-role-simple">{miembro.cargo}</p>
+                            )}
                         </div>
                     </div>
                     {/* Back */}
@@ -203,7 +205,7 @@ export default function EquipoPage() {
         <div className="equipo-page">
             <header className="equipo-header reveal">
                 <h1>Nuestro Equipo</h1>
-                <p>El motor que impulsa el cambio juvenil.</p>
+                <p>HiveYoung está <span className="highlight-text">liderado por jóvenes</span> comprometidos que, desde sus distintos espacios, impulsan sus ideas y talentos para generar impacto</p>
             </header>
 
             <div className="equipo-container">
@@ -249,6 +251,18 @@ export default function EquipoPage() {
                         <button className="carousel-btn next" onClick={scrollRight} aria-label="Siguiente">
                             <ChevronRight size={28} />
                         </button>
+                    </div>
+                </section>
+
+                <section className="equipo-seccion">
+                    <div className="titulo-wrapper reveal">
+                        <h2 className="seccion-titulo">Equipo</h2>
+                        <svg className="titulo-subrayado-verde reveal" viewBox="0 0 120 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 5C35 3 65 7 95 5C108 4 115 6 117 5" stroke="#59c985" strokeWidth="4" strokeLinecap="round" />
+                        </svg>
+                    </div>
+                    <div className="equipo-grid equipo-general-grid">
+                        {equipoGeneral.map((m) => <CreativeCard key={m.id} miembro={m} className="creative-card-smaller" />)}
                     </div>
                 </section>
             </div>

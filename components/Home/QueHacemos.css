@@ -1,0 +1,132 @@
+.que-hacemos-section {
+    padding: 100px 5%;
+    background-color: #f4ede4; /* Match site cream */
+    position: relative;
+    overflow: hidden;
+}
+
+.que-hacemos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.que-hacemos-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.que-hacemos-title {
+    font-size: 52px;
+    font-weight: 800;
+    color: #3a1b4e;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.que-hacemos-subtitle {
+    font-size: 20px;
+    color: #3a1b4e;
+    opacity: 0.7;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.que-hacemos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.que-hacemos-card {
+    background: #ffffff;
+    padding: 60px 40px;
+    border-radius: 35px;
+    box-shadow: 0 15px 40px rgba(58, 27, 78, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(58, 27, 78, 0.05);
+}
+
+.que-hacemos-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(58, 27, 78, 0.1);
+    border-color: var(--accent-color);
+}
+
+.qh-icon-wrapper {
+    width: 90px;
+    height: 90px;
+    background-color: var(--accent-color);
+    color: #3a1b4e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    margin-bottom: 30px;
+    transition: transform 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.que-hacemos-card:hover .qh-icon-wrapper {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.que-hacemos-card h3 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #3a1b4e;
+}
+
+.que-hacemos-card p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #3a1b4e;
+    opacity: 0.8;
+}
+
+.qh-card-line {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+.que-hacemos-card:hover .qh-card-line {
+    width: 80px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .que-hacemos-grid {
+        gap: 25px;
+    }
+    
+    .que-hacemos-title {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 768px) {
+    .que-hacemos-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .que-hacemos-section {
+        padding: 80px 20px;
+    }
+
+    .que-hacemos-card {
+        padding: 40px 30px;
+    }
+}

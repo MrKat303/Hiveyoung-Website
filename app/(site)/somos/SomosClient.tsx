@@ -10,6 +10,52 @@ import { SOMOS_VALUES } from '@/data/somos-values';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import './Somos.css';
 
+const HighlightMarker = ({ children, color, delay = 0, scrollProgress, trigger = 0.25 }: { children: React.ReactNode, color: string, delay?: number, scrollProgress: any, trigger?: number }) => {
+    const pathRef = useRef<SVGPathElement>(null);
+    const [hasDrawn, setHasDrawn] = useState(false);
+
+    useEffect(() => {
+        return scrollProgress.on("change", (latest: number) => {
+            if (latest > trigger && !hasDrawn) {
+                if (pathRef.current) {
+                    gsap.fromTo(pathRef.current, 
+                        { strokeDashoffset: 1000 },
+                        {
+                            strokeDashoffset: 0,
+                            duration: 0.8,
+                            delay: delay,
+                            ease: "power2.out"
+                        }
+                    );
+                }
+                setHasDrawn(true);
+            } else if (latest < (trigger - 0.1) && hasDrawn) {
+                if (pathRef.current) {
+                    gsap.set(pathRef.current, { strokeDashoffset: 1000 });
+                }
+                setHasDrawn(false);
+            }
+        });
+    }, [scrollProgress, hasDrawn, delay, trigger]);
+
+    return (
+        <span className="highlight-marker-container">
+            <span className="marker-text">{children}</span>
+            <svg className="highlight-marker-svg" viewBox="0 0 200 40" preserveAspectRatio="none">
+                <path
+                    ref={pathRef}
+                    d="M0,32 Q50,28 100,32 T200,30"
+                    stroke={color}
+                    strokeWidth="14"
+                    fill="none"
+                    strokeLinecap="round"
+                    style={{ strokeDasharray: 1000, strokeDashoffset: 1000, opacity: 0.6 }}
+                />
+            </svg>
+        </span>
+    );
+};
+
 const SomosClient = () => {
     useScrollReveal();
     const mainRef = useRef<HTMLDivElement>(null);
@@ -50,20 +96,25 @@ const SomosClient = () => {
         offset: ["start start", "end start"]
     });
 
-    // Title: Fades out, moves up, and blurs out rapidly
-    const opacityTitle = useTransform(scrollYProgress, [0.05, 0.25], [1, 0]);
-    const yTitle = useTransform(scrollYProgress, [0.05, 0.25], [0, -50]);
-    const blurTitle = useTransform(scrollYProgress, [0.05, 0.25], ["blur(0px)", "blur(10px)"]);
+    // Title: Fades out, moves up, and blurs out (Very slow now)
+    const opacityTitle = useTransform(scrollYProgress, [0.02, 0.12], [1, 0]);
+    const yTitle = useTransform(scrollYProgress, [0.02, 0.12], [0, -50]);
+    const blurTitle = useTransform(scrollYProgress, [0.02, 0.12], ["blur(0px)", "blur(10px)"]);
 
-    // Intro text: Blurs in and fades in, then stays visible
-    const opacityIntro = useTransform(scrollYProgress, [0.3, 0.55], [0, 1]);
-    const yIntro = useTransform(scrollYProgress, [0.3, 0.55], [50, 0]);
-    const blurIntro = useTransform(scrollYProgress, [0.3, 0.55], ["blur(10px)", "blur(0px)"]);
+    // Intro text 1: NEW - Appearance (0.15 to 0.22), Stay, Exit (0.35 to 0.45)
+    const opacityIntro1 = useTransform(scrollYProgress, [0.15, 0.22, 0.35, 0.45], [0, 1, 1, 0]);
+    const yIntro1 = useTransform(scrollYProgress, [0.15, 0.22, 0.35, 0.45], [30, 0, 0, -30]);
+    const blurIntro1 = useTransform(scrollYProgress, [0.15, 0.22, 0.35, 0.45], ["blur(10px)", "blur(0px)", "blur(0px)", "blur(10px)"]);
 
-    // Border radius: Rectangular mostly, curves at the very end to transition
+    // Intro text 2: Main purpose - Appearance (0.55 to 0.65). EXTREME STAY until 0.92
+    const opacityIntro = useTransform(scrollYProgress, [0.55, 0.65], [0, 1]);
+    const yIntro = useTransform(scrollYProgress, [0.55, 0.65], [30, 0]);
+    const blurIntro = useTransform(scrollYProgress, [0.55, 0.65], ["blur(10px)", "blur(0px)"]);
+
+    // Border radius: Stays rectangular longer, curves only at the very end (0.92 to 0.98)
     const borderRadius = useTransform(
         scrollYProgress,
-        [0.8, 0.85],
+        [0.92, 0.98],
         ["0% 0% 0% 0% / 0% 0% 0% 0%", "0% 0% 50% 50% / 0% 0% 60px 60px"]
     );
 
@@ -202,13 +253,30 @@ const SomosClient = () => {
                         <motion.div
                             className="somos-hero-intro"
                             style={{
+                                opacity: opacityIntro1,
+                                y: yIntro1,
+                                filter: blurIntro1
+                            }}
+                        >
+                            <p style={{ fontSize: '32px', fontWeight: 700, maxWidth: '1000px' }}>
+                                Somos una <HighlightMarker color="#fecf73" delay={0.4} scrollProgress={scrollYProgress} trigger={0.2}>organización juvenil</HighlightMarker> que busca impulsar el talento, las ideas y el potencial de las nuevas generaciones.
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            className="somos-hero-intro"
+                            style={{
                                 opacity: opacityIntro,
                                 y: yIntro,
                                 filter: blurIntro
                             }}
                         >
                             <p>
-                                HiveYoung nace con el propósito de conectar, potenciar y visibilizar el talento joven en Chile y Latinoamérica.
+                                HiveYoung nace con el propósito de{' '}
+                                <HighlightMarker color="#5CD494" delay={0.1} scrollProgress={scrollYProgress} trigger={0.6}>conectar</HighlightMarker>,{' '}
+                                <HighlightMarker color="#fecf73" delay={0.3} scrollProgress={scrollYProgress} trigger={0.6}>potenciar</HighlightMarker> y{' '}
+                                <HighlightMarker color="#ffc4d4" delay={0.5} scrollProgress={scrollYProgress} trigger={0.6}>visibilizar</HighlightMarker>{' '}
+                                el talento joven en Chile y Latinoamérica.
                                 Creemos profundamente en el poder de la juventud para transformar la sociedad y generar impacto positivo
                                 a través de la acción colectiva y el liderazgo consciente.
                             </p>
@@ -218,68 +286,37 @@ const SomosClient = () => {
             </div>
 
             <div className="somos-container">
-                <div className="somos-new-grid section-spacer">
-                    {/* LEFT: NUESTRA HISTORIA */}
+                <div className="somos-mission-vision section-spacer">
                     <motion.div
-                        className="historia-main-card"
+                        className="mv-item"
                         variants={fadeInUp}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-50px" }}
                     >
-                        <Image
-                            src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1766681079/IMG_2062-Mejorado-NR_shgago.jpg"
-                            alt="Nuestra Historia HiveYoung"
-                            fill
-                            className="historia-bg-image"
-                        />
-                        <div className="historia-card-overlay">
-                            <div className="historia-card-content">
-                                <h2>Nuestra Historia</h2>
-                                <p>Descubre cómo un grupo de jóvenes decidió transformar el ecosistema juvenil en Chile.</p>
-                                <a href="/historia" className="historia-btn">
-                                    Conocer nuestra historia
-                                    <ChevronRight size={18} />
-                                </a>
-                            </div>
-                        </div>
+                        <h2>Nuestra Misión</h2>
+                        <div className="mv-underline"></div>
+                        <p>
+                            Articular y potenciar el ecosistema juvenil, conectando a líderes emergentes con oportunidades de desarrollo,
+                            mentores de clase mundial y organizaciones clave.
+                        </p>
                     </motion.div>
 
-                    {/* RIGHT: MISION & VISION STACKED */}
-                    <div className="mision-vision-stack">
-                        <motion.div
-                            className="mv-card mision-card"
-                            variants={fadeInUp}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, margin: "-50px" }}
-                        >
-                            <div className="mv-card-inner">
-                                <h2>Nuestra Misión</h2>
-                                <p>
-                                    Articular y potenciar el ecosistema juvenil, conectando a líderes emergentes con oportunidades de desarrollo,
-                                    mentores de clase mundial y organizaciones clave.
-                                </p>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            className="mv-card vision-card"
-                            variants={fadeInUp}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ delay: 0.1 }}
-                        >
-                            <div className="mv-card-inner">
-                                <h2>Nuestra Visión</h2>
-                                <p>
-                                    Ser la plataforma líder en Latinoamérica que impulsa el talento joven, construyendo una red colaborativa
-                                    resiliente que transforma desafíos regionales en oportunidades.
-                                </p>
-                            </div>
-                        </motion.div>
-                    </div>
+                    <motion.div
+                        className="mv-item"
+                        variants={fadeInUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        <h2>Nuestra Visión</h2>
+                        <div className="mv-underline vision"></div>
+                        <p>
+                            Ser la plataforma líder en Latinoamérica que impulsa el talento joven, construyendo una red colaborativa
+                            resiliente que transforma desafíos regionales en oportunidades.
+                        </p>
+                    </motion.div>
                 </div>
 
                 <section className="valores-section">

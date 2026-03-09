@@ -2,7 +2,7 @@
 
 .advisory-section {
     padding: 140px 20px 80px;
-    background-color: #f8f4eb;
+    background-color: #f4ede4;
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
 }
@@ -22,15 +22,43 @@
 }
 
 .advisory-subtitle {
-    color: #666;
+    color: #3A1B4E; /* Changed to purple */
     font-size: 1.15rem;
-    font-weight: 300;
+    font-weight: 400; /* Increased weight */
     margin-bottom: 60px;
-    max-width: 600px;
+    max-width: 850px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    line-height: 1.65;
 }
+
+.advisory-highlight {
+    position: relative;
+    font-weight: 700;
+    color: #3A1B4E !important;
+    padding: 0 4px;
+    display: inline-block;
+}
+
+.advisory-highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 0;
+    height: 14px;
+    background-color: #6fc1ff; /* Light blue highlight */
+    opacity: 0.45;
+    z-index: -1;
+    transition: width 1s cubic-bezier(0.19, 1, 0.22, 1);
+    transition-delay: 0.1s;
+}
+
+.reveal.active .advisory-highlight::after {
+    width: 100%;
+}
+
 
 .advisory-grid {
     display: grid;

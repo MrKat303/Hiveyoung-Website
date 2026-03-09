@@ -32,10 +32,10 @@ const ContactoClient = () => {
                 {/* LADO IZQUIERDO */}
                 <div className="contact-sidebar reveal">
                     <h1 className="contact-title">
-                        Conectemos<span className="title-square"></span>
+                        Contacto<span className="title-square"></span>
                     </h1>
                     <p className="contact-description">
-                        ¿Tienes una idea o quieres ser parte del equipo? Estamos listos para escucharte.
+                        ¿Tienes una idea, proyecto o quieres colaborar con HiveYoung?
                     </p>
 
                     <div className="contact-info-list">

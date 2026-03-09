@@ -1,5 +1,5 @@
 .somos-page {
-    background-color: #f8f4eb;
+    background-color: #f4ede4;
     color: #3a1b4e;
     min-height: 100vh;
     padding: 0;
@@ -7,7 +7,7 @@
 }
 
 .somos-scroll-track {
-    height: 350vh;
+    height: 800vh;
     position: relative;
 }
 
@@ -103,17 +103,53 @@
     justify-content: center;
     align-items: center;
     padding: 0 40px;
+    text-align: center;
 }
 
 .somos-hero-intro p {
-    max-width: 800px;
+    max-width: 900px;
     color: #ffffff;
     font-size: 24px;
     font-weight: 500;
-    line-height: 1.6;
+    line-height: 1.8;
     text-align: center;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
+
+/* --- HIGHLIGHT MARKER (DESTACADOR) STYLES --- */
+.highlight-marker-container {
+    position: relative;
+    display: inline-block;
+    padding: 0 4px;
+    z-index: 1;
+}
+
+.highlight-marker-svg {
+    position: absolute;
+    bottom: 2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: 18px;
+    pointer-events: none;
+    z-index: -1;
+    overflow: visible;
+}
+
+.highlight-marker-svg path {
+    stroke-linejoin: round;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.highlight-marker-container:hover .highlight-marker-svg path {
+    filter: drop-shadow(0 0 5px currentColor);
+    opacity: 0.9 !important;
+}
+
+.marker-text {
+    position: relative;
+    z-index: 2;
+}
+
 
 .somos-container {
     max-width: 1400px;
@@ -134,125 +170,76 @@
 }
 
 /* --- NEW HISTORIA, MISION & VISION LAYOUT --- */
-.somos-new-grid {
+/* --- NEW MISSION & VISION LAYOUT --- */
+.somos-mission-vision {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 30px;
-    margin-bottom: 70px;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 120px;
+    padding-top: 40px;
 }
 
-.historia-main-card {
-    position: relative;
-    height: 600px;
-    border-radius: 40px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.historia-bg-image {
-    object-fit: cover;
-    z-index: 1;
-}
-
-.historia-card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
-    z-index: 2;
+.mv-item {
     display: flex;
-    align-items: flex-end;
-    padding: 60px;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.historia-card-content {
-    color: #ffffff;
-    max-width: 500px;
-}
-
-.historia-card-content h2 {
-    font-size: 48px;
+.mv-item h2 {
+    font-size: 42px;
     font-weight: 800;
-    margin-bottom: 20px;
-    letter-spacing: -1px;
-    line-height: 1.1;
-}
-
-.historia-card-content p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    opacity: 0.9;
-}
-
-.historia-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    color: #ffffff;
-    padding: 16px 32px;
-    border-radius: 100px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.historia-btn:hover {
-    background: #ffffff;
     color: #3a1b4e;
-    transform: translateY(-3px);
+    margin-bottom: 15px;
+    letter-spacing: -1px;
 }
 
-.mision-vision-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.mv-underline {
+    width: 60px;
+    height: 4px;
+    background-color: #59c985;
+    margin-bottom: 30px;
+    border-radius: 2px;
 }
 
-.mv-card {
-    flex: 1;
-    border-radius: 40px;
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+.mv-underline.vision {
+    background-color: #f7b500; /* Yellow for vision */
 }
 
-.mision-card {
-    background-color: #dcfce7;
-    /* Light mint background */
-    color: #064e3b;
-}
-
-.vision-card {
-    background-color: #3a1b4e;
-    /* Brand purple */
-    color: #ffffff;
-}
-
-.mv-card h2 {
-    font-size: 36px;
-    font-weight: 800;
-    margin-bottom: 20px;
-    letter-spacing: -0.5px;
-}
-
-.mv-card p {
-    font-size: 18px;
-    line-height: 1.6;
+.mv-item p {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #3a1b4e;
     opacity: 0.9;
+    font-weight: 400;
 }
 
-.mision-card h2 {
-    color: #065f46;
+@media (max-width: 1024px) {
+    .somos-mission-vision {
+        gap: 60px;
+    }
 }
 
-.vision-card h2 {
-    color: #fde4a8;
+@media (max-width: 768px) {
+    .somos-mission-vision {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        margin-bottom: 80px;
+        text-align: center;
+    }
+
+    .mv-item {
+        align-items: center;
+    }
+
+    .mv-item h2 {
+        font-size: 32px;
+    }
+
+    .mv-item p {
+        font-size: 18px;
+    }
 }
+
 
 /* REPLACING OLD STYLES */
 /* (Keeping some for compatibility if needed elsewhere, but targeting the new grid) */

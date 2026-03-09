@@ -13,7 +13,7 @@ export default function AdvisoryBoardClient() {
             <div className="advisory-container">
                 <h2 className="advisory-title reveal">Advisory Board</h2>
                 <p className="advisory-subtitle reveal">
-                    Líderes estratégicos que impulsan nuestra visión.
+                    Nuestro Advisory Board reúne a expertos y líderes que <span className="advisory-highlight">apoyan nuestra misión</span>, aportando conocimiento, experiencia y mentoría para <span className="advisory-highlight">impulsar el desarrollo de HiveYoung</span> y sus iniciativas.
                 </p>
 
                 <div className="advisory-grid">

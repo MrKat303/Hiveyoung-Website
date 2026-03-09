@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Home/Hero";
+import QueHacemos from "@/components/Home/QueHacemos";
 import CongressCarousel from "@/components/Home/CongressCarousel";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <QueHacemos />
       <CongressCarousel />
     </>
   );

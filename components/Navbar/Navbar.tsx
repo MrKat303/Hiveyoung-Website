@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, User, Instagram, Linkedin, Mail } from "lucide-react";
+import { ChevronDown, LogIn, Instagram, Linkedin, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Navbar.css";
 
@@ -137,7 +137,7 @@ function Navbar() {
                 <div className="navbar-btns desktop-only">
                     <Link className="navbar-btn navbar-btn--outline" href="/unete">Unete</Link>
                     <a href="https://hiveyoungapp.vercel.app/login" className="login-icon-circle">
-                        <User size={20} />
+                        <LogIn size={20} />
                     </a>
                 </div>
 
@@ -199,7 +199,7 @@ function Navbar() {
                                                 Unete
                                             </Link>
                                             <a href="https://hiveyoungapp.vercel.app/login" className="mobile-btn-outline" onClick={closeMenu}>
-                                                <User size={18} style={{ marginRight: '8px' }} /> Iniciar Sesión
+                                                <LogIn size={18} style={{ marginRight: '8px' }} /> Iniciar Sesión
                                             </a>
                                         </div>
                                         <div className="mobile-socials">
