@@ -20,19 +20,12 @@ const HighlightMarker = ({ children, color, delay = 0, scrollProgress, trigger =
                 if (pathRef.current) {
                     gsap.fromTo(pathRef.current, 
                         { strokeDashoffset: 1000 },
-                        {
-                            strokeDashoffset: 0,
-                            duration: 0.8,
-                            delay: delay,
-                            ease: "power2.out"
-                        }
+                        { strokeDashoffset: 0, duration: 0.8, delay: delay, ease: "power2.out" }
                     );
                 }
                 setHasDrawn(true);
             } else if (latest < (trigger - 0.1) && hasDrawn) {
-                if (pathRef.current) {
-                    gsap.set(pathRef.current, { strokeDashoffset: 1000 });
-                }
+                if (pathRef.current) gsap.set(pathRef.current, { strokeDashoffset: 1000 });
                 setHasDrawn(false);
             }
         });
@@ -50,6 +43,45 @@ const HighlightMarker = ({ children, color, delay = 0, scrollProgress, trigger =
                     fill="none"
                     strokeLinecap="round"
                     style={{ strokeDasharray: 1000, strokeDashoffset: 1000, opacity: 0.6 }}
+                />
+            </svg>
+        </span>
+    );
+};
+
+const CircleMarker = ({ children, color, delay = 0, scrollProgress, trigger = 0.6 }: { children: React.ReactNode, color: string, delay?: number, scrollProgress: any, trigger?: number }) => {
+    const pathRef = useRef<SVGPathElement>(null);
+    const [hasDrawn, setHasDrawn] = useState(false);
+
+    useEffect(() => {
+        return scrollProgress.on("change", (latest: number) => {
+            if (latest > trigger && !hasDrawn) {
+                if (pathRef.current) {
+                    gsap.fromTo(pathRef.current,
+                        { strokeDashoffset: 800 },
+                        { strokeDashoffset: 0, duration: 0.8, delay: delay, ease: "power2.out" }
+                    );
+                }
+                setHasDrawn(true);
+            } else if (latest < (trigger - 0.1) && hasDrawn) {
+                if (pathRef.current) gsap.set(pathRef.current, { strokeDashoffset: 800 });
+                setHasDrawn(false);
+            }
+        });
+    }, [scrollProgress, hasDrawn, delay, trigger]);
+
+    return (
+        <span className="circle-marker-container">
+            <span className="marker-text">{children}</span>
+            <svg className="circle-marker-svg" viewBox="0 0 200 60" preserveAspectRatio="none">
+                <path
+                    ref={pathRef}
+                    d="M10,45 C15,15 185,5 190,30 C195,55 20,60 15,35"
+                    stroke={color}
+                    strokeWidth="4"
+                    fill="none"
+                    strokeLinecap="round"
+                    style={{ strokeDasharray: 800, strokeDashoffset: 800 }}
                 />
             </svg>
         </span>
