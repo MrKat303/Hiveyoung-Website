@@ -38,11 +38,20 @@ export default function CongressCarousel() {
                             <div
                                 key={index}
                                 className={`carousel-slide ${index === currentIndex ? 'active' : ''}`}
-                                style={{
-                                    backgroundImage: `url(${img})`,
-                                    backgroundPosition: index === 2 ? 'center 25%' : 'center'
-                                }}
-                            />
+                            >
+                                <Image
+                                    src={img}
+                                    alt={`Congreso HiveYoung moment ${index + 1}`}
+                                    fill
+                                    className="carousel-image-el"
+                                    style={{
+                                        objectFit: 'cover',
+                                        objectPosition: index === 2 ? 'center 25%' : 'center'
+                                    }}
+                                    priority={index === currentIndex}
+                                    draggable={false}
+                                />
+                            </div>
                         ))}
                     </div>
 
