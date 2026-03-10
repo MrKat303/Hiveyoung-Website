@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import UneteClient from "./UneteClient";
 
 export const metadata: Metadata = {
-    title: "Unete",
-    description: "¿Quieres ser parte del cambio? Únete a HiveYoung y forma parte de la comunidad de líderes juveniles más grande de Chile. Postula aquí.",
+    title: "Únete",
+    description:
+        "¿Quieres ser parte del cambio? Únete a HiveYoung y forma parte de la comunidad de líderes juveniles más grande de Chile. Postula aquí.",
     openGraph: {
-        title: "Unete",
-        description: "¿Quieres ser parte del cambio? Únete a HiveYoung y forma parte de la comunidad de líderes juveniles más grande de Chile. Postula aquí.",
-        url: "https://hiveyoung.cl/unete",
+        title: "Únete a HiveYoung",
+        description:
+            "¿Quieres ser parte del cambio? Únete a HiveYoung y forma parte de la comunidad de líderes juveniles más grande de Chile.",
     },
 };
 
-export default function page() {
+export default function UnetePage() {
     return <UneteClient />;
 }

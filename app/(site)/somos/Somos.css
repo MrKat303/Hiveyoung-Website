@@ -124,15 +124,31 @@
     z-index: 1;
 }
 
+.highlight-marker-container.brush {
+    padding: 0 2px;
+}
+
 .highlight-marker-svg {
     position: absolute;
-    bottom: 2px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: 18px;
     pointer-events: none;
     z-index: -1;
     overflow: visible;
+}
+
+.highlight-marker-svg.circle {
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 160%;
+    width: calc(100% + 15px);
+}
+
+.highlight-marker-svg.brush {
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 60%;
+    width: 100%;
 }
 
 .highlight-marker-svg path {

@@ -10,7 +10,7 @@ import { SOMOS_VALUES } from '@/data/somos-values';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import './Somos.css';
 
-const HighlightMarker = ({ children, color, delay = 0, scrollProgress, trigger = 0.25 }: { children: React.ReactNode, color: string, delay?: number, scrollProgress: any, trigger?: number }) => {
+const HighlightMarker = ({ children, color, delay = 0, scrollProgress, trigger = 0.25, type = 'circle' }: { children: React.ReactNode, color: string, delay?: number, scrollProgress: any, trigger?: number, type?: 'circle' | 'brush' }) => {
     const pathRef = useRef<SVGPathElement>(null);
     const [hasDrawn, setHasDrawn] = useState(false);
 
@@ -19,69 +19,50 @@ const HighlightMarker = ({ children, color, delay = 0, scrollProgress, trigger =
             if (latest > trigger && !hasDrawn) {
                 if (pathRef.current) {
                     gsap.fromTo(pathRef.current, 
-                        { strokeDashoffset: 1000 },
-                        { strokeDashoffset: 0, duration: 0.8, delay: delay, ease: "power2.out" }
+                        { strokeDashoffset: 1500 },
+                        {
+                            strokeDashoffset: 0,
+                            duration: type === 'brush' ? 0.6 : 1.2,
+                            delay: delay,
+                            ease: type === 'brush' ? "power1.inOut" : "power2.out"
+                        }
                     );
                 }
                 setHasDrawn(true);
             } else if (latest < (trigger - 0.1) && hasDrawn) {
-                if (pathRef.current) gsap.set(pathRef.current, { strokeDashoffset: 1000 });
-                setHasDrawn(false);
-            }
-        });
-    }, [scrollProgress, hasDrawn, delay, trigger]);
-
-    return (
-        <span className="highlight-marker-container">
-            <span className="marker-text">{children}</span>
-            <svg className="highlight-marker-svg" viewBox="0 0 200 40" preserveAspectRatio="none">
-                <path
-                    ref={pathRef}
-                    d="M0,32 Q50,28 100,32 T200,30"
-                    stroke={color}
-                    strokeWidth="14"
-                    fill="none"
-                    strokeLinecap="round"
-                    style={{ strokeDasharray: 1000, strokeDashoffset: 1000, opacity: 0.6 }}
-                />
-            </svg>
-        </span>
-    );
-};
-
-const CircleMarker = ({ children, color, delay = 0, scrollProgress, trigger = 0.6 }: { children: React.ReactNode, color: string, delay?: number, scrollProgress: any, trigger?: number }) => {
-    const pathRef = useRef<SVGPathElement>(null);
-    const [hasDrawn, setHasDrawn] = useState(false);
-
-    useEffect(() => {
-        return scrollProgress.on("change", (latest: number) => {
-            if (latest > trigger && !hasDrawn) {
                 if (pathRef.current) {
-                    gsap.fromTo(pathRef.current,
-                        { strokeDashoffset: 800 },
-                        { strokeDashoffset: 0, duration: 0.8, delay: delay, ease: "power2.out" }
-                    );
+                    gsap.set(pathRef.current, { strokeDashoffset: 1500 });
                 }
-                setHasDrawn(true);
-            } else if (latest < (trigger - 0.1) && hasDrawn) {
-                if (pathRef.current) gsap.set(pathRef.current, { strokeDashoffset: 800 });
                 setHasDrawn(false);
             }
         });
-    }, [scrollProgress, hasDrawn, delay, trigger]);
+    }, [scrollProgress, hasDrawn, delay, trigger, type]);
+
+    const getPath = () => {
+        if (type === 'brush') {
+            // Precise path that starts exactly at the beginning and ends at the end
+            return "M 1,25 L 199,25";
+        }
+        // Varied circle path
+        return "M 195,25 C 195,45 150,55 100,55 C 50,55 5,45 5,25 C 5,5 50,2 100,2 C 150,2 192,5 192,23 C 192,35 170,48 100,48";
+    };
 
     return (
-        <span className="circle-marker-container">
+        <span className={`highlight-marker-container ${type}`}>
             <span className="marker-text">{children}</span>
-            <svg className="circle-marker-svg" viewBox="0 0 200 60" preserveAspectRatio="none">
+            <svg className={`highlight-marker-svg ${type}`} viewBox={type === 'brush' ? "0 0 200 50" : "0 0 200 60"} preserveAspectRatio="none">
                 <path
                     ref={pathRef}
-                    d="M10,45 C15,15 185,5 190,30 C195,55 20,60 15,35"
+                    d={getPath()}
                     stroke={color}
-                    strokeWidth="4"
+                    strokeWidth={type === 'brush' ? "24" : "3.5"}
                     fill="none"
-                    strokeLinecap="round"
-                    style={{ strokeDasharray: 800, strokeDashoffset: 800 }}
+                    strokeLinecap="butt"
+                    style={{ 
+                        strokeDasharray: 1500, 
+                        strokeDashoffset: 1500, 
+                        opacity: type === 'brush' ? 0.35 : 0.85,
+                    }}
                 />
             </svg>
         </span>
@@ -243,7 +224,7 @@ const SomosClient = () => {
                     >
                         <Image
                             src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456528/grupal_1_hrhwef.jpg"
-                            alt="Equipo HiveYoung"
+                            alt="Quienes Somos HiveYoung"
                             width={1200}
                             height={800}
                             className="somos-hero-image"
@@ -291,7 +272,7 @@ const SomosClient = () => {
                             }}
                         >
                             <p style={{ fontSize: '32px', fontWeight: 700, maxWidth: '1000px' }}>
-                                Somos una <HighlightMarker color="#fecf73" delay={0.4} scrollProgress={scrollYProgress} trigger={0.2}>organización juvenil</HighlightMarker> que busca impulsar el talento, las ideas y el potencial de las nuevas generaciones.
+                                Somos una <HighlightMarker color="#f4d03f" type="brush" delay={0.4} scrollProgress={scrollYProgress} trigger={0.2}>organización juvenil</HighlightMarker> que busca impulsar el talento, las ideas y el potencial de las nuevas generaciones.
                             </p>
                         </motion.div>
 
@@ -305,9 +286,9 @@ const SomosClient = () => {
                         >
                             <p>
                                 HiveYoung nace con el propósito de{' '}
-                                <HighlightMarker color="#5CD494" delay={0.1} scrollProgress={scrollYProgress} trigger={0.6}>conectar</HighlightMarker>,{' '}
-                                <HighlightMarker color="#fecf73" delay={0.3} scrollProgress={scrollYProgress} trigger={0.6}>potenciar</HighlightMarker> y{' '}
-                                <HighlightMarker color="#ffc4d4" delay={0.5} scrollProgress={scrollYProgress} trigger={0.6}>visibilizar</HighlightMarker>{' '}
+                                <HighlightMarker color="#4ADE80" type="circle" delay={0.1} scrollProgress={scrollYProgress} trigger={0.6}>conectar</HighlightMarker>,{' '}
+                                <HighlightMarker color="#FACC15" type="circle" delay={0.3} scrollProgress={scrollYProgress} trigger={0.6}>potenciar</HighlightMarker> y{' '}
+                                <HighlightMarker color="#F472B6" type="circle" delay={0.5} scrollProgress={scrollYProgress} trigger={0.6}>visibilizar</HighlightMarker>{' '}
                                 el talento joven en Chile y Latinoamérica.
                                 Creemos profundamente en el poder de la juventud para transformar la sociedad y generar impacto positivo
                                 a través de la acción colectiva y el liderazgo consciente.

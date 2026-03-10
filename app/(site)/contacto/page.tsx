@@ -3,11 +3,12 @@ import ContactoClient from "./ContactoClient";
 
 export const metadata: Metadata = {
     title: "Contacto",
-    description: "¿Tienes alguna duda o quieres colaborar con HiveYoung? Ponte en contacto con nosotros. Estamos listos para escucharte.",
+    description:
+        "¿Tienes alguna duda o quieres colaborar con HiveYoung? Ponte en contacto con nosotros. Estamos listos para escucharte.",
     openGraph: {
-        title: "Contacto",
-        description: "¿Tienes alguna duda o quieres colaborar con HiveYoung? Ponte en contacto con nosotros. Estamos listos para escucharte.",
-        url: "https://hiveyoung.cl/contacto",
+        title: "Contacto — HiveYoung",
+        description:
+            "¿Tienes alguna duda o quieres colaborar con HiveYoung? Ponte en contacto con nosotros.",
     },
 };
 

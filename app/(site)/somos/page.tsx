@@ -3,11 +3,12 @@ import SomosClient from "./SomosClient";
 
 export const metadata: Metadata = {
     title: "Quienes Somos",
-    description: "Conoce la historia, misión y visión de HiveYoung. Somos el principal articulador del ecosistema juvenil.",
+    description:
+        "Conoce la historia, misión y visión de HiveYoung. Somos el principal articulador del ecosistema juvenil en Chile y Latinoamérica.",
     openGraph: {
-        title: "Quienes Somos",
-        description: "Conoce la historia, misión y visión de HiveYoung. Somos el principal articulador del ecosistema juvenil.",
-        url: "https://hiveyoung.cl/somos",
+        title: "Quiénes Somos — HiveYoung",
+        description:
+            "Conoce la historia, misión y visión de HiveYoung. Somos el principal articulador del ecosistema juvenil en Chile y Latinoamérica.",
     },
 };
 

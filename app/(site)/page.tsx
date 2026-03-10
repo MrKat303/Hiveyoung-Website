@@ -4,12 +4,13 @@ import QueHacemos from "@/components/Home/QueHacemos";
 import CongressCarousel from "@/components/Home/CongressCarousel";
 
 export const metadata: Metadata = {
-  title: "HiveYoung",
-  description: "Únete a HiveYoung, el principal articulador del ecosistema juvenil en Chile. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
+  title: "Inicio",
+  description:
+    "Únete a HiveYoung, el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
   openGraph: {
-    title: "HiveYoung",
-    description: "Únete a HiveYoung, el principal articulador del ecosistema juvenil en Chile. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
-    url: "https://hiveyoung.cl/",
+    title: "HiveYoung | Principal Articulador del Ecosistema Juvenil",
+    description:
+      "Únete a HiveYoung, el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
   },
 };
 

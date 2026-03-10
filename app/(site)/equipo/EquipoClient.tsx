@@ -45,7 +45,7 @@ import { useGSAP } from "@gsap/react";
                             {miembro.img ? (
                                 <Image
                                     src={miembro.img}
-                                    alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
+                                    alt={miembro.alt || `${miembro.nombre} - ${miembro.cargo} HiveYoung`}
                                     fill
                                     className="creative-image"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -129,7 +129,7 @@ import { useGSAP } from "@gsap/react";
                             {miembro.img ? (
                                 <Image
                                     src={miembro.img}
-                                    alt={`${miembro.nombre} - ${miembro.cargo} HiveYoung`}
+                                    alt={miembro.alt || `${miembro.nombre} - ${miembro.cargo} HiveYoung`}
                                     fill
                                     className="directorio-image-new"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
