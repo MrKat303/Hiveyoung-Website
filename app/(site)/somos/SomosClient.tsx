@@ -15,16 +15,33 @@ const SomosClient = () => {
     useScrollReveal();
     const mainRef = useRef<HTMLDivElement>(null);
     const targetRef = useRef<HTMLDivElement>(null);
+    const disruptiveRef = useRef<HTMLSpanElement>(null);
     const carouselRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(carouselRef);
     const [isHovering, setIsHovering] = useState(false);
     const isTransitioning = useRef(false);
+
+    // Track scroll within the extended hero section
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+        offset: ["start start", "end start"]
+    });
+
+    const [hasWarped, setHasWarped] = useState(false);
 
     useEffect(() => {
         gsap.registerPlugin(DrawSVGPlugin);
 
         const ctx = gsap.context(() => {
             gsap.set('.somos-drawn-text', { opacity: 0, strokeDasharray: 3000, strokeDashoffset: 3000 });
+            
+            // Initial state for warp text
+            gsap.set('.warp-reveal-text', { 
+                scaleY: 0, 
+                opacity: 0, 
+                filter: 'blur(15px)',
+                transformOrigin: '50% 50%' 
+            });
 
             const tl = gsap.timeline({ delay: 0.5 });
 
@@ -45,11 +62,48 @@ const SomosClient = () => {
         return () => ctx.revert();
     }, []);
 
-    // Track scroll within the extended hero section
-    const { scrollYProgress } = useScroll({
-        target: targetRef,
-        offset: ["start start", "end start"]
-    });
+    // Kinetic Warp Reveal Trigger
+    useEffect(() => {
+        return scrollYProgress.on("change", (latest) => {
+            if (latest > 0.18 && !hasWarped) {
+                setHasWarped(true);
+                const tl = gsap.timeline();
+                
+                // DISRUPTIVE WARP: Vertical stretch + Flash reveal
+                tl.to('.warp-reveal-text', {
+                    opacity: 1,
+                    scaleY: 3,
+                    filter: 'blur(5px)',
+                    duration: 0.1,
+                    ease: "power2.in"
+                })
+                .to('.warp-reveal-text', {
+                    scaleY: 1,
+                    filter: 'blur(0px)',
+                    color: '#ffc100',
+                    duration: 0.4,
+                    ease: "elastic.out(1, 0.3)"
+                })
+                .to('.warp-reveal-text', {
+                    textShadow: '0 0 20px rgba(255, 193, 0, 0.8)',
+                    duration: 0.1
+                })
+                .to('.warp-reveal-text', {
+                    textShadow: '0 0 0px rgba(255, 193, 0, 0)',
+                    duration: 0.4
+                });
+                  
+            } else if (latest < 0.10 && hasWarped) {
+                setHasWarped(false);
+                gsap.set('.warp-reveal-text', { 
+                    scaleY: 0, 
+                    opacity: 0, 
+                    filter: 'blur(15px)',
+                    color: '#ffffff'
+                });
+            }
+        });
+    }, [scrollYProgress, hasWarped]);
 
     // Title: Fades out, moves up, and blurs out (Very slow now)
     const opacityTitle = useTransform(scrollYProgress, [0.02, 0.12], [1, 0]);
@@ -65,6 +119,10 @@ const SomosClient = () => {
     const opacityIntro = useTransform(scrollYProgress, [0.55, 0.65], [0, 1]);
     const yIntro = useTransform(scrollYProgress, [0.55, 0.65], [30, 0]);
     const blurIntro = useTransform(scrollYProgress, [0.55, 0.65], ["blur(10px)", "blur(0px)"]);
+
+    // CREATIVE DRIFT EFFECT: Subtle sideways movement while scrolling
+    const drift1 = useTransform(scrollYProgress, [0.15, 0.45], [0, -40]);
+    const drift2 = useTransform(scrollYProgress, [0.55, 0.92], [0, 40]);
 
     // Border radius: Stays rectangular longer, curves only at the very end (0.92 to 0.98)
     const borderRadius = useTransform(
@@ -213,10 +271,12 @@ const SomosClient = () => {
                                 filter: blurIntro1
                             }}
                         >
-                            <p style={{ fontWeight: 700, maxWidth: '1000px' }}>
-                                <HighlightMarker color="#f4d03f" type="circle" delay={0.4} scrollProgress={scrollYProgress} trigger={0.2}>
-                                    Somos una organización juvenil que busca impulsar el talento, las ideas y el potencial de las nuevas generaciones.
-                                </HighlightMarker>
+                            <p className="light-intro-text">
+                                Somos una{" "}
+                                <span className="warp-reveal-text" style={{ color: '#ffffff', fontWeight: 600 }}>
+                                    organización juvenil
+                                </span>{" "}
+                                que busca impulsar el talento, las ideas y el potencial de las nuevas generaciones.
                             </p>
                         </motion.div>
 
@@ -228,11 +288,11 @@ const SomosClient = () => {
                                 filter: blurIntro
                             }}
                         >
-                            <p>
+                            <p className="light-intro-text">
                                 HiveYoung nace con el propósito de{' '}
-                                <HighlightMarker color="#4ADE80" type="circle" delay={0.1} scrollProgress={scrollYProgress} trigger={0.6}>conectar</HighlightMarker>,{' '}
-                                <HighlightMarker color="#FACC15" type="circle" delay={0.3} scrollProgress={scrollYProgress} trigger={0.6}>potenciar</HighlightMarker> y{' '}
-                                <HighlightMarker color="#F472B6" type="circle" delay={0.5} scrollProgress={scrollYProgress} trigger={0.6}>visibilizar</HighlightMarker>{' '}
+                                <HighlightMarker color="#5CD494" type="circle" delay={0.1} scrollProgress={scrollYProgress} trigger={0.6}>conectar</HighlightMarker>,{' '}
+                                <HighlightMarker color="#ffc100" type="circle" delay={0.3} scrollProgress={scrollYProgress} trigger={0.6}>potenciar</HighlightMarker> y{' '}
+                                <HighlightMarker color="#ffc4d4" type="circle" delay={0.5} scrollProgress={scrollYProgress} trigger={0.6}>visibilizar</HighlightMarker>{' '}
                                 el talento joven en Chile y Latinoamérica.
                                 Creemos profundamente en el poder de la juventud para transformar la sociedad y generar impacto positivo
                                 a través de la acción colectiva y el liderazgo consciente.
