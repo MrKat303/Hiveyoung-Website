@@ -1,8 +1,9 @@
 "use client";
 
 import React from 'react';
-import { Users, Rocket, Megaphone } from 'lucide-react';
+import Image from 'next/image';
 import useScrollReveal from '@/hooks/useScrollReveal';
+import { Users, Network, Rocket } from 'lucide-react';
 import './QueHacemos.css';
 
 const QueHacemos = () => {
@@ -10,22 +11,22 @@ const QueHacemos = () => {
 
     const activities = [
         {
-            icon: <Users size={40} />,
-            title: "Conectar",
-            description: "Creamos redes entre líderes jóvenes, mentores y organizaciones para fortalecer el ecosistema.",
-            color: "#5CD494" // Green
+            icon: <Users size={48} strokeWidth={1.5} />,
+            title: "Colaborar",
+            description: "Trabajamos en conjunto con una red de aliados estratégicos para potenciar el impacto colectivo de las iniciativas juveniles.",
+            color: "#D1F2E1" // Soft Mint
         },
         {
-            icon: <Rocket size={40} />,
-            title: "Potenciar",
-            description: "Entregamos herramientas y formación para elevar el talento y las capacidades de los jóvenes.",
-            color: "#fecf73" // Yellow
+            icon: <Network size={48} strokeWidth={1.5} />,
+            title: "Articulamos el Ecosistema Juvenil",
+            description: "Conectamos los puntos entre jóvenes talentos, mentores y organizaciones para crear una infraestructura de apoyo sólida.",
+            color: "#C2E9D9" // Soft Seafoam
         },
         {
-            icon: <Megaphone size={40} />,
-            title: "Visibilizar",
-            description: "Damos voz y presencia a los proyectos de impacto creados por jóvenes en toda la región.",
-            color: "#ffc4d4" // Pink
+            icon: <Rocket size={48} strokeWidth={1.5} />,
+            title: "Creamos proyectos con impacto",
+            description: "Desarrollamos y ejecutamos iniciativas que transforman realidades y generan un cambio positivo medible en la sociedad.",
+            color: "#FFF0C2" // Soft Muted Yellow
         }
     ];
 

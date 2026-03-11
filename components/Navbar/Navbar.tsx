@@ -136,7 +136,7 @@ function Navbar() {
                 {/* Desktop Buttons */}
                 <div className="navbar-btns desktop-only">
                     <Link className="navbar-btn navbar-btn--outline" href="/unete">Unete</Link>
-                    <a href="https://hiveyoungapp.vercel.app/login" className="login-icon-circle">
+                    <a href="https://app.hiveyoung.org/login" className="login-icon-circle">
                         <LogIn size={20} />
                     </a>
                 </div>
@@ -198,7 +198,7 @@ function Navbar() {
                                             <Link href="/unete" className="mobile-btn-primary" onClick={closeMenu}>
                                                 Unete
                                             </Link>
-                                            <a href="https://hiveyoungapp.vercel.app/login" className="mobile-btn-outline" onClick={closeMenu}>
+                                            <a href="https://app.hiveyoung.org/login" className="mobile-btn-outline" onClick={closeMenu}>
                                                 <LogIn size={18} style={{ marginRight: '8px' }} /> Iniciar Sesión
                                             </a>
                                         </div>

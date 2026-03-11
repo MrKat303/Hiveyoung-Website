@@ -19,6 +19,7 @@ interface HistoryItem {
     subtitle: string;
     desc: string;
     img: string;
+    alt: string;
     theme: string;
     fit?: string;
     type?: string;
@@ -33,9 +34,10 @@ const historyItems: HistoryItem[] = [
         subtitle: "El inicio",
         desc: "Todo comenzó con tres estudiantes del Instituto Nacional: Cristian Suárez, Lucas Galleguillos y Vicente Olguín. Provenían de intereses distintos, pero compartían una misma idea: crear una plataforma que conectara a jóvenes con distintos talentos, pasiones y ganas de hacer cosas.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769039962/Cristian_Suarez_svypim.png",
+        alt: "CRISTIAN SUAREZ, LUCAS GALLEGUILLOS Y VICENTE OLGUIN COFUNDADORES DE HIVEYOUNG",
         theme: "dark",
         fit: "cover",
-        imgPosition: "78% center"
+        imgPosition: "center 15%"
     },
     {
         id: 'eventos',
@@ -44,6 +46,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "Expandiendo el horizonte",
         desc: "La idea comenzó a crecer. Compañeros se fueron sumando al proyecto y el equipo empezó a moverse: asistir a eventos, aprender, hacer networking y conocer personas. Poco a poco, HiveYoung empezaba a abrirse camino.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016942/20240924_115026_osmgus.heic",
+        alt: "BENJAMIN INZUNZA, LUCAS GALLEGUILLOS Y CRISTIAN SUAREZ HIVEYOUNG",
         theme: "light"
     },
     {
@@ -53,6 +56,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "De la idea a la acción",
         desc: "Se formó un equipo y comenzaron a dar forma al primer gran proyecto: el Congreso HiveYoung. Lo que había empezado como una conversación entre amigos comenzó a transformarse en algo mucho más grande: un proyecto con propósito, valores y una visión clara para la juventud.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016930/20250509_130743_oax4i7.heic",
+        alt: "TRABAJO EN EQUIPO DE HIVEYOUNG",
         theme: "dark"
     },
     {
@@ -62,6 +66,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "Organización y compromiso",
         desc: "En 2025 llegó nuestro primer gran reto: organizar el Congreso HiveYoung. Fueron más de seis meses de trabajo intenso: planificación, reuniones, coordinación y muchas horas dedicadas al proyecto, incluso sacrificando tiempo de clases.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016926/IMG_0094_1_oknzn7.jpg",
+        alt: "MARCELO GUITAL, FRANCISCO ACKERMANN, gina ocqueteau, ANGELO UGALDE, LUCAS GALLEGUILLOS, CRISTIAN SUAREZ Y VICENTE OLGUIN EN EL CONGRESO HIVEYOUNG",
         theme: "green"
     },
     {
@@ -71,6 +76,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "Impacto masivo",
         desc: "El Congreso HiveYoung reunió a más de 2000 estudiantes y más de 30 instituciones. Lo que comenzó como una idea entre tres estudiantes se transformó en un evento capaz de movilizar a toda una comunidad y abrió paso a nuevas ideas, colaboraciones e iniciativas.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016921/IMG-20250519-WA0111_yk5dze.jpg",
+        alt: "LANZAMIENTO DEL CONGRESO HIVEYOUNG 2025",
         theme: "light"
     },
     {
@@ -80,6 +86,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "El futuro es nuestro",
         desc: "Hoy HiveYoung sigue creciendo. Nuevos proyectos, nuevas personas y nuevas ideas siguen sumándose. Porque esto no es solo una organización. Es una generación de jóvenes construyendo el futuro juntos.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016902/IMG-20250930-WA0098_yw5tmg.jpg",
+        alt: "EQUIPO DE HIVEYOUNG EN EL SUMMIT PAIS DIGITAL 2025",
         theme: "dark"
     }
 ];
@@ -158,27 +165,28 @@ export default function HistoriaClient() {
                     }, time);
                 }
 
-                // Simplified animations for mobile to avoid LAG
+                // Simplified animations to avoid LAG
                 if (textContent.length) {
-                    gsap.set(textContent, { opacity: isMobile ? 0.2 : 0, y: isMobile ? 15 : 30 });
+                    gsap.set(textContent, { opacity: 0, y: isMobile ? 10 : 20 });
                     tl.to(textContent, { 
                         y: 0, 
                         opacity: 1, 
-                        duration: isMobile ? 0.3 : 0.5, 
-                        stagger: isMobile ? 0 : 0.1, // Disable stagger on mobile for FPS
-                        ease: "none" 
-                    }, time + 0.4);
+                        duration: isMobile ? 0.3 : 0.4, 
+                        stagger: isMobile ? 0 : 0.05, 
+                        ease: "power2.out",
+                        force3D: true
+                    }, time + 0.3);
                 }
 
                 if (img) {
-                    // Optimized image transition (No blur on mobile)
-                    gsap.set(img, { opacity: 0, filter: isMobile ? "none" : "blur(20px)" });
+                    // REMOVED BLUR: It's extremely expensive for the CPU/GPU during scroll
+                    gsap.set(img, { opacity: 0 });
                     tl.to(img, { 
                         opacity: 1, 
-                        filter: "blur(0px)", 
-                        duration: isMobile ? 0.4 : 0.8, 
-                        ease: "power1.out" 
-                    }, time + 0.5);
+                        duration: isMobile ? 0.4 : 0.6, 
+                        ease: "none",
+                        force3D: true
+                    }, time + 0.4);
                 }
 
                 time += 1.0; 
@@ -197,15 +205,16 @@ export default function HistoriaClient() {
                 start: "top top",
                 end: `+=${panels.length * (isMobile ? 1000 : 1500)}`, 
                 animation: tl,
-                scrub: isMobile ? 0.1 : true, // Added a tiny bit of smoothness to scrub on mobile
+                scrub: isMobile ? 0.05 : 0.5, // Smoother scrub values
                 snap: {
                     snapTo: snapProgress,
-                    duration: { min: 0.1, max: 0.4 },
-                    delay: 0.02, 
+                    duration: { min: 0.2, max: 0.5 }, // Slightly longer duration for smoother snapping
+                    delay: 0.05, 
                     ease: "power2.inOut"
                 },
-                fastScrollEnd: isMobile, // Helps preventing overlap on fast swipes
-                preventOverlaps: true
+                fastScrollEnd: isMobile,
+                preventOverlaps: true,
+                anticipatePin: 1 // Helps prevent the "jump" when sticking starts
             });
         });
 
@@ -251,7 +260,7 @@ export default function HistoriaClient() {
                                         <div className={item.fit === 'contain' ? "contain-img-wrapper" : "cover-img-base"}>
                                             <Image
                                                 src={optimizeCld(item.img)}
-                                                alt={item.title}
+                                                alt={item.alt}
                                                 fill
                                                 className={item.fit === 'contain' ? "story-img-contain-new" : "story-img-cover"}
                                                 style={{
