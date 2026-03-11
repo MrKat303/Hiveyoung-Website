@@ -37,7 +37,7 @@ const historyItems: HistoryItem[] = [
         alt: "CRISTIAN SUAREZ, LUCAS GALLEGUILLOS Y VICENTE OLGUIN COFUNDADORES DE HIVEYOUNG",
         theme: "dark",
         fit: "cover",
-        imgPosition: "center 15%"
+        imgPosition: "77% 15%"
     },
     {
         id: 'eventos',
