@@ -29,9 +29,9 @@ const historyItems: HistoryItem[] = [
     {
         id: 'founders',
         year: "2024",
-        title: "La Fundación",
-        subtitle: "El Origen",
-        desc: "Tres estudiantes con una visión compartida dan inicio a HiveYoung. El comienzo de todo.",
+        title: "Donde todo comenzó",
+        subtitle: "El inicio",
+        desc: "Todo comenzó con tres estudiantes del Instituto Nacional: Cristian Suárez, Lucas Galleguillos y Vicente Olguín. Provenían de intereses distintos, pero compartían una misma idea: crear una plataforma que conectara a jóvenes con distintos talentos, pasiones y ganas de hacer cosas.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769039962/Cristian_Suarez_svypim.png",
         theme: "dark",
         fit: "cover",
@@ -40,45 +40,45 @@ const historyItems: HistoryItem[] = [
     {
         id: 'eventos',
         year: "2024",
-        title: "Primeros Pasos",
-        subtitle: "Comunidad y Eventos",
-        desc: "Comenzamos a asistir a eventos, conectar con el ecosistema y validar nuestra propuesta.",
+        title: "Los primeros pasos",
+        subtitle: "Expandiendo el horizonte",
+        desc: "La idea comenzó a crecer. Compañeros se fueron sumando al proyecto y el equipo empezó a moverse: asistir a eventos, aprender, hacer networking y conocer personas. Poco a poco, HiveYoung empezaba a abrirse camino.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016942/20240924_115026_osmgus.heic",
         theme: "light"
     },
     {
         id: 'reuniones',
         year: "2024",
-        title: "La Decisión",
-        subtitle: "Hacia el Congreso",
-        desc: "Decidimos ir por más. Nace la idea de organizar nuestro propio Congreso. Planificación intensa.",
+        title: "Construyendo algo real",
+        subtitle: "De la idea a la acción",
+        desc: "Se formó un equipo y comenzaron a dar forma al primer gran proyecto: el Congreso HiveYoung. Lo que había empezado como una conversación entre amigos comenzó a transformarse en algo mucho más grande: un proyecto con propósito, valores y una visión clara para la juventud.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016930/20250509_130743_oax4i7.heic",
         theme: "dark"
     },
     {
         id: 'congreso',
         year: "2025",
-        title: "Ejecución",
-        subtitle: "El Primer Congreso",
-        desc: "Un año de trabajo arduo gestionando y haciendo realidad el hito más grande de nuestra historia.",
+        title: "El primer gran desafío",
+        subtitle: "Organización y compromiso",
+        desc: "En 2025 llegó nuestro primer gran reto: organizar el Congreso HiveYoung. Fueron más de seis meses de trabajo intenso: planificación, reuniones, coordinación y muchas horas dedicadas al proyecto, incluso sacrificando tiempo de clases.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016926/IMG_0094_1_oknzn7.jpg",
         theme: "green"
     },
     {
         id: 'disfrutar',
         year: "2025",
-        title: "Consolidación",
-        subtitle: "Resultados",
-        desc: "Celebramos el impacto logrado y la fuerza de una comunidad que no para de crecer.",
+        title: "Un punto de inflexión",
+        subtitle: "Impacto masivo",
+        desc: "El Congreso HiveYoung reunió a más de 2000 estudiantes y más de 30 instituciones. Lo que comenzó como una idea entre tres estudiantes se transformó en un evento capaz de movilizar a toda una comunidad y abrió paso a nuevas ideas, colaboraciones e iniciativas.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016921/IMG-20250519-WA0111_yk5dze.jpg",
         theme: "light"
     },
     {
         id: 'creciendo',
         year: "2026",
-        title: "El Ahora",
-        subtitle: "Expansión",
-        desc: "Hoy, HiveYoung es una realidad que sigue escalando. Nuevos horizontes y más liderazgo.",
+        title: "Lo que viene",
+        subtitle: "El futuro es nuestro",
+        desc: "Hoy HiveYoung sigue creciendo. Nuevos proyectos, nuevas personas y nuevas ideas siguen sumándose. Porque esto no es solo una organización. Es una generación de jóvenes construyendo el futuro juntos.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016902/IMG-20250930-WA0098_yw5tmg.jpg",
         theme: "dark"
     }
@@ -111,16 +111,19 @@ export default function HistoriaClient() {
             }, "-=1.5");
         }, mainRef);
 
-        mm.add("all", () => {
+        mm.add({
+            isDesktop: "(min-width: 901px)",
+            isMobile: "(max-width: 900px)"
+        }, (context) => {
+            const { isMobile } = context.conditions as any;
             const panels = gsap.utils.toArray('.horizontal-panel') as HTMLElement[];
-            const isMobile = window.innerWidth <= 900;
             
             // Set initial state
             gsap.set(panels, { yPercent: 100, zIndex: (i) => i + 10 });
             gsap.set('.title-wrapper', { transformOrigin: "center center" });
 
             const tl = gsap.timeline();
-            const snapPoints: number[] = [0]; // 0 is Hero state
+            const snapPoints: number[] = [0]; 
 
             let time = 0;
 
@@ -131,38 +134,60 @@ export default function HistoriaClient() {
                 const textContent = panel.querySelectorAll('.panel-text-col > *');
                 const img = panel.querySelector('.panel-image-col img');
 
-                // Animar el panel entrando desde abajo (transición rápida al hacer scroll)
-                tl.to(panel, { yPercent: 0, duration: 1, ease: "none" }, time);
+                // Animate panel entry
+                tl.to(panel, { 
+                    yPercent: 0, 
+                    duration: isMobile ? 0.8 : 1, 
+                    ease: "none" 
+                }, time);
                 
-                // Animar el color de fondo
-                tl.to('.historia-bg-wrapper', { backgroundColor: bgColor, duration: 1, ease: "none" }, time);
+                // Background color transition
+                tl.to('.historia-bg-wrapper', { 
+                    backgroundColor: bgColor, 
+                    duration: 0.8, 
+                    ease: "none" 
+                }, time);
 
-                // Si es el primero, borrar el título del hero
+                // Exit hero title
                 if (i === 0) {
-                    tl.to('.title-wrapper', { scale: isMobile ? 3 : 5, opacity: 0, duration: 1, ease: "none" }, time);
+                    tl.to('.title-wrapper', { 
+                        scale: isMobile ? 2.5 : 5, 
+                        opacity: 0, 
+                        duration: 0.8, 
+                        ease: "none" 
+                    }, time);
                 }
 
-                // Aparición de textos e imagen
+                // Simplified animations for mobile to avoid LAG
                 if (textContent.length) {
-                    gsap.set(textContent, { opacity: 0, y: 30 });
-                    tl.to(textContent, { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "none" }, time + 0.5);
+                    gsap.set(textContent, { opacity: isMobile ? 0.2 : 0, y: isMobile ? 15 : 30 });
+                    tl.to(textContent, { 
+                        y: 0, 
+                        opacity: 1, 
+                        duration: isMobile ? 0.3 : 0.5, 
+                        stagger: isMobile ? 0 : 0.1, // Disable stagger on mobile for FPS
+                        ease: "none" 
+                    }, time + 0.4);
                 }
 
                 if (img) {
-                    gsap.set(img, { opacity: 0, filter: "blur(20px)" });
-                    tl.to(img, { opacity: 1, filter: "blur(0px)", duration: 0.8, ease: "power2.out" }, time + 0.6);
+                    // Optimized image transition (No blur on mobile)
+                    gsap.set(img, { opacity: 0, filter: isMobile ? "none" : "blur(20px)" });
+                    tl.to(img, { 
+                        opacity: 1, 
+                        filter: "blur(0px)", 
+                        duration: isMobile ? 0.4 : 0.8, 
+                        ease: "power1.out" 
+                    }, time + 0.5);
                 }
 
-                time += 1.0; // Fin de la animación de transición
-                
-                // Zona de lectura (1 unidad de tiempo)
+                time += 1.0; 
                 tl.to({}, { duration: 1 }, time);
-                time += 0.5; // El punto central de lectura para el snap
+                time += 0.5; 
                 snapPoints.push(time);
                 time += 0.5;
             });
 
-            // Normalizamos los puntos de snap de 0 a 1
             const totalDuration = tl.duration();
             const snapProgress = snapPoints.map(t => t / totalDuration);
 
@@ -170,15 +195,17 @@ export default function HistoriaClient() {
                 trigger: scrollContainerRef.current,
                 pin: true,
                 start: "top top",
-                end: `+=${panels.length * 1500}`, // Espacio suficiente para leer
+                end: `+=${panels.length * (isMobile ? 1000 : 1500)}`, 
                 animation: tl,
-                scrub: true, // Scrub directo sin retraso evita bugs
+                scrub: isMobile ? 0.1 : true, // Added a tiny bit of smoothness to scrub on mobile
                 snap: {
                     snapTo: snapProgress,
-                    duration: { min: 0.2, max: 0.5 },
-                    delay: 0.05, // Snap casi inmediato al soltar
-                    ease: "power1.inOut"
-                }
+                    duration: { min: 0.1, max: 0.4 },
+                    delay: 0.02, 
+                    ease: "power2.inOut"
+                },
+                fastScrollEnd: isMobile, // Helps preventing overlap on fast swipes
+                preventOverlaps: true
             });
         });
 
@@ -215,7 +242,6 @@ export default function HistoriaClient() {
                                         <div className="year-label">{item.year}</div>
                                     )}
                                     <h3>{item.title}</h3>
-                                    <h4>{item.subtitle}</h4>
                                     <p>{item.desc}</p>
                                 </div>
                                 <div className={`panel-image-col ${index === 0 ? 'force-contain-mobile' : ''}`}>

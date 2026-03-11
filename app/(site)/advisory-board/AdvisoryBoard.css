@@ -33,31 +33,6 @@
     line-height: 1.65;
 }
 
-.advisory-highlight {
-    position: relative;
-    font-weight: 700;
-    color: #3A1B4E !important;
-    padding: 0 4px;
-    display: inline-block;
-}
-
-.advisory-highlight::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0px;
-    width: 0;
-    height: 14px;
-    background-color: #6fc1ff; /* Light blue highlight */
-    opacity: 0.45;
-    z-index: -1;
-    transition: width 1s cubic-bezier(0.19, 1, 0.22, 1);
-    transition-delay: 0.1s;
-}
-
-.reveal.active .advisory-highlight::after {
-    width: 100%;
-}
 
 
 .advisory-grid {

@@ -116,56 +116,7 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* --- HIGHLIGHT MARKER (DESTACADOR) STYLES --- */
-.highlight-marker-container {
-    position: relative;
-    display: inline-block;
-    padding: 0 4px;
-    z-index: 1;
-}
-
-.highlight-marker-container.brush {
-    padding: 0 2px;
-}
-
-.highlight-marker-svg {
-    position: absolute;
-    pointer-events: none;
-    z-index: -1;
-    overflow: visible;
-}
-
-.highlight-marker-svg.circle {
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 160%;
-    width: calc(100% + 15px);
-}
-
-.highlight-marker-svg.brush {
-    top: 62%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 60%;
-    width: 100%;
-}
-
-.highlight-marker-svg path {
-    stroke-linejoin: round;
-    transition: filter 0.3s ease, opacity 0.3s ease;
-}
-
-.highlight-marker-container:hover .highlight-marker-svg path {
-    filter: drop-shadow(0 0 5px currentColor);
-    opacity: 0.9 !important;
-}
-
-.marker-text {
-    position: relative;
-    z-index: 2;
-}
-
+/* --- SECCIÓN MISIÓN/VISIÓN --- */
 
 .somos-container {
     max-width: 1400px;
@@ -426,8 +377,13 @@
     }
 
     .somos-hero-intro p {
-        font-size: 16px;
+        font-size: 18px !important;
         padding: 0 20px;
+        line-height: 1.5;
+    }
+
+    .somos-hero-intro p span {
+        font-size: 20px !important; /* Slightly larger but controlled for highlights */
     }
 
     .somos-container {
@@ -435,7 +391,7 @@
     }
 
     .somos-scroll-track {
-        height: 250vh;
+        height: 400vh;
     }
 
     .valores-carousel-wrapper {

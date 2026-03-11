@@ -4,6 +4,7 @@ import useScrollReveal from "@/hooks/useScrollReveal";
 import Image from "next/image";
 import "./AdvisoryBoard.css";
 import { advisors } from "@/data/advisory";
+import HighlightMarker from "@/components/HighlightMarker";
 
 export default function AdvisoryBoardClient() {
     useScrollReveal();
@@ -13,7 +14,7 @@ export default function AdvisoryBoardClient() {
             <div className="advisory-container">
                 <h2 className="advisory-title reveal">Advisory Board</h2>
                 <p className="advisory-subtitle reveal">
-                    Nuestro Advisory Board reúne a expertos y líderes que <span className="advisory-highlight">apoyan nuestra misión</span>, aportando conocimiento, experiencia y mentoría para <span className="advisory-highlight">impulsar el desarrollo de HiveYoung</span> y sus iniciativas.
+                    Nuestro Advisory Board reúne a expertos y líderes que <HighlightMarker color="#6fc1ff" type="brush" delay={0.5}>apoyan nuestra misión</HighlightMarker>, aportando conocimiento, experiencia y mentoría para <HighlightMarker color="#ffc100" type="brush" delay={0.8}>impulsar el desarrollo de HiveYoung</HighlightMarker> y sus iniciativas.
                 </p>
 
                 <div className="advisory-grid">

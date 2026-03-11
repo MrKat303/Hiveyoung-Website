@@ -8,66 +8,8 @@ import gsap from 'gsap';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import { SOMOS_VALUES } from '@/data/somos-values';
 import useScrollReveal from '@/hooks/useScrollReveal';
+import HighlightMarker from '@/components/HighlightMarker';
 import './Somos.css';
-
-const HighlightMarker = ({ children, color, delay = 0, scrollProgress, trigger = 0.25, type = 'circle' }: { children: React.ReactNode, color: string, delay?: number, scrollProgress: any, trigger?: number, type?: 'circle' | 'brush' }) => {
-    const pathRef = useRef<SVGPathElement>(null);
-    const [hasDrawn, setHasDrawn] = useState(false);
-
-    useEffect(() => {
-        return scrollProgress.on("change", (latest: number) => {
-            if (latest > trigger && !hasDrawn) {
-                if (pathRef.current) {
-                    gsap.fromTo(pathRef.current, 
-                        { strokeDashoffset: 1500 },
-                        {
-                            strokeDashoffset: 0,
-                            duration: type === 'brush' ? 0.6 : 1.2,
-                            delay: delay,
-                            ease: type === 'brush' ? "power1.inOut" : "power2.out"
-                        }
-                    );
-                }
-                setHasDrawn(true);
-            } else if (latest < (trigger - 0.1) && hasDrawn) {
-                if (pathRef.current) {
-                    gsap.set(pathRef.current, { strokeDashoffset: 1500 });
-                }
-                setHasDrawn(false);
-            }
-        });
-    }, [scrollProgress, hasDrawn, delay, trigger, type]);
-
-    const getPath = () => {
-        if (type === 'brush') {
-            // Precise path that starts exactly at the beginning and ends at the end
-            return "M 1,25 L 199,25";
-        }
-        // Varied circle path
-        return "M 195,25 C 195,45 150,55 100,55 C 50,55 5,45 5,25 C 5,5 50,2 100,2 C 150,2 192,5 192,23 C 192,35 170,48 100,48";
-    };
-
-    return (
-        <span className={`highlight-marker-container ${type}`}>
-            <span className="marker-text">{children}</span>
-            <svg className={`highlight-marker-svg ${type}`} viewBox={type === 'brush' ? "0 0 200 50" : "0 0 200 60"} preserveAspectRatio="none">
-                <path
-                    ref={pathRef}
-                    d={getPath()}
-                    stroke={color}
-                    strokeWidth={type === 'brush' ? "24" : "3.5"}
-                    fill="none"
-                    strokeLinecap="butt"
-                    style={{ 
-                        strokeDasharray: 1500, 
-                        strokeDashoffset: 1500, 
-                        opacity: type === 'brush' ? 0.35 : 0.85,
-                    }}
-                />
-            </svg>
-        </span>
-    );
-};
 
 const SomosClient = () => {
     useScrollReveal();
@@ -271,8 +213,10 @@ const SomosClient = () => {
                                 filter: blurIntro1
                             }}
                         >
-                            <p style={{ fontSize: '32px', fontWeight: 700, maxWidth: '1000px' }}>
-                                Somos una <HighlightMarker color="#f4d03f" type="brush" delay={0.4} scrollProgress={scrollYProgress} trigger={0.2}>organización juvenil</HighlightMarker> que busca impulsar el talento, las ideas y el potencial de las nuevas generaciones.
+                            <p style={{ fontWeight: 700, maxWidth: '1000px' }}>
+                                <HighlightMarker color="#f4d03f" type="circle" delay={0.4} scrollProgress={scrollYProgress} trigger={0.2}>
+                                    Somos una organización juvenil que busca impulsar el talento, las ideas y el potencial de las nuevas generaciones.
+                                </HighlightMarker>
                             </p>
                         </motion.div>
 

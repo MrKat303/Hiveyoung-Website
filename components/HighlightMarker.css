@@ -1,0 +1,88 @@
+/* --- HIGHLIGHT MARKER (DESTACADOR) STYLES --- */
+
+.highlight-marker-container.brush {
+    padding: 0 2px;
+}
+
+.highlight-marker-svg {
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+    overflow: visible;
+}
+
+.highlight-marker-svg.circle {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 135%;
+    width: 108%;
+}
+
+.highlight-marker-svg.brush {
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 60%;
+    width: 100%;
+}
+
+.highlight-marker-svg path {
+    stroke-linejoin: round;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+}
+
+.highlight-marker-container {
+    position: relative;
+    display: inline-block;
+    padding: 0 4px;
+    z-index: 1;
+    pointer-events: none; /* Make the container pass through clicks */
+}
+
+/* Allow text inside to be selectable/clickable if needed */
+.marker-text {
+    position: relative;
+    z-index: 2;
+    font-weight: 700;
+    pointer-events: auto; 
+}
+
+@media (max-width: 768px) {
+    .highlight-marker-container {
+        padding: 0 2px;
+    }
+    
+    .highlight-marker-svg.brush {
+        height: 60%; /* Back to a reasonable height */
+        top: 65%;
+        width: 105%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .highlight-marker-svg.circle {
+        height: 125%;
+        width: 108%;
+    }
+
+    .highlight-marker-svg path {
+        stroke-width: 16 !important; 
+    }
+
+    .highlight-marker-svg.circle path {
+        stroke-width: 2 !important; 
+    }
+
+    .highlight-marker-svg.circle path:nth-child(2) {
+        stroke-width: 1.4 !important; 
+    }
+
+    /* Prevent bold from causing layout explosion on mobile intro */
+    .somos-hero-intro p span.marker-text {
+        font-weight: 700;
+        font-size: 1.05em; 
+    }
+}
+
