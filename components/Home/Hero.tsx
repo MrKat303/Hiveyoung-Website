@@ -100,7 +100,7 @@ export default function Hero() {
                         <img
                             className="hero__icons no-interaction"
                             src="/hero.svg"
-                            alt="Ecosistema juvenil HiveYoung - Conectando líderes del cambio"
+                            alt=""
                             draggable="false"
                         />
                     </motion.div>
