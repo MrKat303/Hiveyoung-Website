@@ -18,7 +18,7 @@
 
 .contact-title {
     font-size: 82px;
-    font-weight: 400; /* changed from 800 */
+    font-weight: 500; /* changed from 400 */
     line-height: 1;
     margin-bottom: 40px; /* More space from description */
     display: flex;
