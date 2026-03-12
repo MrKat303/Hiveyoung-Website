@@ -638,8 +638,8 @@
 .asterisk-container {
     position: absolute;
     right: -40px;
-    top: -20px;
-    width: clamp(80px, 12vw, 130px);
+    top: 40px;
+    width: clamp(60px, 8vw, 95px);
     height: auto;
     pointer-events: none;
     z-index: 10;
@@ -670,7 +670,7 @@
 @media (max-width: 1200px) {
     .asterisk-container {
         right: 20px;
-        top: -30px;
+        top: 10px;
     }
 }
 
