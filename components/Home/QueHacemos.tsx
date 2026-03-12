@@ -14,19 +14,19 @@ const QueHacemos = () => {
             icon: <Users size={48} strokeWidth={1.5} />,
             title: "Colaborar",
             description: "Trabajamos en conjunto con una red de aliados estratégicos para potenciar el impacto colectivo de las iniciativas juveniles.",
-            color: "#D1F2E1" // Soft Mint
+            color: "#5CD494" // Vibrant Green
         },
         {
             icon: <Network size={48} strokeWidth={1.5} />,
             title: "Articulamos el Ecosistema Juvenil",
             description: "Conectamos los puntos entre jóvenes talentos, mentores y organizaciones para crear una infraestructura de apoyo sólida.",
-            color: "#C2E9D9" // Soft Seafoam
+            color: "#ffc4d4" // Soft Pink/Lavender
         },
         {
             icon: <Rocket size={48} strokeWidth={1.5} />,
             title: "Creamos proyectos con impacto",
             description: "Desarrollamos y ejecutamos iniciativas que transforman realidades y generan un cambio positivo medible en la sociedad.",
-            color: "#FFF0C2" // Soft Muted Yellow
+            color: "#ffc100" // Vibrant Yellow
         }
     ];
 

@@ -39,18 +39,17 @@
 
 .que-hacemos-card {
     background-color: var(--accent-color);
-    padding: 60px 40px;
-    border-radius: 48px;
+    padding: 50px 35px; /* Slightly tighter padding */
+    border-radius: 24px; /* More 'normal' / standard card look */
     box-shadow: 
-        0 8px 30px rgba(58, 27, 78, 0.04),
-        0 4px 10px rgba(0, 0, 0, 0.02);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+        0 8px 25px rgba(58, 27, 78, 0.06);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.05); /* Soft border for definition */
+    border: 1px solid rgba(0, 0, 0, 0.03); 
     z-index: 1;
 }
 
