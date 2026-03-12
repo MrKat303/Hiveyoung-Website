@@ -16,7 +16,7 @@
 .advisory-title {
     color: #3a1b4e;
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 400; /* changed from 800 */
     margin-bottom: 15px;
     letter-spacing: -1px;
 }

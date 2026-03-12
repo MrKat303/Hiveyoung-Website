@@ -90,7 +90,7 @@
 
 .seccion-titulo {
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 400; /* changed from 700 */
     margin-bottom: 10px;
 }
 
