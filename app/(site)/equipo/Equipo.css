@@ -20,7 +20,7 @@
 
 .equipo-header h1 {
     font-size: clamp(32px, 5vw, 56px);
-    font-weight: 800;
+    font-weight: 400; /* changed from 800 */
     margin-bottom: 15px;
     letter-spacing: -1px;
 }
