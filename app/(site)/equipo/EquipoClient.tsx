@@ -204,10 +204,20 @@ export default function EquipoPage() {
 
     return (
         <div className="equipo-page">
-            <header className="equipo-header reveal">
-                <h1>Nuestro Equipo</h1>
-                <p>HiveYoung está <span className="highlight-text">liderado por jóvenes</span> comprometidos que, desde sus distintos espacios, impulsan sus ideas y talentos para generar impacto</p>
-            </header>
+            <div className="equipo-header-wrapper">
+                <header className="equipo-header reveal">
+                    <h1>Nuestro Equipo</h1>
+                    <p>HiveYoung está <span className="highlight-text">liderado por jóvenes</span> comprometidos que, desde sus distintos espacios, impulsan sus ideas y talentos para generar impacto</p>
+                </header>
+                <div className="asterisk-container">
+                    <img
+                        src="/images/Draws/Asterisk.svg"
+                        alt=""
+                        className="asterisk-svg floating-asterisk"
+                        draggable={false}
+                    />
+                </div>
+            </div>
 
             <div className="equipo-container">
                 <section className="equipo-seccion">

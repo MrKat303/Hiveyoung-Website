@@ -628,3 +628,55 @@
         display: none;
     }
 }
+/* --- ASTERISK DECORATION --- */
+.equipo-header-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.asterisk-container {
+    position: absolute;
+    right: -40px;
+    top: -20px;
+    width: clamp(80px, 12vw, 130px);
+    height: auto;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.asterisk-svg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(4px 10px 15px rgba(58, 27, 78, 0.1));
+    overflow: visible;
+}
+
+.floating-asterisk {
+    animation: rotateAsterisk 25s linear infinite;
+}
+
+@keyframes rotateAsterisk {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 1400px) {
+    .asterisk-container {
+        right: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .asterisk-container {
+        right: 20px;
+        top: -30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .asterisk-container {
+        display: none;
+    }
+}
+
