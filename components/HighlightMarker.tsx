@@ -10,7 +10,7 @@ interface HighlightMarkerProps {
     color: string;
     delay?: number;
     trigger?: number;
-    type?: 'circle' | 'brush';
+    type?: 'circle' | 'brush' | 'square';
     scrollProgress?: any; // Optional for backward compatibility with Somos
 }
 
@@ -53,12 +53,12 @@ const HighlightMarker = ({
             const paths = containerRef.current?.querySelectorAll('path');
             paths?.forEach((p, i) => {
                 gsap.fromTo(p, 
-                    { strokeDashoffset: 1500 },
+                    { strokeDashoffset: 2000 },
                     {
                         strokeDashoffset: 0,
-                        duration: type === 'brush' ? 0.6 : 0.8,
+                        duration: type === 'brush' ? 0.8 : 0.8,
                         delay: delay + (i * 0.1),
-                        ease: "expo.out"
+                        ease: type === 'brush' ? "power2.inOut" : "expo.out"
                     }
                 );
             });
@@ -67,12 +67,12 @@ const HighlightMarker = ({
 
     const reset = () => {
         const paths = containerRef.current?.querySelectorAll('path');
-        paths?.forEach(p => gsap.set(p, { strokeDashoffset: 1500 }));
+        paths?.forEach(p => gsap.set(p, { strokeDashoffset: 2000 }));
     };
 
     const getPaths = () => {
         if (type === 'brush') {
-            return ["M 1,25 L 199,25"];
+            return ["M 0,25 L 200,25"];
         }
         // Single elegant, slightly irregular circle path for a premium "drawn" look
         return [
@@ -90,13 +90,13 @@ const HighlightMarker = ({
                         ref={i === 0 ? pathRef : null}
                         d={d}
                         stroke={color}
-                        strokeWidth={type === 'brush' ? "24" : "3.5"}
+                        strokeWidth={type === 'brush' ? "48" : "3.5"}
                         fill="none"
-                        strokeLinecap="round"
+                        strokeLinecap="butt"
                         style={{ 
-                            strokeDasharray: 1500, 
-                            strokeDashoffset: 1500, 
-                            opacity: type === 'brush' ? 0.35 : (i === 0 ? 1.0 : 0.7),
+                            strokeDasharray: 2000, 
+                            strokeDashoffset: 2000, 
+                            opacity: type === 'brush' ? 0.3 : (i === 0 ? 1.0 : 0.7),
                         }}
                     />
                 ))}

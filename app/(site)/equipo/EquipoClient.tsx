@@ -5,7 +5,7 @@ import useScrollReveal from "@/hooks/useScrollReveal";
 import Image from "next/image";
 import "./Equipo.css";
 import { direccionEjecutiva, coordinadoresRegionales, directorio, equipoGeneral, Miembro } from "@/data/equipo";
-import { ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronUp, Linkedin } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -256,14 +256,7 @@ export default function EquipoPage() {
                 </section>
 
                 <section className="equipo-seccion-toggle">
-                    {!showGeneral ? (
-                        <div className="ver-mas-container">
-                            <button className="ver-mas-btn" onClick={() => setShowGeneral(true)}>
-                                Ver más
-                                <ChevronRight size={20} />
-                            </button>
-                        </div>
-                    ) : (
+                    {showGeneral && (
                         <section className="equipo-seccion-revealed">
                             <div className="titulo-wrapper reveal active">
                                 <h2 className="seccion-titulo">Equipo</h2>
@@ -276,6 +269,13 @@ export default function EquipoPage() {
                             </div>
                         </section>
                     )}
+                    
+                    <div className="ver-mas-container">
+                        <button className={`ver-mas-btn ${showGeneral ? 'expanded' : ''}`} onClick={() => setShowGeneral(!showGeneral)}>
+                            {showGeneral ? 'Ver menos' : 'Ver más'}
+                            {showGeneral ? <ChevronUp size={20} /> : <ChevronRight size={20} />}
+                        </button>
+                    </div>
                 </section>
             </div>
         </div>

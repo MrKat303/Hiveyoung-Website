@@ -11,7 +11,7 @@
 
 .equipo-header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 60px; /* Reduced from 80px */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -73,7 +73,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 80px; /* Reduced from 120px for better flow */
+    margin-bottom: 40px; /* Further reduced from 60px */
 }
 
 .equipo-seccion:last-child {
@@ -84,7 +84,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 40px; /* Reduced from 60px */
+    margin-bottom: 30px; /* Reduced from 40px */
     text-align: center; /* Enforce centering for long titles on mobile */
 }
 
@@ -434,11 +434,11 @@
 
 @media (max-width: 768px) {
     .equipo-seccion {
-        margin-bottom: 60px; /* Even tighter spacing on mobile */
+        margin-bottom: 40px; /* Reduced from 60px */
     }
 
     .titulo-wrapper {
-        margin-bottom: 30px;
+        margin-bottom: 20px; /* Reduced from 30px */
         width: 100%;
         padding: 0 20px;
     }
@@ -472,17 +472,17 @@
 }
 
 .ver-mas-container {
-    padding: 40px 0 100px;
+    padding: 20px 0 60px; /* Reduced from 40px 0 100px */
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
 .ver-mas-btn {
-    background-color: white;
-    color: #3A1B4E;
-    border: 2px solid #3A1B4E;
-    padding: 16px 40px;
+    background-color: #3A1B4E; /* Dark purple */
+    color: white;
+    border: none;
+    padding: 18px 45px;
     border-radius: 99px;
     font-size: 18px;
     font-weight: 700;
@@ -491,14 +491,14 @@
     align-items: center;
     gap: 12px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 30px rgba(58, 27, 78, 0.05);
+    box-shadow: 0 10px 30px rgba(58, 27, 78, 0.2);
 }
 
 .ver-mas-btn:hover {
-    background-color: #3A1B4E;
+    background-color: #3A1B4E; /* Stay purple */
     color: white;
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(58, 27, 78, 0.15);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(58, 27, 78, 0.3);
 }
 
 .ver-mas-btn:hover svg {
@@ -538,8 +538,8 @@
 /* --- DIRECTORIO --- */
 .directorio-section {
     position: relative;
-    padding: 80px 20px;
-    margin: 80px auto; 
+    padding: 50px 20px; /* Reduced further from 60px */
+    margin: 30px auto;  /* Reduced from 40px */
     background-color: #3A1B4E;
     width: 100%;
     max-width: 1150px;

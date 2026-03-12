@@ -20,11 +20,11 @@
 }
 
 .highlight-marker-svg.brush {
-    top: 62%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 60%;
-    width: 100%;
+    height: 75%; /* Increased from 65% */
+    width: 104%;
 }
 
 .highlight-marker-svg path {
