@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/hero.svg',
+        source: '/images/home/hero.svg',
         headers: [
           {
             key: 'X-Robots-Tag',
@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/bottom.svg',
+        source: '/images/home/bottom.svg',
         headers: [
           {
             key: 'X-Robots-Tag',

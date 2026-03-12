@@ -99,7 +99,7 @@ export default function Hero() {
                     >
                         <img
                             className="hero__icons no-interaction"
-                            src="/hero.svg"
+                            src="/images/home/hero.svg"
                             alt=""
                             draggable="false"
                         />
@@ -112,7 +112,7 @@ export default function Hero() {
                 <div className="hero__bottomContainer">
                     <img
                         className="hero__bottom no-interaction"
-                        src="/bottom.svg"
+                        src="/images/home/bottom.svg"
                         alt=""
                         draggable="false"
                     />

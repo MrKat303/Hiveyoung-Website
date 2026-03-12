@@ -6,11 +6,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/hero.svg", "/bottom.svg"],
+        disallow: ["/images/home/hero.svg", "/images/home/bottom.svg"],
       },
       {
         userAgent: "Googlebot-Image",
-        disallow: ["/hero.svg", "/bottom.svg"],
+        disallow: ["/images/home/hero.svg", "/images/home/bottom.svg"],
       }
     ],
     sitemap: "https://hiveyoung.org/sitemap.xml",
