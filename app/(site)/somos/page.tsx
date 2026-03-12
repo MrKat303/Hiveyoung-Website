@@ -5,6 +5,9 @@ export const metadata: Metadata = {
     title: "Quienes Somos",
     description:
         "Conoce la historia, misión y visión de HiveYoung. Somos el principal articulador del ecosistema juvenil en Chile y Latinoamérica.",
+    alternates: {
+        canonical: "https://hiveyoung.org/somos",
+    },
     openGraph: {
         title: "Quiénes Somos — HiveYoung",
         description:

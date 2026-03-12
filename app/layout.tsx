@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://hiveyoung.org"),
   title: {
-    default: "Inicio",
-    template: "%s",
+    default: "HiveYoung | Principal Articulador del Ecosistema Juvenil",
+    template: "%s | HiveYoung",
   },
   description:
     "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Conectamos, potenciamos y visibilizamos el talento joven a través de liderazgo, innovación y acción colectiva.",
@@ -56,9 +56,6 @@ export const metadata: Metadata = {
     title: "HiveYoung | Principal Articulador del Ecosistema Juvenil",
     description:
       "Conectamos, potenciamos y visibilizamos el talento joven en Chile y Latinoamérica.",
-  },
-  alternates: {
-    canonical: "https://hiveyoung.org",
   },
   robots: {
     index: true,

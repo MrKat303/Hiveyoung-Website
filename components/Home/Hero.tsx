@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import TextType from './TextType';
@@ -21,6 +21,11 @@ export default function Hero() {
         }
     });
 
+    // Update tab title to be cleaner for users while keeping SEO title in metadata
+    useEffect(() => {
+        document.title = "HiveYoung";
+    }, []);
+
     return (
         <section className="hero" onContextMenu={(e) => e.preventDefault()}>
             <div className="hero__section">
@@ -34,13 +39,16 @@ export default function Hero() {
                             style={{ opacity: textOpacity, y: textY }}
                             className="hero__title"
                         >
-                            <TextType
-                                key={shouldRestart ? 'active' : 'inactive'}
-                                text="Únete a la<br/><span class='hero__accent'>comunidad</span> que<br/>crea el cambio."
-                                typingSpeed={90}
-                                showCursor={true}
-                                cursorCharacter="|"
-                            />
+                            <span className="sr-only">Únete a la comunidad que crea el cambio.</span>
+                            <span aria-hidden="true">
+                                <TextType
+                                    key={shouldRestart ? 'active' : 'inactive'}
+                                    text="Únete a la<br/><span class='hero__accent'>comunidad</span> que<br/>crea el cambio."
+                                    typingSpeed={90}
+                                    showCursor={true}
+                                    cursorCharacter="|"
+                                />
+                            </span>
                         </motion.h1>
 
                         <motion.p

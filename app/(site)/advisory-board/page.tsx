@@ -5,6 +5,9 @@ export const metadata: Metadata = {
     title: "Advisory Board",
     description:
         "Conoce a nuestro Advisory Board: líderes estratégicos de diversas industrias que impulsan la visión y el impacto de HiveYoung.",
+    alternates: {
+        canonical: "https://hiveyoung.org/advisory-board",
+    },
     openGraph: {
         title: "Advisory Board — HiveYoung",
         description:
