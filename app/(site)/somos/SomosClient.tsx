@@ -234,8 +234,10 @@ const SomosClient = () => {
                     </motion.div>
 
                     <div className="somos-hero-content">
+                        <h1 className="sr-only">¿Quiénes Somos? — HiveYoung</h1>
                         <motion.div
                             className="somos-hero-title-wrapper"
+                            aria-hidden="true"
                             style={{
                                 opacity: opacityTitle,
                                 y: yTitle,

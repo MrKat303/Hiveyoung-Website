@@ -12,7 +12,7 @@ export default function AdvisoryBoardClient() {
     return (
         <section className="advisory-section">
             <div className="advisory-container">
-                <h2 className="advisory-title reveal">Advisory Board</h2>
+                <h1 className="advisory-title reveal">Advisory Board</h1>
                 <p className="advisory-subtitle reveal">
                     Nuestro Advisory Board reúne a expertos y líderes que <HighlightMarker color="#6fc1ff" type="brush" delay={0.5}>apoyan nuestra misión</HighlightMarker>, aportando conocimiento, experiencia y mentoría para <HighlightMarker color="#ffc100" type="brush" delay={0.8}>impulsar el desarrollo de HiveYoung</HighlightMarker> y sus iniciativas.
                 </p>

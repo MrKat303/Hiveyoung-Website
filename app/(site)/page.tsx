@@ -4,7 +4,9 @@ import QueHacemos from "@/components/Home/QueHacemos";
 import CongressCarousel from "@/components/Home/CongressCarousel";
 
 export const metadata: Metadata = {
-  title: "HiveYoung | Principal Articulador del Ecosistema Juvenil",
+  title: {
+    absolute: "HiveYoung | Principal Articulador del Ecosistema Juvenil",
+  },
   description:
     "Únete a HiveYoung, el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
   alternates: {
