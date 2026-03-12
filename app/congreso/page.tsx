@@ -60,6 +60,45 @@ export default function CongresoPage() {
     const [activeCategory, setActiveCategory] = useState('Todos');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const faqJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Quiénes pueden asistir?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El evento está abierto a todos los jóvenes escolares y universitarios, emprendedores y personas interesadas en aprender."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Tiene costo la entrada?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El Congreso HiveYoung es un evento gratuito, pero requiere inscripción previa ya que los cupos son limitados."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Es presencial u online?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Es un evento 100% presencial."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cuánto dura el congreso?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El congreso se desarrolla durante una jornada completa, con una programación continua de charlas, talleres, conversatorios y actividades artísticas."
+                }
+            }
+        ]
+    };
+
     const handleSectionChange = (id: Section) => {
         setActiveSection(id);
         setIsMenuOpen(false);
@@ -67,6 +106,10 @@ export default function CongresoPage() {
 
     return (
         <div className="congreso-page">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+            />
             <div className="mesh-gradient-bg">
                 <div className="glow-orb orb-1"></div>
                 <div className="glow-orb orb-2"></div>

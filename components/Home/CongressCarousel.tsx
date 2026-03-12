@@ -24,7 +24,7 @@ export default function CongressCarousel() {
             <div className="congress-carousel reveal">
                 {/* CEINA Logo */}
                 <div className="ceina-logo">
-                    <Image src="/images/congreso/logos/CEINA.png" alt="CEINA" width={200} height={80} draggable={false} />
+                    <Image src="/images/congreso/logos/CEINA.png" alt="" width={200} height={80} draggable={false} />
                 </div>
 
                 {/* Carousel Images */}
