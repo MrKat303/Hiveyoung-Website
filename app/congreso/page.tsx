@@ -254,7 +254,9 @@ export default function CongresoPage() {
                 <div className="footer-content">
                     <div className="footer-top">
                         <div className="footer-brand">
-                            <Image src="/Logo.svg" alt="HiveYoung Logo" width={130} height={65} style={{ height: '65px', width: 'auto' }} />
+                            <a href="https://hiveyoung.org">
+                                <Image src="/Logo.svg" alt="HiveYoung Logo" width={130} height={65} style={{ height: '65px', width: 'auto' }} />
+                            </a>
                         </div>
                         <nav className="footer-nav">
                             {menuItems.map((item) => (

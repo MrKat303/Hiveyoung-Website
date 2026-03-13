@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Congreso HiveYoung: el evento juvenil más importante de Chile, hecho por y para jóvenes. Speakers, networking, innovación y emprendimiento en un solo lugar.",
   alternates: {
-    canonical: "https://hiveyoung.org/congreso",
+    canonical: "https://congreso.hiveyoung.org",
   },
   openGraph: {
     title: "Congreso HiveYoung",

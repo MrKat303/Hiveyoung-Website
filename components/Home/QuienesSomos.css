@@ -1,0 +1,126 @@
+.quienes-somos-home {
+    padding: 60px 24px 20px;
+    background-color: #f4ede4; /* Requested Cream/Pastel Color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.quienes-somos-container {
+    max-width: 900px;
+    width: 100%;
+}
+
+.qs-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.qs-title {
+    font-family: 'Bernoru Black', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: #1a1a1a;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -1.5px;
+}
+
+.qs-description {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    color: #1a1a1a;
+    line-height: 1.25;
+    max-width: 800px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+}
+
+.qs-description strong {
+    color: #59c985;
+    position: relative;
+    display: inline-block;
+}
+
+.qs-mission {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: #4b5563;
+    line-height: 1.6;
+    max-width: 650px;
+}
+
+.qs-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.qs-btn {
+    padding: 14px 32px;
+    border-radius: 99px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.qs-btn-primary {
+    background-color: #3A1B4E;
+    color: white;
+}
+
+.qs-btn-primary:hover {
+    background-color: #4b2365;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(58, 27, 78, 0.2);
+}
+
+.qs-btn-secondary {
+    background-color: transparent;
+    color: #3A1B4E;
+    border: 2px solid #3A1B4E;
+}
+
+.qs-btn-secondary:hover {
+    background-color: rgba(58, 27, 78, 0.05);
+    transform: translateY(-2px);
+}
+
+.qs-mission strong {
+    color: #333;
+    font-weight: 700;
+}
+
+.qs-accent-line {
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, #ffc100, #59c985);
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Scroll reveal overrides for closer spacing */
+.qs-content.reveal {
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 768px) {
+    .quienes-somos-home {
+        padding: 80px 24px;
+    }
+    
+    .qs-content {
+        gap: 24px;
+    }
+
+    .qs-title {
+        letter-spacing: -1px;
+    }
+}

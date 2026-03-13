@@ -83,7 +83,7 @@
 }
 
 .about-text {
-    color: #3a1b4e;
+    color: #1A1A1A;
     font-size: clamp(2rem, 3.5vw, 3.5rem);
     line-height: 1.25;
     font-weight: 600;
@@ -93,7 +93,7 @@
 
 .about-highlight {
     font-weight: 800;
-    color: #3a1b4e;
+    color: #1A1A1A;
 }
 
 /* Responsive adjustments */

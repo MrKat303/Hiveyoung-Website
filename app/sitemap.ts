@@ -47,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/congreso`,
+      url: "https://congreso.hiveyoung.org",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8,

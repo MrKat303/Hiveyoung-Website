@@ -76,7 +76,7 @@ export default function CongressCarousel() {
                 <div className="congress-content">
                     <div className="congress-info-badge">2025</div>
                     <h2 className="congress-title">CONGRESO HIVEYOUNG</h2>
-                    <a href="/congreso" className="congress-btn">
+                    <a href="https://congreso.hiveyoung.org" className="congress-btn">
                         Revive el Congreso
                     </a>
                 </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Home/Hero";
+import QuienesSomos from "@/components/Home/QuienesSomos";
 import QueHacemos from "@/components/Home/QueHacemos";
 import CongressCarousel from "@/components/Home/CongressCarousel";
 
@@ -37,6 +38,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <QuienesSomos />
       <QueHacemos />
       <CongressCarousel />
     </>

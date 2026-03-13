@@ -1,6 +1,6 @@
 .somos-page {
     background-color: #f4ede4;
-    color: #3a1b4e;
+    color: #3A1B4E;
     min-height: 100vh;
     padding: 0;
     font-family: 'Poppins', sans-serif;
@@ -180,7 +180,7 @@
 .mv-item h2 {
     font-size: 42px;
     font-weight: 800;
-    color: #3a1b4e;
+    color: #3A1B4E;
     margin-bottom: 15px;
     letter-spacing: -1px;
 }
@@ -200,7 +200,7 @@
 .mv-item p {
     font-size: 20px;
     line-height: 1.7;
-    color: #3a1b4e;
+    color: #3A1B4E;
     opacity: 0.9;
     font-weight: 400;
 }
@@ -382,7 +382,7 @@
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 12px;
-    color: #3a1b4e;
+    color: #3A1B4E;
 }
 
 .valor-card p {
