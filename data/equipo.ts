@@ -22,11 +22,11 @@ export const coordinadoresRegionales: Miembro[] = [
 ];
 
 export const directorio: Miembro[] = [
-    { id: 2, nombre: "Vicente Olguín", cargo: "Presidente", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773016660/vicente_acjaaq_mpul3d.jpg", alt: "Vicente Olguín Cofundador de HiveYoung", descripcion: "Estudiante de Ingeniería en la UC, cofundador de HiveYoung y Mejor Orador en el II Mundial Escolar de Debate en Español.", linkedin: "https://linkedin.com/" },
+    { id: 2, nombre: "Vicente Olguín", cargo: "Presidente", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773016660/vicente_acjaaq_mpul3d.jpg", descripcion: "Estudiante de Ingeniería en la UC, cofundador de HiveYoung y Mejor Orador en el II Mundial Escolar de Debate en Español.", linkedin: "https://linkedin.com/" },
     { id: 204, nombre: "Lucas Galleguillos", cargo: "Director", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773337344/cdb6ff20-1ebc-4316-a9b9-ed562ffa7afb_yxga8k.jpg", descripcion: "Cofundador de HiveYoung, apasionado por la Innovación Social.", linkedin: "https://linkedin.com/" },
     { id: 201, nombre: "Camilo Jimenez", cargo: "Secretario", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773016052/WhatsApp_Image_2026-03-08_at_21.14.00_qui4ag.jpg", descripcion: "Estudiante de Historia en la Universidad de Chile, fundador del MUN Escolar.", linkedin: "https://linkedin.com/" },
     { id: 5, nombre: "Dante Espinoza", cargo: "Tesorero", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456542/dante_ywvrbw.jpg", descripcion: "Estudiante de Derecho en la UC, 2.º Mejor Orador Nacional 2023 y 2024 (debate).", linkedin: "https://linkedin.com/" },
-    { id: 8, nombre: "Sofía Cornejo", cargo: "Directora", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773016728/SC_3_vnnhck.jpg", alt: "Sofía Cornejo Directora de HiveYoung", descripcion: "Estudiante de Medicina en la UC, representante de Chile en las Olimpiadas de Matemáticas.", linkedin: "https://linkedin.com/" },
+    { id: 8, nombre: "Sofía Cornejo", cargo: "Directora", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773016728/SC_3_vnnhck.jpg", descripcion: "Estudiante de Medicina en la UC, representante de Chile en las Olimpiadas de Matemáticas.", linkedin: "https://linkedin.com/" },
     { id: 202, nombre: "Maglio Olguin", cargo: "Director", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773016797/Generated_Image_March_08_2026_-_9_39PM_xlt5lg.png", descripcion: "Estudiante de Ingeniería en la Universidad de Chile.", linkedin: "https://linkedin.com/" },
 ];
 export const equipoGeneral: Miembro[] = [
