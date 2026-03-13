@@ -209,11 +209,19 @@ export default function EquipoPage() {
                     <h1>Nuestro Equipo</h1>
                     <p>HiveYoung está <span className="highlight-text">liderado por jóvenes</span> comprometidos que, desde sus distintos espacios, impulsan sus ideas y talentos para generar impacto</p>
                 </header>
-                <div className="asterisk-container">
+                <div className="asterisk-container asterisk-right">
                     <img
                         src="/images/Draws/Asterisk.svg"
                         alt=""
                         className="asterisk-svg floating-asterisk"
+                        draggable={false}
+                    />
+                </div>
+                <div className="asterisk-container asterisk-left">
+                    <img
+                        src="/images/Draws/Asterisk.svg"
+                        alt=""
+                        className="asterisk-svg floating-asterisk-reverse"
                         draggable={false}
                     />
                 </div>
