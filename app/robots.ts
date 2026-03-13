@@ -6,11 +6,21 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/images/home/hero.svg", "/images/home/bottom.svg"],
+        disallow: [
+          "/images/home/hero.svg",
+          "/images/home/bottom.svg",
+          "/images/Draws/Asterisk.svg",
+          "/_private/",
+        ],
       },
       {
         userAgent: "Googlebot-Image",
-        disallow: ["/images/home/hero.svg", "/images/home/bottom.svg"],
+        disallow: [
+          "/images/home/hero.svg",
+          "/images/home/bottom.svg",
+          "/images/Draws/Asterisk.svg",
+          "/_private/",
+        ],
       }
     ],
     sitemap: "https://hiveyoung.org/sitemap.xml",

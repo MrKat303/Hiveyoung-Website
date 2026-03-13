@@ -4,7 +4,7 @@ import UneteClient from "./UneteClient";
 export const metadata: Metadata = {
     title: "Únete",
     description:
-        "¿Quieres ser parte del cambio? Únete a HiveYoung y forma parte de la comunidad de líderes juveniles más grande de Chile. Postula aquí.",
+        "¿Quieres ser parte del cambio? Únete a HiveYoung y forma parte de la comunidad de líderes juveniles más grande de Chile.",
     alternates: {
         canonical: "https://hiveyoung.org/unete",
     },
@@ -12,6 +12,20 @@ export const metadata: Metadata = {
         title: "Únete a HiveYoung",
         description:
             "¿Quieres ser parte del cambio? Únete a HiveYoung y forma parte de la comunidad de líderes juveniles más grande de Chile.",
+        images: [
+            {
+                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png",
+                width: 1200,
+                height: 630,
+                alt: "Únete a HiveYoung",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Únete a HiveYoung",
+        description: "Sé parte de la comunidad de líderes juveniles que está transformando Chile.",
+        images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png"],
     },
 };
 

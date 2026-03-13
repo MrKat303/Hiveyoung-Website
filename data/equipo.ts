@@ -16,7 +16,7 @@ export const direccionEjecutiva: Miembro[] = [
 ];
 
 export const coordinadoresRegionales: Miembro[] = [
-    { id: 101, nombre: "Clemente Pacheco", cargo: "Coordinador Regional RM", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773374487/3a1b4e_8_nquulw.png", alt: "Clemente Pacheco HiveYoung", descripcion: "Estudiante del Grange School.", linkedin: "https://linkedin.com/" },
+    { id: 101, nombre: "Clemente Pacheco", cargo: "Coordinador Regional RM", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773410775/3a1b4e_8_nquulw.png", alt: "Clemente Pacheco HiveYoung", descripcion: "Estudiante del Grange School.", linkedin: "https://linkedin.com/" },
 ];
 
 export const directorio: Miembro[] = [

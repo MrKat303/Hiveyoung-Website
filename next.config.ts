@@ -20,6 +20,24 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: '/images/Draws/Asterisk.svg',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
+          },
+        ],
+      },
+      {
+        source: '/_private/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
+          },
+        ],
+      },
+      {
         source: '/images/home/hero.svg',
         headers: [
           {
@@ -36,6 +54,14 @@ const nextConfig: NextConfig = {
             value: 'noindex',
           },
         ],
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/_private/cloudinary/:path*',
+        destination: 'https://res.cloudinary.com/:path*',
       },
     ];
   },

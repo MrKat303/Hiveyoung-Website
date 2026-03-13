@@ -9,7 +9,7 @@ import { ChevronLeft, ChevronRight, ChevronUp, Linkedin } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-    const CreativeCard = ({ miembro, className = "equipo-card" }: { miembro: Miembro; className?: string }) => {
+    const CreativeCard = ({ miembro, className = "equipo-card", isPrivate = false }: { miembro: Miembro; className?: string; isPrivate?: boolean }) => {
         const cardRef = useRef<HTMLDivElement>(null);
         const innerRef = useRef<HTMLDivElement>(null);
 
@@ -36,6 +36,14 @@ import { useGSAP } from "@gsap/react";
             };
         }, { scope: cardRef });
 
+        const getImagePath = (url: string | null) => {
+            if (!url) return null;
+            if (isPrivate && url.startsWith('https://res.cloudinary.com/')) {
+                return url.replace('https://res.cloudinary.com/', '/_private/cloudinary/');
+            }
+            return url;
+        };
+
         return (
             <div ref={cardRef} className={`${className} creative-card-wrapper reveal`}>
                 <div ref={innerRef} className="creative-card-inner">
@@ -44,7 +52,7 @@ import { useGSAP } from "@gsap/react";
                         <div className="creative-image-container">
                             {miembro.img ? (
                                 <Image
-                                    src={miembro.img}
+                                    src={getImagePath(miembro.img)!}
                                     alt={miembro.alt || `${miembro.nombre} - ${miembro.cargo} HiveYoung`}
                                     fill
                                     className="creative-image"
@@ -128,7 +136,9 @@ import { useGSAP } from "@gsap/react";
                         <div className="directorio-image-container">
                             {miembro.img ? (
                                 <Image
-                                    src={miembro.img}
+                                    src={miembro.img.startsWith('https://res.cloudinary.com/') 
+                                        ? miembro.img.replace('https://res.cloudinary.com/', '/_private/cloudinary/') 
+                                        : miembro.img}
                                     alt={miembro.alt || `${miembro.nombre} - ${miembro.cargo} HiveYoung`}
                                     fill
                                     className="directorio-image-new"
@@ -275,7 +285,7 @@ export default function EquipoPage() {
                                 </svg>
                             </div>
                             <div className="equipo-grid equipo-general-grid revealed-grid">
-                                {equipoGeneral.map((m) => <CreativeCard key={m.id} miembro={m} className="creative-card-smaller" />)}
+                                {equipoGeneral.map((m) => <CreativeCard key={m.id} miembro={m} className="creative-card-smaller" isPrivate={true} />)}
                             </div>
                         </section>
                     )}

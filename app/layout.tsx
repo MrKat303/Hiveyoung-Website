@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | HiveYoung",
   },
   description:
-    "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Conectamos, potenciamos y visibilizamos el talento joven a través de liderazgo, innovación y acción colectiva.",
+    "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Conectamos, potenciamos y visibilizamos el talento joven con impacto.",
   keywords: [
     "HiveYoung",
     "Congreso HiveYoung",
@@ -40,8 +40,16 @@ export const metadata: Metadata = {
   authors: [{ name: "HiveYoung" }],
   creator: "HiveYoung",
   icons: {
-    icon: "/Favicon.png?v=2",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "es_CL",
@@ -55,7 +63,7 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png",
         width: 1200,
         height: 630,
-        alt: "HiveYoung Card Image",
+        alt: "HiveYoung - Articulador del Ecosistema Juvenil",
       },
     ],
   },
@@ -77,6 +85,18 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "HiveYoung",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+export const viewport = {
+  themeColor: "#ffffff",
 };
 
 const jsonLd = {
