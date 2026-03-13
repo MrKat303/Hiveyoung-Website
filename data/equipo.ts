@@ -16,9 +16,7 @@ export const direccionEjecutiva: Miembro[] = [
 ];
 
 export const coordinadoresRegionales: Miembro[] = [
-    { id: 101, nombre: "Coordinador 1", cargo: "Coordinador Regional", img: null },
-    { id: 102, nombre: "Coordinador 2", cargo: "Coordinador Regional", img: null },
-    { id: 103, nombre: "Coordinador 3", cargo: "Coordinador Regional", img: null },
+    { id: 101, nombre: "Clemente Pachecho", cargo: "Coordinador Regional RM", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773372141/3a1b4e_8_nquulw.png", descripcion: "Estudiante del Grange School.", linkedin: "https://linkedin.com/" },
 ];
 
 export const directorio: Miembro[] = [
