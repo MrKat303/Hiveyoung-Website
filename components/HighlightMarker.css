@@ -54,8 +54,8 @@
     }
     
     .highlight-marker-svg.brush {
-        height: 60%; /* Back to a reasonable height */
-        top: 65%;
+        height: 80%; /* Increased for better thickness on mobile */
+        top: 58%;
         width: 105%;
         left: 50%;
         transform: translate(-50%, -50%);
