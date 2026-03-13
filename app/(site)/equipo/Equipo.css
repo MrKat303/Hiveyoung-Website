@@ -651,7 +651,6 @@
 .asterisk-left {
     left: -40px;
     top: 40px;
-    transform: scaleX(-1); /* Flips horizontaly to create variation */
 }
 
 .asterisk-svg {
