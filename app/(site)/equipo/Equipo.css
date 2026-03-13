@@ -480,26 +480,27 @@
 }
 
 .ver-mas-btn {
-    background-color: #3A1B4E; /* Dark purple */
-    color: white;
-    border: none;
-    padding: 18px 45px;
+    background-color: transparent;
+    color: #3A1B4E;
+    border: 2px solid #3A1B4E;
+    padding: 16px 48px;
     border-radius: 99px;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 12px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 30px rgba(58, 27, 78, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
 .ver-mas-btn:hover {
-    background-color: #3A1B4E; /* Stay purple */
-    color: white;
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 12px 35px rgba(58, 27, 78, 0.3);
+    background-color: #3A1B4E;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(58, 27, 78, 0.1); /* Very subtle shadow */
 }
 
 .ver-mas-btn:hover svg {

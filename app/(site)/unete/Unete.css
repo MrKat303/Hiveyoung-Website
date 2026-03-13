@@ -151,10 +151,10 @@
 }
 
 .unete-submit-btn:hover {
-    background-color: #1A1A1A !important;
+    background-color: #2D153D !important;
     color: #ffffff !important;
-    transform: none;
-    box-shadow: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(58, 27, 78, 0.15);
 }
 
 .button-icon {

@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import useScrollReveal from '@/hooks/useScrollReveal';
-import { Handshake, Network, Rocket } from 'lucide-react';
 import './QueHacemos.css';
 
 const QueHacemos = () => {
@@ -11,22 +10,19 @@ const QueHacemos = () => {
 
     const activities = [
         {
-            icon: <Handshake size={48} strokeWidth={1.5} />,
+            image: "/images/home/Colaborar.png",
             title: "Colaborar",
-            description: "Trabajamos en conjunto con una red de aliados estratégicos para potenciar el impacto colectivo de las iniciativas juveniles.",
-            color: "#5CD494" // Vibrant Green
+            description: "Trabajamos en conjunto con una red de aliados estratégicos para potenciar el impacto colectivo de las iniciativas juveniles."
         },
         {
-            icon: <Network size={48} strokeWidth={1.5} />,
+            image: "/images/home/Articular.png",
             title: "Articulamos el Ecosistema Juvenil",
-            description: "Conectamos los puntos entre jóvenes talentos, mentores y organizaciones para crear una infraestructura de apoyo sólida.",
-            color: "#ffc4d4" // Soft Pink/Lavender
+            description: "Conectamos los puntos entre jóvenes talentos, mentores y organizaciones para crear una infraestructura de apoyo sólida."
         },
         {
-            icon: <Rocket size={48} strokeWidth={1.5} />,
+            image: "/images/home/Proyectos.png",
             title: "Creamos proyectos con impacto",
-            description: "Desarrollamos y ejecutamos iniciativas que transforman realidades y generan un cambio positivo medible en la sociedad.",
-            color: "#ffc100" // Vibrant Yellow
+            description: "Desarrollamos y ejecutamos iniciativas que transforman realidades y generan un cambio positivo medible en la sociedad."
         }
     ];
 
@@ -44,15 +40,24 @@ const QueHacemos = () => {
                     {activities.map((activity, index) => (
                         <div 
                             key={index} 
-                            className="que-hacemos-card reveal" 
-                            style={{ '--accent-color': activity.color } as React.CSSProperties}
+                            className="que-hacemos-item reveal" 
                         >
-                            <div className="qh-icon-wrapper">
-                                {activity.icon}
+                            <div className="qh-image-wrapper">
+                                <div className="qh-image-bg"></div>
+                                <Image 
+                                    src={activity.image} 
+                                    alt={activity.title} 
+                                    width={400} 
+                                    height={400} 
+                                    className="qh-illustration"
+                                    priority={index === 0}
+                                />
                             </div>
-                            <h3>{activity.title}</h3>
-                            <p>{activity.description}</p>
-                            <div className="qh-card-line"></div>
+                            <div className="qh-text-content">
+                                <h3>{activity.title}</h3>
+                                <div className="qh-item-line"></div>
+                                <p>{activity.description}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

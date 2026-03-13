@@ -1,117 +1,157 @@
 .que-hacemos-section {
-    padding: 20px 5% 40px;
-    background-color: #f4ede4; /* Match site cream */
+    padding: 80px 5% 120px;
+    background-color: #f4ede4;
     position: relative;
-    overflow: hidden;
 }
 
 .que-hacemos-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 .que-hacemos-header {
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
 }
 
 .que-hacemos-title {
     font-family: 'Bernoru Black', sans-serif;
-    font-size: 52px;
-    font-weight: 900;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 500;
     color: #1A1A1A;
-    margin-bottom: 20px;
-    letter-spacing: -2px;
+    margin-bottom: 15px;
+    letter-spacing: -1.5px;
     text-transform: uppercase;
 }
 
 .que-hacemos-subtitle {
-    font-size: 20px;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     color: #1A1A1A;
-    opacity: 0.7;
+    opacity: 0.6;
     max-width: 600px;
     margin: 0 auto;
+    line-height: 1.5;
+    font-weight: 500;
 }
 
 .que-hacemos-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
+    align-items: stretch;
 }
 
-.que-hacemos-card {
-    background-color: #ffffff;
-    padding: 50px 35px;
-    border-radius: 32px;
-    border: 3px solid #3A1B4E;
-    box-shadow: 8px 8px 0px var(--accent-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.que-hacemos-item {
+    background: transparent; /* Changed to transparent as requested */
+    border: 1.5px solid rgba(58, 27, 78, 0.2); /* Solid purple border with transparency */
+    border-radius: 40px;
+    padding: 30px 25px 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     position: relative;
-    z-index: 1;
 }
 
-.que-hacemos-card:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0px var(--accent-color);
+/* Consistent Purple detail line */
+.que-hacemos-item::after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background-color: #3A1B4E; /* Pure purple, no more green/yellow/pink */
+    border-radius: 10px;
+    opacity: 0.8;
 }
 
-.qh-icon-wrapper {
-    width: 60px;
-    height: 60px;
-    color: var(--accent-color); /* Icon matches shadow color */
+.que-hacemos-item:hover {
+    transform: translateY(-8px);
+    background-color: rgba(58, 27, 78, 0.02); /* Very subtle fill on hover */
+    border-color: #3A1B4E;
+}
+
+.qh-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 16 / 10;
+    margin-bottom: 10px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    align-items: center;
+    overflow: visible;
 }
 
-.que-hacemos-card h3 {
-    font-size: 30px;
-    font-weight: 800;
-    margin-bottom: 22px;
+.qh-illustration {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.que-hacemos-item:hover .qh-illustration {
+    transform: scale(1.05);
+}
+
+.qh-text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.qh-text-content h3 {
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    font-weight: 500;
+    margin-bottom: 12px;
     color: #3A1B4E;
-    letter-spacing: -1px;
+    letter-spacing: -0.3px;
     line-height: 1.2;
 }
 
-.que-hacemos-card p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #3A1B4E;
-    opacity: 0.9;
-    margin-bottom: 0;
+/* Cleaned up original accent line */
+.qh-item-line {
+    display: none;
 }
 
-.qh-card-line {
-    display: none; /* Removed for a cleaner, more organic look */
+.qh-text-content p {
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.6;
+    color: #3A1B4E;
+    opacity: 0.75;
+    max-width: 320px;
+    margin: 0 auto;
+    font-weight: 500;
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-    .que-hacemos-grid {
-        gap: 25px;
-    }
-    
-    .que-hacemos-title {
-        font-size: 42px;
+@media (max-width: 1200px) {
+    .qh-image-wrapper {
+        max-width: 340px;
     }
 }
 
 @media (max-width: 768px) {
-    .que-hacemos-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
     .que-hacemos-section {
-        padding: 80px 20px;
+        padding: 60px 20px 100px;
     }
 
-    .que-hacemos-card {
-        padding: 40px 30px;
+    .que-hacemos-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .qh-image-wrapper {
+        max-width: 300px;
+    }
+
+    .qh-text-content h3 {
+        font-size: 1.6rem;
     }
 }

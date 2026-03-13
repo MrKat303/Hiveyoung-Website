@@ -9,6 +9,9 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           "/images/home/hero.svg",
           "/images/home/bottom.svg",
+          "/images/home/Colaborar.png",
+          "/images/home/Articular.png",
+          "/images/home/Proyectos.png",
           "/images/Draws/Asterisk.svg",
           "/_private/",
         ],
@@ -18,6 +21,9 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           "/images/home/hero.svg",
           "/images/home/bottom.svg",
+          "/images/home/Colaborar.png",
+          "/images/home/Articular.png",
+          "/images/home/Proyectos.png",
           "/images/Draws/Asterisk.svg",
           "/_private/",
         ],

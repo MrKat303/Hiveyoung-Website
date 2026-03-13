@@ -16,11 +16,6 @@ const QuienesSomos = () => {
                         Somos una <strong>organización juvenil</strong> que busca impulsar el talento, 
                         las ideas y el potencial de las nuevas generaciones.
                     </p>
-                    <p className="qs-mission">
-                        HiveYoung nace con el propósito de <strong>conectar, potenciar y visibilizar</strong> el 
-                        talento joven en Chile y Latinoamérica. Creemos profundamente en el poder de la juventud 
-                        para transformar la sociedad y generar un cambio positivo medible.
-                    </p>
                     
                     <div className="qs-actions">
                         <Link href="/somos" className="qs-btn qs-btn-primary">
