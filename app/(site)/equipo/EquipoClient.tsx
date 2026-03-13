@@ -213,15 +213,7 @@ export default function EquipoPage() {
                     <img
                         src="/images/Draws/Asterisk.svg"
                         alt=""
-                        className="asterisk-svg"
-                        draggable={false}
-                    />
-                </div>
-                <div className="asterisk-container asterisk-left reveal">
-                    <img
-                        src="/images/Draws/Asteriks.svg"
-                        alt=""
-                        className="asterisk-svg"
+                        className="asterisk-svg floating-asterisk"
                         draggable={false}
                     />
                 </div>

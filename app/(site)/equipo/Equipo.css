@@ -648,10 +648,7 @@
     top: 90px;
 }
 
-.asterisk-left {
-    left: -40px;
-    top: 90px;
-}
+
 
 .asterisk-svg {
     width: 100%;
@@ -660,24 +657,25 @@
     overflow: visible;
 }
 
+.floating-asterisk {
+    animation: rotateAsterisk 25s linear infinite;
+}
+
+@keyframes rotateAsterisk {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
 
 @media (max-width: 1400px) {
     .asterisk-right {
         right: 0;
     }
-    .asterisk-left {
-        left: 0;
-    }
 }
 
 @media (max-width: 1200px) {
     .asterisk-right {
         right: 20px;
-        top: 60px;
-    }
-    .asterisk-left {
-        left: 20px;
         top: 60px;
     }
 }
