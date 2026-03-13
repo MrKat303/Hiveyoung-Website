@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import useScrollReveal from '@/hooks/useScrollReveal';
-import { Users, Network, Rocket } from 'lucide-react';
+import { Handshake, Network, Rocket } from 'lucide-react';
 import './QueHacemos.css';
 
 const QueHacemos = () => {
@@ -11,7 +11,7 @@ const QueHacemos = () => {
 
     const activities = [
         {
-            icon: <Users size={48} strokeWidth={1.5} />,
+            icon: <Handshake size={48} strokeWidth={1.5} />,
             title: "Colaborar",
             description: "Trabajamos en conjunto con una red de aliados estratégicos para potenciar el impacto colectivo de las iniciativas juveniles.",
             color: "#5CD494" // Vibrant Green
