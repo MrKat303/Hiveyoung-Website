@@ -55,6 +55,42 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: '/images/Draws/Captar.png',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
+          },
+        ],
+      },
+      {
+        source: '/images/home/Articular.png',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
+          },
+        ],
+      },
+      {
+        source: '/images/home/Colaborar.png',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
+          },
+        ],
+      },
+      {
+        source: '/images/home/Proyectos.png',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
+          },
+        ],
+      },
     ];
   },
   async rewrites() {
