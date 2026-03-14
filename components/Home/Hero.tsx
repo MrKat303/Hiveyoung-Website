@@ -21,10 +21,7 @@ export default function Hero() {
         }
     });
 
-    // Update tab title to be cleaner for users while keeping SEO title in metadata
-    useEffect(() => {
-        document.title = "HiveYoung";
-    }, []);
+
 
     return (
         <section className="hero" onContextMenu={(e) => e.preventDefault()}>

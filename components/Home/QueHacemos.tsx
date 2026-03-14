@@ -31,7 +31,7 @@ const QueHacemos = () => {
             <div className="que-hacemos-container">
                 <div className="que-hacemos-header reveal">
                     <h2 className="que-hacemos-title">¿Qué Hacemos?</h2>
-                    <p className="que-hacemos-subtitle">
+                    <p className="que-hacemos-subtitle" data-nosnippet>
                         Construimos y articulamos un ecosistema que conecta talento joven, impulsa ideas y transforma el liderazgo en impacto real.
                     </p>
                 </div>
@@ -53,7 +53,7 @@ const QueHacemos = () => {
                                     priority={index === 0}
                                 />
                             </div>
-                            <div className="qh-text-content">
+                            <div className="qh-text-content" data-nosnippet>
                                 <h3>{activity.title}</h3>
                                 <div className="qh-item-line"></div>
                                 <p>{activity.description}</p>

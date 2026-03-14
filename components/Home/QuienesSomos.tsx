@@ -36,7 +36,7 @@ const QuienesSomos = () => {
                                 draggable={false}
                             />
                         </div>
-                        <p className="qs-description">
+                        <p className="qs-description" data-nosnippet>
                             Somos una <strong>organización juvenil</strong> que busca impulsar el talento, 
                             las ideas y el potencial de las nuevas generaciones.
                         </p>

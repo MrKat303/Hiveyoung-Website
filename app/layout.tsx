@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | HiveYoung",
   },
   description:
-    "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Conectamos, potenciamos y visibilizamos el talento joven con impacto.",
+    "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
   keywords: [
     "HiveYoung",
     "Congreso HiveYoung",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     siteName: "HiveYoung",
     title: "HiveYoung | Principal Articulador del Ecosistema Juvenil",
     description:
-      "Conectamos, potenciamos y visibilizamos el talento joven en Chile y Latinoamérica.",
+      "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
     url: "https://hiveyoung.org",
     images: [
       {
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HiveYoung | Principal Articulador del Ecosistema Juvenil",
     description:
-      "Conectamos, potenciamos y visibilizamos el talento joven en Chile y Latinoamérica.",
+      "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
     images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png"],
   },
   robots: {
