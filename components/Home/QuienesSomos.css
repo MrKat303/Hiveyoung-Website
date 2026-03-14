@@ -1,6 +1,6 @@
 .quienes-somos-home {
-    padding: 20px 24px 10px;
-    background-color: #f4ede4; /* Requested Cream/Pastel Color */
+    padding: 60px 5% 10px; /* Reducido el padding inferior de 60px a 10px */
+    background-color: #f4ede4; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,8 +10,9 @@
 }
 
 .quienes-somos-container {
-    max-width: 800px; /* Reducido de 900px */
+    max-width: 1100px;
     width: 100%;
+    margin: 0 auto;
 }
 
 .qs-content {
@@ -19,27 +20,89 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 12px; /* Reducido de 32px para acercar el párrafo */
+}
+
+.qs-title-wrapper {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.qs-annotation {
+    position: absolute;
+    left: -240px; 
+    top: -40px;
+    transform: rotate(-10deg);
+    width: 200px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.qs-annotation-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .qs-title {
     font-family: 'Bernoru Black', sans-serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem); /* Reducido de 2.2-3.5rem */
-    font-weight: 900;
+    font-size: clamp(2rem, 7vw, 3.8rem); /* Escala balanceada como la imagen */
+    font-weight: 950;
     color: #1a1a1a;
-    line-height: 0.95;
+    line-height: 0.85;
     text-transform: uppercase;
-    letter-spacing: -1.5px;
-    white-space: nowrap; /* Title in a single line */
+    letter-spacing: -0.05em;
+    margin: 0;
+    z-index: 2;
+    text-align: center;
+}
+
+.qs-description-wrapper {
+    position: relative;
+    max-width: 600px;
 }
 
 .qs-description {
-    font-size: clamp(1.1rem, 2.2vw, 1.5rem); /* Reducido de 1.2-1.8rem */
+    font-size: clamp(1rem, 2vw, 1.3rem); /* Más pequeño y legible */
     color: #1a1a1a;
-    line-height: 1.25;
-    max-width: 700px; /* Reducido de 800px */
+    line-height: 1.4;
+    max-width: 600px; /* Contenedor de texto más estrecho para que respire */
     font-weight: 500;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.01em;
+    z-index: 2;
+    margin: 0 auto;
+}
+
+.qs-annotation-bottom {
+    position: absolute;
+    left: -220px; 
+    top: 40%; 
+    transform: rotate(-8deg);
+    width: 180px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.qs-annotation-right {
+    position: absolute;
+    right: -230px; 
+    bottom: 5px; 
+    transform: rotate(6deg);
+    width: 210px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .qs-description strong {
@@ -121,15 +184,32 @@
         gap: 15px;
     }
 
+    .qs-title-wrapper {
+        margin-bottom: 15px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .qs-annotation,
+    .qs-annotation-bottom,
+    .qs-annotation-right {
+        display: none !important;
+    }
+
     .qs-title {
-        font-size: clamp(1.6rem, 8vw, 2.2rem);
-        letter-spacing: -1px;
-        white-space: normal; /* Allow wrap on mobile to avoid overflow */
-        line-height: 1.1;
+        font-size: clamp(2rem, 12vw, 2.5rem);
+        letter-spacing: -0.05em;
+        line-height: 0.9;
+    }
+
+    .qs-description-wrapper {
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
     }
 
     .qs-description {
-        font-size: 1.1rem;
+        font-size: 1rem;
         line-height: 1.4;
     }
 
