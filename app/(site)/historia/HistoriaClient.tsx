@@ -45,8 +45,8 @@ const historyItems: HistoryItem[] = [
         title: "Los primeros pasos",
         subtitle: "Expandiendo el horizonte",
         desc: "La idea comenzó a crecer. Compañeros se fueron sumando al proyecto y el equipo empezó a moverse: asistir a eventos, aprender, hacer networking y conocer personas. Poco a poco, HiveYoung empezaba a abrirse camino.",
-        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016942/20240924_115026_osmgus.heic",
-        alt: "BENJAMIN INZUNZA, LUCAS GALLEGUILLOS Y CRISTIAN SUAREZ HIVEYOUNG",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773505814/20240924_115026_osmgus.png",
+        alt: "Primeros Pasos de HiveYoung",
         theme: "light"
     },
     {
@@ -55,7 +55,7 @@ const historyItems: HistoryItem[] = [
         title: "Construyendo algo real",
         subtitle: "De la idea a la acción",
         desc: "Se formó un equipo y comenzaron a dar forma al primer gran proyecto: el Congreso HiveYoung. Lo que había empezado como una conversación entre amigos comenzó a transformarse en algo mucho más grande: un proyecto con propósito, valores y una visión clara para la juventud.",
-        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016930/20250509_130743_oax4i7.heic",
+        img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773456004/20250509_130743_oax4i7.png",
         alt: "TRABAJO EN EQUIPO DE HIVEYOUNG",
         theme: "dark"
     },
@@ -66,7 +66,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "Organización y compromiso",
         desc: "En 2025 llegó nuestro primer gran reto: organizar el Congreso HiveYoung. Fueron más de seis meses de trabajo intenso: planificación, reuniones, coordinación y muchas horas dedicadas al proyecto, incluso sacrificando tiempo de clases.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016926/IMG_0094_1_oknzn7.jpg",
-        alt: "MARCELO GUITAL, FRANCISCO ACKERMANN, gina ocqueteau, ANGELO UGALDE, LUCAS GALLEGUILLOS, CRISTIAN SUAREZ Y VICENTE OLGUIN EN EL CONGRESO HIVEYOUNG",
+        alt: "Speakers Congreso HiveYoung junto a sus organizadores (Cristian Suarez, Lucas Galleguillos y Vicente Olguin)",
         theme: "green"
     },
     {
