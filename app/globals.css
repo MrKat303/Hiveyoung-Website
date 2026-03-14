@@ -33,7 +33,7 @@
 
 body {
     font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8fafc; /* Changed to slate-50 for cleaner look, overriding the hard purple */
+    background-color: #f4ede4; /* Matches the site's cream background */
     min-height: 100vh;
     overflow-x: hidden;
     display: flex;
@@ -86,4 +86,17 @@ main {
 @keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+/* --- Scroll Reveal Base Styles --- */
+.reveal {
+    opacity: 0 !important;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.active {
+    opacity: 1 !important;
+    transform: translateY(0);
 }

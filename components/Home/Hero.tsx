@@ -76,17 +76,17 @@ export default function Hero() {
                                 Unete
                             </Link>
 
-                            <Link
+                            <a
                                 className="hero__btn hero__btn--secondary"
-                                href="/somos"
+                                href="https://app.hiveyoung.org"
                             >
-                                Sobre Nosotros
+                                Ingresar
                                 <span className="hero__btn-icon">
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10 17L15 12L10 7V17Z" fill="white" />
                                     </svg>
                                 </span>
-                            </Link>
+                            </a>
                         </motion.div>
                     </div>
 

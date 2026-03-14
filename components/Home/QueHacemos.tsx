@@ -11,18 +11,18 @@ const QueHacemos = () => {
     const activities = [
         {
             image: "/images/home/Colaborar.png",
-            title: "Colaborar",
-            description: "Trabajamos en conjunto con una red de aliados estratégicos para potenciar el impacto colectivo de las iniciativas juveniles."
+            title: "Impulsamos la Colaboración",
+            description: "Trabajamos con una red de aliados para impulsar iniciativas, fortalecer proyectos y abrir espacios para generar impacto colectivo."
         },
         {
             image: "/images/home/Articular.png",
             title: "Articulamos el Ecosistema Juvenil",
-            description: "Conectamos los puntos entre jóvenes talentos, mentores y organizaciones para crear una infraestructura de apoyo sólida."
+            description: "Conectamos jóvenes, proyectos y comunidades para fortalecer los espacios donde el talento y el liderazgo juvenil crecen."
         },
         {
             image: "/images/home/Proyectos.png",
-            title: "Creamos proyectos con impacto",
-            description: "Desarrollamos y ejecutamos iniciativas que transforman realidades y generan un cambio positivo medible en la sociedad."
+            title: "Generamos Proyectos con Impacto",
+            description: "Desarrollamos y ejecutamos iniciativas innovadoras lideradas por jóvenes que buscan generar impacto positivo en la sociedad."
         }
     ];
 
@@ -32,7 +32,7 @@ const QueHacemos = () => {
                 <div className="que-hacemos-header reveal">
                     <h2 className="que-hacemos-title">¿Qué Hacemos?</h2>
                     <p className="que-hacemos-subtitle">
-                        Trabajamos día a día para transformar el futuro a través del liderazgo juvenil.
+                        Construimos y articulamos un ecosistema que conecta talento joven, impulsa ideas y transforma el liderazgo en impacto real.
                     </p>
                 </div>
 

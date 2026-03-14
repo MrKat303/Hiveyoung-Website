@@ -14,13 +14,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
+    align-items: start;
 }
 
 .contact-title {
     font-size: 82px;
-    font-weight: 500; /* changed from 400 */
+    font-weight: 500;
     line-height: 1;
-    margin-bottom: 40px; /* More space from description */
+    margin-bottom: 40px;
     display: flex;
     align-items: baseline;
     gap: 12px;
@@ -35,11 +36,15 @@
 
 .contact-description {
     font-size: 18.5px;
-    line-height: 1.8; /* Generous line height */
+    line-height: 1.8;
     margin-bottom: 50px;
-    max-width: 480px; /* Better horizontal flow */
+    max-width: 480px;
     opacity: 0.85;
     font-weight: 400;
+}
+
+.contact-info-list {
+    margin-bottom: 20px;
 }
 
 .info-item-wrapper {
@@ -141,15 +146,6 @@
     margin-bottom: 25px;
 }
 
-.form-group label {
-    font-size: 10px;
-    font-weight: 800;
-    opacity: 0.5;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-    display: block;
-}
-
 .submit-btn {
     font-family: 'Poppins';
     width: 100%;
@@ -179,27 +175,24 @@
     font-weight: 600;
 }
 
+
 @media (max-width: 767px) {
     .contact-page {
         padding: 100px 20px 40px;
     }
 
     .contact-container {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 0 !important;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
     }
 
-    .title-square {
-        display: none !important;
-    }
 
     .contact-title {
         font-size: 44px;
         justify-content: center;
         text-align: center;
         margin-bottom: 10px;
-        display: flex !important;
     }
 
     .contact-description {
@@ -225,19 +218,9 @@
         width: 100%;
     }
 
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .selector-btn {
-        flex: 1;
-        min-width: 100px;
-    }
-
     .submit-btn {
         padding: 14px;
         font-size: 15px;
-        border-radius: 10px;
     }
+
 }

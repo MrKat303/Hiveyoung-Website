@@ -3,6 +3,7 @@ import Hero from "@/components/Home/Hero";
 import QuienesSomos from "@/components/Home/QuienesSomos";
 import QueHacemos from "@/components/Home/QueHacemos";
 import CongressCarousel from "@/components/Home/CongressCarousel";
+import JoinBanner from "@/components/Home/JoinBanner";
 
 export const metadata: Metadata = {
   title: {
@@ -41,6 +42,7 @@ export default function Home() {
       <QuienesSomos />
       <QueHacemos />
       <CongressCarousel />
+      <JoinBanner />
     </>
   );
 }

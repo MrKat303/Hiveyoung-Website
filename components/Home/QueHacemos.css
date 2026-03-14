@@ -1,5 +1,5 @@
 .que-hacemos-section {
-    padding: 80px 5% 120px;
+    padding: 30px 5% 50px;
     background-color: #f4ede4;
     position: relative;
 }
@@ -11,24 +11,24 @@
 
 .que-hacemos-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px; /* Reducido de 60px */
 }
 
 .que-hacemos-title {
     font-family: 'Bernoru Black', sans-serif;
-    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem); /* Reducido de 2.2-3.8rem */
     font-weight: 500;
     color: #1A1A1A;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     letter-spacing: -1.5px;
     text-transform: uppercase;
 }
 
 .que-hacemos-subtitle {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-size: clamp(1rem, 1.3vw, 1.1rem); /* Un poco más pequeño también */
     color: #1A1A1A;
-    opacity: 0.6;
-    max-width: 600px;
+    opacity: 1; /* Sólido como se solicitó */
+    max-width: 800px; /* Un poco más ancho para el nuevo texto */
     margin: 0 auto;
     line-height: 1.5;
     font-weight: 500;
@@ -37,15 +37,15 @@
 .que-hacemos-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 30px; /* Reducido de 40px */
     align-items: stretch;
 }
 
 .que-hacemos-item {
-    background: transparent; /* Changed to transparent as requested */
-    border: 1.5px solid rgba(58, 27, 78, 0.2); /* Solid purple border with transparency */
-    border-radius: 40px;
-    padding: 30px 25px 60px;
+    background: transparent;
+    border: 1.5px solid rgba(58, 27, 78, 0.2);
+    border-radius: 35px; /* Sutilmente más pequeño */
+    padding: 25px 20px 45px; /* Más compacto */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,9 +77,9 @@
 .qh-image-wrapper {
     position: relative;
     width: 100%;
-    max-width: 400px;
+    max-width: 320px; /* Reducido de 400px */
     aspect-ratio: 16 / 10;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,7 +89,7 @@
 .qh-illustration {
     width: 100%;
     height: auto;
-    max-height: 350px;
+    max-height: 280px; /* Reducido de 350px */
     object-fit: contain;
     transition: transform 0.5s ease;
 }
@@ -107,9 +107,9 @@
 }
 
 .qh-text-content h3 {
-    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem); /* Reducido de 1.4-1.9rem */
     font-weight: 500;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     color: #3A1B4E;
     letter-spacing: -0.3px;
     line-height: 1.2;
@@ -121,16 +121,20 @@
 }
 
 .qh-text-content p {
-    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-    line-height: 1.6;
+    font-size: clamp(0.9rem, 1vw, 1rem); /* Reducido sutilmente */
+    line-height: 1.5;
     color: #3A1B4E;
     opacity: 0.75;
-    max-width: 320px;
+    max-width: 280px; /* Reducido de 320px */
     margin: 0 auto;
     font-weight: 500;
 }
 
-/* Responsive */
+/* Staggered entrance for items */
+.que-hacemos-item:nth-child(1).reveal { transition-delay: 0.1s; }
+.que-hacemos-item:nth-child(2).reveal { transition-delay: 0.2s; }
+.que-hacemos-item:nth-child(3).reveal { transition-delay: 0.3s; }
+
 @media (max-width: 1200px) {
     .qh-image-wrapper {
         max-width: 340px;
@@ -139,7 +143,22 @@
 
 @media (max-width: 768px) {
     .que-hacemos-section {
-        padding: 60px 20px 100px;
+        padding: 20px 20px 40px;
+    }
+
+    .que-hacemos-header {
+        margin-bottom: 30px;
+    }
+
+    .que-hacemos-title {
+        font-size: clamp(1.6rem, 8vw, 2.2rem);
+        line-height: 1.1;
+        letter-spacing: -1px;
+    }
+
+    .que-hacemos-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.4;
     }
 
     .que-hacemos-grid {

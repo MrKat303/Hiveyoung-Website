@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram, Linkedin, Mail } from "lucide-react";
 import "./Footer.css";
 
 export default function Footer() {
@@ -19,22 +19,22 @@ export default function Footer() {
                             <Image
                                 src="/Logo.svg"
                                 alt="HiveYoung"
-                                width={120}
-                                height={35}
+                                width={200}
+                                height={60}
                                 className="footer__logo"
                                 draggable={false}
                             />
                         </Link>
                         <div className="footer__contact-strip">
-                            <a href="mailto:hiveyoung@gmail.com" className="footer__email">
-                                hiveyoung@gmail.com
-                            </a>
                             <div className="footer__social-links">
                                 <a href="https://www.instagram.com/hiveyoung.cl/" target="_blank" rel="noopener noreferrer" className="footer__social-btn" aria-label="Instagram">
-                                    <Instagram size={18} />
+                                    <Instagram size={20} strokeWidth={2} />
                                 </a>
                                 <a href="https://cl.linkedin.com/company/hiveyoung" target="_blank" rel="noopener noreferrer" className="footer__social-btn" aria-label="LinkedIn">
-                                    <Linkedin size={18} />
+                                    <Linkedin size={20} strokeWidth={2} />
+                                </a>
+                                <a href="mailto:hiveyoung@gmail.com" className="footer__social-btn" aria-label="Email">
+                                    <Mail size={20} strokeWidth={2} />
                                 </a>
                             </div>
                         </div>

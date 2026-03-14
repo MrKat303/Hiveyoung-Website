@@ -2,7 +2,7 @@
 
 .congress-section {
     background-color: #f4ede4;
-    padding: 20px 20px 80px;
+    padding: 10px 20px 40px;
     position: relative;
 }
 
@@ -209,7 +209,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .congress-section {
-        padding: 20px 20px 60px;
+        padding: 10px 20px 30px;
     }
 
     .congress-carousel {

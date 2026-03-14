@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import useScrollReveal from "@/hooks/useScrollReveal";
 import { Mail, Phone, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -28,8 +29,8 @@ const ContactoClient = () => {
     return (
         <div className="contact-page">
             <div className="contact-container">
-
-                {/* LADO IZQUIERDO */}
+                
+                {/* LADO IZQUIERDO: INFO */}
                 <div className="contact-sidebar reveal">
                     <h1 className="contact-title">
                         Contacto<span className="title-square"></span>

@@ -1,0 +1,162 @@
+.join-banner-section {
+    padding: 10px 5% 60px;
+    background-color: #f4ede4;
+}
+
+.join-banner-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fecf73;
+    border: none;
+    border-radius: 35px;
+    padding: 50px 70px;
+    position: relative;
+    overflow: hidden;
+}
+
+.join-banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.join-illustration-box {
+    flex-shrink: 0;
+    width: 250px;
+}
+
+.join-draw {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.join-banner-text {
+    flex: 1;
+    text-align: left;
+}
+
+.join-banner-title {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+    color: #3A1B4E;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    font-weight: 300; /* Estilo LIGHT para el título */
+    letter-spacing: -0.5px;
+}
+
+.join-banner-description {
+    font-family: 'Poppins', sans-serif !important;
+    color: #3A1B4E;
+    opacity: 0.8;
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    font-weight: 300; /* Estilo LIGHT para la descripción */
+    max-width: 600px; /* Un poco más ancho para el nuevo texto */
+    line-height: 1.5;
+}
+
+.join-banner-action {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: nowrap; /* Force side-by-side */
+}
+
+.join-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #C22359;
+    color: #ffffff;
+    padding: 12px 28px; /* Slightly reduced to fit side-by-side */
+    border-radius: 8px;
+    font-size: 14px; /* Slightly smaller font */
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: none;
+    white-space: nowrap; /* Prevent text wrapping inside button */
+}
+
+.join-cta-button:hover {
+    transform: translateY(-2px);
+    background-color: #a01d4a;
+}
+
+.join-cta-button.secondary {
+    background-color: transparent;
+    border: 1.5px solid #3A1B4E;
+    color: #3A1B4E;
+}
+
+.join-cta-button.secondary:hover {
+    background-color: rgba(58, 27, 78, 0.05);
+}
+
+/* Forzamos tipografía Poppins Light/Reg para todo */
+.join-banner-container * {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .join-banner-action {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .join-cta-button {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 900px) {
+    .join-banner-section {
+        padding: 5px 20px 50px;
+    }
+    
+    .join-banner-container {
+        padding: 40px;
+    }
+    
+    .join-banner-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .join-banner-text {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .join-illustration-box {
+        width: 190px;
+    }
+
+    .join-banner-description {
+        margin: 0 auto 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .join-banner-container {
+        padding: 40px 25px;
+        border-radius: 25px;
+    }
+
+    .join-banner-title {
+        font-size: 1.8rem;
+    }
+}
