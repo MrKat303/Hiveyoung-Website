@@ -36,7 +36,7 @@ export const timelineMilestones: TimelineMilestone[] = [
         side: 'right',
         images: [
             {
-                src: 'https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016942/20240924_115026_osmgus.heic',
+                src: 'https://res.cloudinary.com/dlipwrbvd/image/upload/v1773456133/20240924_115026_osmgus.png',
                 alt: 'Evento Septiembre 2024'
             },
             {
@@ -53,7 +53,7 @@ export const timelineMilestones: TimelineMilestone[] = [
         side: 'left',
         images: [
             {
-                src: 'https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016930/20250509_130743_oax4i7.heic',
+                src: 'https://res.cloudinary.com/dlipwrbvd/image/upload/v1773456004/20250509_130743_oax4i7.png',
                 alt: 'Reunión del equipo'
             }
         ]
