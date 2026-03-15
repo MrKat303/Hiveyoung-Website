@@ -223,4 +223,22 @@
         font-size: 15px;
     }
 
+    .contact-draw-wrapper {
+        display: none !important;
+    }
+
+}
+
+.contact-draw-wrapper {
+    margin: 40px auto 0;
+    opacity: 0.95;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-draw-img {
+    width: 100%;
+    height: auto;
+    max-width: 450px;
+    object-fit: contain;
 }

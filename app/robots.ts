@@ -17,6 +17,8 @@ export default function robots(): MetadataRoute.Robots {
           "/images/home/Salida de tu zona de confort.svg",
           "/images/home/Generación sin barreras.svg",
           "/images/home/Proyectos con Impacto.svg",
+          "/images/home/Liderazgo Con Proposito.svg",
+          "/images/draws/Hablemos.png",
           "/_private/",
         ],
       },
@@ -33,6 +35,8 @@ export default function robots(): MetadataRoute.Robots {
           "/images/home/Salida de tu zona de confort.svg",
           "/images/home/Generación sin barreras.svg",
           "/images/home/Proyectos con Impacto.svg",
+          "/images/home/Liderazgo Con Proposito.svg",
+          "/images/draws/Hablemos.png",
           "/_private/",
         ],
       }

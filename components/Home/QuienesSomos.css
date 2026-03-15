@@ -105,6 +105,20 @@
     z-index: 1;
 }
 
+.qs-annotation-top-right {
+    position: absolute;
+    right: -250px; 
+    top: -220px; 
+    transform: rotate(-15deg);
+    width: 200px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
 .qs-description strong {
     color: #3A1B4E;
     position: relative;
@@ -192,7 +206,8 @@
 
     .qs-annotation,
     .qs-annotation-bottom,
-    .qs-annotation-right {
+    .qs-annotation-right,
+    .qs-annotation-top-right {
         display: none !important;
     }
 

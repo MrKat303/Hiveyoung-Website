@@ -49,6 +49,16 @@ const ContactoClient = () => {
                             <p>+56 9 8392 4500</p>
                         </div>
                     </div>
+
+                    <div className="contact-draw-wrapper">
+                        <Image 
+                            src="/images/draws/Hablemos.png" 
+                            alt="Ilustración Hablemos" 
+                            width={400} 
+                            height={300} 
+                            className="contact-draw-img"
+                        />
+                    </div>
                 </div>
 
                 {/* LADO DERECHO: FORMULARIO */}

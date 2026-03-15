@@ -40,6 +40,16 @@ const QuienesSomos = () => {
                             Somos una <strong>organización juvenil</strong> que busca impulsar el talento, 
                             las ideas y el potencial de las nuevas generaciones.
                         </p>
+                        <div className="qs-annotation-top-right">
+                            <Image 
+                                src="/images/home/Liderazgo Con Proposito.svg" 
+                                alt="Liderazgo Con Propósito" 
+                                width={180} 
+                                height={90} 
+                                className="qs-annotation-img"
+                                draggable={false}
+                            />
+                        </div>
                         <div className="qs-annotation-right">
                             <Image 
                                 src="/images/home/Proyectos con Impacto.svg" 
