@@ -70,7 +70,7 @@ export default function Hero() {
                                 className="hero__btn"
                                 href="/unete"
                             >
-                                Unete
+                                Únete
                             </Link>
 
                             <a

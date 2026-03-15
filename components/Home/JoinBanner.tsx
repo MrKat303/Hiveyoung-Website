@@ -17,7 +17,7 @@ const JoinBanner = () => {
                     <div className="join-illustration-box">
                         <Image 
                             src="/images/Draws/Captar.png" 
-                            alt="Unete a la red" 
+                            alt="Únete a la red" 
                             width={300} 
                             height={300} 
                             className="join-draw"
