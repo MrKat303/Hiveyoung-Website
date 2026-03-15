@@ -34,7 +34,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "El inicio",
         desc: "Todo comenzó con tres estudiantes del Instituto Nacional: Cristian Suárez, Lucas Galleguillos y Vicente Olguín. Provenían de intereses distintos, pero compartían una misma idea: crear una plataforma que conectara a jóvenes con distintos talentos, pasiones y ganas de hacer cosas.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769039962/Cristian_Suarez_svypim.png",
-        alt: "CRISTIAN SUAREZ, LUCAS GALLEGUILLOS Y VICENTE OLGUIN COFUNDADORES DE HIVEYOUNG",
+        alt: "Cristian Suárez, Lucas Galleguillos y Vicente Olguín, cofundadores de HiveYoung.",
         theme: "dark",
         fit: "cover",
         imgPosition: "77% 15%"
@@ -46,7 +46,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "Expandiendo el horizonte",
         desc: "La idea comenzó a crecer. Compañeros se fueron sumando al proyecto y el equipo empezó a moverse: asistir a eventos, aprender, hacer networking y conocer personas. Poco a poco, HiveYoung empezaba a abrirse camino.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773505814/20240924_115026_osmgus.png",
-        alt: "Primeros Pasos de HiveYoung",
+        alt: "El equipo de HiveYoung en sus primeros pasos",
         theme: "light"
     },
     {
@@ -56,7 +56,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "De la idea a la acción",
         desc: "Se formó un equipo y comenzaron a dar forma al primer gran proyecto: el Congreso HiveYoung. Lo que había empezado como una conversación entre amigos comenzó a transformarse en algo mucho más grande: un proyecto con propósito, valores y una visión clara para la juventud.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773456004/20250509_130743_oax4i7.png",
-        alt: "TRABAJO EN EQUIPO DE HIVEYOUNG",
+        alt: "El equipo de HiveYoung trabajando en la planificación del Congreso",
         theme: "dark"
     },
     {
@@ -76,7 +76,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "Impacto masivo",
         desc: "El Congreso HiveYoung reunió a más de 2000 estudiantes y más de 30 instituciones. Lo que comenzó como una idea entre tres estudiantes se transformó en un evento capaz de movilizar a toda una comunidad y abrió paso a nuevas ideas, colaboraciones e iniciativas.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016921/IMG-20250519-WA0111_yk5dze.jpg",
-        alt: "LANZAMIENTO DEL CONGRESO HIVEYOUNG 2025",
+        alt: "Lanzamiento oficial del Congreso HiveYoung 2025 con gran convocatoria",
         theme: "light"
     },
     {
@@ -86,7 +86,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "El futuro es nuestro",
         desc: "Hoy HiveYoung sigue creciendo. Nuevos proyectos, nuevas personas y nuevas ideas siguen sumándose. Porque esto no es solo una organización. Es una generación de jóvenes construyendo el futuro juntos.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016902/IMG-20250930-WA0098_yw5tmg.jpg",
-        alt: "EQUIPO DE HIVEYOUNG EN EL SUMMIT PAIS DIGITAL 2025",
+        alt: "El equipo de HiveYoung participando en el Summit de País Digital 2025",
         theme: "dark"
     }
 ];
