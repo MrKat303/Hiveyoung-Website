@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         canonical: "https://hiveyoung.org/contacto",
     },
     openGraph: {
-        title: "Contacto — HiveYoung",
+        title: "Contacto | HiveYoung",
         description:
             "¿Tienes alguna duda o quieres colaborar con HiveYoung? Ponte en contacto con nosotros.",
     },

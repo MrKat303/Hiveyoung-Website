@@ -103,7 +103,7 @@ function Navbar() {
                 <Link className="navbar-logo" href="/" onClick={closeMenu}>
                     <Image
                         src="/Logo.svg"
-                        alt="HiveYoung - Principal articulador del ecosistema juvenil"
+                        alt="HiveYoung | Principal articulador del ecosistema juvenil"
                         width={150}
                         height={50}
                         className="logo-image no-interaction"

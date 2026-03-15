@@ -5,14 +5,14 @@ export const metadata: Metadata = {
     absolute: "Congreso HiveYoung 2025",
   },
   description:
-    "Congreso HiveYoung: el evento juvenil más importante de Chile, hecho por y para jóvenes. Speakers, networking, innovación y emprendimiento en un solo lugar.",
+    "Congreso HiveYoung: el evento juvenil más importante de Chile. Speakers, conversatorios, talleres y bandas en vivo que inspiran a jóvenes a crear, innovar y emprender.",
   alternates: {
     canonical: "https://congreso.hiveyoung.org",
   },
   openGraph: {
     title: "Congreso HiveYoung 2025",
     description:
-      "El evento juvenil más importante de Chile. Speakers, networking, innovación y emprendimiento en un solo lugar.",
+      "Congreso HiveYoung: el evento juvenil más importante de Chile. Speakers, conversatorios, talleres y bandas en vivo que inspiran a jóvenes a crear, innovar y emprender.",
     images: [
       {
         url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Congreso HiveYoung 2025",
-    description: "El evento juvenil más importante de Chile.",
+    description: "Congreso HiveYoung: el evento juvenil más importante de Chile. Speakers, conversatorios, talleres y bandas en vivo que inspiran a jóvenes a crear, innovar y emprender.",
     images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png"],
   },
 };

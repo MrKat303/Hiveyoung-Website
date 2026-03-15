@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         canonical: "https://hiveyoung.org/equipo",
     },
     openGraph: {
-        title: "Nuestro Equipo — HiveYoung",
+        title: "Nuestro Equipo | HiveYoung",
         description:
             "Conoce al equipo detrás de HiveYoung, jóvenes líderes comprometidos con articular el ecosistema juvenil y generar impacto social.",
         images: [
@@ -17,13 +17,13 @@ export const metadata: Metadata = {
                 url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png",
                 width: 1200,
                 height: 630,
-                alt: "Nuestro Equipo - HiveYoung",
+                alt: "Nuestro Equipo | HiveYoung",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Nuestro Equipo — HiveYoung",
+        title: "Nuestro Equipo | HiveYoung",
         description: "Conoce al equipo detrás de HiveYoung, jóvenes líderes comprometidos con articular el ecosistema juvenil.",
         images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png"],
     },
