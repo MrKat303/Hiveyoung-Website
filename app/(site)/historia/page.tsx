@@ -14,7 +14,7 @@ export const metadata: Metadata = {
             "Conoce la historia de HiveYoung, cómo nació y quiénes han sido parte de este proyecto que transforma el ecosistema juvenil.",
         images: [
             {
-                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png",
+                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
                 width: 1200,
                 height: 630,
                 alt: "Nuestra Historia | HiveYoung",

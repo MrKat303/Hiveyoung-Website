@@ -224,7 +224,7 @@ const SomosClient = () => {
                     >
                         <Image
                             src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456528/grupal_1_hrhwef.jpg"
-                            alt="Quienes Somos HiveYoung"
+                            alt="Quiénes Somos HiveYoung"
                             width={1200}
                             height={800}
                             className="somos-hero-image"

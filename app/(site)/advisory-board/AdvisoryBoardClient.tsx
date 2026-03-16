@@ -27,7 +27,7 @@ export default function AdvisoryBoardClient() {
                             <div className="advisory-image-container">
                                 <Image
                                     src={advisor.img}
-                                    alt={advisor.name}
+                                    alt={`${advisor.name} - Advisor de HiveYoung`}
                                     width={1920}
                                     height={1920}
                                     className="advisory-image"
