@@ -13,6 +13,7 @@ export const direccionEjecutiva: Miembro[] = [
     { id: 4, nombre: "Alessandra Mussuto", cargo: "Directora Ejecutiva", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773352246/Dise%C3%B1o_sin_t%C3%ADtulo_11_vybqch.png", alt: "Alessandra Mussuto directora ejecutiva de HiveYoung", descripcion: "Estudiante de Ingeniería Comercial en la Universidad de Chile. Apasionada por las artes escénicas.", linkedin: "https://linkedin.com/" },
     { id: 6, nombre: "Santiago Oviedo", cargo: "Director de Ecosistema", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773352819/Generated_Image_March_08_2026_-_9_48PM_gxyjsy.png", descripcion: "Estudiante de Ingeniería Comercial en la UC, Ex-Miembro del Centro de Estudiantes del CVD.", linkedin: "https://linkedin.com/" },
     { id: 7, nombre: "Martina Ortega", cargo: "Directora de Marketing", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773355651/WhatsApp_Image_2026-02-18_at_14.01.34_kndbdk.png", alt: "Martina Ortega Directora de Marketing de HiveYoung", descripcion: "Estudiante del Instituto Nacional, me apasiona la ciencia y participo en movimientos femeninos como Tremendas y Lumina", linkedin: "https://linkedin.com/" },
+    { id: 301, nombre: "Ignacio Morales", cargo: "Director de Proyectos Sociales", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773630639/3a1b4e_19_rc0hrz.png", descripcion: "Estudiante de Derecho en la UC.", linkedin: "https://linkedin.com/" },
 ];
 
 export const coordinadoresRegionales: Miembro[] = [
@@ -30,7 +31,6 @@ export const directorio: Miembro[] = [
 ];
 export const equipoGeneral: Miembro[] = [
     { id: 9, nombre: "Mateo Bartolucci", cargo: "Head of People", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773017135/Generated_Image_March_08_2026_-_9_44PM_zat1tc.png", descripcion: "Estudiante del Colegio Inmaculada Concepción de Vitacura, soñando con una mejor educación para chile.", linkedin: "https://linkedin.com/" },
-    { id: 301, nombre: "Ignacio Morales", cargo: "Equipo", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773086349/IMG-20241220-WA0020_x1j4aw.jpg", descripcion: "Estudiante de Derecho en la UC.", linkedin: "https://linkedin.com/" },
     { id: 305, nombre: "Ignacia Vivet", cargo: "Equipo", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773337625/WhatsApp_Image_2026-03-09_at_20.59.29_httwa4.jpg", descripcion: "Estudiante escolar. Apasionada por la historia y las relaciones internacionales.", linkedin: "https://linkedin.com/" },
     { id: 303, nombre: "Javiera Cotet", cargo: "Equipo", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773337640/WhatsApp_Image_2026-03-09_at_20.58.33_u4pmc8.jpg", descripcion: "Estudiante Escolar del Instituto Nacional.", linkedin: "https://linkedin.com/" },
     { id: 304, nombre: "Joaquin Salas", cargo: "Equipo", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773086348/1772071420958_ihex7s.jpg", descripcion: "Estudiante de Derecho en la UC.", linkedin: "https://linkedin.com/" },

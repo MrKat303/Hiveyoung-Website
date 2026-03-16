@@ -179,7 +179,7 @@
 
 .mv-item h2 {
     font-size: 42px;
-    font-weight: 800;
+    font-weight: 500;
     color: #3A1B4E;
     margin-bottom: 15px;
     letter-spacing: -1px;
@@ -214,8 +214,8 @@
 @media (max-width: 768px) {
     .somos-mission-vision {
         grid-template-columns: 1fr;
-        gap: 50px;
-        margin-bottom: 80px;
+        gap: 40px; /* Reduced from 50px */
+        margin-bottom: 40px; /* Reduced from 50px */
         text-align: center;
     }
 
@@ -266,12 +266,62 @@
 
 .valores-section {
     text-align: center;
+    position: relative;
+    padding-top: 60px;
+}
+
+.valores-annotations-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.valor-annotation-img {
+    position: absolute;
+    opacity: 0.9;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.valor-annotation-img.pluralidad {
+    top: -60px;
+    left: 4%;
+    transform: rotate(-10deg);
+}
+
+.valor-annotation-img.pensamiento {
+    top: 50px;
+    left: 8%;
+    transform: rotate(-5deg);
+}
+
+.valor-annotation-img.originalidad {
+    top: -70px;
+    right: 4%;
+    transform: rotate(10deg);
+}
+
+.valor-annotation-img.equipo {
+    top: 70px;
+    right: 8%;
+    transform: rotate(5deg);
 }
 
 .valores-section h2 {
     font-size: 42px;
-    font-weight: 800;
-    margin-bottom: 60px;
+    font-weight: 500;
+    margin-bottom: 10px; /* Reduced further to make room for underline */
+}
+
+.valores-underline {
+    width: 60px;
+    height: 4px;
+    background-color: #59c985;
+    margin: 0 auto 40px;
+    border-radius: 4px;
 }
 
 .valores-carousel-wrapper {
@@ -284,7 +334,8 @@
 }
 
 .valores-viewport {
-    width: 960px;
+    width: 100%;
+    max-width: 1020px; /* Fits 3 cards of 320px + 2 gaps of 30px */
     overflow: hidden;
     position: relative;
 }
@@ -294,7 +345,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 30px;
-    padding: 40px 0 60px;
+    padding: 10px 0 40px; /* Added top padding for hover transform */
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -307,19 +358,22 @@
 }
 
 .valor-card {
-    flex: 0 0 300px;
+    flex: 0 0 320px; /* Balanced width for 3 cards layout */
     min-width: 300px;
     background: transparent;
-    padding: 20px;
+    padding: 30px 25px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 24px;
 }
 
 .valor-card:hover {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-5px);
 }
 
 .carousel-arrow {
@@ -353,22 +407,22 @@
 }
 
 .valor-icon-box {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     background: #ffffff;
-    border: 2px solid #3a1b4e;
+    border: 1.5px solid #3a1b4e;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 25px;
-    box-shadow: 6px 6px 0px var(--valor-color, #3a1b4e);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 4px 4px 0px var(--valor-color, #3a1b4e);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .valor-card:hover .valor-icon-box {
-    transform: translateY(-5px);
-    box-shadow: 8px 8px 0px var(--valor-color, #3a1b4e);
+    transform: rotate(5deg) scale(1.05);
+    box-shadow: 6px 6px 0px var(--valor-color, #3a1b4e);
 }
 
 .valor-icon {
@@ -379,18 +433,21 @@
 }
 
 .valor-card h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 12px;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 15px;
     color: #3A1B4E;
+    letter-spacing: -0.5px;
 }
 
 .valor-card p {
-    font-size: 15px;
-    line-height: 1.6;
-    opacity: 0.7;
-    max-width: 300px;
+    font-size: 15.5px;
+    line-height: 1.7;
+    opacity: 0.8;
+    width: 100%;
+    max-width: 290px; /* Adjusted to fit within 340px - padding */
     margin: 0 auto;
+    font-weight: 300;
 }
 
 @media (max-width: 768px) {
@@ -437,6 +494,8 @@
 
     .valores-grid {
         justify-content: flex-start;
+        padding-top: 0px; /* Reduced to 0 */
+        padding-bottom: 25px; /* Reduced from 30px */
         padding-left: 20px;
         padding-right: 20px;
         gap: 20px;
@@ -446,5 +505,22 @@
         flex: 0 0 80vw;
         max-width: 320px;
         min-width: unset;
+    }
+
+    .valores-section h2 {
+        margin-bottom: 5px; /* Tight margin for underline */
+    }
+
+    .valores-underline {
+        margin-bottom: 20px; /* Spacing between underline and cards */
+    }
+
+    .valores-annotations-container {
+        display: none;
+    }
+
+    .valores-section h2 .mobile-break {
+        display: block;
+        margin-top: 0px; /* Tightened break */
     }
 }

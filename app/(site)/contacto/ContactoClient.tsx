@@ -52,7 +52,7 @@ const ContactoClient = () => {
 
                     <div className="contact-draw-wrapper">
                         <Image 
-                            src="/images/draws/Hablemos.png" 
+                            src="/images/Draws/Hablemos.png" 
                             alt="Ilustración Hablemos" 
                             width={400} 
                             height={300} 

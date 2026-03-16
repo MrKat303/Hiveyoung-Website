@@ -1,0 +1,37 @@
+.circle-marker-container {
+    position: relative;
+    display: inline-block;
+    padding: 0 4px;
+    z-index: 1;
+}
+
+.circle-marker-text {
+    position: relative;
+    z-index: 2;
+    font-weight: 500; /* Medium weight as requested */
+    pointer-events: auto;
+}
+
+.circle-marker-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 125%;
+    width: 110%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: visible;
+}
+
+.circle-marker-svg path {
+    stroke-linejoin: round;
+    transition: filter 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .circle-marker-svg {
+        height: 130%;
+        width: 112%;
+    }
+}

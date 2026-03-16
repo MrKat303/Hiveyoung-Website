@@ -37,7 +37,7 @@ const historyItems: HistoryItem[] = [
         alt: "Cristian Suárez, Lucas Galleguillos y Vicente Olguín, cofundadores de HiveYoung.",
         theme: "dark",
         fit: "cover",
-        imgPosition: "77% 15%"
+        imgPosition: "77% 25%"
     },
     {
         id: 'eventos',

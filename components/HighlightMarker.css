@@ -1,7 +1,17 @@
-/* --- HIGHLIGHT MARKER (DESTACADOR) STYLES --- */
+/* --- HIGHLIGHT MARKER (BRUSH/MARKER) STYLES --- */
 
-.highlight-marker-container.brush {
-    padding: 0 2px;
+.highlight-marker-container {
+    position: relative;
+    display: inline-block;
+    padding: 0 4px;
+    z-index: 1;
+}
+
+.marker-text {
+    position: relative;
+    z-index: 2;
+    font-weight: 700; /* Bold weight for the marker effect */
+    pointer-events: auto; 
 }
 
 .highlight-marker-svg {
@@ -11,19 +21,11 @@
     overflow: visible;
 }
 
-.highlight-marker-svg.circle {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 120%;
-    width: 110%;
-}
-
 .highlight-marker-svg.brush {
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 75%; /* Increased from 65% */
+    height: 75%;
     width: 104%;
 }
 
@@ -32,56 +34,25 @@
     transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
-.highlight-marker-container {
-    position: relative;
-    display: inline-block;
-    padding: 0 4px;
-    z-index: 1;
-    pointer-events: none; /* Make the container pass through clicks */
-}
-
-/* Allow text inside to be selectable/clickable if needed */
-.marker-text {
-    position: relative;
-    z-index: 2;
-    font-weight: 700;
-    pointer-events: auto; 
-}
-
 @media (max-width: 768px) {
     .highlight-marker-container {
         padding: 0 2px;
     }
     
     .highlight-marker-svg.brush {
-        height: 80%; /* Increased for better thickness on mobile */
+        height: 80%;
         top: 58%;
         width: 105%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
 
-    .highlight-marker-svg.circle {
-        height: 125%;
-        width: 108%;
-    }
-
     .highlight-marker-svg path {
         stroke-width: 16 !important; 
     }
 
-    .highlight-marker-svg.circle path {
-        stroke-width: 2 !important; 
-    }
-
-    .highlight-marker-svg.circle path:nth-child(2) {
-        stroke-width: 1.4 !important; 
-    }
-
-    /* Prevent bold from causing layout explosion on mobile intro */
     .somos-hero-intro p span.marker-text {
         font-weight: 700;
         font-size: 1.05em; 
     }
 }
-

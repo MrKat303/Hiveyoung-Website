@@ -8,7 +8,7 @@ import gsap from 'gsap';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import { SOMOS_VALUES } from '@/data/somos-values';
 import useScrollReveal from '@/hooks/useScrollReveal';
-import HighlightMarker from '@/components/HighlightMarker';
+import CircleMarker from '@/components/CircleMarker';
 import './Somos.css';
 
 const SomosClient = () => {
@@ -80,16 +80,16 @@ const SomosClient = () => {
                 .to('.warp-reveal-text', {
                     scaleY: 1,
                     filter: 'blur(0px)',
-                    color: '#ffc100',
+                    color: '#ffc4d4',
                     duration: 0.4,
                     ease: "elastic.out(1, 0.3)"
                 })
                 .to('.warp-reveal-text', {
-                    textShadow: '0 0 20px rgba(255, 193, 0, 0.8)',
+                    textShadow: '0 0 20px rgba(255, 196, 212, 0.8)',
                     duration: 0.1
                 })
                 .to('.warp-reveal-text', {
-                    textShadow: '0 0 0px rgba(255, 193, 0, 0)',
+                    textShadow: '0 0 0px rgba(255, 196, 212, 0)',
                     duration: 0.4
                 });
                   
@@ -151,8 +151,8 @@ const SomosClient = () => {
             ? secondCard.offsetLeft - firstCard.offsetLeft
             : firstCard.offsetWidth;
 
-        return itemStride * 5;
-    }, []);
+        return itemStride * values.length;
+    }, [values.length]);
 
     const handleScroll = useCallback(() => {
         if (!carouselRef.current) return;
@@ -161,9 +161,9 @@ const SomosClient = () => {
         if (!singleSetWidth) return;
 
         if (scrollLeft <= 5) {
-            carouselRef.current.scrollLeft = (singleSetWidth * 4);
-        } else if (scrollLeft >= (singleSetWidth * 5) - 5) {
-            carouselRef.current.scrollLeft = scrollLeft - (singleSetWidth * 4);
+            carouselRef.current.scrollLeft = (singleSetWidth * 2);
+        } else if (scrollLeft >= (singleSetWidth * 3) - 5) {
+            carouselRef.current.scrollLeft = scrollLeft - (singleSetWidth * 2);
         }
     }, [getSingleSetWidth]);
 
@@ -172,7 +172,7 @@ const SomosClient = () => {
             isTransitioning.current = true;
             const { current } = carouselRef;
             const setWidth = getSingleSetWidth();
-            const scrollAmount = setWidth / 5;
+            const scrollAmount = setWidth / values.length;
 
             if (direction === 'left') {
                 current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -275,10 +275,10 @@ const SomosClient = () => {
                         >
                             <p className="light-intro-text">
                                 Somos una{" "}
-                                <span className="warp-reveal-text" style={{ color: '#ffffff', fontWeight: 600 }}>
+                                <span className="warp-reveal-text" style={{ color: '#ffc4d4', fontWeight: 600 }}>
                                     organización juvenil
                                 </span>{" "}
-                                que busca impulsar el talento, las ideas y el potencial de las nuevas generaciones.
+                                que capta, conecta e impulsa a las nuevas generaciones, empoderándolas para desarrollar sus habilidades y convertirse en agentes de cambio.
                             </p>
                         </motion.div>
 
@@ -292,9 +292,9 @@ const SomosClient = () => {
                         >
                             <p className="light-intro-text">
                                 HiveYoung nace con el propósito de{' '}
-                                <HighlightMarker color="#5CD494" type="circle" delay={0.1} scrollProgress={scrollYProgress} trigger={0.6}>conectar</HighlightMarker>,{' '}
-                                <HighlightMarker color="#ffc100" type="circle" delay={0.3} scrollProgress={scrollYProgress} trigger={0.6}>potenciar</HighlightMarker> y{' '}
-                                <HighlightMarker color="#ffc4d4" type="circle" delay={0.5} scrollProgress={scrollYProgress} trigger={0.6}>visibilizar</HighlightMarker>{' '}
+                                <CircleMarker color="#5CD494" delay={0.1} scrollProgress={scrollYProgress}>conectar</CircleMarker>,{' '}
+                                <CircleMarker color="#74b8f9" delay={0.3} scrollProgress={scrollYProgress}>potenciar</CircleMarker> y{' '}
+                                <CircleMarker color="#ffc4d4" delay={0.5} scrollProgress={scrollYProgress}>visibilizar</CircleMarker>{' '}
                                 el talento joven en Chile y Latinoamérica.
                                 Creemos profundamente en el poder de la juventud para transformar la sociedad y generar impacto positivo
                                 a través de la acción colectiva y el liderazgo consciente.
@@ -316,8 +316,8 @@ const SomosClient = () => {
                         <h2>Nuestra Misión</h2>
                         <div className="mv-underline"></div>
                         <p>
-                            Articular y potenciar el ecosistema juvenil, conectando a líderes emergentes con oportunidades de desarrollo,
-                            mentores de clase mundial y organizaciones clave.
+                            Inspirar a la juventud a desafiar sus límites, empoderándola para desarrollar sus
+                            habilidades y pasiones, y así formar agentes de cambio capaces de generar un impacto positivo en sus comunidades.
                         </p>
                     </motion.div>
 
@@ -332,21 +332,52 @@ const SomosClient = () => {
                         <h2>Nuestra Visión</h2>
                         <div className="mv-underline vision"></div>
                         <p>
-                            Ser la plataforma líder en Latinoamérica que impulsa el talento joven, construyendo una red colaborativa
-                            resiliente que transforma desafíos regionales en oportunidades.
+                            Ser el principal articulador del ecosistema juvenil y la plataforma líder en Latinoamérica 
+                            que impulsa a una nueva generación de agentes de cambio y proyectos de impacto.
                         </p>
                     </motion.div>
                 </div>
 
                 <section className="valores-section">
+                    <div className="valores-annotations-container" aria-hidden="true">
+                        <Image 
+                            src="/images/Draws/Pluralidad.svg" 
+                            alt="" 
+                            width={180} 
+                            height={90} 
+                            className="valor-annotation-img pluralidad reveal"
+                        />
+                        <Image 
+                            src="/images/Draws/Pensamiento Libre.svg" 
+                            alt="" 
+                            width={180} 
+                            height={90} 
+                            className="valor-annotation-img pensamiento reveal"
+                        />
+                        <Image 
+                            src="/images/Draws/Originalidad.svg" 
+                            alt="" 
+                            width={210} 
+                            height={105} 
+                            className="valor-annotation-img originalidad reveal"
+                        />
+                        <Image 
+                            src="/images/Draws/Trabajo en Equipo.svg" 
+                            alt="" 
+                            width={190} 
+                            height={95} 
+                            className="valor-annotation-img equipo reveal"
+                        />
+                    </div>
                     <motion.h2
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        Nuestros Valores
+                        Nuestros <span className="mobile-break">Valores</span>
                     </motion.h2>
+                    <div className="valores-underline"></div>
 
                     <div
                         className="valores-carousel-wrapper"
