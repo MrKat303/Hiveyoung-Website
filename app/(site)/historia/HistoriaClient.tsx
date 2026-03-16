@@ -100,7 +100,6 @@ const galleryImages = [
     "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773679225/5_pniltf.png",
     "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769026522/IMG-20250328-WA0013_yd0oal.jpg",
     "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456719/Voluntarios_sepxvr.jpg",
-    "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016902/IMG-20250930-WA0098_yw5tmg.jpg",
     "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773679225/8_tgves4.png",
     "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773679225/6_rjmmix.png",
     "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773679225/7_ppzkqu.png",
@@ -287,7 +286,7 @@ export default function HistoriaClient() {
                                         <div key={`img-${colIndex}-${i}`} className="gallery-item" style={{ height: variedHeight }}>
                                             <Image
                                                 src={optimizeCld(actualImgUrl)}
-                                                alt=""
+                                                alt="Momentum HiveYoung"
                                                 fill
                                                 className="hero-gallery-img"
                                                 sizes="(max-width: 768px) 25vw, 15vw"

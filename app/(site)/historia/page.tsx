@@ -25,14 +25,14 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Nuestra Historia | HiveYoung",
         description: "Conoce el origen y la evolución de HiveYoung, transformando el ecosistema juvenil.",
-        images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png"],
+        images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png"],
     },
 };
 
 const historyImagesSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "numberOfItems": 6,
+    "numberOfItems": 5,
     "itemListElement": [
         {
             "@type": "ImageObject",
@@ -65,16 +65,9 @@ const historyImagesSchema = {
         {
             "@type": "ImageObject",
             "position": 5,
-            "url": "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016921/IMG-20250519-WA0111_yk5dze.jpg",
-            "name": "Lanzamiento Congreso HiveYoung 2025",
-            "description": "Lanzamiento oficial del Congreso HiveYoung 2025 con gran convocatoria"
-        },
-        {
-            "@type": "ImageObject",
-            "position": 6,
-            "url": "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016902/IMG-20250930-WA0098_yw5tmg.jpg",
-            "name": "Equipo HiveYoung en Summit País Digital",
-            "description": "El equipo de HiveYoung participando en el Summit de País Digital 2025."
+            "url": "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773681115/WhatsApp_Image_2026-03-16_at_14.06.02_b61imy.jpg",
+            "name": "Impacto Masivo | Voluntarios HiveYoung",
+            "description": "El Congreso HiveYoung reunió a más de 2000 estudiantes. Voluntarios de HiveYoung en acción."
         }
     ]
 };
@@ -101,11 +94,8 @@ export default function HistoriaPage() {
                 <img src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016926/IMG_0094_1_oknzn7.jpg" alt="Speakers Congreso HiveYoung junto a sus organizadores (Cristian Suarez, Lucas Galleguillos y Vicente Olguin)" />
                 <p>Speakers Congreso HiveYoung junto a sus organizadores (Cristian Suarez, Lucas Galleguillos y Vicente Olguin)</p>
                 
-                <img src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016921/IMG-20250519-WA0111_yk5dze.jpg" alt="Lanzamiento oficial del Congreso HiveYoung 2025 con gran convocatoria" />
-                <p>Lanzamiento oficial del Congreso HiveYoung 2025 con gran convocatoria</p>
-                
-                <img src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016902/IMG-20250930-WA0098_yw5tmg.jpg" alt="Equipo HiveYoung en Summit País Digital" />
-                <p>El equipo de HiveYoung participando en el Summit de País Digital 2025.</p>
+                <img src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1773681115/WhatsApp_Image_2026-03-16_at_14.06.02_b61imy.jpg" alt="Voluntarios de HiveYoung" />
+                <p>Voluntarios de HiveYoung en el Congreso HiveYoung.</p>
             </div>
             <HistoriaClient />
         </>
