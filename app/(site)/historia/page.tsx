@@ -86,8 +86,8 @@ export default function HistoriaPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(historyImagesSchema) }}
             />
-            {/* SEO Gallery: Visible to crawlers but not to users */}
-            <div style={{ display: 'none' }} aria-hidden="true">
+            {/* SEO Gallery: Visible to crawlers but visually hidden from users */}
+            <div style={{ opacity: 0, height: 0, width: 0, overflow: 'hidden', pointerEvents: 'none' }}>
                 <h1>Nuestra Historia | HiveYoung</h1>
                 <img src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1769039962/Cristian_Suarez_svypim.png" alt="Cristian Suárez, Lucas Galleguillos y Vicente Olguín, cofundadores de HiveYoung." />
                 <p>Cristian Suárez, Lucas Galleguillos y Vicente Olguín, cofundadores de HiveYoung.</p>
