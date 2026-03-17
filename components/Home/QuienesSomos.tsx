@@ -13,10 +13,10 @@ const QuienesSomos = () => {
             <div className="quienes-somos-container">
                 <div className="qs-content reveal">
                     <div className="qs-title-wrapper">
-                        <div className="qs-annotation">
+                        <div className="qs-annotation" aria-hidden="true">
                             <Image 
                                 src="/images/home/Salida de tu zona de confort.svg" 
-                                alt="Salida de tu zona de confort" 
+                                alt="" 
                                 width={180} 
                                 height={90} 
                                 className="qs-annotation-img"
@@ -26,10 +26,10 @@ const QuienesSomos = () => {
                         <h2 className="qs-title">¿QUIÉNES<br />SOMOS?</h2>
                     </div>
                     <div className="qs-description-wrapper">
-                        <div className="qs-annotation-bottom">
+                        <div className="qs-annotation-bottom" aria-hidden="true">
                             <Image 
                                 src="/images/home/Generación sin barreras.svg" 
-                                alt="Generación sin barreras" 
+                                alt="" 
                                 width={160} 
                                 height={80} 
                                 className="qs-annotation-img"
@@ -40,20 +40,20 @@ const QuienesSomos = () => {
                             Somos una <strong>organización juvenil</strong> que busca impulsar el talento, 
                             las ideas y el potencial de las nuevas generaciones.
                         </p>
-                        <div className="qs-annotation-top-right">
+                        <div className="qs-annotation-top-right" aria-hidden="true">
                             <Image 
                                 src="/images/home/Liderazgo Con Proposito.svg" 
-                                alt="Liderazgo Con Propósito" 
+                                alt="" 
                                 width={180} 
                                 height={90} 
                                 className="qs-annotation-img"
                                 draggable={false}
                             />
                         </div>
-                        <div className="qs-annotation-right">
+                        <div className="qs-annotation-right" aria-hidden="true">
                             <Image 
                                 src="/images/home/Proyectos con Impacto.svg" 
-                                alt="Proyectos con Impacto" 
+                                alt="" 
                                 width={180} 
                                 height={90} 
                                 className="qs-annotation-img"

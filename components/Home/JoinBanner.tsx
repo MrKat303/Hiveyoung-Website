@@ -17,11 +17,12 @@ const JoinBanner = () => {
                     <div className="join-illustration-box">
                         <Image 
                             src="/images/Draws/Captar.png" 
-                            alt="Únete a la red" 
+                            alt="" 
                             width={300} 
                             height={300} 
                             className="join-draw"
                             draggable={false}
+                            aria-hidden="true"
                         />
                     </div>
 

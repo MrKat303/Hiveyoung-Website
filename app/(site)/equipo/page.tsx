@@ -43,6 +43,7 @@ const equipoJsonLd = {
             "@type": "Person",
             "name": miembro.nombre,
             "jobTitle": miembro.cargo,
+            "description": miembro.descripcion,
             "worksFor": {
                 "@type": "Organization",
                 "name": "HiveYoung",
@@ -54,12 +55,35 @@ const equipoJsonLd = {
     }))
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://hiveyoung.org"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Nuestro Equipo",
+      "item": "https://hiveyoung.org/equipo"
+    }
+  ]
+};
+
 export default function EquipoPage() {
     return (
         <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(equipoJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
             <EquipoClient />
         </>

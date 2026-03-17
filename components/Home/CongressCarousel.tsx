@@ -23,8 +23,14 @@ export default function CongressCarousel() {
         <section className="congress-section">
             <div className="congress-carousel reveal">
                 {/* CEINA Logo */}
-                <div className="ceina-logo">
-                    <Image src="/images/congreso/logos/CEINA.png" alt="" width={200} height={80} draggable={false} />
+                <div className="ceina-logo" aria-hidden="true">
+                    <Image 
+                        src="/images/congreso/logos/CEINA.png" 
+                        alt="" 
+                        width={200} 
+                        height={80} 
+                        draggable={false} 
+                    />
                 </div>
 
                 {/* Carousel Images */}
@@ -33,7 +39,7 @@ export default function CongressCarousel() {
                         <ChevronLeft size={32} />
                     </button>
 
-                    <div className="carousel-images">
+                    <div className="carousel-images" aria-hidden="true">
                         {images.map((img, index) => (
                             <div
                                 key={index}
@@ -41,7 +47,7 @@ export default function CongressCarousel() {
                             >
                                 <Image
                                     src={img}
-                                    alt={`Congreso HiveYoung moment ${index + 1}`}
+                                    alt=""
                                     fill
                                     className="carousel-image-el"
                                     style={{

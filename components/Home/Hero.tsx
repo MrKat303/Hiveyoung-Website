@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import TextType from './TextType';
 import "./Hero.css";
@@ -20,8 +21,6 @@ export default function Hero() {
             setShouldRestart(false);
         }
     });
-
-
 
     return (
         <section className="hero" onContextMenu={(e) => e.preventDefault()}>
@@ -94,11 +93,15 @@ export default function Hero() {
                         style={{ opacity: textOpacity, y: textY }}
                         className="hero__right"
                     >
-                        <img
-                            className="hero__icons no-interaction"
+                        <Image
                             src="/images/home/hero.svg"
                             alt=""
-                            draggable="false"
+                            width={600}
+                            height={600}
+                            className="hero__icons no-interaction"
+                            draggable={false}
+                            priority
+                            aria-hidden="true"
                         />
                     </motion.div>
 
@@ -107,11 +110,14 @@ export default function Hero() {
 
             <div className="hero__bottomOuter" aria-hidden="true">
                 <div className="hero__bottomContainer">
-                    <img
-                        className="hero__bottom no-interaction"
+                    <Image
                         src="/images/home/bottom.svg"
                         alt=""
-                        draggable="false"
+                        width={1920}
+                        height={200}
+                        className="hero__bottom no-interaction"
+                        draggable={false}
+                        priority
                     />
                 </div>
             </div>

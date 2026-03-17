@@ -224,7 +224,7 @@ const SomosClient = () => {
                     >
                         <Image
                             src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456528/grupal_1_hrhwef.jpg"
-                            alt="Quiénes Somos HiveYoung"
+                            alt="Equipo de HiveYoung en una fotografía grupal — El principal articulador del ecosistema juvenil en Chile y Latinoamérica"
                             width={1200}
                             height={800}
                             className="somos-hero-image"
@@ -339,6 +339,16 @@ const SomosClient = () => {
                 </div>
 
                 <section className="valores-section">
+                    <motion.h2
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        Nuestros <span className="mobile-break">Valores</span>
+                    </motion.h2>
+                    <div className="valores-underline"></div>
+
                     <div className="valores-annotations-container" aria-hidden="true">
                         <Image 
                             src="/images/Draws/Pluralidad.svg" 
@@ -364,20 +374,11 @@ const SomosClient = () => {
                         <Image 
                             src="/images/Draws/Trabajo en Equipo.svg" 
                             alt="" 
-                            width={190} 
-                            height={95} 
+                            width={1920} 
+                            height={960} 
                             className="valor-annotation-img equipo reveal"
                         />
                     </div>
-                    <motion.h2
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        Nuestros <span className="mobile-break">Valores</span>
-                    </motion.h2>
-                    <div className="valores-underline"></div>
 
                     <div
                         className="valores-carousel-wrapper"

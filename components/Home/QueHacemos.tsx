@@ -46,11 +46,12 @@ const QueHacemos = () => {
                                 <div className="qh-image-bg"></div>
                                 <Image 
                                     src={activity.image} 
-                                    alt={activity.title} 
+                                    alt="" 
                                     width={400} 
                                     height={400} 
                                     className="qh-illustration"
                                     priority={index === 0}
+                                    aria-hidden="true"
                                 />
                             </div>
                             <div className="qh-text-content" data-nosnippet>

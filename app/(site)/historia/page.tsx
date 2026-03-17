@@ -72,6 +72,25 @@ const historyImagesSchema = {
     ]
 };
 
+const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://hiveyoung.org"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Nuestra Historia",
+            "item": "https://hiveyoung.org/historia"
+        }
+    ]
+};
+
 export default function HistoriaPage() {
     return (
         <>
@@ -79,24 +98,10 @@ export default function HistoriaPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(historyImagesSchema) }}
             />
-            {/* SEO Gallery: Visible to crawlers but visually hidden from users */}
-            <div style={{ opacity: 0, height: 0, width: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-                <h1>Nuestra Historia | HiveYoung</h1>
-                <img src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1769039962/Cristian_Suarez_svypim.png" alt="Cristian Suárez, Lucas Galleguillos y Vicente Olguín, cofundadores de HiveYoung." />
-                <p>Cristian Suárez, Lucas Galleguillos y Vicente Olguín, cofundadores de HiveYoung.</p>
-                
-                <img src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1773505814/20240924_115026_osmgus.png" alt="El equipo de HiveYoung en sus primeros pasos" />
-                <p>El equipo de HiveYoung en sus primeros pasos.</p>
-                
-                <img src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1773456004/20250509_130743_oax4i7.png" alt="El equipo de HiveYoung trabajando en la planificación del Congreso" />
-                <p>El equipo de HiveYoung trabajando en la planificación del Congreso</p>
-                
-                <img src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016926/IMG_0094_1_oknzn7.jpg" alt="Speakers Congreso HiveYoung junto a sus organizadores (Cristian Suarez, Lucas Galleguillos y Vicente Olguin)" />
-                <p>Speakers Congreso HiveYoung junto a sus organizadores (Cristian Suarez, Lucas Galleguillos y Vicente Olguin)</p>
-                
-                <img src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1773681115/WhatsApp_Image_2026-03-16_at_14.06.02_b61imy.jpg" alt="Voluntarios de HiveYoung" />
-                <p>Voluntarios de HiveYoung en el Congreso HiveYoung.</p>
-            </div>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            />
             <HistoriaClient />
         </>
     );

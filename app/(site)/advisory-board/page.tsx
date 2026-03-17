@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AdvisoryBoardClient from "./AdvisoryBoardClient";
+import { advisors } from "@/data/advisory";
 
 export const metadata: Metadata = {
     title: "Advisory Board",
@@ -29,6 +30,66 @@ export const metadata: Metadata = {
     },
 };
 
+const advisoryJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Advisory Board HiveYoung",
+    "description": "Líderes estratégicos de diversas industrias que impulsan la visión y el impacto de HiveYoung.",
+    "url": "https://hiveyoung.org/advisory-board",
+    "numberOfItems": advisors.length,
+    "itemListElement": advisors.map((advisor, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+            "@type": "Person",
+            "name": advisor.name,
+            "jobTitle": advisor.role,
+            "image": advisor.img,
+            "worksFor": {
+                "@type": "Organization",
+                "name": advisor.institution,
+            },
+            "memberOf": {
+                "@type": "Organization",
+                "name": "HiveYoung",
+                "url": "https://hiveyoung.org",
+            },
+            ...(advisor.linkedin ? { "sameAs": advisor.linkedin } : {}),
+        },
+    })),
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://hiveyoung.org"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Advisory Board",
+      "item": "https://hiveyoung.org/advisory-board"
+    }
+  ]
+};
+
 export default function AdvisoryBoardPage() {
-    return <AdvisoryBoardClient />;
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(advisoryJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            />
+            <AdvisoryBoardClient />
+        </>
+    );
 }

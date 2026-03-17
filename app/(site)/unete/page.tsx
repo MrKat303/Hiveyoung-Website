@@ -46,15 +46,15 @@ const faqJsonLd = {
       "name": "¿Existe un límite de edad para unirse a HiveYoung?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No hay un límite estricto, pero está orientado especialmente a jóvenes entre 14 y 29 años."
+        "text": "No. Ideal jóvenes entre 14 y 29 años."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Tiene algún costo unirse a HiveYoung?",
+      "name": "¿Tiene algún costo unirse?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. La participación en HiveYoung es completamente gratuita."
+        "text": "No. La participación es completamente gratuita."
       }
     },
     {
@@ -67,35 +67,54 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      "name": "¿Necesito experiencia previa para unirme?",
+      "name": "¿Debo tener experiencia o alguna habilidad específica para participar?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. HiveYoung valora las ganas de aprender, el compromiso y la actitud más que la experiencia previa. Todos los niveles son bienvenidos."
+        "text": "No. Solo se requieren ganas de aprender, participar y aportar."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Qué beneficios tiene unirse a HiveYoung?",
+      "name": "¿Qué obtengo al unirme a HiveYoung?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Desarrollarás habilidades de liderazgo, trabajo en equipo y comunicación; ampliarás tu red de contactos con jóvenes líderes y profesionales; tendrás acceso a eventos exclusivos, charlas y talleres; y podrás ser parte de proyectos con impacto real en tu comunidad."
+        "text": "Experiencia en proyectos reales, desarrollo de habilidades personales y profesionales, formación y formar parte de una comunidad."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Cómo me postulo para unirme?",
+      "name": "¿Cuánto tiempo debo dedicar?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Puedes postularte completando el formulario disponible en la página hiveyoung.org/unete. El proceso es rápido y completamente online."
+        "text": "La dedicación es flexible y depende de tu disponibilidad."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Puedo unirme si vivo fuera de Santiago?",
+      "name": "¿Puedo participar desde cualquier ciudad?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí. HiveYoung tiene presencia en distintas regiones de Chile y está en expansión por Latinoamérica. Contamos con coordinadores regionales que facilitan la participación fuera de la Región Metropolitana."
+        "text": "Sí. Hay actividades presenciales y virtuales."
       }
+    }
+  ]
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://hiveyoung.org"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Únete",
+      "item": "https://hiveyoung.org/unete"
     }
   ]
 };
@@ -106,6 +125,10 @@ export default function UnetePage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
             <UneteClient />
         </>
