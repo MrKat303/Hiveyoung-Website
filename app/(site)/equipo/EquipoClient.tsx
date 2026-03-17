@@ -9,7 +9,7 @@ import { ChevronLeft, ChevronRight, ChevronUp, Linkedin } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-    const CreativeCard = ({ miembro, className = "equipo-card", isPrivate = false }: { miembro: Miembro; className?: string; isPrivate?: boolean }) => {
+    const CreativeCard = ({ miembro, className = "equipo-card", isPrivate = false, priority = false }: { miembro: Miembro; className?: string; isPrivate?: boolean; priority?: boolean }) => {
         const cardRef = useRef<HTMLDivElement>(null);
         const innerRef = useRef<HTMLDivElement>(null);
 
@@ -58,6 +58,7 @@ import { useGSAP } from "@gsap/react";
                                     className="creative-image"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     draggable={false}
+                                    priority={priority}
                                 />
                             ) : (
                                 <div className="creative-image-placeholder">
@@ -238,7 +239,7 @@ export default function EquipoPage() {
                         </svg>
                     </div>
                     <div className="equipo-grid">
-                        {direccionEjecutiva.map((m) => <CreativeCard key={m.id} miembro={m} />)}
+                        {direccionEjecutiva.map((m) => <CreativeCard key={m.id} miembro={m} priority={true} />)}
                     </div>
                 </section>
 

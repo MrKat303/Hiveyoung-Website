@@ -364,7 +364,7 @@ export default function HistoriaClient() {
                                                         objectPosition: item.imgPosition || 'center'
                                                     }}
                                                     unoptimized={item.img.endsWith('.heic')}
-                                                    priority={index <= 1}
+                                                    priority={true}
                                                 />
                                             </div>
                                         )}
