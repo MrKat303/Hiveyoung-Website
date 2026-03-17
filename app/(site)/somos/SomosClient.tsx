@@ -374,8 +374,8 @@ const SomosClient = () => {
                         <Image 
                             src="/images/Draws/Trabajo en Equipo.svg" 
                             alt="" 
-                            width={1920} 
-                            height={960} 
+                            width={220} 
+                            height={110} 
                             className="valor-annotation-img equipo reveal"
                         />
                     </div>

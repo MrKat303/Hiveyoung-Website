@@ -203,7 +203,7 @@ function Navbar() {
                                             </a>
                                         </div>
                                         <div className="mobile-socials">
-                                            <a href="https://www.instagram.com/hiveyoung/" target="_blank" rel="noopener noreferrer">
+                                            <a href="https://www.instagram.com/hiveyoung.cl/" target="_blank" rel="noopener noreferrer">
                                                 <Instagram size={22} />
                                             </a>
                                             <a href="https://www.linkedin.com/company/hiveyoung/" target="_blank" rel="noopener noreferrer">
