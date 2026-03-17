@@ -37,7 +37,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "El inicio",
         desc: "Todo comenzó con tres estudiantes del Instituto Nacional: Cristian Suárez, Lucas Galleguillos y Vicente Olguín. Provenían de intereses distintos, pero compartían una misma idea: crear una plataforma que conectara a jóvenes con distintos talentos, pasiones y ganas de hacer cosas.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769039962/Cristian_Suarez_svypim.png",
-        alt: "Cristian Suárez, Lucas Galleguillos y Vicente Olguín, cofundadores de HiveYoung.",
+        alt: "Fotografía de los fundadores de HiveYoung: Cristian Suárez, Lucas Galleguillos y Vicente Olguín en sus inicios.",
         theme: "dark",
         fit: "cover",
         imgPosition: "77% 25%"
@@ -49,7 +49,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "Expandiendo el horizonte",
         desc: "La idea comenzó a crecer. Compañeros se fueron sumando al proyecto y el equipo empezó a moverse: asistir a eventos, aprender, hacer networking y conocer personas. Poco a poco, HiveYoung empezaba a abrirse camino.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773505814/20240924_115026_osmgus.png",
-        alt: "El equipo de HiveYoung en sus primeros pasos",
+        alt: "Equipo de HiveYoung participando en actividades de networking y formación inicial.",
         theme: "light"
     },
     {
@@ -59,7 +59,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "De la idea a la acción",
         desc: "Se formó un equipo y comenzaron a dar forma al primer gran proyecto: el Congreso HiveYoung. Lo que había empezado como una conversación entre amigos comenzó a transformarse en algo mucho más grande: un proyecto con propósito, valores y una visión clara para la juventud.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773456004/20250509_130743_oax4i7.png",
-        alt: "El equipo de HiveYoung trabajando en la planificación del Congreso",
+        alt: "El equipo de trabajo de HiveYoung planificando la estrategia del primer Congreso.",
         theme: "dark"
     },
     {
@@ -69,7 +69,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "Organización y compromiso",
         desc: "En 2025 llegó nuestro primer gran reto: organizar el Congreso HiveYoung. Fueron más de seis meses de trabajo intenso: planificación, reuniones, coordinación y muchas horas dedicadas al proyecto, incluso sacrificando tiempo de clases.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1769016926/IMG_0094_1_oknzn7.jpg",
-        alt: "Speakers Congreso HiveYoung junto a sus organizadores (Cristian Suarez, Lucas Galleguillos y Vicente Olguin)",
+        alt: "Organizadores de HiveYoung junto a speakers destacados durante el Congreso 2025.",
         theme: "green"
     },
     {
@@ -79,7 +79,7 @@ const historyItems: HistoryItem[] = [
         subtitle: "Impacto masivo",
         desc: "El Congreso HiveYoung reunió a más de 2000 estudiantes y más de 30 instituciones. Lo que comenzó como una idea entre tres estudiantes se transformó en un evento capaz de movilizar a toda una comunidad y abrió paso a nuevas ideas, colaboraciones e iniciativas.",
         img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773681115/WhatsApp_Image_2026-03-16_at_14.06.02_b61imy.jpg",
-        alt: "Voluntarios de HiveYoung",
+        alt: "Grupo masivo de voluntarios de HiveYoung celebrando el éxito del Congreso con más de 2000 asistentes.",
         theme: "light"
     },
     {
@@ -109,6 +109,17 @@ const galleryImages = [
     "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773679377/20241015_115636_1_phuagk.heic",
     "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773681116/WhatsApp_Image_2026-03-16_at_14.06.02_1_lchn49.jpg",
     "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773681115/WhatsApp_Image_2026-03-16_at_14.06.02_b61imy.jpg"
+];
+
+const galleryAlts = [
+    "Momentos HiveYoung: Liderazgo y comunidad juvenil",
+    "Encuentros HiveYoung: Jóvenes agentes de cambio en Chile",
+    "Colaboración juvenil HiveYoung: Construyendo el futuro",
+    "Comunidad HiveYoung: Empoderamiento y talento",
+    "Networking juvenil HiveYoung: Conectando ideas",
+    "Iniciativas HiveYoung: Impacto social real",
+    "Cultura HiveYoung: Innovación y propósito",
+    "HiveYoung: La red de talento más activa de Latinoamérica"
 ];
 
 export default function HistoriaClient() {
@@ -153,10 +164,15 @@ export default function HistoriaClient() {
                 gsap.to(col, {
                     y: direction === -1 ? -distance : 0,
                     ease: "none",
-                    duration: 30 + (i * 2), // Slightly different speeds for parallax effect
+                    duration: 120 + (i * 10), // Slightly different speeds for parallax effect
                     repeat: -1,
                     modifiers: {
                         y: gsap.utils.unitize(y => parseFloat(y) % distance)
+                    },
+                    onRepeat: () => {
+                        if (direction === 1) {
+                            gsap.set(col, { y: -distance });
+                        }
                     }
                 });
             });
@@ -173,7 +189,7 @@ export default function HistoriaClient() {
             gsap.set(panels, { yPercent: 100, zIndex: (i) => i + 10 });
             gsap.set('.title-wrapper', { transformOrigin: "center center" });
 
-            const tl = gsap.timeline();
+            const tlScroll = gsap.timeline();
             const snapPoints: number[] = [0]; 
 
             let time = 0;
@@ -185,14 +201,14 @@ export default function HistoriaClient() {
                 const img = panel.querySelector('.panel-image-col img');
 
                 // Animate panel entry
-                tl.to(panel, { 
+                tlScroll.to(panel, { 
                     yPercent: 0, 
                     duration: isMobile ? 0.8 : 1, 
                     ease: "none" 
                 }, time);
                 
                 // Background color transition - faster to avoid "invisible" feel
-                tl.to('.historia-bg-wrapper', { 
+                tlScroll.to('.historia-bg-wrapper', { 
                     backgroundColor: bgColor, 
                     duration: 0.2, 
                     ease: "none" 
@@ -200,7 +216,7 @@ export default function HistoriaClient() {
 
                 // Exit hero title
                 if (i === 0) {
-                    tl.to('.title-wrapper', { 
+                    tlScroll.to('.title-wrapper', { 
                         scale: isMobile ? 2.5 : 5, 
                         opacity: 0, 
                         duration: 0.8, 
@@ -224,7 +240,7 @@ export default function HistoriaClient() {
                 if (img) {
                     // REMOVED BLUR: It's extremely expensive for the CPU/GPU during scroll
                     gsap.set(img, { opacity: 0 });
-                    tl.to(img, { 
+                    tlScroll.to(img, { 
                         opacity: 1, 
                         duration: isMobile ? 0.4 : 0.6, 
                         ease: "none",
@@ -233,25 +249,23 @@ export default function HistoriaClient() {
                 }
 
                 time += 1.0; 
-                tl.to({}, { duration: 1 }, time);
+                tlScroll.to({}, { duration: 1 }, time);
                 time += 0.5; 
                 snapPoints.push(time);
                 time += 0.5;
             });
 
-            const totalDuration = tl.duration();
-            const snapProgress = snapPoints.map(t => t / totalDuration);
+            const totalDuration = tlScroll.duration();
+            // const snapProgress = snapPoints.map(t => t / totalDuration);
 
             ScrollTrigger.create({
                 trigger: scrollContainerRef.current,
                 pin: true,
                 start: "top top",
                 end: `+=${panels.length * (isMobile ? 1000 : 1500)}`, 
-                animation: tl,
-                scrub: true,
-                fastScrollEnd: isMobile,
-                preventOverlaps: true,
-                anticipatePin: 1 // Helps prevent the "jump" when sticking starts
+                animation: tlScroll,
+                scrub: 1,
+                // snap: snapProgress // Snap can feel a bit mechanical but good for precise viewing
             });
         });
 
@@ -268,7 +282,6 @@ export default function HistoriaClient() {
             <section ref={scrollContainerRef} className="horizontal-scroll-container">
                 <section ref={heroRef} className="story-panel section-hero" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, overflow: 'hidden' }}>
                     {/* Animated GSAP Gallery background */}
-                    {/* Animated GSAP Gallery background */}
                     <div className="hero-gallery-wrap" aria-hidden="true" style={{ backgroundColor: '#3a1b4e' }}>
                         {/* 7 Columns of images to make them smaller and denser */}
                         {[0, 1, 2, 3, 4, 5, 6].map((colIndex) => (
@@ -277,6 +290,7 @@ export default function HistoriaClient() {
                                 {[...galleryImages, ...galleryImages].map((imgUrl, i) => {
                                     // Stagger the starting image index per column for visual variety
                                     const actualImgUrl = galleryImages[(i + colIndex * 3) % galleryImages.length];
+                                    const altText = galleryAlts[(i + colIndex) % galleryAlts.length];
                                     
                                     // Array of varied heights to create the masonry/staggered look
                                     const heights = ['20vh', '30vh', '15vh', '35vh', '25vh', '32vh'];
@@ -286,7 +300,7 @@ export default function HistoriaClient() {
                                         <div key={`img-${colIndex}-${i}`} className="gallery-item" style={{ height: variedHeight }}>
                                             <Image
                                                 src={optimizeCld(actualImgUrl)}
-                                                alt="Momentum HiveYoung"
+                                                alt={altText}
                                                 fill
                                                 className="hero-gallery-img"
                                                 sizes="(max-width: 768px) 25vw, 15vw"
@@ -303,6 +317,7 @@ export default function HistoriaClient() {
                     <div className="hero-gallery-overlay" aria-hidden="true" />
                     
                     <div className="hero-content-center" style={{ position: 'relative', zIndex: 2 }}>
+                        <h1 className="sr-only">Nuestra Historia | HiveYoung</h1>
                         <div className="title-wrapper">
                             <svg className="hero-title-svg" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid meet" style={{ overflow: 'visible' }}>
                                 <text x="400" y="200" textAnchor="middle" className="drawn-text" fill="transparent" stroke="#ffffff" strokeWidth="1.5" fontSize="130" fontWeight="900" fontFamily="Poppins, sans-serif">NUESTRA</text>
