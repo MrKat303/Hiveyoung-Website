@@ -28,7 +28,7 @@ const FloatingNames: React.FC = () => {
         { text: "Ricardo<br/>Gómez", style: { bottom: '3%', right: '12%', transform: 'rotate(-4deg)', fontSize: '1.4rem' } },
         { text: "Maglio<br/>Olguín", style: { bottom: '10%', right: '22%', transform: 'rotate(6deg)', fontSize: '1.4rem' } },
         { text: "Javiera<br/>Cotet", style: { bottom: '15%', left: '35%', transform: 'rotate(4deg)', fontSize: '1.5rem' } },
-        { text: "Jocelyn<br/>Jara", style: { bottom: '26%', left: '34%', transform: 'rotate(-5deg)', fontSize: '1.2rem' } },
+        { text: "Ariel<br/>Loûbie", style: { bottom: '26%', left: '34%', transform: 'rotate(-5deg)', fontSize: '1.8rem' } },
         { text: "Simon<br/>Boric", style: { bottom: '31%', right: '12%', transform: 'rotate(-15deg)', fontSize: '2.7rem' } },
         { text: "Marcelo<br/>Guital", style: { bottom: '48%', left: '4%', transform: 'rotate(10deg)', fontSize: '2.3rem' } },
         { text: "Franco<br/>Ivanovic", style: { bottom: '10%', left: '46%', transform: 'rotate(-4deg)', fontSize: '2.2rem' } },
