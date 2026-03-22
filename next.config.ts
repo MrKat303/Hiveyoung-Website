@@ -17,27 +17,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async headers() {
-    return [
-      {
-        source: '/_private/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex',
-          },
-        ],
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/_private/cloudinary/:path*',
-        destination: 'https://res.cloudinary.com/:path*',
-      },
-    ];
-  },
 };
 
 export default nextConfig;

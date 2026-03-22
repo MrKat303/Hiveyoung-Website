@@ -6,18 +6,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/_private/",
-        ],
-      },
-      {
-        userAgent: "Googlebot-Image",
-        allow: "/",
-        disallow: [
-          "/_private/",
-        ],
       }
     ],
-    sitemap: "https://hiveyoung.org/sitemap.xml",
+    sitemap: [
+      "https://hiveyoung.org/sitemap.xml",
+      "https://hiveyoung.org/sitemap-images.xml",
+    ],
   };
 }
