@@ -229,6 +229,7 @@ const SomosClient = () => {
                             height={800}
                             className="somos-hero-image"
                             draggable={false}
+                            priority
                         />
                         <div className="somos-overlay"></div>
                     </motion.div>
