@@ -33,7 +33,7 @@ export default function Footer() {
                                 <a href="https://cl.linkedin.com/company/hiveyoung" target="_blank" rel="noopener noreferrer" className="footer__social-btn" aria-label="LinkedIn">
                                     <Linkedin size={20} strokeWidth={2} />
                                 </a>
-                                <a href="mailto:hiveyoung@gmail.com" className="footer__social-btn" aria-label="Email">
+                                <a href="mailto:HiveYoung@gmail.com" className="footer__social-btn" aria-label="Email">
                                     <Mail size={20} strokeWidth={2} />
                                 </a>
                             </div>

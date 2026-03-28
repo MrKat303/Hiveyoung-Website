@@ -118,7 +118,7 @@ const jsonLd = {
   ],
   contactPoint: {
     "@type": "ContactPoint",
-    email: "hiveyoung@gmail.com",
+    email: "HiveYoung@gmail.com",
     contactType: "customer service",
     availableLanguage: "Spanish",
   },
