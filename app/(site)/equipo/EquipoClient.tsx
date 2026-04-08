@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import useScrollReveal from "@/hooks/useScrollReveal";
 import Image from "next/image";
 import "./Equipo.css";
-import { direccionEjecutiva, coordinadoresRegionales, directorio, equipoGeneral, Miembro } from "@/data/equipo";
-import { ChevronLeft, ChevronRight, ChevronUp, Linkedin } from "lucide-react";
+import { direccionEjecutiva, coordinadoresRegionales, directorio, Miembro } from "@/data/equipo";
+import { ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -193,7 +193,6 @@ import { useGSAP } from "@gsap/react";
 export default function EquipoPage() {
     useScrollReveal();
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [showGeneral, setShowGeneral] = useState(false);
 
     const scrollLeft = () => {
         if (scrollRef.current) {
@@ -266,29 +265,6 @@ export default function EquipoPage() {
                         </div>
                         <button className="carousel-btn next" onClick={scrollRight} aria-label="Siguiente">
                             <ChevronRight size={28} />
-                        </button>
-                    </div>
-                </section>
-
-                <section className="equipo-seccion-toggle">
-                    {showGeneral && (
-                        <section className="equipo-seccion-revealed">
-                            <div className="titulo-wrapper reveal active">
-                                <h2 className="seccion-titulo">Equipo</h2>
-                                <svg className="titulo-subrayado-verde reveal active" viewBox="0 0 120 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 5C35 3 65 7 95 5C108 4 115 6 117 5" stroke="#59c985" strokeWidth="4" strokeLinecap="round" />
-                                </svg>
-                            </div>
-                            <div className="equipo-grid equipo-general-grid revealed-grid">
-                                {equipoGeneral.map((m) => <CreativeCard key={m.id} miembro={m} className="creative-card-smaller" />)}
-                            </div>
-                        </section>
-                    )}
-                    
-                    <div className="ver-mas-container">
-                        <button className={`ver-mas-btn ${showGeneral ? 'expanded' : ''}`} onClick={() => setShowGeneral(!showGeneral)}>
-                            {showGeneral ? 'Ver menos' : 'Ver más'}
-                            {showGeneral ? <ChevronUp size={20} /> : <ChevronRight size={20} />}
                         </button>
                     </div>
                 </section>
