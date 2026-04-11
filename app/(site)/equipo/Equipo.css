@@ -2,7 +2,7 @@
     background-color: #f4ede4;
     min-height: 100vh;
     padding: 140px 5% 100px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Agrandir', sans-serif;
     color: #3A1B4E;
     display: flex;
     flex-direction: column;
@@ -209,7 +209,7 @@
     font-weight: 500;
     color: #3A1B4E;
     margin-bottom: 4px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Agrandir', sans-serif;
     letter-spacing: -0.5px;
     line-height: 1.2;
 }
@@ -218,7 +218,7 @@
     font-size: 16px;
     color: #3A1B4E;
     opacity: 0.8;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Agrandir', sans-serif;
     line-height: 1.2;
     max-width: 90%;
     margin: 0 auto;
@@ -379,14 +379,14 @@
     font-size: 18px;
     color: #3A1B4E;
     font-weight: 700;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Agrandir', sans-serif;
 }
 
 .label-text-content span {
     font-size: 13px;
     color: #777;
     display: block;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Agrandir', sans-serif;
 }
 
 .label-linkedin {

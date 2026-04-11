@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @font-face {
@@ -9,6 +9,21 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Agrandir';
+    src: url('/fonts/Agrandir.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Agrandir';
+    src: url('/fonts/agrandir-medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 
 
 :root {
@@ -18,7 +33,7 @@
 }
 
 body {
-    font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Agrandir', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4ede4; /* Matches the site's cream background */
     min-height: 100vh;
     overflow-x: hidden;

@@ -14,10 +14,10 @@ export const direccionEjecutiva: Miembro[] = [
     { id: 6, nombre: "Santiago Oviedo", cargo: "Director de Ecosistema", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773352819/Generated_Image_March_08_2026_-_9_48PM_gxyjsy.png", alt: "Santiago Oviedo, Director de Ecosistema de HiveYoung", descripcion: "Estudiante de Ingeniería Comercial en la UC, Ex-Miembro del Centro de Estudiantes del CVD.", linkedin: "https://linkedin.com/" },
     { id: 7, nombre: "Martina Ortega", cargo: "Directora de Marketing", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773355651/WhatsApp_Image_2026-02-18_at_14.01.34_kndbdk.png", alt: "Martina Ortega, Directora de Marketing de HiveYoung", descripcion: "Estudiante del Instituto Nacional, me apasiona la ciencia y participo en movimientos femeninos como Tremendas y Lumina", linkedin: "https://linkedin.com/" },
     { id: 301, nombre: "Ignacio Morales", cargo: "Director de Proyectos Sociales", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773630639/3a1b4e_19_rc0hrz.png", alt: "Ignacio Morales, Director de Proyectos Sociales de HiveYoung", descripcion: "Estudiante de Derecho en la UC.", linkedin: "https://linkedin.com/" },
+    { id: 101, nombre: "Clemente Pacheco", cargo: "Director de Proyectos", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773410775/3a1b4e_8_nquulw.png", alt: "Clemente Pacheco, Director de Proyectos de HiveYoung", descripcion: "Estudiante del Grange School.", linkedin: "https://linkedin.com/" },
 ];
 
 export const coordinadoresRegionales: Miembro[] = [
-    { id: 101, nombre: "Clemente Pacheco", cargo: "Coordinador Regional RM", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773410775/3a1b4e_8_nquulw.png", alt: "Clemente Pacheco, Coordinador Regional RM de HiveYoung", descripcion: "Estudiante del Grange School.", linkedin: "https://linkedin.com/" },
     { id: 102, nombre: "María Ignacia", cargo: "Coordinadora Regional Valparaíso", img: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773618199/3a1b4e_18_qdnqdy.png", alt: "María Ignacia, Coordinadora Regional Valparaíso de HiveYoung", descripcion: "", linkedin: "https://linkedin.com/" },
 ];
 

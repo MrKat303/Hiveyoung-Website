@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
 
 .hero {
     background-color: #3a1b4e;
-    font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-family: "Agrandir", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 .hero__section {
@@ -22,7 +22,7 @@
 }
 
 .hero__title {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 56px;
     line-height: 1.15;
     word-wrap: break-word;
@@ -39,6 +39,7 @@
     font-size: 18px;
     color: rgba(255, 255, 255, 0.55);
     font-weight: 400;
+    font-family: 'Poppins', sans-serif;
     max-width: 560px;
 }
 

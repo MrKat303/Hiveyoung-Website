@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
 
 .contact-page {
     background-color: #f4ede4;
     min-height: 100vh;
     padding: 160px 40px 80px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Agrandir', sans-serif;
     color: #3A1B4E;
 }
 
@@ -84,13 +84,13 @@
 }
 
 .selector-btn {
-    font-family: 'Poppins';
+    font-family: 'Agrandir';
     padding: 8px 25px;
     border-radius: 20px;
     border: 1px solid rgba(58, 27, 78, 0.1);
     background: transparent;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 500;
     color: #3A1B4E;
     transition: 0.3s;
 }
@@ -124,7 +124,7 @@
 .form-select,
 .form-field textarea {
     width: 100%;
-    font-family: 'Poppins' !important;
+    font-family: 'Agrandir' !important;
     background: transparent !important;
     border: none !important;
     border-bottom: 1.5px solid rgba(58, 27, 78, 0.1) !important;
@@ -147,7 +147,7 @@
 }
 
 .submit-btn {
-    font-family: 'Poppins';
+    font-family: 'Agrandir';
     width: 100%;
     background: #3A1B4E;
     padding: 20px;

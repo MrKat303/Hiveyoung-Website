@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap');
+
 
 .advisory-section {
     padding: 120px 20px 60px; /* Reduced padding */
     background-color: #f4ede4;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Agrandir', sans-serif;
     min-height: 100vh;
 }
 
@@ -183,7 +183,7 @@
 
 .advisory-name {
     color: #3A1B4E;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Agrandir', sans-serif;
     font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: -0.3px;

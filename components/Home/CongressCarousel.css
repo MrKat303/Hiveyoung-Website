@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 
 .congress-section {
     background-color: #f4ede4;
@@ -159,7 +159,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Agrandir', sans-serif;
     font-size: 1.1rem;
     font-weight: 500;
     padding: 12px 32px;
