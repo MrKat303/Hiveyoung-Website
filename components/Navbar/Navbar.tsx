@@ -4,7 +4,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, LogIn, Instagram, Linkedin, Mail } from "lucide-react";
+import { Instagram } from "lucide-react";
+import { ChevronDown, ArrowRightToSquare, LogoLinkedin, Envelope } from "@gravity-ui/icons";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Navbar.css";
 
@@ -118,7 +119,7 @@ function Navbar() {
                         <li key={index} className={link.dropdown ? "nav-item-dropdown" : ""}>
                             <Link href={link.path}>
                                 {link.name}
-                                {link.dropdown && <ChevronDown size={14} style={{ marginLeft: '4px' }} />}
+                                {link.dropdown && <ChevronDown width={14} height={14} style={{ marginLeft: '4px' }} />}
                             </Link>
                             {link.dropdown && (
                                 <ul className="dropdown-menu">
@@ -137,7 +138,7 @@ function Navbar() {
                 <div className="navbar-btns desktop-only">
                     <Link className="navbar-btn navbar-btn--outline" href="/unete">Únete</Link>
                     <a href="https://app.hiveyoung.org/login" className="login-icon-circle">
-                        <LogIn size={20} />
+                        <ArrowRightToSquare width={20} height={20} />
                     </a>
                 </div>
 
@@ -199,7 +200,7 @@ function Navbar() {
                                                 Únete
                                             </Link>
                                             <a href="https://app.hiveyoung.org/login" className="mobile-btn-outline" onClick={closeMenu}>
-                                                <LogIn size={18} style={{ marginRight: '8px' }} /> Iniciar Sesión
+                                                <ArrowRightToSquare width={18} height={18} style={{ marginRight: '8px' }} /> Iniciar Sesión
                                             </a>
                                         </div>
                                         <div className="mobile-socials">
@@ -207,10 +208,10 @@ function Navbar() {
                                                 <Instagram size={22} />
                                             </a>
                                             <a href="https://www.linkedin.com/company/hiveyoung/" target="_blank" rel="noopener noreferrer">
-                                                <Linkedin size={22} />
+                                                <LogoLinkedin width={22} height={22} />
                                             </a>
                                             <a href="mailto:contacto@hiveyoung.com">
-                                                <Mail size={22} />
+                                                <Envelope width={22} height={22} />
                                             </a>
                                         </div>
                                     </motion.div>

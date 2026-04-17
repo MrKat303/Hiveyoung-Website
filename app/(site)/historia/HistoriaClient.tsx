@@ -92,7 +92,7 @@ export default function HistoriaClient() {
 
             panels.forEach((panel, i) => {
                 const theme = historyItems[i].theme;
-                const bgColor = theme === 'dark' ? '#3a1b4e' : theme === 'green' ? '#2eb67d' : '#f4ede4';
+                const bgColor = theme === 'dark' ? '#3a1b4e' : theme === 'green' ? '#2eb67d' : '#fbf5ee';
 
                 const img = panel.querySelector('.panel-image-col img');
 

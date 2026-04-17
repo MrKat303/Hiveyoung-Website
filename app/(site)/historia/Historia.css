@@ -139,7 +139,7 @@
     width: 100%;
     height: 100vh;
     z-index: -1;
-    background-color: #f4ede4;
+    background-color: #fbf5ee;
     will-change: background-color;
 }
 
@@ -335,7 +335,7 @@
 }
 
 .panel-theme-light {
-    background-color: #f4ede4;
+    background-color: #fbf5ee;
     color: #3a1b4e !important;
 }
 
@@ -450,7 +450,7 @@
     left: 0;
     width: 100%;
     height: 35%;
-    background: linear-gradient(to bottom, transparent, var(--bg-current, #f4ede4));
+    background: linear-gradient(to bottom, transparent, var(--bg-current, #fbf5ee));
     z-index: 2;
     pointer-events: none;
     transition: background 0.5s ease;
@@ -458,7 +458,7 @@
 
 .panel-theme-dark .panel-image-col::after { --bg-current: #3a1b4e; }
 .panel-theme-green .panel-image-col::after { --bg-current: #2eb67d; }
-.panel-theme-light .panel-image-col::after { --bg-current: #f4ede4; }
+.panel-theme-light .panel-image-col::after { --bg-current: #fbf5ee; }
 
 .contain-img-wrapper {
     width: 100%;

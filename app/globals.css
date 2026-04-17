@@ -34,7 +34,7 @@
 
 body {
     font-family: 'Agrandir', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4ede4; /* Matches the site's cream background */
+    background-color: #fbf5ee; /* Matches the site's cream background */
     min-height: 100vh;
     overflow-x: hidden;
     display: flex;
