@@ -107,14 +107,16 @@
 }
 
 .qh-text-content h3 {
-    font-family: 'Bernoru Black', sans-serif;
+    font-family: 'Agrandir', sans-serif;
     font-size: clamp(1.2rem, 1.8vw, 1.6rem); /* Reducido de 1.4-1.9rem */
-    font-weight: 900;
+    font-weight: 500;
     margin-bottom: 10px;
     color: #3A1B4E;
     letter-spacing: -0.3px;
     line-height: 1.2;
 }
+
+
 
 
 /* Cleaned up original accent line */

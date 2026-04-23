@@ -31,7 +31,9 @@
     --site-max-width: 1200px;
     --site-padding: 24px;
     --site-padding-lg: 80px;
+    --font-poppins: var(--font-poppins); /* This refers to the variable from Next.js font */
 }
+
 
 body {
     font-family: 'Agrandir', Tahoma, Geneva, Verdana, sans-serif;

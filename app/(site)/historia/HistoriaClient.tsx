@@ -216,8 +216,9 @@ export default function HistoriaClient() {
                         <h1 className="sr-only">Nuestra Historia | HiveYoung</h1>
                         <div className="title-wrapper">
                             <svg className="hero-title-svg" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid meet" style={{ overflow: 'visible' }}>
-                                <text x="400" y="200" textAnchor="middle" className="drawn-text" fill="transparent" stroke="#ffffff" strokeWidth="1.5" fontSize="130" fontWeight="900" fontFamily="Agrandir, sans-serif">NUESTRA</text>
-                                <text x="400" y="380" textAnchor="middle" className="drawn-text" fill="transparent" stroke="#ffffff" strokeWidth="1.5" fontSize="130" fontWeight="900" fontFamily="Agrandir, sans-serif">HISTORIA</text>
+                                <text x="400" y="200" textAnchor="middle" className="drawn-text" fill="transparent" stroke="#ffffff" strokeWidth="1.5" fontSize="130" fontWeight="900" fontFamily="'Poppins', sans-serif">NUESTRA</text>
+                                <text x="400" y="380" textAnchor="middle" className="drawn-text" fill="transparent" stroke="#ffffff" strokeWidth="1.5" fontSize="130" fontWeight="900" fontFamily="'Poppins', sans-serif">HISTORIA</text>
+
                             </svg>
                         </div>
                     </div>
