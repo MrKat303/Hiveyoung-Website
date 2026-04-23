@@ -258,7 +258,7 @@ const SomosClient = () => {
                                     style={{
                                         fontSize: '280px',
                                         fontWeight: 900,
-                                        fontFamily: 'Poppins, sans-serif',
+                                        fontFamily: 'Agrandir, sans-serif',
                                         textTransform: 'uppercase',
                                         letterSpacing: '10px'
                                     }}

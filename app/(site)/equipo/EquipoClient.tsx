@@ -21,8 +21,8 @@ import { useGSAP } from "@gsap/react";
                 defaults: { duration: 0.6, ease: "expo.inOut" }
             });
 
-            tl.to(innerRef.current, { rotateY: 180 })
-              .to(cardRef.current, { scale: 1.05, y: -10 }, 0);
+            // FIXED: Move scale and y to innerRef to avoid conflict with CSS transitions on cardRef (.reveal)
+            tl.to(innerRef.current, { rotateY: 180, scale: 1.05, y: -10 });
 
             const enter = () => tl.play();
             const leave = () => tl.reverse();
@@ -110,8 +110,8 @@ import { useGSAP } from "@gsap/react";
                 defaults: { duration: 0.6, ease: "expo.inOut" }
             });
 
-            tl.to(innerRef.current, { rotateY: 180 })
-              .to(cardRef.current, { y: -10 }, 0);
+            // FIXED: Move y to innerRef to avoid conflict with CSS transitions on cardRef (.reveal)
+            tl.to(innerRef.current, { rotateY: 180, y: -10 });
 
             const enter = () => tl.play();
             const leave = () => tl.reverse();

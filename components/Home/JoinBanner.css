@@ -19,7 +19,7 @@
     justify-content: center;
     align-items: center;
     gap: 70px;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Agrandir', sans-serif !important;
 }
 
 .join-illustration-box {
@@ -39,7 +39,7 @@
 }
 
 .join-banner-title {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Agrandir', sans-serif !important;
     font-size: clamp(1.8rem, 2.8vw, 2.6rem);
     color: #3A1B4E;
     line-height: 1.1;
@@ -49,7 +49,7 @@
 }
 
 .join-banner-description {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Agrandir', sans-serif !important;
     color: #3A1B4E;
     opacity: 0.8;
     font-size: 1.05rem;
@@ -99,9 +99,9 @@
     background-color: rgba(58, 27, 78, 0.05);
 }
 
-/* Forzamos tipografía Poppins Light/Reg para todo */
+/* Forzamos tipografía Agrandir Light/Reg para todo */
 .join-banner-container * {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Agrandir', sans-serif !important;
 }
 
 /* Responsive */
