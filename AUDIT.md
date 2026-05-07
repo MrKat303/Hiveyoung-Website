@@ -80,7 +80,7 @@ Migrar a una arquitectura **Feature-based**:
 ---
 
 ### 🚀 ¿Qué refactorizaría primero?
-1.  **Eliminar `DisableRightClick`**.
+1.  **Eliminar `DisableRightClick`** (✅ Solucionado: Se eliminó el componente y su lógica para restaurar la UX estándar).
 2.  **Unificar Estilos** a Tailwind puro.
 3.  **Fix Linting** en componentes de GSAP.
 4.  **Migrar Data a JSON/CMS**.

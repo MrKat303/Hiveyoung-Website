@@ -23,7 +23,7 @@ export default function Hero() {
     });
 
     return (
-        <section className="hero" onContextMenu={(e) => e.preventDefault()}>
+        <section className="hero">
             <div className="hero__section">
                 <div className="hero__container">
 
