@@ -24,12 +24,15 @@ const JoinBanner = () => {
             }
         );
 
-        // Illustration reveal (static after entry)
+        // Illustration reveal (slides up from bottom when scrolling down)
         gsap.fromTo('.join-draw',
-            { opacity: 0, x: -50, rotation: -15 },
+            { opacity: 0, y: 60, scale: 0.9, rotation: 5 },
             { 
-                opacity: 1, x: 0, rotation: 0, duration: 1.2, ease: 'back.out(1.5)',
-                scrollTrigger: { trigger: '.join-banner-section', start: 'top 80%' }
+                opacity: 1, y: 0, scale: 1, rotation: 0, duration: 1.2, ease: 'power3.out',
+                scrollTrigger: { 
+                    trigger: '.join-banner-section', 
+                    start: 'top 85%', // Trigger a bit later for better visibility
+                }
             }
         );
 
