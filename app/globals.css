@@ -130,7 +130,7 @@ main {
     height: 100vh;
     display: flex;
     pointer-events: none;
-    z-index: 99999; /* Ensure it's above everything including navbar */
+    z-index: 999999; /* Cover absolutely everything during transition */
 }
 
 .transition-col {
