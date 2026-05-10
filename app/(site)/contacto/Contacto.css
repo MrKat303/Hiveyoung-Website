@@ -18,8 +18,9 @@
 }
 
 .contact-title {
+    font-family: 'Giabe Regular', sans-serif;
     font-size: 82px;
-    font-weight: 500;
+    font-weight: normal;
     line-height: 1;
     margin-bottom: 40px;
     display: flex;

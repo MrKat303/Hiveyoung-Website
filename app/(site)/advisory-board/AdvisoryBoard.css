@@ -14,9 +14,10 @@
 }
 
 .advisory-title {
+    font-family: 'Giabe Regular', sans-serif;
     color: #3A1B4E;
     font-size: 3rem;
-    font-weight: 500; /* changed from 400 */
+    font-weight: normal;
     margin-bottom: 15px;
     letter-spacing: -1px;
 }

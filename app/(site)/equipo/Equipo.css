@@ -19,8 +19,9 @@
 }
 
 .equipo-header h1 {
+    font-family: 'Giabe Regular', sans-serif;
     font-size: clamp(32px, 5vw, 56px);
-    font-weight: 500; /* changed from 400 */
+    font-weight: normal;
     margin-bottom: 15px;
     letter-spacing: -1px;
     color: #3A1B4E; /* Purple title as requested */
