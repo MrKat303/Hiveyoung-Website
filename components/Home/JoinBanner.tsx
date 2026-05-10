@@ -24,17 +24,14 @@ const JoinBanner = () => {
             }
         );
 
-        // Illustration float and rotate
+        // Illustration reveal (static after entry)
         gsap.fromTo('.join-draw',
-            { opacity: 0, x: -50, rotation: -15 },
+            { opacity: 0, scale: 0.9 },
             { 
-                opacity: 1, x: 0, rotation: 0, duration: 1.2, ease: 'back.out(1.5)',
+                opacity: 1, scale: 1, duration: 1, ease: 'power2.out',
                 scrollTrigger: { trigger: '.join-banner-section', start: 'top 80%' }
             }
         );
-        gsap.to('.join-draw', {
-            y: -15, rotation: 5, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
-        });
 
         // Text stagger
         gsap.fromTo(['.join-banner-title', '.join-banner-description', '.join-banner-action'],
