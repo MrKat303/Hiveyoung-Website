@@ -24,7 +24,7 @@ const JoinBanner = () => {
             }
         );
 
-        // Illustration float and rotate
+        // Illustration reveal (static after entry)
         gsap.fromTo('.join-draw',
             { opacity: 0, x: -50, rotation: -15 },
             { 
@@ -32,9 +32,6 @@ const JoinBanner = () => {
                 scrollTrigger: { trigger: '.join-banner-section', start: 'top 80%' }
             }
         );
-        gsap.to('.join-draw', {
-            y: -15, rotation: 5, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
-        });
 
         // Text stagger
         gsap.fromTo(['.join-banner-title', '.join-banner-description', '.join-banner-action'],
