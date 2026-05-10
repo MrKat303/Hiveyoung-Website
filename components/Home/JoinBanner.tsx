@@ -15,34 +15,32 @@ const JoinBanner = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useGSAP((context, contextSafe) => {
-        // Banner container slide up
-        gsap.fromTo('.join-banner-container',
-            { opacity: 0, y: 60, scale: 0.98 },
-            { 
-                opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power3.out',
-                scrollTrigger: { trigger: '.join-banner-section', start: 'top 85%' }
+        // Timeline to coordinate the whole banner reveal
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.join-banner-section',
+                start: 'top 90%', // Empieza a aparecer apenas entra un poco en pantalla
+                toggleActions: 'play none none none'
             }
+        });
+
+        // 1. First, the main container slides and scales up
+        tl.fromTo('.join-banner-container',
+            { opacity: 0, y: 100, scale: 0.95 },
+            { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power3.out' }
         );
 
-        // Illustration reveal (slides up from bottom when scrolling down)
-        gsap.fromTo('.join-draw',
-            { opacity: 0, y: 60, scale: 0.9, rotation: 5 },
-            { 
-                opacity: 1, y: 0, scale: 1, rotation: 0, duration: 1.2, ease: 'power3.out',
-                scrollTrigger: { 
-                    trigger: '.join-banner-section', 
-                    start: 'top 85%', // Trigger a bit later for better visibility
-                }
-            }
+        // 2. Simultaneously (with a small offset), the illustration and text appear
+        tl.fromTo('.join-draw',
+            { opacity: 0, y: 40, scale: 0.8, rotation: 5 },
+            { opacity: 1, y: 0, scale: 1, rotation: 0, duration: 1, ease: 'back.out(1.2)' },
+            "-=0.7" // Empieza antes de que termine el contenedor
         );
 
-        // Text stagger
-        gsap.fromTo(['.join-banner-title', '.join-banner-description', '.join-banner-action'],
+        tl.fromTo(['.join-banner-title', '.join-banner-description', '.join-banner-action'],
             { opacity: 0, y: 30 },
-            { 
-                opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power2.out', delay: 0.3,
-                scrollTrigger: { trigger: '.join-banner-text', start: 'top 85%' }
-            }
+            { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out' },
+            "-=0.8" // Empieza casi al mismo tiempo que la ilustración
         );
 
     }, { scope: containerRef });
