@@ -15,33 +15,32 @@ const JoinBanner = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useGSAP((context, contextSafe) => {
-        // Timeline linked to scroll progress (scrub)
+        // Timeline that triggers once and plays with a fixed duration
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.join-banner-container',
-                start: 'top bottom-=50', // Empieza apenas asoma por abajo
-                end: 'top 30%', // Termina cuando llega a la parte superior-media
-                scrub: 1, // La animación sigue el scroll
+                start: 'top 85%', // Se activa cuando entra un 15% en pantalla
+                toggleActions: 'play none none none'
             }
         });
 
-        // 1. El contenedor sube y se expande
+        // 1. El contenedor sube y se expande con fuerza
         tl.fromTo('.join-banner-container',
-            { opacity: 0, y: 150, scale: 0.9 },
-            { opacity: 1, y: 0, scale: 1, ease: 'none' }
+            { opacity: 0, y: 80, scale: 0.95 },
+            { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power3.out' }
         );
 
-        // 2. La ilustración y el texto emergen dentro del contenedor
+        // 2. La ilustración y el texto aparecen rápidamente
         tl.fromTo('.join-draw',
-            { opacity: 0, y: 50, scale: 0.8, rotation: -10 },
-            { opacity: 1, y: 0, scale: 1, rotation: 0, ease: 'none' },
-            "<" // Empieza al mismo tiempo que el contenedor
+            { opacity: 0, y: 30, scale: 0.9, rotation: 5 },
+            { opacity: 1, y: 0, scale: 1, rotation: 0, duration: 0.8, ease: 'back.out(1.5)' },
+            "-=0.7"
         );
 
         tl.fromTo(['.join-banner-title', '.join-banner-description', '.join-banner-action'],
-            { opacity: 0, y: 40 },
-            { opacity: 1, y: 0, stagger: 0.1, ease: 'none' },
-            "<0.2" // Pequeño delay para el texto
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out' },
+            "-=0.6"
         );
 
     }, { scope: containerRef });
