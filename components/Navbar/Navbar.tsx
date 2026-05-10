@@ -28,14 +28,38 @@ const HamburgerIcon = ({ isOpen, onClick }: { isOpen: boolean; onClick: () => vo
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [exitAnimationEnabled, setExitAnimationEnabled] = useState(true);
     const pathname = usePathname();
     const isCongresoPage = pathname === "/congreso";
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-    const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+    const toggleMenu = () => {
+        setExitAnimationEnabled(true);
+        setIsMenuOpen(!isMenuOpen);
+    };
 
-    // Close menu when route changes
+    const closeMenu = useCallback(() => {
+        setExitAnimationEnabled(true);
+        setIsMenuOpen(false);
+    }, []);
+
+    const handleNavClick = (path: string) => {
+        const excludedPaths = ["/", "/historia"];
+        const willHaveCurtain = !excludedPaths.includes(path);
+        
+        if (willHaveCurtain) {
+            // No cerramos el menú aquí. Dejamos que la cortina de la siguiente página lo cubra.
+            // El useEffect se encargará de cerrarlo por detrás una vez que cambie la ruta.
+            setExitAnimationEnabled(false);
+        } else {
+            setExitAnimationEnabled(true);
+            setIsMenuOpen(false);
+        }
+    };
+
+    // Close menu when route changes (fallback and sync with curtain)
     useEffect(() => {
+        // Cuando cambia la ruta, nos aseguramos de que el menú esté cerrado.
+        // Si venimos de una página con cortina, exitAnimationEnabled ya será false.
         setIsMenuOpen(false);
     }, [pathname]);
 
@@ -53,13 +77,12 @@ function Navbar() {
 
     const menuVariants = {
         closed: {
-            y: "-100%",
             opacity: 0,
             transition: {
                 type: "tween" as const,
-                duration: 0.4,
+                duration: 0.2, // Muy rápido para evitar choques
                 ease: "easeInOut" as const,
-                staggerChildren: 0.03,
+                staggerChildren: 0.02,
                 staggerDirection: -1,
                 when: "afterChildren" as const
             }
@@ -101,7 +124,7 @@ function Navbar() {
     return (
         <nav className={`navbar ${isCongresoPage ? "navbar--glass-modern" : ""} ${isMenuOpen ? "is-active" : ""}`}>
             <div className="navbar-container">
-                <Link className="navbar-logo" href="/" onClick={closeMenu}>
+                <Link className="navbar-logo" href="/" onClick={() => handleNavClick("/")}>
                     <Image
                         src="/Logo.svg"
                         alt="HiveYoung | Principal articulador del ecosistema juvenil"
@@ -155,15 +178,15 @@ function Navbar() {
                                 className="mobile-menu-overlay"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
+                                exit={exitAnimationEnabled ? { opacity: 0 } : { opacity: 0, transition: { duration: 0 } }}
                                 onClick={closeMenu}
                             />
                             <motion.div 
                                 className="mobile-menu-drawer"
                                 variants={menuVariants}
-                                initial="closed"
+                                initial={{ y: "-100%", opacity: 0 }}
                                 animate="opened"
-                                exit="closed"
+                                exit={exitAnimationEnabled ? "closed" : { opacity: 0, transition: { duration: 0 } }}
                             >
                                 <button className="mobile-close-btn" onClick={closeMenu} aria-label="Cerrar menú">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -176,7 +199,7 @@ function Navbar() {
                                         {links.map((link, index) => (
                                             <React.Fragment key={index}>
                                                 <motion.div variants={itemVariants} className="mobile-link-item">
-                                                    <Link href={link.path} onClick={closeMenu}>
+                                                    <Link href={link.path} onClick={() => handleNavClick(link.path)}>
                                                         {link.name}
                                                     </Link>
                                                 </motion.div>
@@ -186,7 +209,7 @@ function Navbar() {
                                                         variants={itemVariants} 
                                                         className="mobile-link-subitem"
                                                     >
-                                                        <Link href={sub.path} onClick={closeMenu}>
+                                                        <Link href={sub.path} onClick={() => handleNavClick(sub.path)}>
                                                             {sub.name}
                                                         </Link>
                                                     </motion.div>
@@ -202,7 +225,7 @@ function Navbar() {
                                         transition={{ delay: 0.5 }}
                                     >
                                         <div className="mobile-actions">
-                                            <Link href="/unete" className="mobile-btn-primary" onClick={closeMenu}>
+                                            <Link href="/unete" className="mobile-btn-primary" onClick={() => handleNavClick("/unete")}>
                                                 Únete
                                             </Link>
                                             <a href="https://app.hiveyoung.org/login" className="mobile-btn-outline" onClick={closeMenu}>
