@@ -10,7 +10,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     const contentRef = useRef<HTMLDivElement>(null);
 
     // Rutas que no tendrán el efecto de transición
-    const excludedPaths = ["/", "/unete", "/somos", "/historia"];
+    const excludedPaths = ["/", "/historia"];
     const shouldAnimate = !excludedPaths.includes(pathname);
 
     useLayoutEffect(() => {

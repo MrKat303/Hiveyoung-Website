@@ -53,19 +53,19 @@ function Navbar() {
 
     const menuVariants = {
         closed: {
-            x: "100%",
+            y: "-100%",
             opacity: 0,
             transition: {
-                type: "spring" as const,
-                stiffness: 400,
-                damping: 45,
-                staggerChildren: 0.05,
+                type: "tween" as const,
+                duration: 0.4,
+                ease: "easeInOut" as const,
+                staggerChildren: 0.03,
                 staggerDirection: -1,
-                when: "afterChildren"
+                when: "afterChildren" as const
             }
         },
         opened: {
-            x: 0,
+            y: 0,
             opacity: 1,
             transition: {
                 type: "spring" as const,
@@ -79,7 +79,7 @@ function Navbar() {
 
     const itemVariants = {
         opened: {
-            x: 0,
+            y: 0,
             opacity: 1,
             transition: {
                 type: "spring" as const,
@@ -88,7 +88,7 @@ function Navbar() {
             }
         },
         closed: {
-            x: 30,
+            y: -20,
             opacity: 0,
             transition: {
                 type: "spring" as const,
@@ -165,6 +165,12 @@ function Navbar() {
                                 animate="opened"
                                 exit="closed"
                             >
+                                <button className="mobile-close-btn" onClick={closeMenu} aria-label="Cerrar menú">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
                                 <div className="mobile-menu-content">
                                     <div className="mobile-menu-links">
                                         {links.map((link, index) => (
