@@ -120,3 +120,22 @@ main {
     opacity: 1 !important;
     transform: translateY(0);
 }
+
+/* Page Transition Overlay */
+.transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    pointer-events: none;
+    z-index: 99999; /* Ensure it's above everything including navbar */
+}
+
+.transition-col {
+    flex: 1;
+    height: 100%;
+    background-color: #3A1B4E; /* Brand purple */
+    transform-origin: bottom;
+}

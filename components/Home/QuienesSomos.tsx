@@ -1,17 +1,81 @@
 "use client";
 
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import useScrollReveal from '@/hooks/useScrollReveal';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 import './QuienesSomos.css';
 
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 const QuienesSomos = () => {
-    useScrollReveal();
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useGSAP((context, contextSafe) => {
+        // Title animation
+        gsap.fromTo('.qs-title', 
+            { opacity: 0, y: 50 },
+            { 
+                opacity: 1, y: 0, duration: 1.2, ease: "power3.out",
+                scrollTrigger: { trigger: '.qs-title-wrapper', start: "top 85%" }
+            }
+        );
+
+        // Description animation
+        gsap.fromTo('.qs-description', 
+            { opacity: 0, x: -30 },
+            { 
+                opacity: 1, x: 0, duration: 1, ease: "power3.out", delay: 0.2,
+                scrollTrigger: { trigger: '.qs-description-wrapper', start: "top 80%" }
+            }
+        );
+
+        // Buttons stagger
+        gsap.fromTo('.qs-btn', 
+            { opacity: 0, y: 20 },
+            { 
+                opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.2)",
+                scrollTrigger: { trigger: '.qs-actions', start: "top 90%" }
+            }
+        );
+
+        // Accent line drawing
+        gsap.fromTo('.qs-accent-line',
+            { scaleX: 0 },
+            { 
+                scaleX: 1, duration: 1.5, ease: "power4.out", transformOrigin: "left center",
+                scrollTrigger: { trigger: '.qs-accent-line', start: "top 95%" }
+            }
+        );
+
+        // Annotations dynamic entry and continuous float
+        gsap.utils.toArray('.qs-annotation-img').forEach((el: any, i) => {
+            const tl = gsap.timeline({
+                scrollTrigger: { trigger: el, start: "top 90%" }
+            });
+            
+            tl.fromTo(el, 
+                { scale: 0, rotation: gsap.utils.random(-20, 20), opacity: 0 },
+                { scale: 1, rotation: 0, opacity: 1, duration: 1, ease: "back.out(1.5)", delay: i * 0.15 }
+            ).to(el, {
+                y: gsap.utils.random(-10, 10),
+                x: gsap.utils.random(-5, 5),
+                rotation: gsap.utils.random(-3, 3),
+                duration: gsap.utils.random(2.5, 4),
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        });
+
+    }, { scope: containerRef });
 
     return (
-        <section className="quienes-somos-home">
+        <section className="quienes-somos-home" ref={containerRef}>
             <div className="quienes-somos-container">
-                <div className="qs-content reveal">
+                <div className="qs-content">
                     <div className="qs-title-wrapper">
                         <div className="qs-annotation" aria-hidden="true">
                             <Image 
