@@ -167,7 +167,7 @@ function Navbar() {
 
                 {/* Mobile Toggle */}
                 <div className="mobile-only">
-                    <HamburgerIcon isOpen={isMenuOpen} onClick={toggleMenu} />
+                    {!isMenuOpen && <HamburgerIcon isOpen={isMenuOpen} onClick={toggleMenu} />}
                 </div>
 
                 {/* Mobile Menu Overlay & Drawer */}

@@ -302,6 +302,12 @@
     z-index: 1200;
     position: relative;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-hamburger:focus, .nav-hamburger:active {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .hamburger-line {
@@ -339,15 +345,17 @@
 
 .mobile-menu-drawer {
     position: fixed;
-    top: 0;
+    top: -1px; /* Desplazamos 1px hacia arriba para cubrir cualquier gap o borde residual */
     left: 0;
     width: 100%;
     max-width: none;
-    height: 100vh;
+    height: calc(100vh + 1px);
     background-color: #3A1B4E; /* Solid brand purple */
     z-index: 1100;
     padding: 100px 30px 40px;
     box-shadow: none;
+    border: none !important;
+    outline: none !important;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
