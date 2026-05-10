@@ -1,17 +1,54 @@
 "use client";
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import useScrollReveal from '@/hooks/useScrollReveal';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 import './JoinBanner.css';
 
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 const JoinBanner = () => {
-    useScrollReveal();
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useGSAP((context, contextSafe) => {
+        // Banner container slide up
+        gsap.fromTo('.join-banner-container',
+            { opacity: 0, y: 60, scale: 0.98 },
+            { 
+                opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power3.out',
+                scrollTrigger: { trigger: '.join-banner-section', start: 'top 85%' }
+            }
+        );
+
+        // Illustration float and rotate
+        gsap.fromTo('.join-draw',
+            { opacity: 0, x: -50, rotation: -15 },
+            { 
+                opacity: 1, x: 0, rotation: 0, duration: 1.2, ease: 'back.out(1.5)',
+                scrollTrigger: { trigger: '.join-banner-section', start: 'top 80%' }
+            }
+        );
+        gsap.to('.join-draw', {
+            y: -15, rotation: 5, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
+        });
+
+        // Text stagger
+        gsap.fromTo(['.join-banner-title', '.join-banner-description', '.join-banner-action'],
+            { opacity: 0, y: 30 },
+            { 
+                opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power2.out', delay: 0.3,
+                scrollTrigger: { trigger: '.join-banner-text', start: 'top 85%' }
+            }
+        );
+
+    }, { scope: containerRef });
 
     return (
-        <section className="join-banner-section reveal">
+        <section className="join-banner-section" ref={containerRef}>
             <div className="join-banner-container">
                 <div className="join-banner-content">
                     <div className="join-illustration-box">
