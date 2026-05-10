@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: 'Agrandir';
+    font-family: 'Brinnan Regular';
     src: url('/fonts/Agrandir.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
@@ -9,7 +9,7 @@
 }
 
 @font-face {
-    font-family: 'Agrandir';
+    font-family: 'Brinnan Regular';
     src: url('/fonts/agrandir-medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
@@ -20,6 +20,22 @@
     font-family: 'Bernoru Black';
     src: url('/fonts/Bernoru-Black.woff') format('woff');
     font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Giabe Regular';
+    src: url('/fonts/giabe-regular.otf');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Agrandir Wide Light';
+    src: url('/fonts/Agrandir-WideLight.otf') format('opentype');
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
@@ -36,7 +52,7 @@
 
 
 body {
-    font-family: 'Agrandir', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Brinnan Regular', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fbf5ee; /* Matches the site's cream background */
     min-height: 100vh;
     overflow-x: hidden;

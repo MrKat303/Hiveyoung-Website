@@ -2,7 +2,7 @@
 
 .hero {
     background-color: #3a1b4e;
-    font-family: "Agrandir", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-family: "Giabe Regular", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 .hero__section {
@@ -22,8 +22,9 @@
 }
 
 .hero__title {
-    font-weight: 500;
-    font-size: 56px;
+    font-family: 'Giabe Regular', sans-serif;
+    font-weight: normal;
+    font-size: 60px;
     line-height: 1.15;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -39,7 +40,7 @@
     font-size: 18px;
     color: rgba(255, 255, 255, 0.55);
     font-weight: 400;
-    font-family: 'Agrandir', sans-serif;
+    font-family: 'Brinnan Regular', sans-serif;
     max-width: 560px;
 }
 
@@ -55,6 +56,7 @@
     display: inline-block;
     background: #5cd494;
     color: #fff;
+    font-family: 'Brinnan Regular', sans-serif;
     font-weight: 600;
     padding: 12px 40px;
     border-radius: 999px;
@@ -141,7 +143,7 @@
     }
 
     .hero__title {
-        font-size: 32px !important;
+        font-size: 34px !important;
         line-height: 1.2 !important;
         hyphens: none !important;
         overflow-wrap: normal !important;
@@ -192,7 +194,7 @@
 
 @media (min-width: 768px) {
     .hero__title {
-        font-size: clamp(48px, 5vw, 72px);
+        font-size: clamp(48px, 5.2vw, 76px);
         line-height: 1.15;
     }
 }
