@@ -13,6 +13,8 @@ const QueHacemos = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useGSAP((context, contextSafe) => {
+        if (!contextSafe) return;
+
         // Header parallax/fade
         gsap.fromTo('.que-hacemos-header', 
             { opacity: 0, y: 40 },
