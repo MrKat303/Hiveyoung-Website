@@ -302,6 +302,12 @@
     z-index: 1200;
     position: relative;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-hamburger:focus, .nav-hamburger:active {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .hamburger-line {
