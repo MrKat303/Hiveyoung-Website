@@ -19,7 +19,7 @@
     justify-content: center;
     align-items: center;
     gap: 70px;
-    font-family: 'Agrandir', sans-serif !important;
+    font-family: 'Brinnan Regular', sans-serif !important;
 }
 
 .join-illustration-box {
@@ -39,7 +39,7 @@
 }
 
 .join-banner-title {
-    font-family: 'Agrandir', sans-serif !important;
+    font-family: 'Brinnan Regular', sans-serif !important;
     font-size: clamp(1.8rem, 2.8vw, 2.6rem);
     color: #3A1B4E;
     line-height: 1.1;
@@ -49,7 +49,7 @@
 }
 
 .join-banner-description {
-    font-family: 'Agrandir', sans-serif !important;
+    font-family: 'Brinnan Regular', sans-serif !important;
     color: #3A1B4E;
     opacity: 0.8;
     font-size: 1.05rem;
@@ -101,7 +101,7 @@
 
 /* Forzamos tipografía Agrandir Light/Reg para todo */
 .join-banner-container * {
-    font-family: 'Agrandir', sans-serif !important;
+    font-family: 'Brinnan Regular', sans-serif !important;
 }
 
 /* Responsive */

@@ -107,7 +107,7 @@
 }
 
 .qh-text-content h3 {
-    font-family: 'Agrandir', sans-serif;
+    font-family: 'Brinnan Regular', sans-serif;
     font-size: clamp(1.2rem, 1.8vw, 1.6rem); /* Reducido de 1.4-1.9rem */
     font-weight: 500;
     margin-bottom: 10px;

@@ -4,7 +4,7 @@
     min-height: 100vh;
     padding: 65px 0 80px;
     /* 65px for navbar, 0 horizontal to allow full width hero */
-    font-family: 'Agrandir', sans-serif;
+    font-family: 'Brinnan Regular', sans-serif;
 }
 
 .unete-container {
@@ -51,7 +51,7 @@
 }
 
 .unete-banner-title {
-    font-family: 'Agrandir', sans-serif;
+    font-family: 'Brinnan Regular', sans-serif;
     color: #ffffff;
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 500; /* changed from 400 */
@@ -112,7 +112,7 @@
     border-bottom: 1.5px solid rgba(26, 26, 26, 0.1) !important;
     padding: 10px 0 !important;
     color: #1A1A1A !important;
-    font-family: 'Agrandir' !important;
+    font-family: 'Brinnan Regular' !important;
     font-size: 15px !important;
     outline: none !important;
     border-radius: 0 !important;
@@ -146,7 +146,7 @@
     align-items: center;
     gap: 15px;
     transition: all 0.3s ease;
-    font-family: 'Agrandir', sans-serif;
+    font-family: 'Brinnan Regular', sans-serif;
     margin-top: 20px;
 }
 

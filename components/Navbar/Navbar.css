@@ -7,7 +7,7 @@
     top: 0;
     width: 100%;
     z-index: 1000;
-    font-family: 'Agrandir', sans-serif;
+    font-family: 'Brinnan Regular', sans-serif;
     transition: background-color 0.5s ease, backdrop-filter 0.5s ease;
 }
 
@@ -376,7 +376,7 @@
 }
 
 .mobile-link-item a {
-    font-family: 'Agrandir', sans-serif;
+    font-family: 'Brinnan Regular', sans-serif;
     font-size: 1.45rem;
     font-weight: 600;
     color: #ffffff;

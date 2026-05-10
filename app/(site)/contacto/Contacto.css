@@ -4,7 +4,7 @@
     background-color: #fbf5ee;
     min-height: 100vh;
     padding: 160px 40px 80px;
-    font-family: 'Agrandir', sans-serif;
+    font-family: 'Brinnan Regular', sans-serif;
     color: #3A1B4E;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .selector-btn {
-    font-family: 'Agrandir';
+    font-family: 'Brinnan Regular';
     padding: 8px 25px;
     border-radius: 20px;
     border: 1px solid rgba(58, 27, 78, 0.1);
@@ -124,7 +124,7 @@
 .form-select,
 .form-field textarea {
     width: 100%;
-    font-family: 'Agrandir' !important;
+    font-family: 'Brinnan Regular' !important;
     background: transparent !important;
     border: none !important;
     border-bottom: 1.5px solid rgba(58, 27, 78, 0.1) !important;
@@ -147,7 +147,7 @@
 }
 
 .submit-btn {
-    font-family: 'Agrandir';
+    font-family: 'Brinnan Regular';
     width: 100%;
     background: #3A1B4E;
     padding: 20px;
