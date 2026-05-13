@@ -209,20 +209,22 @@
     font-size: 24px;
     font-weight: 500;
     color: #3A1B4E;
-    margin-bottom: 4px;
+    margin: 0 0 4px 0; /* Reset margins and set bottom */
     font-family: 'Brinnan Regular', sans-serif;
     letter-spacing: -0.5px;
     line-height: 1.2;
+    flex-shrink: 0; /* Prevent squashing on mobile */
 }
 
 .creative-role-simple {
     font-size: 16px;
     color: #3A1B4E;
     opacity: 0.8;
+    margin: 0 auto; /* Reset margins and center */
     font-family: 'Brinnan Regular', sans-serif;
     line-height: 1.2;
     max-width: 90%;
-    margin: 0 auto;
+    flex-shrink: 0; /* Prevent squashing on mobile */
 }
 
 .back-content-simple {
@@ -459,9 +461,20 @@
         grid-template-columns: 1fr !important;
     }
 
+    .creative-card-wrapper {
+        width: 100% !important;
+        max-width: 320px !important;
+        height: 450px !important; /* Increased height for mobile content */
+    }
+
     .creative-card-smaller {
         width: 100% !important;
         max-width: 280px !important;
+        height: 400px !important; /* Increased from 360 */
+    }
+
+    .creative-name-simple {
+        font-size: 22px;
     }
 
     .equipo-header h1 {

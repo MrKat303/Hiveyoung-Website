@@ -128,8 +128,8 @@ function Navbar() {
                     <Image
                         src="/Logo.svg"
                         alt="HiveYoung | Principal articulador del ecosistema juvenil"
-                        width={150}
-                        height={50}
+                        width={90}
+                        height={30}
                         className="logo-image no-interaction"
                         draggable={false}
                         priority
