@@ -2,7 +2,7 @@
     background-color: #fbf5ee;
     color: #1A1A1A;
     min-height: 100vh;
-    padding: 65px 0 80px;
+    padding: 60px 0 80px;
     /* 65px for navbar, 0 horizontal to allow full width hero */
     font-family: 'Brinnan Regular', sans-serif;
 }
@@ -254,7 +254,7 @@
 
 @media (max-width: 767px) {
     .unete-page {
-        padding: 65px 0 40px; /* 65px for navbar, 0 side padding */
+        padding: 60px 0 40px; /* 60px for navbar, 0 side padding */
         overflow-x: hidden;
     }
 

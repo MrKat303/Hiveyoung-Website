@@ -69,8 +69,8 @@ const UneteClient = () => {
         <div className="unete-page">
             <motion.section
                 className="unete-hero"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
             >
                 <div className="unete-banner">
