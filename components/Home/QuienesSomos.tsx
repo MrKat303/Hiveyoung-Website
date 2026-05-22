@@ -14,11 +14,11 @@ const QuienesSomos = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useGSAP((context, contextSafe) => {
-        // Title animation
-        gsap.fromTo('.qs-title', 
-            { opacity: 0, y: 50 },
+        // Badge animation
+        gsap.fromTo('.qs-badge', 
+            { opacity: 0, scale: 0.5, rotation: -10 },
             { 
-                opacity: 1, y: 0, duration: 1.2, ease: "power3.out",
+                opacity: 1, scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.5)",
                 scrollTrigger: { trigger: '.qs-title-wrapper', start: "top 85%" }
             }
         );
@@ -87,7 +87,9 @@ const QuienesSomos = () => {
                                 draggable={false}
                             />
                         </div>
-                        <h2 className="qs-title">¿QUIÉNES<br />SOMOS?</h2>
+                        <div className="qs-badge">
+                            <span>¿Quiénes Somos?</span>
+                        </div>
                     </div>
                     <div className="qs-description-wrapper">
                         <div className="qs-annotation-bottom" aria-hidden="true">
@@ -100,10 +102,10 @@ const QuienesSomos = () => {
                                 draggable={false}
                             />
                         </div>
-                        <p className="qs-description" data-nosnippet>
+                        <h2 className="qs-description" data-nosnippet>
                             Somos una <strong>organización juvenil</strong> que busca impulsar el talento, 
                             las ideas y el potencial de las nuevas generaciones.
-                        </p>
+                        </h2>
                         <div className="qs-annotation-top-right" aria-hidden="true">
                             <Image 
                                 src="/images/home/Liderazgo Con Proposito.svg" 

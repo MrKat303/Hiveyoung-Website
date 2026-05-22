@@ -25,6 +25,9 @@ export default function Footer() {
                                 draggable={false}
                             />
                         </Link>
+                        <p className="footer__description">
+                            Empoderando y conectando a la próxima generación de líderes jóvenes en Chile para crear un impacto positivo.
+                        </p>
                         <div className="footer__contact-strip">
                             <div className="footer__social-links">
                                 <a href="https://www.instagram.com/hiveyoung.cl/" target="_blank" rel="noopener noreferrer" className="footer__social-btn" aria-label="Instagram">

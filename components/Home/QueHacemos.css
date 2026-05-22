@@ -1,8 +1,8 @@
 .que-hacemos-section {
-    padding: 80px 5% 50px;
+    padding: 20px 5% 60px; /* Reducido padding superior de 80px a 20px */
     background-color: #fbf5ee;
     position: relative;
-    min-height: 100vh;
+    min-height: auto; /* Cambiado de 100vh a auto para evitar que estire el espacio vertical */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,13 +20,12 @@
 }
 
 .que-hacemos-title {
-    font-family: 'Bernoru Black', sans-serif;
-    font-size: clamp(1.4rem, 2.5vw, 1.8rem); 
-    font-weight: 900;
-    color: #1A1A1A;
+    font-family: 'Giabe Regular', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem); 
+    font-weight: 400;
+    color: #3A1B4E;
     margin-bottom: 15px;
-    letter-spacing: -1px;
-    text-transform: uppercase;
+    letter-spacing: -0.01em;
 }
 
 .que-hacemos-subtitle {
@@ -160,9 +159,9 @@
     }
 
     .que-hacemos-title {
-        font-size: clamp(1.6rem, 8vw, 2.2rem);
+        font-size: clamp(2rem, 8vw, 2.5rem);
         line-height: 1.1;
-        letter-spacing: -1px;
+        letter-spacing: -0.01em;
     }
 
     .que-hacemos-subtitle {

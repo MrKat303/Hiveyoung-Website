@@ -257,6 +257,9 @@ export default function CongresoPage() {
                             <a href="https://hiveyoung.org">
                                 <Image src="/Logo.svg" alt="HiveYoung Logo" width={130} height={65} style={{ height: '65px', width: 'auto' }} />
                             </a>
+                            <p className="footer-description">
+                                Empoderando y conectando a la próxima generación de líderes jóvenes en Chile para crear un impacto positivo.
+                            </p>
                         </div>
                         <nav className="footer-nav">
                             {menuItems.map((item) => (

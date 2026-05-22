@@ -41,6 +41,14 @@
     object-fit: contain;
 }
 
+.footer__description {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 300px;
+}
+
 .footer__tagline {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.5);
