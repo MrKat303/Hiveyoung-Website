@@ -75,7 +75,7 @@ const UneteClient = () => {
             >
                 <div className="unete-banner">
                     <Image
-                        src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456719/Voluntarios_sepxvr.jpg"
+                        src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1782255778/Voluntarios_HiveYoung_rztrbn.jpg"
                         alt="Voluntarios HiveYoung"
                         width={1920}
                         height={600}

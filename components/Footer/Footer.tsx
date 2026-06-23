@@ -19,8 +19,8 @@ export default function Footer() {
                             <Image
                                 src="/Logo.svg"
                                 alt="HiveYoung"
-                                width={90}
-                                height={30}
+                                width={280}
+                                height={93}
                                 className="footer__logo"
                                 draggable={false}
                             />

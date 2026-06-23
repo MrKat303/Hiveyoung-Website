@@ -22,6 +22,7 @@ export default function CongressCarousel() {
     return (
         <section className="congress-section">
             <div className="congress-carousel reveal">
+
                 {/* CEINA Logo */}
                 <div className="ceina-logo" aria-hidden="true">
                     <Image 
@@ -80,6 +81,14 @@ export default function CongressCarousel() {
 
                 {/* Content Overlay */}
                 <div className="congress-content">
+                    <Image 
+                        src="/images/congreso/logo-congreso.svg" 
+                        alt="Congreso Logo" 
+                        width={200} 
+                        height={60} 
+                        className="congress-logo-center"
+                        draggable={false} 
+                    />
                     <div className="congress-info-badge">2025</div>
                     <h2 className="congress-title">CONGRESO HIVEYOUNG</h2>
                     <a href="https://congreso.hiveyoung.org" className="congress-btn">

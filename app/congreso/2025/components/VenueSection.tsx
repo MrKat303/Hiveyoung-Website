@@ -6,7 +6,7 @@ export const VenueSection: React.FC = () => {
     return (
         <section className="venue-section">
             <div className="section-header venue-header">
-                <h2>¿Dónde nos vemos?</h2>
+                <h2>&#191;D&oacute;nde nos vemos?</h2>
                 <p>El Congreso se realiza en el corazón de Santiago.</p>
             </div>
             <div className="venue-grid">
@@ -30,7 +30,7 @@ export const VenueSection: React.FC = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="map-link"
-                                style={{ color: '#ff8ab1', fontSize: '0.85rem', fontWeight: 600, marginTop: '8px', display: 'inline-block', textDecoration: 'none' }}
+                                style={{ color: '#c4a0ff', fontSize: '0.85rem', fontWeight: 600, marginTop: '8px', display: 'inline-block', textDecoration: 'none' }}
                             >
                                 Ver en Google Maps →
                             </a>

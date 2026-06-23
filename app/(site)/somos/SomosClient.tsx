@@ -223,7 +223,7 @@ const SomosClient = () => {
                         }}
                     >
                         <Image
-                            src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456528/grupal_1_hrhwef.jpg"
+                            src="https://res.cloudinary.com/dlipwrbvd/image/upload/v1782255806/Comunidad_HiveYoung_oounbh.jpg"
                             alt="Equipo de HiveYoung en una fotografía grupal — El principal articulador del ecosistema juvenil en Chile y Latinoamérica"
                             width={1200}
                             height={800}

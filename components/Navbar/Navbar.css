@@ -55,7 +55,7 @@
 }
 
 .logo-image {
-    height: 30px;
+    height: 38px;
     width: auto;
     transition: transform 0.3s ease;
 }
@@ -554,7 +554,7 @@
     }
 
     .logo-image {
-        height: 26px;
+        height: 30px;
         width: auto;
     }
 
@@ -571,7 +571,7 @@
     }
 
     .logo-image {
-        height: 30px;
+        height: 38px;
     }
 }
 
