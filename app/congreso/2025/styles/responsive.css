@@ -13,53 +13,42 @@
 }
 
 @media (max-width: 768px) {
-    .hamburger-btn {
-        display: block;
-        position: fixed;
-        top: 20px;
+    .edicion-header {
+        padding-top: 50px;
+    }
+
+    .hero-vertical-year {
+        width: 60px;
+        height: 60px;
         right: 20px;
-        z-index: 1100;
-        padding: 8px;
-        /* Slightly smaller */
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .hero-vertical-year-inner {
+        font-size: 1.1rem;
     }
 
     .mini-navbar-wrapper {
-        padding: 0;
-        height: 0;
-        margin: 0;
-        position: static;
+        padding: 10px;
+        top: 10px;
     }
 
     .mini-navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
         width: 100%;
-        height: 100vh;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: rgba(8, 8, 16, 0.95);
-        backdrop-filter: blur(60px);
-        border: none;
-        border-radius: 0;
-        gap: 30px;
-        transform: translateY(-100%);
-        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        z-index: 1000;
+        overflow-x: auto;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
     }
-
-    .mini-navbar.mobile-open {
-        transform: translateY(0);
+    
+    .mini-navbar::-webkit-scrollbar {
+        display: none;
     }
 
     .mini-nav-btn {
-        font-size: 1.5rem;
-        padding: 20px;
-        width: 80%;
-        justify-content: center;
+        font-size: 0.9rem;
+        padding: 10px 16px;
+        white-space: nowrap;
+        flex: 0 0 auto;
     }
 
     .hero-title {
@@ -219,8 +208,15 @@
 
     .footer-brand {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         width: 100%;
+    }
+
+    .footer-brand img {
+        width: 240px !important;
+        height: auto !important;
+        margin-bottom: 10px;
     }
 
     .footer-nav {

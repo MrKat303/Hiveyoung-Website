@@ -41,7 +41,7 @@
     border: none;
     background: transparent;
     color: white;
-    font-family: 'Brinnan Regular', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
@@ -54,7 +54,48 @@
 
 .mini-nav-btn.active {
     opacity: 1;
-    background: #ffffff;
-    color: #000000;
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+    background: var(--brand-purple);
+    color: white;
+    box-shadow: 0 8px 24px rgba(143, 90, 255, 0.35);
+}
+
+/* --- MAIN NAVBAR --- */
+.edicion-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2000;
+}
+
+.header-left a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.header-left a:hover {
+  opacity: 0.7;
+}
+
+.header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .edicion-header {
+    padding: 20px 24px;
+  }
 }

@@ -15,8 +15,8 @@
 
 .search-input {
     width: 100%;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
+    background: rgba(143, 90, 255, 0.06);
+    border: 1px solid rgba(160, 110, 255, 0.2);
     padding: 16px 24px 16px 56px;
     border-radius: 100px;
     color: white;
@@ -28,9 +28,9 @@
 }
 
 .search-input:focus {
-    border-color: #ff8ab1;
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 20px rgba(194, 35, 89, 0.2);
+    border-color: var(--brand-purple);
+    background: rgba(143, 90, 255, 0.12);
+    box-shadow: 0 0 25px rgba(143, 90, 255, 0.2);
 }
 
 .search-icon {
@@ -39,6 +39,7 @@
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.5;
+    color: var(--brand-purple-light);
 }
 
 .filter-tags {
@@ -51,52 +52,67 @@
 .tag-btn {
     padding: 8px 20px;
     border-radius: 100px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
+    background: rgba(143, 90, 255, 0.05);
+    border: 1px solid rgba(160, 110, 255, 0.18);
     color: var(--text-dim);
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .tag-btn:hover,
 .tag-btn.active {
-    background: white;
-    color: black;
-    border-color: white;
+    background: var(--brand-purple);
+    color: white;
+    border-color: var(--brand-purple);
+    box-shadow: 0 4px 20px rgba(143, 90, 255, 0.35);
 }
 
 .speakers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 32px;
+    gap: 28px;
 }
 
+/* Speaker Card */
 .speaker-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    padding: 40px 32px;
-    border-radius: 32px;
+    background: rgba(143, 90, 255, 0.05);
+    border: 1px solid rgba(160, 110, 255, 0.15);
+    padding: 40px 28px;
+    border-radius: 28px;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.speaker-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(196, 160, 255, 0.3), transparent);
 }
 
 .speaker-card:hover {
     transform: translateY(-10px) scale(1.02);
-    border-color: rgba(194, 35, 89, 0.4);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(143, 90, 255, 0.45);
+    background: rgba(143, 90, 255, 0.12);
+    box-shadow: 0 25px 60px rgba(143, 90, 255, 0.2);
 }
 
 .speaker-avatar {
     width: 160px;
     height: 160px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #c22359, #529ce8);
+    background: linear-gradient(135deg, var(--brand-purple), #529ce8);
     margin-bottom: 24px;
     position: relative;
     padding: 3px;
@@ -107,32 +123,29 @@
     position: absolute;
     inset: -8px;
     border-radius: 50%;
-    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border: 1px dashed rgba(196, 160, 255, 0.3);
     animation: rotate 15s linear infinite;
 }
 
 @keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .speaker-name {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    color: #fff;
 }
 
 .speaker-role {
-    font-size: 0.85rem;
-    color: #ff8ab1;
+    font-size: 0.82rem;
+    color: var(--brand-purple-light);
     font-weight: 600;
     margin-bottom: 4px;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .speaker-company {
@@ -150,9 +163,10 @@
 
 .card-tag {
     font-size: 0.7rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(143, 90, 255, 0.1);
     padding: 4px 10px;
-    border-radius: 4px;
-    opacity: 0.6;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    opacity: 0.75;
+    border: 1px solid rgba(160, 110, 255, 0.2);
+    color: var(--brand-purple-light);
 }

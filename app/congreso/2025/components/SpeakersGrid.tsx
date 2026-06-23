@@ -43,16 +43,6 @@ export const SpeakersGrid: React.FC<SpeakersGridProps> = ({
             </div>
 
             <div className="speakers-controls">
-                <div className="search-wrapper">
-                    <Search className="search-icon" size={20} />
-                    <input
-                        type="text"
-                        placeholder="Buscar por nombre o empresa..."
-                        className="search-input"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                </div>
                 <div className="filter-tags">
                     {availableCategories.map(cat => (
                         <button

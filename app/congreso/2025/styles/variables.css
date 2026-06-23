@@ -1,0 +1,18 @@
+:root {
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(160, 110, 255, 0.18);
+    --glass-accent: rgba(143, 90, 255, 0.10);
+    --glass-heavy: rgba(143, 90, 255, 0.14);
+
+    /* Brand colors — purple palette */
+    --brand-purple: #8f5aff;
+    --brand-purple-light: #c4a0ff;
+    --brand-purple-glow: rgba(143, 90, 255, 0.35);
+    --brand-violet: #6d28d9;
+    --brand-indigo: #5e17eb;
+
+    /* Text */
+    --text-main: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.60);
+}

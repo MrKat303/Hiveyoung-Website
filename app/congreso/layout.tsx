@@ -2,17 +2,22 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Congreso HiveYoung 2025",
+    default: "Congreso HiveYoung",
+    template: "%s | Congreso HiveYoung",
   },
   description:
-    "Congreso HiveYoung: el evento juvenil más importante de Chile. Speakers, conversatorios, talleres y bandas en vivo que inspiran a jóvenes a crear, innovar y emprender.",
+    "Congreso HiveYoung: el punto de encuentro de la nueva generación en Chile. Conoce nuestros pilares de liderazgo, tecnología, emprendimiento y red de conexión.",
+  icons: {
+    icon: "/images/congreso/favicon-congreso.svg",
+    shortcut: "/images/congreso/favicon-congreso.svg",
+  },
   alternates: {
     canonical: "https://congreso.hiveyoung.org",
   },
   openGraph: {
-    title: "Congreso HiveYoung 2025",
+    title: "Congreso HiveYoung",
     description:
-      "Congreso HiveYoung: el evento juvenil más importante de Chile. Speakers, conversatorios, talleres y bandas en vivo que inspiran a jóvenes a crear, innovar y emprender.",
+      "Congreso HiveYoung: el punto de encuentro de la nueva generación en Chile. Conoce nuestros pilares de liderazgo, tecnología, emprendimiento y red de conexión.",
     images: [
       {
         url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png",
@@ -24,8 +29,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Congreso HiveYoung 2025",
-    description: "Congreso HiveYoung: el evento juvenil más importante de Chile. Speakers, conversatorios, talleres y bandas en vivo que inspiran a jóvenes a crear, innovar y emprender.",
+    title: "Congreso HiveYoung",
+    description: "Congreso HiveYoung: el punto de encuentro de la nueva generación en Chile. Conoce nuestros pilares de liderazgo, tecnología, emprendimiento y red de conexión.",
     images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png"],
   },
 };

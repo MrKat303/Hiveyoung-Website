@@ -9,14 +9,14 @@ export function middleware(req: NextRequest) {
   const isCongresoSubdomain = host.startsWith("congreso.");
 
   if (isCongresoSubdomain) {
-    // Si el usuario está en congreso.hiveyoung.org/
-    // queremos que vea lo que está en /congreso pero sin que cambie la URL
-    if (url.pathname === "/") {
-      return NextResponse.rewrite(new URL("/congreso", req.url));
+    // Si el usuario está en el subdominio 'congreso'
+    // queremos mapear todas las rutas (como / o /2025) a /congreso o /congreso/2025
+    if (!url.pathname.startsWith("/congreso")) {
+      return NextResponse.rewrite(new URL(`/congreso${url.pathname}`, req.url));
     }
 
-    // Prevención: Si por alguna razón el usuario intenta entrar a congreso.hiveyoung.org/congreso
-    // lo mandamos a la raíz del subdominio para evitar el duplicado
+    // Prevención: Si por alguna razón el usuario intenta entrar a congreso.hiveyoung.org/congreso/...
+    // lo mandamos a la ruta limpia (ej: /2025) para evitar duplicados en la URL
     if (url.pathname.startsWith("/congreso")) {
       const newPath = url.pathname.replace("/congreso", "") || "/";
       return NextResponse.redirect(new URL(newPath, req.url));
@@ -36,7 +36,14 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/",
-    "/congreso/:path*",
+    /*
+     * Coincide con todas las rutas de solicitud excepto las que comienzan con:
+     * - api (rutas de API)
+     * - _next/static (archivos estáticos)
+     * - _next/image (archivos de optimización de imágenes)
+     * - favicon.ico, favicon.png, etc. (archivos de favicon)
+     * - Cualquier ruta que tenga una extensión de archivo (ej. .png, .css, .js)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)",
   ],
 };

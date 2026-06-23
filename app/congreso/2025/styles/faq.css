@@ -1,16 +1,24 @@
 /* --- FAQ --- */
 .faq-section {
     margin-top: 30px;
-    max-width: 650px;
-    /* More compact width */
+    max-width: 680px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .faq-icon {
-    color: #ff8ab1;
+    color: var(--brand-purple-light);
     margin-bottom: 20px;
-    opacity: 0.5;
+    opacity: 0.6;
+}
+
+.faq-header-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .faq-list {
@@ -18,8 +26,7 @@
     flex-direction: column;
     gap: 12px;
     margin-top: 40px;
-    max-width: 650px;
-    /* Constrained width so it expands mostly downwards */
+    max-width: 680px;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -32,11 +39,11 @@
 }
 
 .faq-item {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 20px 24px;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(143, 90, 255, 0.05);
+    border: 1px solid rgba(160, 110, 255, 0.15);
+    border-radius: 18px;
+    padding: 22px 28px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
 }
 
@@ -49,7 +56,8 @@
 }
 
 .faq-item:not(.static):hover {
-    background: var(--glass-accent);
+    background: rgba(143, 90, 255, 0.10);
+    border-color: rgba(196, 160, 255, 0.28);
 }
 
 .faq-question {
@@ -61,31 +69,28 @@
 
 .faq-question h4 {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
 }
 
 .faq-answer {
     margin-top: 15px;
     padding-top: 15px;
-    border-top: 1px solid var(--glass-border);
+    padding-bottom: 5px;
+    border-top: 1px solid rgba(160, 110, 255, 0.12);
     opacity: 0.9;
     line-height: 1.6;
-    overflow: hidden;
 }
 
 .faq-answer p {
     font-size: 0.95rem;
-    /* Subtle typography */
     margin: 0;
     opacity: 0.8;
+    color: var(--text-dim);
 }
 
-.faq-answer::-webkit-scrollbar {
-    width: 3px;
-}
-
+.faq-answer::-webkit-scrollbar { width: 3px; }
 .faq-answer::-webkit-scrollbar-thumb {
-    background: var(--glass-border);
+    background: rgba(143, 90, 255, 0.3);
     border-radius: 10px;
 }

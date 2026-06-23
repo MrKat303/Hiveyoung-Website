@@ -16,6 +16,13 @@
     height: 550px;
 }
 
+.congress-logo-center {
+    width: auto;
+    height: 60px;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
 /* CEINA Logo */
 .ceina-logo {
     position: absolute;
@@ -174,13 +181,21 @@
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
+@font-face {
+    font-family: 'Gango';
+    src: url('/fonts/gango-regularwide.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 .congress-title {
-    font-family: 'Bernoru Black', 'Impact', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 900;
+    font-family: 'Gango', 'Bernoru Black', 'Impact', sans-serif;
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: normal;
     margin-bottom: 28px;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
     line-height: 1.1;
 }
 
@@ -215,6 +230,11 @@
     .congress-carousel {
         height: 420px;
         border-radius: 20px;
+    }
+
+    .congress-logo-center {
+        height: 45px;
+        margin-bottom: 16px;
     }
 
     .ceina-logo {
