@@ -245,8 +245,11 @@ export default function Congreso2025Client() {
                     )}
 
                     {/* MOMENTOS */}
-                    {activeSection === 'momentos' && <MomentosGallery />}
                 </AnimatePresence>
+                
+                <div style={{ display: activeSection === 'momentos' ? 'block' : 'none' }}>
+                    <MomentosGallery />
+                </div>
             </main >
 
             <footer className="congreso-footer">

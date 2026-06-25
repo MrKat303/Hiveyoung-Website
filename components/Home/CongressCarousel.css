@@ -18,7 +18,7 @@
 
 .congress-logo-center {
     width: auto;
-    height: 60px;
+    height: 150px;
     margin-bottom: 24px;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
 }
@@ -233,7 +233,7 @@
     }
 
     .congress-logo-center {
-        height: 45px;
+        height: 80px;
         margin-bottom: 16px;
     }
 

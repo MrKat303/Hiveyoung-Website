@@ -45,8 +45,8 @@ const eventJsonLd = {
     name: "Congreso HiveYoung 2025",
     description:
         "Congreso HiveYoung 2025: el evento juvenil más importante de Chile. Speakers, conversatorios, talleres y bandas en vivo.",
-    startDate: "2025-07-07",
-    endDate: "2025-07-08",
+    startDate: "2026-07-07",
+    endDate: "2026-07-08",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
     location: {

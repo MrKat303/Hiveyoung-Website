@@ -6,14 +6,14 @@ export const VenueSection: React.FC = () => {
     return (
         <section className="venue-section">
             <div className="section-header venue-header">
-                <h2>&#191;D&oacute;nde nos vemos?</h2>
+                <h2><span className="question-mark">&#191;</span>D&oacute;nde nos vemos<span className="question-mark">?</span></h2>
                 <p>El Congreso se realiza en el corazón de Santiago.</p>
             </div>
             <div className="venue-grid">
                 <div className="venue-info">
                     <div className="venue-image">
                         <Image
-                            src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxE9yI6TjM60gmPzzyEPM6p4DixTpJogZiQ0joTicJtjbbqiHJmBjEAYYJtvMo_WLknkyUMtsgKb8z9SSz1PemTqjRuhJ9l_dOl2hY1T2gNxPTyWkYIzEgBhs0juAVNduF3PQqr=s680-w680-h510-rw"
+                            src="https://offloadmedia.feverup.com/santiagosecreto.com/wp-content/uploads/2024/03/13042839/Centro_de_Extension_del_Instituto_Nacional_-_acceso_principal-e1782213748663.jpg"
                             alt="Sede CEINA"
                             width={680}
                             height={510}
