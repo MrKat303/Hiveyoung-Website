@@ -1,6 +1,7 @@
 import { historyItems, galleryImages, galleryAlts } from "@/data/historia";
 import { direccionEjecutiva } from "@/data/equipo";
 import { CONGRESS_CAROUSEL_IMAGES } from "@/data/congress-carousel";
+import { MOMENTOS_IMAGES } from "@/data/congreso";
 
 export async function GET() {
   const baseUrl = "https://hiveyoung.org";
@@ -78,8 +79,8 @@ export async function GET() {
     )
     .join("");
 
-  const homeData = CONGRESS_CAROUSEL_IMAGES.map((url, i) => ({
-    url,
+  const homeData = CONGRESS_CAROUSEL_IMAGES.map((image, i) => ({
+    url: image.url,
     caption: `Momento destacable del Congreso HiveYoung ${i + 1} - Escena en vivo`,
     title: `Congreso HiveYoung Imagen ${i + 1}`,
   }));
@@ -91,6 +92,17 @@ export async function GET() {
       <image:loc>${encodeURI(img.url)}</image:loc>
       <image:caption>${img.caption}</image:caption>
       <image:title>${img.title}</image:title>
+    </image:image>`
+    )
+    .join("");
+
+  const momentosImages = MOMENTOS_IMAGES
+    .map(
+      (img, i) => `
+    <image:image>
+      <image:loc>${encodeURI(img.url)}</image:loc>
+      <image:caption>${img.alt}</image:caption>
+      <image:title>Momento Congreso HiveYoung ${i + 1}</image:title>
     </image:image>`
     )
     .join("");
@@ -112,6 +124,9 @@ export async function GET() {
   </url>
   <url>
     <loc>${baseUrl}/unete</loc>${uneteImages}
+  </url>
+  <url>
+    <loc>https://congreso.hiveyoung.org/2025</loc>${momentosImages}
   </url>
 </urlset>`;
 

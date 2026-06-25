@@ -2,40 +2,32 @@
 
 export const HERO_IMAGES = [
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766510857/Orquesta_1_yzgvao.jpg",
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258017/Orquesta_en_el_Congreso_HiveYoung_lcwip7.jpg",
         alt: "Orquesta en vivo presentándose en el escenario principal del Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766512697/Participacion_udtvn3.jpg",
-        alt: "Jóvenes participando y levantando la mano en una conferencia interactiva"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258233/Congreso_HiveYoung_Publico_Panel_tf94og.jpg",
+        alt: "Jóvenes participando y levantando la mano en un panel en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766536297/Publico_h2gils.jpg",
-        alt: "Auditorio lleno de jóvenes líderes atentos a las charlas del congreso"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258016/Congreso_HiveYoung_P%C3%BAblico_dnfsn1.jpg",
+        alt: "Auditorio lleno de jóvenes atentos a las charlas del Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766681084/IMG_1919-Mejorado-NR_kerahb.jpg",
-        alt: "Networking y conexión entre asistentes del Congreso HiveYoung"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258143/Feria_Universitaria_Congreso_HiveYoung_z79sjv.jpg",
+        alt: "Feria Universitaria del Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766681079/IMG_2062-Mejorado-NR_shgago.jpg",
-        alt: "Grupo de jóvenes compartiendo ideas y experiencias en el evento"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258128/IMG_2039-Mejorado-NR_too0bk_f1vqzg.jpg",
+        alt: "Grupo de jóvenes compartiendo en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766681260/IMG_1780_rrrrjc.jpg",
-        alt: "Participantes disfrutando del ambiente y la colaboración en HiveYoung"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258139/Panel_El_futuro_del_Talento_en_el_Congreso_HiveYoung_pblnxx.jpg",
+        alt: "Panel de expertos discutiendo sobre el futuro del trabajo en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766512618/Panel_zz5lbb.jpg",
-        alt: "Panel de expertos discutiendo sobre el futuro del liderazgo juvenil"
-    },
-    {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766681335/IMG_2039-Mejorado-NR_too0bk.jpg",
-        alt: "Interacción dinámica entre speakers y audiencia joven"
-    },
-    {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766673940/IMG_1953_mhnxkh.jpg",
-        alt: "Momentos de inspiración y aprendizaje en el Congreso HiveYoung"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258021/Taller_en_Congreso_HiveYoung_gpistp.jpg",
+        alt: "Tallerista en uno de los paneles del Congreso HiveYoung"
     }
 ];
 
@@ -45,63 +37,51 @@ export const CONGRESS_FEATURES = ['Charlas Inspiradoras', 'Talleres y Conversato
 
 export const MOMENTOS_IMAGES = [
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766510857/Orquesta_1_yzgvao.jpg",
-        alt: "Orquesta sinfónica juvenil abriendo el Congreso HiveYoung"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258017/Orquesta_en_el_Congreso_HiveYoung_lcwip7.jpg",
+        alt: "Orquesta en vivo presentándose en el escenario principal del Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766512549/Tres_o062mf.jpg",
-        alt: "Tres jóvenes líderes conversando durante el break del evento"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258220/Congreso_HiveYoung_P%C3%BAblico_2_lngp8i.jpg",
+        alt: "Tres jóvenes riéndose en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766681260/IMG_1780_rrrrjc.jpg",
-        alt: "Ambiente colaborativo y entusiasta en los pasillos del congreso"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258216/Congreso_HiveYoung_Aromaterapia_h8lnbu.jpg",
+        alt: "Stand de Aromaterapia en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766536322/Guys_1_x2jbh7.jpg",
-        alt: "Grupo de amigos y colegas posando en el evento HiveYoung"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258229/Congreso_HiveYoung_panel_qf5z2m.jpg",
+        alt: "Panel de Conversación sobre el futuro del marketing en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766512713/Participacion_1_uvfjiq.jpg",
-        alt: "Jóvenes tomando notas y participando activamente en talleres"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258212/LAMVDA_en_el_Congreso_HiveYoung_zhvwzq.jpg",
+        alt: "Banda Lamvda presentadose en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766512767/IMG_1994-Mejorado-NR_obmhj3.jpg",
-        alt: "Asistentes al congreso compartiendo momentos de alegría"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258054/Celestinas_en_Congreso_HiveYoung_yczw1v.jpg",
+        alt: "Senadora Ximena Rincon, Sebastian Gomez y Celestinas en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766681074/IMG_0008_zqu4dr.jpg",
-        alt: "Registro de participantes en el día inaugural del congreso"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258051/Artista_en_el_Congreso_HiveYoung_z3lajz.jpg",
+        alt: "Orquesta en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766673917/IMG_1949_basypv.jpg",
-        alt: "Charla magistral sobre innovación social para jóvenes"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258164/Taller_en_el_Congreso_HiveYoung_tataf3.jpg",
+        alt: "Taller de teatro en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766684852/IMG_9768_zun8u5.jpg",
-        alt: "Dinámicas de grupo para fomentar el networking juvenil"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258161/Taller_en_el_Congreso_HiveYoung_2_rtia72.jpg",
+        alt: "Joven participando en un taller de Santiago100Palabras en Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766684680/IMG_1913_rne4wd.jpg",
-        alt: "Stand de patrocinadores y oportunidades para jóvenes"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258258/Universidades_en_Congreso_HiveYoung_qxofvh.jpg",
+        alt: "Feria Universitaria en el Congreso HiveYoung"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766684690/IMG_2083-Mejorado-NR_jonwir.jpg",
-        alt: "Entrevistas y cobertura media del Congreso HiveYoung"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258106/Congreso_HiveYoung_Almuerzos_vztv89.jpg",
+        alt: "Jovenes almorzando en el Congreso HiveYoung 2025"
     },
     {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766684685/IMG_1934_1_j97axx.jpg",
-        alt: "Jóvenes emprendedores presentando sus proyectos"
-    },
-    {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766684720/IMG_2027-Mejorado-NR_bueblx.jpg",
-        alt: "Clausura del evento con gran asistencia y energía"
-    },
-    {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766512618/Panel_zz5lbb.jpg",
-        alt: "Mesa redonda con líderes de opinión e influencers"
-    },
-    {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1766673944/IMG_1958_gznyqx.jpg",
-        alt: "Público joven celebrando los logros del ecosistema"
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782258208/IMG_1958_gznyqx_sh6kxw.jpg",
+        alt: "Realidad Virtual en el Congreso HiveYoung 2025"
     }
 ];

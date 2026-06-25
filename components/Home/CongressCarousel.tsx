@@ -47,8 +47,8 @@ export default function CongressCarousel() {
                                 className={`carousel-slide ${index === currentIndex ? 'active' : ''}`}
                             >
                                 <Image
-                                    src={img}
-                                    alt=""
+                                    src={img.url}
+                                    alt={img.alt}
                                     fill
                                     className="carousel-image-el"
                                     style={{
@@ -81,17 +81,16 @@ export default function CongressCarousel() {
 
                 {/* Content Overlay */}
                 <div className="congress-content">
+                    <div className="congress-info-badge">2025</div>
                     <Image 
                         src="/images/congreso/logo-congreso.svg" 
                         alt="Congreso Logo" 
-                        width={200} 
-                        height={60} 
+                        width={400} 
+                        height={120} 
                         className="congress-logo-center"
                         draggable={false} 
                     />
-                    <div className="congress-info-badge">2025</div>
-                    <h2 className="congress-title">CONGRESO HIVEYOUNG</h2>
-                    <a href="https://congreso.hiveyoung.org" className="congress-btn">
+                    <a href="https://congreso.hiveyoung.org/2025" className="congress-btn">
                         Revive el Congreso
                     </a>
                 </div>
