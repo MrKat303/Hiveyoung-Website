@@ -48,6 +48,12 @@
       "sourceType": "github",
       "skillPath": "skills/gsap-utils/SKILL.md",
       "computedHash": "72af4a036d417d6eaef7478eca2f28e760631fb78db822ba34a9c706797aab62"
+    },
+    "seo-images": {
+      "source": "agricidaniel/claude-seo",
+      "sourceType": "github",
+      "skillPath": "skills/seo-images/SKILL.md",
+      "computedHash": "c4398da27bfc6baec134c47f002ba4f9abb4e352f51aca9695cc9c5b6a5c8d3a"
     }
   }
 }
