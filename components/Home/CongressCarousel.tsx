@@ -84,7 +84,7 @@ export default function CongressCarousel() {
                     <div className="congress-info-badge">2025</div>
                     <Image 
                         src="/images/congreso/logo-congreso.svg" 
-                        alt="Congreso Logo" 
+                        alt="Logo del Congreso HiveYoung" 
                         width={400} 
                         height={120} 
                         className="congress-logo-center"

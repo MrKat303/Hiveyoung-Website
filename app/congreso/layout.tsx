@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Congreso HiveYoung",
+    default: "Congreso HiveYoung | El evento juvenil más importante de Chile",
     template: "%s | Congreso HiveYoung",
   },
   description:
