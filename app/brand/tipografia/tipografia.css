@@ -1,0 +1,554 @@
+/* ============================================================
+   HIVEYOUNG — TIPOGRAFÍA PAGE  (Presentation Layout)
+   ============================================================ */
+
+/* Local font declarations */
+@font-face {
+  font-family: 'Karumbi';
+  src: url('/fonts/Karumbi%20Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Giabe Regular';
+  src: url('/fonts/giabe-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── OVERFLOW GUARD ── */
+.tp-main {
+  max-width: 100%;
+}
+
+/* ================================================================
+   HERO — QUOTE
+   ================================================================ */
+/* ── Original green hero ── */
+.tp-hero {
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  background: #2EB67D;
+  padding: 56px 72px;
+  overflow: hidden;
+}
+
+.tp-hero-title {
+  font-family: 'Giabe Regular', serif;
+  font-weight: 400;
+  font-size: clamp(5.5rem, 13.5vw, 13.5rem);
+  color: #ffffff;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  margin: 0;
+  user-select: none;
+  opacity: 0; /* GSAP animates in */
+}
+
+/* ── Quote section ── */
+.tp-section--quote {
+  background: #FBF5EE;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.tp-quote-block {
+  max-width: 820px;
+  padding: 40px 0;
+}
+
+.tp-quote-mark {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  color: #2EB67D;
+  line-height: 0.6;
+  margin-bottom: 20px;
+}
+
+.tp-quote-text {
+  font-family: 'Giabe Regular', Georgia, serif;
+  font-size: clamp(2rem, 4.5vw, 4.5rem);
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0 0 28px;
+  border: none;
+  padding: 0;
+  font-style: normal;
+}
+
+.tp-quote-attr {
+  display: block;
+  font-family: 'Brinnan Regular', sans-serif;
+  font-style: normal;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #888888;
+}
+
+/* ================================================================
+   SECTIONS
+   ================================================================ */
+.tp-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 100px 80px;
+  overflow: hidden;
+}
+
+/* Purple background section (Primary Typeface — Giabe) */
+.tp-section--purple {
+  background: #3A1B4E;
+}
+
+/* Subtle tint section (Accent Typeface — Karumbi) */
+.tp-section--accent {
+  background: #f7faf8;
+}
+
+.tp-inner {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* ── Labels ── */
+.tp-overline {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #2EB67D;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* ── Section title ── */
+.tp-section-title {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  color: #111111;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 20px;
+}
+
+.tp-body-text {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 1.1rem;
+  color: #666666;
+  line-height: 1.8;
+  max-width: 560px;
+  margin-bottom: 40px;
+}
+.tp-body-text strong { color: #111111; font-weight: 500; }
+
+/* ── Typeface description (per section) ── */
+.tp-typeface-desc {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 540px;
+  margin-bottom: 56px;
+}
+
+.tp-typeface-desc--light-bg {
+  color: #666666;
+}
+
+/* ── Role legend (intro) ── */
+.tp-role-legend {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.tp-role-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0; /* GSAP animates in */
+}
+
+.tp-role-badge--primary   { background: #111111; color: #FFC100; }
+.tp-role-badge--secondary { background: #f1f3f5; color: #333333; }
+.tp-role-badge--accent    { background: #e8f7f0; color: #2EB67D; }
+
+.tp-role-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.tp-role-badge--primary   .tp-role-dot { background: #FFC100; }
+.tp-role-badge--secondary .tp-role-dot { background: #555555; }
+.tp-role-badge--accent    .tp-role-dot { background: #2EB67D; }
+
+/* ── Role pill (section header) ── */
+.tp-role-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.tp-role-pill--primary   { background: #FFC100; color: #111111; }
+.tp-role-pill--secondary { background: #3A1B4E; color: #ffffff; }
+.tp-role-pill--accent    { background: #2EB67D; color: #ffffff; }
+
+/* Optional badge */
+.tp-optional-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(0,0,0,0.15);
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.68rem;
+  color: #888888;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+}
+
+/* ================================================================
+   EDITORIAL FONT LAYOUT
+   ================================================================ */
+
+.tp-section-inner {
+  width: 100%;
+  padding: 40px 0;
+}
+
+/* Top bar: number + title */
+.tp-section-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 32px;
+}
+
+.tp-section-header--light {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.tp-section-num {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #2EB67D;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tp-section-num--light {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.tp-section-heading {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 500;
+  color: #111111;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+
+.tp-section-heading--light {
+  color: #ffffff;
+}
+
+.tp-section-sub {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.88rem;
+  color: #888888;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.tp-section-sub--light {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Font body: big specimen + details side by side */
+.tp-font-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  align-items: end;
+}
+@media (max-width: 900px) {
+  .tp-font-body { grid-template-columns: 1fr; }
+}
+
+.tp-font-specimen {
+  font-size: clamp(4.5rem, 11vw, 11rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: #111111;
+  overflow: hidden;
+}
+
+.tp-font-specimen--light {
+  color: #ffffff;
+}
+
+.tp-font-specimen--karumbi {
+  font-size: clamp(4rem, 9vw, 9rem);
+  color: #2EB67D;
+}
+
+.tp-font-details {
+  padding-bottom: 8px;
+}
+
+.tp-detail-name {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #111111;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.tp-detail-name--light {
+  color: #ffffff;
+}
+
+.tp-detail-role {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.85rem;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.tp-detail-role--light {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tp-font-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tp-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: #888888;
+  letter-spacing: 0.06em;
+}
+
+.tp-tag--light {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Alphabet strip */
+.tp-alphabet-strip {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 0.82rem;
+  color: #888888;
+  letter-spacing: 0.06em;
+  line-height: 1.9;
+  grid-column: 1 / -1;
+}
+
+.tp-alphabet-strip--light {
+  border-top-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.tp-alphabet {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.85rem;
+  color: #888888;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+
+/* ── Weight rows (Agrandir) ── */
+.font-rows {
+  margin-bottom: 32px;
+}
+
+.font-row {
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+  opacity: 0; /* GSAP animates in */
+}
+
+.font-row-sample {
+  font-size: 1.3rem;
+  color: #111111;
+  margin-bottom: 4px;
+}
+
+.font-row-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: #888888;
+  letter-spacing: 0.06em;
+}
+
+/* ================================================================
+   TYPE SCALE TABLE
+   ================================================================ */
+.scale-table {
+  width: 100%;
+}
+
+.scale-row {
+  display: flex;
+  align-items: baseline;
+  gap: 40px;
+  padding: 24px 0;
+  border-bottom: 1px solid #f0f0f0;
+  opacity: 0; /* GSAP animates in */
+  overflow: hidden;
+}
+
+.scale-meta {
+  flex-shrink: 0;
+  width: 180px;
+}
+
+.scale-role {
+  display: block;
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #2EB67D;
+  margin-bottom: 4px;
+}
+
+.scale-info {
+  display: block;
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: #888888;
+}
+
+.scale-sample {
+  flex: 1;
+  color: #111111;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — TIPOGRAFÍA
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* Hero */
+  .tp-hero {
+    height: 100vh;
+    padding: 36px 24px;
+    align-items: flex-end;
+  }
+
+  /* Sections */
+  .tp-section {
+    min-height: auto;
+    padding: 64px 24px;
+  }
+
+  .tp-section--quote {
+    min-height: auto;
+    padding: 56px 24px;
+  }
+
+  .tp-quote-text {
+    font-size: clamp(1.6rem, 7vw, 2.6rem);
+  }
+
+  .tp-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tp-section-sub {
+    margin-left: 0;
+  }
+
+  /* Font body: stack columns */
+  .tp-font-body {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .tp-font-specimen {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
+
+  .tp-font-specimen--karumbi {
+    font-size: clamp(2.8rem, 14vw, 4.5rem);
+  }
+
+  /* Role legend */
+  .tp-role-legend {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Scale table */
+  .scale-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .scale-meta {
+    width: auto;
+  }
+
+  .scale-sample {
+    font-size: clamp(1rem, 5vw, 2rem) !important;
+    white-space: normal;
+  }
+
+  /* Alphabet strip */
+  .tp-alphabet-strip {
+    font-size: 0.72rem;
+    word-break: break-all;
+  }
+}
