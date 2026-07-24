@@ -1,0 +1,190 @@
+/* ============================================================
+   HIVEYOUNG — VOICE & TONE PAGE
+   ============================================================ */
+
+.vc-main { max-width: 100%; }
+
+/* ── HERO ── */
+.vc-hero {
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  background: #FFC100; /* Warm Gold */
+  padding: 56px 72px;
+  overflow: hidden;
+}
+
+.vc-hero-title {
+  font-family: 'Giabe Regular', serif;
+  font-weight: 400;
+  font-size: clamp(6rem, 15vw, 15rem);
+  color: #1A1200; /* Dark contrast */
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  margin: 0;
+  user-select: none;
+  opacity: 0; /* GSAP animates in */
+}
+
+/* ── SECTIONS ── */
+.vc-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 100px 72px;
+  overflow: hidden;
+}
+
+.vc-inner { width: 100%; max-width: 1200px; }
+
+.vc-overline {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #FFC100;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.vc-section-title {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  color: #111111;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 20px;
+}
+
+.vc-body-text {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 1.1rem;
+  color: #666666;
+  line-height: 1.8;
+  max-width: 620px;
+}
+.vc-body-text strong { color: #111111; font-weight: 500; }
+
+/* ── PILAR CARDS ── */
+.vc-pilar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+@media (max-width: 900px) { .vc-pilar-grid { grid-template-columns: 1fr; } }
+
+.vc-pilar-card {
+  background: #f9f9fb;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 36px 28px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0; /* GSAP animates in */
+}
+.vc-pilar-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+}
+
+.vc-pilar-num {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #FFC100;
+  margin-bottom: 16px;
+}
+
+.vc-pilar-name {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 12px;
+}
+
+.vc-pilar-desc {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.92rem;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* ── GUIA TABLA ── */
+.vc-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+.vc-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: 'Brinnan Regular', sans-serif;
+}
+
+.vc-table th, .vc-table td {
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.95rem;
+}
+
+.vc-table th {
+  background: #f9f9fb;
+  font-weight: 600;
+  color: #111111;
+}
+
+.vc-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.th-do { color: #2EB67D; }
+.th-dont { color: #C22359; }
+
+.td-do {
+  color: #2EB67D;
+  background: rgba(46, 182, 125, 0.02);
+}
+.td-dont {
+  color: #C22359;
+  background: rgba(194, 35, 89, 0.02);
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — VOICE & TONE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .vc-hero {
+    height: 100vh;
+    padding: 36px 24px;
+  }
+
+  .vc-section {
+    min-height: auto;
+    padding: 64px 24px;
+  }
+
+  .vc-pilar-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .vc-pilar-card {
+    padding: 24px;
+  }
+
+  .vc-table th, .vc-table td {
+    padding: 12px 16px;
+    font-size: 0.88rem;
+  }
+}

@@ -1,0 +1,322 @@
+/* ============================================================
+   HIVEYOUNG — COLOR PAGE
+   ============================================================ */
+
+/* ── TOAST ── */
+.cp-toast {
+  position: fixed;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: #3A1B4E;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-size: 0.88rem;
+  font-family: 'Brinnan Regular', sans-serif;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  white-space: nowrap;
+  box-shadow: 0 8px 32px rgba(58,27,78,0.2);
+}
+.cp-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── GLOBAL OVERFLOW FIX ── */
+.cp-main {
+  max-width: 100%;
+}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.cp-hero {
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  background: #529CE8;
+  padding: 56px 72px;
+  overflow: hidden;
+}
+
+.cp-hero-title {
+  /* Giabe Regular — only for the hero title */
+  font-family: 'Giabe Regular', serif;
+  font-weight: 400;
+  font-size: clamp(9rem, 21vw, 21rem);
+  color: #fff;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  margin: 0;
+  user-select: none;
+  opacity: 0; /* GSAP animates in */
+}
+
+/* ================================================================
+   PHILOSOPHY
+   ================================================================ */
+.cp-philosophy {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 100px 72px;
+}
+
+.cp-philosophy-inner { max-width: 780px; }
+
+.cp-philo-overline {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #529CE8;
+  display: block;
+  margin-bottom: 28px;
+}
+
+.cp-philo-title {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 500;
+  color: #111;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 32px;
+}
+
+.cp-philo-body {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.8;
+}
+.cp-philo-body strong { color: #111; font-weight: 500; }
+
+/* ================================================================
+   PALETTE SECTIONS
+   ================================================================ */
+.cp-palette-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 110px 72px;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+.cp-palette-inner {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.cp-section-overline {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #bbb;
+  display: block;
+  margin-bottom: 14px;
+}
+.cp-overline-light { color: rgba(255,255,255,0.4); }
+
+.cp-section-title {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  color: #111;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 10px;
+}
+.cp-title-light { color: #fff; }
+
+.cp-section-sub {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.98rem;
+  color: #999;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 52px;
+}
+.cp-sub-light { color: rgba(255,255,255,0.45); }
+
+/* ================================================================
+   SWATCH ROW — horizontal strip of color blocks
+   ================================================================ */
+.swatch-row {
+  display: flex;
+  width: 100%;
+  overflow: hidden;     /* NO horizontal scroll */
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.sw-item {
+  flex: 1;
+  min-width: 0;
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+  transition: flex 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  overflow: hidden;
+  opacity: 0; /* GSAP animates in */
+}
+
+.sw-item:hover {
+  flex: 2.5;
+}
+
+/* Label revealed on hover */
+.sw-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 18px;
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(6px);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sw-item:hover .sw-label {
+  transform: translateY(0);
+}
+
+.sw-name {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.sw-hex {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+
+/* Smaller height for accent row (11 items) */
+.accent-row .sw-item { height: 180px; }
+
+/* Gray strip — taller, fewer items */
+.gray-strip .sw-item { height: 160px; }
+
+/* ================================================================
+   PRIMARY DETAIL LIST
+   ================================================================ */
+.primary-detail-list {
+  margin-top: 32px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.pd-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.pd-row:hover { background: #fafafa; margin: 0 -8px; padding-left: 8px; padding-right: 8px; border-radius: 8px; }
+
+.pd-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pd-name {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #111;
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.pd-hex {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #888;
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.pd-role {
+  font-family: 'Brinnan Regular', sans-serif;
+  font-size: 0.85rem;
+  color: #bbb;
+  flex: 1;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — COLOR
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .cp-hero {
+    height: 100vh;
+    padding: 36px 24px;
+  }
+
+  .cp-philosophy {
+    min-height: auto;
+    padding: 64px 24px;
+  }
+
+  .cp-palette-section {
+    min-height: auto;
+    padding: 64px 24px;
+  }
+
+  /* Swatches: stack vertically on mobile */
+  .swatch-row {
+    flex-direction: column;
+    border-radius: 12px;
+  }
+
+  .sw-item {
+    height: 72px;
+    flex: none !important;
+  }
+
+  .sw-item:hover {
+    flex: none !important;
+  }
+
+  /* Show labels always on mobile */
+  .sw-label {
+    transform: translateY(0);
+  }
+
+  /* Primary detail list: hide role column */
+  .pd-row {
+    flex-wrap: wrap;
+  }
+
+  .pd-role {
+    display: none;
+  }
+
+  .pd-name {
+    width: auto;
+    flex: 1;
+  }
+}
