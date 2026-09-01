@@ -9,15 +9,19 @@ export const metadata: Metadata = {
         canonical: "https://www.hiveyoung.org/unete",
     },
     openGraph: {
+        type: "website",
+        locale: "es_CL",
+        siteName: "HiveYoung",
+        url: "https://www.hiveyoung.org/unete",
         title: "Únete a HiveYoung",
         description:
             "¿Quieres ser parte del cambio? Únete a HiveYoung y forma parte de la comunidad de líderes juveniles más grande de Chile.",
         images: [
             {
-                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
+                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782255778/Voluntarios_HiveYoung_rztrbn.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Únete a HiveYoung",
+                alt: "Voluntarios de HiveYoung participando en una actividad juvenil",
             },
         ],
     },
@@ -25,7 +29,10 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Únete a HiveYoung",
         description: "Sé parte de la comunidad de líderes juveniles que está transformando Chile.",
-        images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png"],
+        images: [{
+            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782255778/Voluntarios_HiveYoung_rztrbn.jpg",
+            alt: "Voluntarios de HiveYoung participando en sus iniciativas",
+        }],
     },
 };
 

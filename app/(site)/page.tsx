@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     canonical: "https://www.hiveyoung.org",
   },
   openGraph: {
+    type: "website",
+    locale: "es_CL",
+    siteName: "HiveYoung",
+    url: "https://www.hiveyoung.org",
     title: "HiveYoung | Principal articulador del ecosistema juvenil",
     description:
       "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
@@ -31,7 +35,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HiveYoung | Principal articulador del ecosistema juvenil",
     description: "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
-    images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png"],
+    images: [{
+      url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
+      alt: "HiveYoung, articulador del ecosistema juvenil",
+    }],
   },
 };
 

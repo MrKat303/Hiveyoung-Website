@@ -9,6 +9,10 @@ export const metadata: Metadata = {
         canonical: "https://www.hiveyoung.org/contacto",
     },
     openGraph: {
+        type: "website",
+        locale: "es_CL",
+        siteName: "HiveYoung",
+        url: "https://www.hiveyoung.org/contacto",
         title: "Contacto | HiveYoung",
         description:
             "¿Tienes alguna duda o quieres colaborar con HiveYoung? Ponte en contacto con nosotros.",
@@ -25,7 +29,10 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Contacto | HiveYoung",
         description: "¿Quieres colaborar o tienes alguna duda? Contáctanos.",
-        images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png"],
+        images: [{
+            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
+            alt: "Contacto de HiveYoung",
+        }],
     },
 };
 

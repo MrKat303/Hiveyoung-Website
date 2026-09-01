@@ -10,15 +10,19 @@ export const metadata: Metadata = {
         canonical: "https://www.hiveyoung.org/equipo",
     },
     openGraph: {
+        type: "website",
+        locale: "es_CL",
+        siteName: "HiveYoung",
+        url: "https://www.hiveyoung.org/equipo",
         title: "Nuestro Equipo | HiveYoung",
         description:
             "Conoce al equipo detrás de HiveYoung, jóvenes líderes comprometidos con articular el ecosistema juvenil y generar impacto social.",
         images: [
             {
-                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
+                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782255806/Comunidad_HiveYoung_oounbh.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Nuestro Equipo | HiveYoung",
+                alt: "Equipo juvenil de HiveYoung reunido en comunidad",
             },
         ],
     },
@@ -26,7 +30,10 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Nuestro Equipo | HiveYoung",
         description: "Conoce al equipo detrás de HiveYoung, jóvenes líderes comprometidos con articular el ecosistema juvenil.",
-        images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png"],
+        images: [{
+            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782255806/Comunidad_HiveYoung_oounbh.jpg",
+            alt: "Equipo y comunidad de jóvenes de HiveYoung",
+        }],
     },
 };
 
