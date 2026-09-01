@@ -5,11 +5,39 @@
 **Exclusión expresa:** no se evaluó, puntuó ni incluyó ninguna ruta o activo de Brand.
 **Estado evaluado:** código local actual + deployment público accesible durante la auditoría.
 
+## Actualización de implementación — 1 de septiembre de 2026
+
+Esta sección prevalece sobre las referencias históricas al deployment que aparecen más abajo y conserva los hallazgos originales como línea base de auditoría.
+
+- La variante pública elegida es `https://www.hiveyoung.org`.
+- La corrección de `metadataBase`, canonicals, URLs de Organization, breadcrumbs, enlaces absolutos y sitemaps ya fue publicada y verificada en las páginas principales.
+- El título duplicado de Historia ya está corregido en producción.
+- El código local incorpora ahora metadatos Open Graph y Twitter/X específicos para las nueve páginas auditadas, incluidas las dos páginas de Congreso.
+- Todas las páginas declaran `og:type`, `og:locale`, `og:site_name`, `og:url`, título, descripción e imagen de 1200 × 630; Twitter/X usa `summary_large_image`, título, descripción, imagen y texto alternativo.
+- Las cinco imágenes sociales contextuales generadas mediante Cloudinary responden `200`, se entregan como `image/jpeg` y pesan entre 64.791 y 139.187 bytes.
+- La implementación social está validada en el HTML local y queda pendiente de despliegue. Hasta entonces, la web pública continúa mostrando parte de los metadatos Open Graph anteriores.
+
+### Inventario social actualizado
+
+| Ruta | `og:url` | Imagen social | Estado |
+|---|---|---|---|
+| `/` | `https://www.hiveyoung.org` | Arte institucional 1200 × 630 | Validado local; pendiente desplegar |
+| `/somos` | `https://www.hiveyoung.org/somos` | Comunidad HiveYoung | Validado local; pendiente desplegar |
+| `/historia` | `https://www.hiveyoung.org/historia` | Fundadores e historia | Validado local; pendiente desplegar |
+| `/equipo` | `https://www.hiveyoung.org/equipo` | Equipo y comunidad | Validado local; pendiente desplegar |
+| `/advisory-board` | `https://www.hiveyoung.org/advisory-board` | Arte institucional | Validado local; pendiente desplegar |
+| `/unete` | `https://www.hiveyoung.org/unete` | Voluntariado | Validado local; pendiente desplegar |
+| `/contacto` | `https://www.hiveyoung.org/contacto` | Arte institucional | Validado local; pendiente desplegar |
+| Congreso `/` | `https://congreso.hiveyoung.org` | Orquesta del Congreso | Validado local; pendiente desplegar |
+| Congreso `/2025` | `https://congreso.hiveyoung.org/2025` | Panel y público del Congreso 2025 | Validado local; pendiente desplegar |
+
+La selección de imágenes es deliberadamente contextual: las páginas con una narrativa visual propia no reutilizan de forma indiscriminada la imagen genérica del sitio. Se fijó JPEG para maximizar compatibilidad con Facebook, LinkedIn, WhatsApp, X/Twitter y otros consumidores de Open Graph.
+
 ## 1. Resumen ejecutivo
 
 HiveYoung cuenta con una base SEO técnicamente competente: renderizado HTML indexable, HTTPS, una H1 por ruta, canonicals declarados, metadatos únicos, Open Graph, Twitter Cards, JSON-LD, navegación interna clara y cobertura pública de fuentes externas relevantes. La organización también dispone de señales reales de autoridad: universidades y medios han publicado información independiente sobre HiveYoung y el Congreso 2025.
 
-El principal problema no es la ausencia de SEO, sino la **inconsistencia entre señales**. El deployment público no coincide con el código local: sigue mezclando ambos hosts en los sitemaps, publica canonicals sin `www` mientras todas las páginas principales redirigen a `www`, mantiene schemas antiguos del Congreso y conserva el título duplicado de Historia. Estas contradicciones dificultan la consolidación de URLs, el rastreo limpio y la confianza de los sistemas de búsqueda y respuesta generativa.
+La auditoría inicial detectó como problema principal la **inconsistencia entre señales**. Desde entonces ya se publicó la normalización de la variante canónica `www` y la corrección del título de Historia. La prioridad operativa actual es desplegar la nueva capa social, confirmar nuevamente la separación de sitemaps por host y validar en producción los schemas corregidos del Congreso.
 
 El segundo problema es estratégico: el sitio explica quién es HiveYoung, pero tiene poca profundidad sobre **qué proyectos ejecuta, qué resultados obtiene, cómo trabaja y qué conocimiento propio puede aportar**. Eso limita la captación de búsquedas no marcarias y la posibilidad de ser citado como fuente en AI Overviews, AI Mode, ChatGPT, Perplexity u otros sistemas basados en recuperación.
 

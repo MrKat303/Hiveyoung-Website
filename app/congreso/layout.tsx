@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Congreso HiveYoung | El evento juvenil más importante de Chile",
-    template: "%s | Congreso HiveYoung",
+    absolute: "Congreso HiveYoung | Liderazgo e innovación juvenil en Chile",
   },
   description:
     "Congreso HiveYoung: el punto de encuentro de la nueva generación en Chile. Conoce nuestros pilares de liderazgo, tecnología, emprendimiento y red de conexión.",
@@ -15,23 +14,30 @@ export const metadata: Metadata = {
     canonical: "https://congreso.hiveyoung.org",
   },
   openGraph: {
-    title: "Congreso HiveYoung",
+    type: "website",
+    locale: "es_CL",
+    siteName: "Congreso HiveYoung",
+    url: "https://congreso.hiveyoung.org",
+    title: "Congreso HiveYoung | Liderazgo e innovación juvenil en Chile",
     description:
       "Congreso HiveYoung: el punto de encuentro de la nueva generación en Chile. Conoce nuestros pilares de liderazgo, tecnología, emprendimiento y red de conexión.",
     images: [
       {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png",
+        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782258017/Orquesta_en_el_Congreso_HiveYoung_lcwip7.jpg",
         width: 1200,
         height: 630,
-        alt: "Congreso HiveYoung",
+        alt: "Orquesta en vivo en el escenario principal del Congreso HiveYoung",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Congreso HiveYoung",
+    title: "Congreso HiveYoung | Liderazgo e innovación juvenil en Chile",
     description: "Congreso HiveYoung: el punto de encuentro de la nueva generación en Chile. Conoce nuestros pilares de liderazgo, tecnología, emprendimiento y red de conexión.",
-    images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png"],
+    images: [{
+      url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782258017/Orquesta_en_el_Congreso_HiveYoung_lcwip7.jpg",
+      alt: "Orquesta durante el Congreso HiveYoung",
+    }],
   },
 };
 

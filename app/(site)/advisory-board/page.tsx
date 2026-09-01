@@ -10,6 +10,10 @@ export const metadata: Metadata = {
         canonical: "https://www.hiveyoung.org/advisory-board",
     },
     openGraph: {
+        type: "website",
+        locale: "es_CL",
+        siteName: "HiveYoung",
+        url: "https://www.hiveyoung.org/advisory-board",
         title: "Advisory Board | HiveYoung",
         description:
             "Conoce a nuestro Advisory Board: líderes estratégicos de diversas industrias que impulsan la visión y el impacto de HiveYoung.",
@@ -26,7 +30,10 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Advisory Board | HiveYoung",
         description: "Conoce a los líderes estratégicos que impulsan la visión de HiveYoung.",
-        images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png"],
+        images: [{
+            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
+            alt: "Advisory Board de HiveYoung",
+        }],
     },
 };
 

@@ -9,15 +9,19 @@ export const metadata: Metadata = {
         canonical: "https://www.hiveyoung.org/historia",
     },
     openGraph: {
+        type: "website",
+        locale: "es_CL",
+        siteName: "HiveYoung",
+        url: "https://www.hiveyoung.org/historia",
         title: "Nuestra Historia | HiveYoung",
         description:
             "Conoce la historia de HiveYoung, cómo nació y quiénes han sido parte de este proyecto que transforma el ecosistema juvenil.",
         images: [
             {
-                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
+                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782256043/Fundadores_de_HiveYoung_ebrcgk.png",
                 width: 1200,
                 height: 630,
-                alt: "Nuestra Historia | HiveYoung",
+                alt: "Fundadores de HiveYoung durante los inicios de la organización",
             },
         ],
     },
@@ -25,7 +29,10 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Nuestra Historia | HiveYoung",
         description: "Conoce el origen y la evolución de HiveYoung, transformando el ecosistema juvenil.",
-        images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png"],
+        images: [{
+            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782256043/Fundadores_de_HiveYoung_ebrcgk.png",
+            alt: "Fundadores de HiveYoung y momentos de su historia",
+        }],
     },
 };
 
