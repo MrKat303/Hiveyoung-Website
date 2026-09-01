@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import DisableRightClick from "@/components/DisableRightClick";
 import { Analytics } from "@vercel/analytics/react";
+import { getOpenGraphImage } from "@/data/open-graph";
 
 
 const poppins = Poppins({
@@ -74,7 +75,7 @@ export const metadata: Metadata = {
     url: "https://www.hiveyoung.org",
     images: [
       {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
+        url: getOpenGraphImage("home"),
         width: 1200,
         height: 630,
         alt: "HiveYoung | Articulador del Ecosistema Juvenil",
@@ -86,7 +87,7 @@ export const metadata: Metadata = {
     title: "HiveYoung | Principal articulador del ecosistema juvenil",
     description:
       "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
-    images: ["https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png"],
+    images: [getOpenGraphImage("home")],
   },
   robots: {
     index: true,
