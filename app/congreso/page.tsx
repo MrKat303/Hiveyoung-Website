@@ -4,14 +4,13 @@ import { speakers } from '@/data/speakers';
 const congresoJsonLd = {
   "@context": "https://schema.org",
   "@type": "Event",
-  name: "Congreso HiveYoung",
+  name: "Congreso HiveYoung 2025",
   description:
-    "El punto de encuentro de la nueva generación en Chile. Liderazgo, tecnología, emprendimiento y red de conexión.",
+    "Congreso HiveYoung 2025, realizado el 7 y 8 de julio de 2025 en Santiago de Chile.",
   url: "https://congreso.hiveyoung.org",
-  startDate: "2025-07-07",
-  endDate: "2025-07-08",
+  startDate: "2025-07-07T08:00:00-04:00",
+  endDate: "2025-07-08T18:00:00-04:00",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  eventStatus: "https://schema.org/EventScheduled",
   location: {
     "@type": "Place",
     name: "Centro de Extensión Instituto Nacional (CEINA)",
@@ -26,15 +25,7 @@ const congresoJsonLd = {
   organizer: {
     "@type": "Organization",
     name: "HiveYoung",
-    url: "https://hiveyoung.org",
-  },
-  offers: {
-    "@type": "Offer",
-    url: "https://congreso.hiveyoung.org",
-    price: "0",
-    priceCurrency: "CLP",
-    availability: "https://schema.org/InStock",
-    validFrom: "2025-01-01",
+    url: "https://www.hiveyoung.org",
   },
   performer: speakers.map((s) => ({
     "@type": "Person",

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     description:
         "¿Quieres ser parte del cambio? Únete a HiveYoung y forma parte de la comunidad de líderes juveniles más grande de Chile.",
     alternates: {
-        canonical: "https://hiveyoung.org/unete",
+        canonical: "https://www.hiveyoung.org/unete",
     },
     openGraph: {
         title: "Únete a HiveYoung",
@@ -108,13 +108,13 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       "position": 1,
       "name": "Inicio",
-      "item": "https://hiveyoung.org"
+      "item": "https://www.hiveyoung.org"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Únete",
-      "item": "https://hiveyoung.org/unete"
+      "item": "https://www.hiveyoung.org/unete"
     }
   ]
 };

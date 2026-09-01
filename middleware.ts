@@ -23,12 +23,36 @@ export function middleware(req: NextRequest) {
     }
   }
 
-  // 2. Redirección desde el dominio principal
-  // Si alguien entra a hiveyoung.org/congreso -> redirección 301 a congreso.hiveyoung.org
+  // 2. Detectar si estamos en el subdominio 'brand'
+  // Funciona para: brand.hiveyoung.org o brand.localhost:3000
+  const isBrandSubdomain = host.startsWith("brand.");
+
+  if (isBrandSubdomain) {
+    // Mapear todas las rutas a /brand/*
+    if (!url.pathname.startsWith("/brand")) {
+      return NextResponse.rewrite(new URL(`/brand${url.pathname}`, req.url));
+    }
+
+    // Prevención de duplicados en la URL
+    if (url.pathname.startsWith("/brand")) {
+      const newPath = url.pathname.replace("/brand", "") || "/";
+      return NextResponse.redirect(new URL(newPath, req.url));
+    }
+  }
+
+  // 3. Redirección desde el dominio principal
   const isMainDomain = host === "hiveyoung.org" || host === "www.hiveyoung.org";
+
+  // hiveyoung.org/congreso -> 301 a congreso.hiveyoung.org
   if (isMainDomain && url.pathname.startsWith("/congreso")) {
     const newPath = url.pathname.replace("/congreso", "") || "/";
     return NextResponse.redirect(new URL(`https://congreso.hiveyoung.org${newPath}`, req.url), 301);
+  }
+
+  // hiveyoung.org/brand -> 301 a brand.hiveyoung.org
+  if (isMainDomain && url.pathname.startsWith("/brand")) {
+    const newPath = url.pathname.replace("/brand", "") || "/";
+    return NextResponse.redirect(new URL(`https://brand.hiveyoung.org${newPath}`, req.url), 301);
   }
 
   return NextResponse.next();

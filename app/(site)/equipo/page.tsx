@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description:
         "Conoce al equipo detrás de HiveYoung, jóvenes líderes comprometidos con articular el ecosistema juvenil y generar impacto social en Chile.",
     alternates: {
-        canonical: "https://hiveyoung.org/equipo",
+        canonical: "https://www.hiveyoung.org/equipo",
     },
     openGraph: {
         title: "Nuestro Equipo | HiveYoung",
@@ -35,7 +35,7 @@ const equipoJsonLd = {
     "@type": "ItemList",
     "name": "Dirección Ejecutiva HiveYoung",
     "description": "Equipo ejecutivo de HiveYoung, jóvenes líderes que dirigen la organización juvenil.",
-    "url": "https://hiveyoung.org/equipo",
+    "url": "https://www.hiveyoung.org/equipo",
     "itemListElement": direccionEjecutiva.map((miembro, index) => ({
         "@type": "ListItem",
         "position": index + 1,
@@ -47,7 +47,7 @@ const equipoJsonLd = {
             "worksFor": {
                 "@type": "Organization",
                 "name": "HiveYoung",
-                "url": "https://hiveyoung.org"
+                "url": "https://www.hiveyoung.org"
             },
             ...(miembro.img ? { "image": miembro.img } : {}),
             ...(miembro.linkedin && miembro.linkedin !== "https://linkedin.com/" ? { "sameAs": miembro.linkedin } : {})
@@ -63,13 +63,13 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       "position": 1,
       "name": "Inicio",
-      "item": "https://hiveyoung.org"
+      "item": "https://www.hiveyoung.org"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Nuestro Equipo",
-      "item": "https://hiveyoung.org/equipo"
+      "item": "https://www.hiveyoung.org/equipo"
     }
   ]
 };

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description:
         "Conoce a nuestro Advisory Board: líderes estratégicos de diversas industrias que impulsan la visión y el impacto de HiveYoung.",
     alternates: {
-        canonical: "https://hiveyoung.org/advisory-board",
+        canonical: "https://www.hiveyoung.org/advisory-board",
     },
     openGraph: {
         title: "Advisory Board | HiveYoung",
@@ -35,7 +35,7 @@ const advisoryJsonLd = {
     "@type": "ItemList",
     "name": "Advisory Board HiveYoung",
     "description": "Líderes estratégicos de diversas industrias que impulsan la visión y el impacto de HiveYoung.",
-    "url": "https://hiveyoung.org/advisory-board",
+    "url": "https://www.hiveyoung.org/advisory-board",
     "numberOfItems": advisors.length,
     "itemListElement": advisors.map((advisor, index) => ({
         "@type": "ListItem",
@@ -52,7 +52,7 @@ const advisoryJsonLd = {
             "memberOf": {
                 "@type": "Organization",
                 "name": "HiveYoung",
-                "url": "https://hiveyoung.org",
+                "url": "https://www.hiveyoung.org",
             },
             ...(advisor.linkedin ? { "sameAs": advisor.linkedin } : {}),
         },
@@ -67,13 +67,13 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       "position": 1,
       "name": "Inicio",
-      "item": "https://hiveyoung.org"
+      "item": "https://www.hiveyoung.org"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Advisory Board",
-      "item": "https://hiveyoung.org/advisory-board"
+      "item": "https://www.hiveyoung.org/advisory-board"
     }
   ]
 };

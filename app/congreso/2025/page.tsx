@@ -44,11 +44,10 @@ const eventJsonLd = {
     "@type": "Event",
     name: "Congreso HiveYoung 2025",
     description:
-        "Congreso HiveYoung 2025: el evento juvenil más importante de Chile. Speakers, conversatorios, talleres y bandas en vivo.",
-    startDate: "2026-07-07",
-    endDate: "2026-07-08",
+        "Congreso HiveYoung 2025, realizado el 7 y 8 de julio de 2025 en Santiago de Chile. Speakers, conversatorios, talleres y bandas en vivo.",
+    startDate: "2025-07-07T08:00:00-04:00",
+    endDate: "2025-07-08T18:00:00-04:00",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    eventStatus: "https://schema.org/EventScheduled",
     location: {
         "@type": "Place",
         name: "Centro de Extensión Instituto Nacional (CEINA)",
@@ -61,16 +60,10 @@ const eventJsonLd = {
     organizer: {
         "@type": "Organization",
         name: "HiveYoung",
-        url: "https://hiveyoung.org",
+        url: "https://www.hiveyoung.org",
     },
     image:
         "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773377243/Red_Simple_Company_Logo_td3up0.png",
-    offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "CLP",
-        availability: "https://schema.org/InStock",
-    },
 };
 
 export default function CongresoPage() {

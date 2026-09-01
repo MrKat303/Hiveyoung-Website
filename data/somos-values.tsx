@@ -18,7 +18,7 @@ export const SOMOS_VALUES = [
         icon: React.createElement(Heart, { size: 40, strokeWidth: 2, color: "#529ce8" }),
         title: "Compromiso",
         color: "#529ce8",
-        description: "Nos entregamos con pasión y responsabilidad a nuestra causa, trabajando incansablemente para impulsar nuestra iniciativas."
+        description: "Nos entregamos con pasión y responsabilidad a nuestra causa, trabajando incansablemente para impulsar nuestras iniciativas."
     },
     {
         icon: React.createElement(Lightbulb, { size: 40, strokeWidth: 2, color: "#ffc100" }),

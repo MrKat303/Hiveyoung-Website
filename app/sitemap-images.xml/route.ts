@@ -3,8 +3,11 @@ import { direccionEjecutiva } from "@/data/equipo";
 import { CONGRESS_CAROUSEL_IMAGES } from "@/data/congress-carousel";
 import { MOMENTOS_IMAGES } from "@/data/congreso";
 
-export async function GET() {
-  const baseUrl = "https://hiveyoung.org";
+export async function GET(request: Request) {
+  const baseUrl = "https://www.hiveyoung.org";
+  const forwardedHost = request.headers.get("x-forwarded-host");
+  const host = forwardedHost || request.headers.get("host") || new URL(request.url).hostname;
+  const hostname = host.split(":")[0].toLowerCase();
 
   const historiaImages = [
     ...historyItems
@@ -107,7 +110,7 @@ export async function GET() {
     )
     .join("");
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
@@ -125,14 +128,24 @@ export async function GET() {
   <url>
     <loc>${baseUrl}/unete</loc>${uneteImages}
   </url>
+</urlset>`;
+
+  const congressSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://congreso.hiveyoung.org/2025</loc>${momentosImages}
   </url>
 </urlset>`;
 
+  const sitemap = hostname === "congreso.hiveyoung.org"
+    ? congressSitemap
+    : mainSitemap;
+
   return new Response(sitemap, {
     headers: {
-      "Content-Type": "application/xml",
+      "Content-Type": "application/xml; charset=utf-8",
+      "Cache-Control": "public, max-age=0, s-maxage=3600",
     },
   });
 }

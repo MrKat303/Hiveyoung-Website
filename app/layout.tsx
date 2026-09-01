@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hiveyoung.org"),
+  metadataBase: new URL("https://www.hiveyoung.org"),
   title: {
     default: "HiveYoung | Principal articulador del ecosistema juvenil",
     template: "%s | HiveYoung",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     title: "HiveYoung | Principal articulador del ecosistema juvenil",
     description:
       "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
-    url: "https://hiveyoung.org",
+    url: "https://www.hiveyoung.org",
     images: [
       {
         url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
@@ -117,8 +117,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "HiveYoung",
-  url: "https://hiveyoung.org",
-  logo: "https://hiveyoung.org/Logo.svg",
+  url: "https://www.hiveyoung.org",
+  logo: "https://www.hiveyoung.org/Logo.svg",
   description:
     "Principal articulador del ecosistema juvenil en Chile y Latinoamérica. Conectamos, potenciamos y visibilizamos el talento joven.",
   sameAs: [
