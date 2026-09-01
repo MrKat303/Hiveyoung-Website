@@ -74,7 +74,7 @@ import { useGSAP } from "@gsap/react";
                         <div className="back-content-simple">
                             <h3>{miembro.nombre}</h3>
                             <p className="descripcion">
-                                {miembro.descripcion || "Apasionado por transformar la comunidad y crear un impacto positivo."}
+                                {miembro.descripcion || "Con compromiso por transformar la comunidad y crear un impacto positivo."}
                             </p>
                             
                             {miembro.linkedin ? (

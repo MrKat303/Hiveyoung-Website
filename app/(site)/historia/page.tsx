@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import HistoriaClient from "./HistoriaClient";
 
 export const metadata: Metadata = {
-    title: "Nuestra Historia | HiveYoung",
+    title: "Nuestra Historia",
     description:
         "Conoce la historia de HiveYoung, cómo nació y quiénes han sido parte de este proyecto que transforma el ecosistema juvenil en Chile.",
     alternates: {
-        canonical: "https://hiveyoung.org/historia",
+        canonical: "https://www.hiveyoung.org/historia",
     },
     openGraph: {
         title: "Nuestra Historia | HiveYoung",
@@ -80,13 +80,13 @@ const breadcrumbJsonLd = {
             "@type": "ListItem",
             "position": 1,
             "name": "Inicio",
-            "item": "https://hiveyoung.org"
+            "item": "https://www.hiveyoung.org"
         },
         {
             "@type": "ListItem",
             "position": 2,
             "name": "Nuestra Historia",
-            "item": "https://hiveyoung.org/historia"
+            "item": "https://www.hiveyoung.org/historia"
         }
     ]
 };

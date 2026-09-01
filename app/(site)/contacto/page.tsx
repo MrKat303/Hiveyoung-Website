@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     description:
         "¿Tienes alguna duda o quieres colaborar con HiveYoung? Ponte en contacto con nosotros. Estamos listos para escucharte.",
     alternates: {
-        canonical: "https://hiveyoung.org/contacto",
+        canonical: "https://www.hiveyoung.org/contacto",
     },
     openGraph: {
         title: "Contacto | HiveYoung",
@@ -33,12 +33,12 @@ const contactJsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "name": "Contacto | HiveYoung",
-  "url": "https://hiveyoung.org/contacto",
+  "url": "https://www.hiveyoung.org/contacto",
   "description": "¿Tienes alguna duda o quieres colaborar con HiveYoung? Ponte en contacto con nosotros. Estamos listos para escucharte.",
   "mainEntity": {
     "@type": "Organization",
     "name": "HiveYoung",
-    "url": "https://hiveyoung.org",
+    "url": "https://www.hiveyoung.org",
     "email": "hiveyoung@gmail.com",
     "telephone": "+56 9 8392 4500",
     "contactPoint": {
@@ -59,13 +59,13 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       "position": 1,
       "name": "Inicio",
-      "item": "https://hiveyoung.org"
+      "item": "https://www.hiveyoung.org"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Contacto",
-      "item": "https://hiveyoung.org/contacto"
+      "item": "https://www.hiveyoung.org/contacto"
     }
   ]
 };

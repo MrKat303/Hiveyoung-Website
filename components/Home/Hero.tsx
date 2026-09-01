@@ -54,7 +54,7 @@ export default function Hero() {
                             style={{ opacity: textOpacity, y: textY }}
                             className="hero__subtitle"
                         >
-                            Potencia tus habilidades, conécta, colabora con más jóvenes y lidera el
+                            Potencia tus habilidades, conecta, colabora con más jóvenes y lidera el
                             cambio en tu comunidad.
                         </motion.p>
 

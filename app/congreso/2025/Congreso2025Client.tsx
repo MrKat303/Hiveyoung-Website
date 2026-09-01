@@ -256,7 +256,7 @@ export default function Congreso2025Client() {
                 <div className="footer-content">
                     <div className="footer-top">
                         <div className="footer-brand">
-                            <a href="https://hiveyoung.org">
+                            <a href="https://www.hiveyoung.org">
                                 <Image src="/images/congreso/logo-congreso.svg" alt="Congreso HiveYoung Logo" width={220} height={60} style={{ height: '60px', width: 'auto' }} />
                             </a>
                             <p className="footer-description">

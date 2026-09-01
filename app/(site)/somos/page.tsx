@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     description:
         "Conoce la historia, misión y visión de HiveYoung. Somos el principal articulador del ecosistema juvenil en Chile y Latinoamérica.",
     alternates: {
-        canonical: "https://hiveyoung.org/somos",
+        canonical: "https://www.hiveyoung.org/somos",
     },
     openGraph: {
         title: "Quiénes Somos | HiveYoung",
@@ -33,13 +33,13 @@ const aboutJsonLd = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "Quiénes Somos | HiveYoung",
-    "url": "https://hiveyoung.org/somos",
+    "url": "https://www.hiveyoung.org/somos",
     "description": "HiveYoung es una organización juvenil que capta, conecta e impulsa a las nuevas generaciones, empoderándolas para desarrollar sus habilidades y convertirse en agentes de cambio.",
     "mainEntity": {
         "@type": "Organization",
         "name": "HiveYoung",
-        "url": "https://hiveyoung.org",
-        "logo": "https://hiveyoung.org/Logo.svg",
+        "url": "https://www.hiveyoung.org",
+        "logo": "https://www.hiveyoung.org/Logo.svg",
         "foundingDate": "2024",
         "foundingLocation": {
             "@type": "Place",
@@ -74,13 +74,13 @@ const breadcrumbJsonLd = {
             "@type": "ListItem",
             "position": 1,
             "name": "Inicio",
-            "item": "https://hiveyoung.org"
+            "item": "https://www.hiveyoung.org"
         },
         {
             "@type": "ListItem",
             "position": 2,
             "name": "Quiénes Somos",
-            "item": "https://hiveyoung.org/somos"
+            "item": "https://www.hiveyoung.org/somos"
         }
     ]
 };

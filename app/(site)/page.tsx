@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
   alternates: {
-    canonical: "https://hiveyoung.org",
+    canonical: "https://www.hiveyoung.org",
   },
   openGraph: {
     title: "HiveYoung | Principal articulador del ecosistema juvenil",
