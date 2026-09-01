@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import UneteClient from "./UneteClient";
+import { getOpenGraphImage } from "@/data/open-graph";
 
 export const metadata: Metadata = {
     title: "Únete",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
             "¿Quieres ser parte del cambio? Únete a HiveYoung y forma parte de la comunidad de líderes juveniles más grande de Chile.",
         images: [
             {
-                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782255778/Voluntarios_HiveYoung_rztrbn.jpg",
+                url: getOpenGraphImage("unete"),
                 width: 1200,
                 height: 630,
                 alt: "Voluntarios de HiveYoung participando en una actividad juvenil",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
         title: "Únete a HiveYoung",
         description: "Sé parte de la comunidad de líderes juveniles que está transformando Chile.",
         images: [{
-            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782255778/Voluntarios_HiveYoung_rztrbn.jpg",
+            url: getOpenGraphImage("unete"),
             alt: "Voluntarios de HiveYoung participando en sus iniciativas",
         }],
     },

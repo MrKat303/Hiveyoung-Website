@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactoClient from "./ContactoClient";
+import { getOpenGraphImage } from "@/data/open-graph";
 
 export const metadata: Metadata = {
     title: "Contacto",
@@ -18,10 +19,10 @@ export const metadata: Metadata = {
             "¿Tienes alguna duda o quieres colaborar con HiveYoung? Ponte en contacto con nosotros.",
         images: [
             {
-                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
+                url: getOpenGraphImage("contacto"),
                 width: 1200,
                 height: 630,
-                alt: "Contacto | HiveYoung",
+                alt: "Fundadores de HiveYoung durante una entrevista de radio",
             },
         ],
     },
@@ -30,8 +31,8 @@ export const metadata: Metadata = {
         title: "Contacto | HiveYoung",
         description: "¿Quieres colaborar o tienes alguna duda? Contáctanos.",
         images: [{
-            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
-            alt: "Contacto de HiveYoung",
+            url: getOpenGraphImage("contacto"),
+            alt: "HiveYoung participando en una entrevista de radio",
         }],
     },
 };

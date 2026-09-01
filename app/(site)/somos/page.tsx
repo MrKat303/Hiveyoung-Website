@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SomosClient from "./SomosClient";
+import { getOpenGraphImage } from "@/data/open-graph";
 
 export const metadata: Metadata = {
     title: "Quiénes Somos",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
             "Conoce la historia, misión y visión de HiveYoung. Somos el principal articulador del ecosistema juvenil en Chile y Latinoamérica.",
         images: [
             {
-                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782255806/Comunidad_HiveYoung_oounbh.jpg",
+                url: getOpenGraphImage("somos"),
                 width: 1200,
                 height: 630,
                 alt: "Comunidad de jóvenes que forma parte de HiveYoung",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
         title: "Quiénes Somos | HiveYoung",
         description: "Conoce la historia, misión y visión de HiveYoung.",
         images: [{
-            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782255806/Comunidad_HiveYoung_oounbh.jpg",
+            url: getOpenGraphImage("somos"),
             alt: "Comunidad de jóvenes que forma parte de HiveYoung",
         }],
     },

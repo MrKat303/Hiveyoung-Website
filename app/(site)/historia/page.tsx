@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HistoriaClient from "./HistoriaClient";
+import { getOpenGraphImage } from "@/data/open-graph";
 
 export const metadata: Metadata = {
     title: "Nuestra Historia",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
             "Conoce la historia de HiveYoung, cómo nació y quiénes han sido parte de este proyecto que transforma el ecosistema juvenil.",
         images: [
             {
-                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782256043/Fundadores_de_HiveYoung_ebrcgk.png",
+                url: getOpenGraphImage("historia"),
                 width: 1200,
                 height: 630,
                 alt: "Fundadores de HiveYoung durante los inicios de la organización",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
         title: "Nuestra Historia | HiveYoung",
         description: "Conoce el origen y la evolución de HiveYoung, transformando el ecosistema juvenil.",
         images: [{
-            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782256043/Fundadores_de_HiveYoung_ebrcgk.png",
+            url: getOpenGraphImage("historia"),
             alt: "Fundadores de HiveYoung y momentos de su historia",
         }],
     },

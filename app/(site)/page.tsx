@@ -4,6 +4,7 @@ import QuienesSomos from "@/components/Home/QuienesSomos";
 import QueHacemos from "@/components/Home/QueHacemos";
 import CongressCarousel from "@/components/Home/CongressCarousel";
 import JoinBanner from "@/components/Home/JoinBanner";
+import { getOpenGraphImage } from "@/data/open-graph";
 
 export const metadata: Metadata = {
   title: {
@@ -24,10 +25,10 @@ export const metadata: Metadata = {
       "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
     images: [
       {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
+        url: getOpenGraphImage("home"),
         width: 1200,
         height: 630,
-        alt: "HiveYoung | Articulador del Ecosistema Juvenil",
+        alt: "Captura de la portada de HiveYoung con la invitación a crear el cambio",
       },
     ],
   },
@@ -36,8 +37,8 @@ export const metadata: Metadata = {
     title: "HiveYoung | Principal articulador del ecosistema juvenil",
     description: "HiveYoung es el principal articulador del ecosistema juvenil en Chile y Latinoamérica. Potencia tus habilidades, conecta con líderes y lidera el cambio.",
     images: [{
-      url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
-      alt: "HiveYoung, articulador del ecosistema juvenil",
+      url: getOpenGraphImage("home"),
+      alt: "Captura de la página principal de HiveYoung",
     }],
   },
 };

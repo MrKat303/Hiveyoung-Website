@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AdvisoryBoardClient from "./AdvisoryBoardClient";
 import { advisors } from "@/data/advisory";
+import { getOpenGraphImage } from "@/data/open-graph";
 
 export const metadata: Metadata = {
     title: "Advisory Board",
@@ -19,10 +20,10 @@ export const metadata: Metadata = {
             "Conoce a nuestro Advisory Board: líderes estratégicos de diversas industrias que impulsan la visión y el impacto de HiveYoung.",
         images: [
             {
-                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
+                url: getOpenGraphImage("advisory"),
                 width: 1200,
                 height: 630,
-                alt: "Advisory Board | HiveYoung",
+                alt: "Integrantes de HiveYoung durante un encuentro con Marcelo Guital",
             },
         ],
     },
@@ -31,8 +32,8 @@ export const metadata: Metadata = {
         title: "Advisory Board | HiveYoung",
         description: "Conoce a los líderes estratégicos que impulsan la visión de HiveYoung.",
         images: [{
-            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1773676973/OpenGraph_Pagina_wijsas.png",
-            alt: "Advisory Board de HiveYoung",
+            url: getOpenGraphImage("advisory"),
+            alt: "Encuentro de HiveYoung con Marcelo Guital",
         }],
     },
 };

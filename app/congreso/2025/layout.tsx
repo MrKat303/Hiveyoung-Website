@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getOpenGraphImage } from "@/data/open-graph";
 
 export const metadata: Metadata = {
   title: {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
       "Congreso HiveYoung 2025: el evento juvenil más importante de Chile. Revive los mejores momentos, speakers, conversatorios, talleres y bandas en vivo.",
     images: [
       {
-        url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782258233/Congreso_HiveYoung_Publico_Panel_tf94og.jpg",
+        url: getOpenGraphImage("congreso2025"),
         width: 1200,
         height: 630,
         alt: "Jóvenes participando en un panel del Congreso HiveYoung 2025",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     title: "Congreso HiveYoung 2025",
     description: "Congreso HiveYoung 2025: el evento juvenil más importante de Chile. Revive los mejores momentos, speakers, conversatorios, talleres y bandas en vivo.",
     images: [{
-      url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782258233/Congreso_HiveYoung_Publico_Panel_tf94og.jpg",
+      url: getOpenGraphImage("congreso2025"),
       alt: "Panel con público en el Congreso HiveYoung 2025",
     }],
   },

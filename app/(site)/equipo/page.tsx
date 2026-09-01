@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import EquipoClient from "./EquipoClient";
 import { direccionEjecutiva } from "@/data/equipo";
+import { getOpenGraphImage } from "@/data/open-graph";
 
 export const metadata: Metadata = {
     title: "Nuestro Equipo",
@@ -19,10 +20,10 @@ export const metadata: Metadata = {
             "Conoce al equipo detrás de HiveYoung, jóvenes líderes comprometidos con articular el ecosistema juvenil y generar impacto social.",
         images: [
             {
-                url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782255806/Comunidad_HiveYoung_oounbh.jpg",
+                url: getOpenGraphImage("equipo"),
                 width: 1200,
                 height: 630,
-                alt: "Equipo juvenil de HiveYoung reunido en comunidad",
+                alt: "Captura de la página del equipo de HiveYoung",
             },
         ],
     },
@@ -31,8 +32,8 @@ export const metadata: Metadata = {
         title: "Nuestro Equipo | HiveYoung",
         description: "Conoce al equipo detrás de HiveYoung, jóvenes líderes comprometidos con articular el ecosistema juvenil.",
         images: [{
-            url: "https://res.cloudinary.com/dlipwrbvd/image/upload/f_jpg,q_auto,c_fill,g_auto,w_1200,h_630/v1782255806/Comunidad_HiveYoung_oounbh.jpg",
-            alt: "Equipo y comunidad de jóvenes de HiveYoung",
+            url: getOpenGraphImage("equipo"),
+            alt: "Captura de la página del equipo de HiveYoung",
         }],
     },
 };
