@@ -3,6 +3,15 @@ import { direccionEjecutiva } from "@/data/equipo";
 import { CONGRESS_CAROUSEL_IMAGES } from "@/data/congress-carousel";
 import { MOMENTOS_IMAGES } from "@/data/congreso";
 
+function escapeXml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 export async function GET(request: Request) {
   const baseUrl = "https://www.hiveyoung.org";
   const forwardedHost = request.headers.get("x-forwarded-host");
@@ -15,16 +24,16 @@ export async function GET(request: Request) {
       .map(
         (item) => `
     <image:image>
-      <image:loc>${encodeURI(item.img!)}</image:loc>
-      <image:caption>${item.alt || item.title}</image:caption>
-      <image:title>${item.title} | HiveYoung</image:title>
+      <image:loc>${escapeXml(item.img!)}</image:loc>
+      <image:caption>${escapeXml(item.alt || item.title)}</image:caption>
+      <image:title>${escapeXml(`${item.title} | HiveYoung`)}</image:title>
     </image:image>`
       ),
     ...galleryImages.map(
       (img, i) => `
     <image:image>
-      <image:loc>${encodeURI(img)}</image:loc>
-      <image:caption>${galleryAlts[i % galleryAlts.length]} - HiveYoung Momentos</image:caption>
+      <image:loc>${escapeXml(img)}</image:loc>
+      <image:caption>${escapeXml(`${galleryAlts[i % galleryAlts.length]} - HiveYoung Momentos`)}</image:caption>
       <image:title>Galeria Historia HiveYoung ${i + 1}</image:title>
     </image:image>`
     ),
@@ -35,16 +44,16 @@ export async function GET(request: Request) {
     .map(
       (m) => `
     <image:image>
-      <image:loc>${encodeURI(m.img!)}</image:loc>
-      <image:caption>${m.alt || `${m.nombre} - ${m.cargo} HiveYoung`}</image:caption>
-      <image:title>${m.nombre} | ${m.cargo} en HiveYoung</image:title>
+      <image:loc>${escapeXml(m.img!)}</image:loc>
+      <image:caption>${escapeXml(m.alt || `${m.nombre} - ${m.cargo} HiveYoung`)}</image:caption>
+      <image:title>${escapeXml(`${m.nombre} | ${m.cargo} en HiveYoung`)}</image:title>
     </image:image>`
     )
     .join("");
 
   const somosData = [
     {
-      url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456528/grupal_1_hrhwef.jpg",
+      url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782255806/Comunidad_HiveYoung_oounbh.jpg",
       caption:
         "Equipo de HiveYoung en una fotografia grupal - El principal articulador del ecosistema juvenil en Chile y Latinoamerica",
       title: "Equipo HiveYoung",
@@ -55,16 +64,16 @@ export async function GET(request: Request) {
     .map(
       (img) => `
     <image:image>
-      <image:loc>${encodeURI(img.url)}</image:loc>
-      <image:caption>${img.caption}</image:caption>
-      <image:title>${img.title}</image:title>
+      <image:loc>${escapeXml(img.url)}</image:loc>
+      <image:caption>${escapeXml(img.caption)}</image:caption>
+      <image:title>${escapeXml(img.title)}</image:title>
     </image:image>`
     )
     .join("");
 
   const uneteData = [
     {
-      url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1767456719/Voluntarios_sepxvr.jpg",
+      url: "https://res.cloudinary.com/dlipwrbvd/image/upload/v1782255778/Voluntarios_HiveYoung_rztrbn.jpg",
       caption:
         "Voluntarios de HiveYoung en accion en el Congreso HiveYoung 2025 celebrando el exito del evento",
       title: "Voluntarios HiveYoung",
@@ -75,9 +84,9 @@ export async function GET(request: Request) {
     .map(
       (img) => `
     <image:image>
-      <image:loc>${encodeURI(img.url)}</image:loc>
-      <image:caption>${img.caption}</image:caption>
-      <image:title>${img.title}</image:title>
+      <image:loc>${escapeXml(img.url)}</image:loc>
+      <image:caption>${escapeXml(img.caption)}</image:caption>
+      <image:title>${escapeXml(img.title)}</image:title>
     </image:image>`
     )
     .join("");
@@ -92,9 +101,9 @@ export async function GET(request: Request) {
     .map(
       (img) => `
     <image:image>
-      <image:loc>${encodeURI(img.url)}</image:loc>
-      <image:caption>${img.caption}</image:caption>
-      <image:title>${img.title}</image:title>
+      <image:loc>${escapeXml(img.url)}</image:loc>
+      <image:caption>${escapeXml(img.caption)}</image:caption>
+      <image:title>${escapeXml(img.title)}</image:title>
     </image:image>`
     )
     .join("");
@@ -103,8 +112,8 @@ export async function GET(request: Request) {
     .map(
       (img, i) => `
     <image:image>
-      <image:loc>${encodeURI(img.url)}</image:loc>
-      <image:caption>${img.alt}</image:caption>
+      <image:loc>${escapeXml(img.url)}</image:loc>
+      <image:caption>${escapeXml(img.alt)}</image:caption>
       <image:title>Momento Congreso HiveYoung ${i + 1}</image:title>
     </image:image>`
     )
