@@ -1,6 +1,5 @@
 const MAIN_URL = "https://www.hiveyoung.org";
 const CONGRESS_URL = "https://congreso.hiveyoung.org";
-const LAST_MODIFIED = "2026-06-23";
 
 type SitemapEntry = {
   loc: string;
@@ -28,7 +27,6 @@ function renderSitemap(entries: SitemapEntry[]) {
     .map(
       ({ loc, changeFrequency, priority }) => `  <url>
     <loc>${loc}</loc>
-    <lastmod>${LAST_MODIFIED}</lastmod>
     <changefreq>${changeFrequency}</changefreq>
     <priority>${priority.toFixed(1)}</priority>
   </url>`

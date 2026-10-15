@@ -2,11 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
   const url = req.nextUrl;
-  const host = req.headers.get("host") || "";
+  const forwardedHost = req.headers.get("x-forwarded-host");
+  const host = (forwardedHost || req.headers.get("host") || "")
+    .split(",")[0]
+    .trim();
+  const hostname = host.split(":")[0].toLowerCase();
 
   // 1. Detectar si estamos en el subdominio 'congreso'
   // Funciona para: congreso.hiveyoung.org o congreso.localhost:3000
-  const isCongresoSubdomain = host.startsWith("congreso.");
+  const isCongresoSubdomain = hostname.startsWith("congreso.");
 
   if (isCongresoSubdomain) {
     // Si el usuario está en el subdominio 'congreso'
@@ -25,7 +29,7 @@ export function middleware(req: NextRequest) {
 
   // 2. Detectar si estamos en el subdominio 'brand'
   // Funciona para: brand.hiveyoung.org o brand.localhost:3000
-  const isBrandSubdomain = host.startsWith("brand.");
+  const isBrandSubdomain = hostname.startsWith("brand.");
 
   if (isBrandSubdomain) {
     // Mapear todas las rutas a /brand/*
@@ -41,7 +45,7 @@ export function middleware(req: NextRequest) {
   }
 
   // 3. Redirección desde el dominio principal
-  const isMainDomain = host === "hiveyoung.org" || host === "www.hiveyoung.org";
+  const isMainDomain = hostname === "hiveyoung.org" || hostname === "www.hiveyoung.org";
 
   // hiveyoung.org/congreso -> 301 a congreso.hiveyoung.org
   if (isMainDomain && url.pathname.startsWith("/congreso")) {
@@ -53,6 +57,16 @@ export function middleware(req: NextRequest) {
   if (isMainDomain && url.pathname.startsWith("/brand")) {
     const newPath = url.pathname.replace("/brand", "") || "/";
     return NextResponse.redirect(new URL(`https://brand.hiveyoung.org${newPath}`, req.url), 301);
+  }
+
+  // Consolidar el dominio principal sin www en la URL canónica en un solo
+  // redirect de aplicación, conservando la ruta y los parámetros de búsqueda.
+  if (hostname === "hiveyoung.org") {
+    const canonicalUrl = req.nextUrl.clone();
+    canonicalUrl.protocol = "https";
+    canonicalUrl.hostname = "www.hiveyoung.org";
+    canonicalUrl.port = "";
+    return NextResponse.redirect(canonicalUrl, 308);
   }
 
   return NextResponse.next();

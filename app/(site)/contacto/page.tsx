@@ -47,13 +47,13 @@ const contactJsonLd = {
     "@type": "Organization",
     "name": "HiveYoung",
     "url": "https://www.hiveyoung.org",
-    "email": "hiveyoung@gmail.com",
+    "email": "HIVEYOUNG@GMAIL.COM",
     "telephone": "+56 9 8392 4500",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+56 9 8392 4500",
       "contactType": "customer service",
-      "email": "hiveyoung@gmail.com",
+      "email": "HIVEYOUNG@GMAIL.COM",
       "availableLanguage": "Spanish"
     }
   }

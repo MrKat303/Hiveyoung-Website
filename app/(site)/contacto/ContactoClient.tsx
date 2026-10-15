@@ -42,7 +42,7 @@ const ContactoClient = () => {
                     <div className="contact-info-list">
                         <div className="info-item-wrapper">
                             <div className="info-icon-box"><Mail size={20} /></div>
-                            <p>HiveYoung@gmail.com</p>
+                            <p>HIVEYOUNG@GMAIL.COM</p>
                         </div>
                         <div className="info-item-wrapper">
                             <div className="info-icon-box"><Phone size={20} /></div>
