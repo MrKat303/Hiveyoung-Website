@@ -74,6 +74,13 @@ export default function Footer() {
                     <div className="footer__legal-links">
                         <span className="footer__legal-link">Términos</span>
                         <span className="footer__legal-link">Privacidad</span>
+                        <a
+                            href="/llms.txt"
+                            className="footer__legal-link footer__legal-link--active"
+                            aria-label="Contenido completo de HiveYoung para modelos de lenguaje"
+                        >
+                            llms.txt
+                        </a>
                     </div>
                 </div>
             </div>
