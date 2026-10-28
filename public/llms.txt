@@ -1,0 +1,306 @@
+# HiveYoung
+
+> HiveYoung es una organización juvenil creada por jóvenes que articula el ecosistema juvenil en Chile y Latinoamérica. Conecta talento, ideas, proyectos y comunidades para formar agentes de cambio y generar impacto positivo.
+
+Sitio oficial: https://www.hiveyoung.org/
+Idioma principal: español
+País principal: Chile
+Correo de contacto: HIVEYOUNG@GMAIL.COM
+Teléfono: +56 9 8392 4500
+Instagram: https://www.instagram.com/hiveyoung.cl/
+LinkedIn: https://cl.linkedin.com/company/hiveyoung
+
+Este archivo llms.txt reúne en texto plano el contenido sustantivo de las páginas públicas más importantes de HiveYoung. Las URLs indicadas son las fuentes canónicas y deben preferirse para comprobar información actualizada.
+
+---
+
+# Inicio
+
+URL: https://www.hiveyoung.org/
+
+## Únete a la comunidad que crea el cambio
+
+Potencia tus habilidades, conecta, colabora con más jóvenes y lidera el cambio en tu comunidad.
+
+HiveYoung es una organización juvenil que busca impulsar el talento, las ideas y el potencial de las nuevas generaciones.
+
+## ¿Qué hacemos?
+
+Construimos y articulamos un ecosistema que conecta talento joven, impulsa ideas y transforma el liderazgo en impacto real.
+
+### Impulsamos la colaboración
+
+Trabajamos con una red de aliados para impulsar iniciativas, fortalecer proyectos y abrir espacios para generar impacto colectivo.
+
+### Articulamos el ecosistema juvenil
+
+Conectamos jóvenes, proyectos y comunidades para fortalecer los espacios donde el talento y el liderazgo juvenil crecen.
+
+### Generamos proyectos con impacto
+
+Desarrollamos y ejecutamos iniciativas innovadoras lideradas por jóvenes que buscan generar impacto positivo en la sociedad.
+
+## Participa
+
+Conecta con jóvenes que, como tú, quieren crear, aprender y generar impacto. Sé parte de una comunidad que transforma ideas en acciones.
+
+Más información: https://www.hiveyoung.org/unete
+
+---
+
+# Quiénes somos
+
+URL: https://www.hiveyoung.org/somos
+
+Somos una organización juvenil que capta, conecta e impulsa a las nuevas generaciones, empoderándolas para desarrollar sus habilidades y convertirse en agentes de cambio.
+
+Nuestro propósito es captar, conectar, potenciar y visibilizar el talento joven en Chile y Latinoamérica. Creemos profundamente en el poder de la juventud para transformar la sociedad y generar impacto positivo a través de la acción colectiva y el liderazgo consciente.
+
+## Nuestra misión
+
+Inspirar a la juventud a desafiar sus límites, empoderándola para desarrollar sus habilidades y pasiones, y así formar agentes de cambio capaces de generar un impacto positivo en sus comunidades.
+
+## Nuestra visión
+
+Ser el principal articulador del ecosistema juvenil y la plataforma líder en Latinoamérica que impulsa a una nueva generación de agentes de cambio y proyectos de impacto.
+
+## Nuestros valores
+
+### Colaboración
+
+Construimos puentes y alianzas estratégicas, entendiendo que el impacto colectivo siempre es más fuerte que el esfuerzo individual.
+
+### Diversidad
+
+Valoramos y respetamos la diversidad en todas sus formas. Creemos que las distintas experiencias, ideas y perspectivas enriquecen nuestra comunidad y la hacen más fuerte.
+
+### Compromiso
+
+Nos entregamos con pasión y responsabilidad a nuestra causa, trabajando incansablemente para impulsar nuestras iniciativas.
+
+### Creatividad e innovación
+
+Abrazamos el cambio y buscamos soluciones disruptivas. Nos gusta desafiar paradigmas, romper barreras y pensar diferente para enfrentar los desafíos del futuro.
+
+---
+
+# Nuestra historia
+
+URL: https://www.hiveyoung.org/historia
+
+## 2024 — Donde todo comenzó
+
+Todo comenzó con tres estudiantes del Instituto Nacional: Cristian Suárez, Lucas Galleguillos y Vicente Olguín. Provenían de intereses distintos, pero compartían una misma idea: crear una plataforma que conectara a jóvenes con distintos talentos, pasiones y ganas de hacer cosas.
+
+## 2024 — Los primeros pasos
+
+La idea comenzó a crecer. Compañeros se fueron sumando al proyecto y el equipo empezó a moverse: asistir a eventos, aprender, hacer networking y conocer personas. Poco a poco, HiveYoung empezaba a abrirse camino.
+
+## 2024 — Construyendo algo real
+
+Se formó un equipo y comenzaron a dar forma al primer gran proyecto: el Congreso HiveYoung. Lo que había empezado como una conversación entre amigos comenzó a transformarse en algo mucho más grande: un proyecto con propósito, valores y una visión clara para la juventud.
+
+## 2025 — El primer gran desafío
+
+En 2025 llegó nuestro primer gran reto: organizar el Congreso HiveYoung. Fueron más de seis meses de trabajo intenso: planificación, reuniones, coordinación y muchas horas dedicadas al proyecto, incluso sacrificando tiempo de clases.
+
+## 2025 — Un punto de inflexión
+
+El Congreso HiveYoung reunió a más de 2.000 estudiantes y más de 30 instituciones. Lo que comenzó como una idea entre tres estudiantes se transformó en un evento capaz de movilizar a toda una comunidad y abrió paso a nuevas ideas, colaboraciones e iniciativas.
+
+## Hoy — Seguimos creciendo
+
+HiveYoung sigue creciendo, impulsado por las personas que lo conforman y por todas aquellas que se han sumado en el camino. Esta historia no sería posible sin quienes creyeron en ella desde el comienzo y quienes escribirán lo que viene.
+
+---
+
+# Nuestro equipo
+
+URL: https://www.hiveyoung.org/equipo
+
+HiveYoung está formado por jóvenes líderes comprometidos con articular el ecosistema juvenil.
+
+## Dirección ejecutiva
+
+- Cristian Suárez — Presidente ejecutivo. Cofundador de HiveYoung, emprendedor, apasionado por el emprendimiento y la tecnología.
+- Alessandra Mussuto — Directora ejecutiva. Estudiante de Ingeniería Comercial en la Universidad de Chile y apasionada por las artes escénicas.
+- Santiago Oviedo — Director de Ecosistema. Estudiante de Ingeniería Comercial en la Pontificia Universidad Católica de Chile y exmiembro del Centro de Estudiantes del CVD.
+- Martina Ortega — Directora de Marketing. Estudiante del Instituto Nacional, apasionada por la ciencia y participante en movimientos femeninos como Tremendas y Lumina.
+- Ignacio Morales — Director de Proyectos Sociales. Estudiante de Derecho en la Pontificia Universidad Católica de Chile.
+- Clemente Pacheco — Director de Proyectos. Estudiante de The Grange School.
+
+## Coordinación regional
+
+- María Ignacia — Coordinadora Regional de Valparaíso.
+
+## Directorio
+
+- Vicente Olguín — Presidente. Estudiante de Ingeniería en la Pontificia Universidad Católica de Chile, cofundador de HiveYoung y Mejor Orador en el II Mundial Escolar de Debate en Español.
+- Lucas Galleguillos — Director. Cofundador de HiveYoung y apasionado por la innovación social.
+- Camilo Jimenez — Secretario. Estudiante de Historia en la Universidad de Chile y fundador del MUN Escolar.
+- Dante Espinoza — Tesorero. Estudiante de Derecho en la Pontificia Universidad Católica de Chile y segundo Mejor Orador Nacional 2023 y 2024 en debate.
+- Sofía Cornejo — Directora. Estudiante de Medicina en la Pontificia Universidad Católica de Chile y representante de Chile en las Olimpiadas de Matemáticas.
+- Maglio Olguin — Director. Estudiante de Ingeniería en la Universidad de Chile.
+
+---
+
+# Advisory Board
+
+URL: https://www.hiveyoung.org/advisory-board
+
+El Advisory Board reúne a líderes estratégicos que impulsan la visión de HiveYoung.
+
+- Gina Ocqueteau — Presidenta y directora en SQM y Enel.
+- Rosario Navarro — Presidenta de SOFOFA.
+- Pablo Riccheri — Global Managing Partner de Cambridge Business Association.
+- Catherine Ruz — Socia directora y fundadora de Grey Capital.
+- Fernanda Vicente — Cofundadora y CEO de Money Queen.
+- Anne Traub — Presidenta de Empresas Familiares.
+
+---
+
+# Únete a HiveYoung
+
+URL: https://www.hiveyoung.org/unete
+
+Sé parte de la comunidad de líderes juveniles que está transformando Chile.
+
+## Preguntas frecuentes
+
+### ¿Quiénes pueden unirse a HiveYoung?
+
+Jóvenes estudiantes de enseñanza media, egresados o universitarios interesados en participar activamente en la organización.
+
+### ¿Existe un límite de edad para unirse a HiveYoung?
+
+No. El rango ideal es de 14 a 29 años.
+
+### ¿Tiene algún costo unirse?
+
+No. La participación es completamente gratuita.
+
+### ¿De qué formas puedo participar en HiveYoung?
+
+Integrando equipos de trabajo, participando como voluntario o voluntaria en actividades, colaborando en proyectos y asistiendo a instancias formativas.
+
+### ¿Debo tener experiencia o alguna habilidad específica para participar?
+
+No. Solo se requieren ganas de aprender, participar y aportar.
+
+### ¿Qué obtengo al unirme a HiveYoung?
+
+Experiencia en proyectos reales, desarrollo de habilidades personales y profesionales, formación y la oportunidad de formar parte de una comunidad.
+
+### ¿Cuánto tiempo debo dedicar?
+
+La dedicación es flexible y depende de tu disponibilidad.
+
+### ¿Puedo participar desde cualquier ciudad?
+
+Sí. Hay actividades presenciales y virtuales.
+
+Para postular, completa el formulario disponible en https://www.hiveyoung.org/unete
+
+---
+
+# Contacto y colaboraciones
+
+URL: https://www.hiveyoung.org/contacto
+
+¿Tienes una idea, proyecto o quieres colaborar con HiveYoung?
+
+Correo: HIVEYOUNG@GMAIL.COM
+Teléfono: +56 9 8392 4500
+
+El formulario de contacto permite proponer una colaboración técnica, auspicio o apoyo financiero, alianza estratégica u otro tipo de contacto.
+
+---
+
+# Congreso HiveYoung
+
+URL: https://congreso.hiveyoung.org/
+
+El Congreso HiveYoung es una iniciativa organizada por jóvenes para jóvenes, creada con el propósito de acercar a las nuevas generaciones a las ideas, tecnologías, desafíos y oportunidades que están definiendo el futuro.
+
+Su objetivo es construir un espacio donde la juventud no sea solo espectadora de los cambios de la sociedad, sino una protagonista capaz de imaginar, cuestionar y crear el futuro que desea ver.
+
+Las ideas tienen el poder de cambiar comunidades, inspirar movimientos y transformar sociedades.
+
+## Ejes principales
+
+### Liderazgo activo
+
+Espacios de debate, paneles y conversatorios liderados por jóvenes agentes de cambio que redefinen el ecosistema.
+
+### Emprendimiento real
+
+Mentorías, presentaciones en vivo y redes de conexión para proyectos con ambición e impacto real.
+
+### Tecnología aplicada
+
+Talleres interactivos sobre inteligencia artificial, herramientas digitales, desarrollo de productos y futuro laboral.
+
+## Impacto
+
+Más de 2.100 asistentes y 30 speakers han formado parte de una experiencia que impulsa el aprendizaje, la colaboración y el intercambio de ideas, inspirando a las nuevas generaciones a convertirse en agentes de cambio para la sociedad.
+
+## Formas de participar
+
+- Sponsor: posicionar una marca ante el talento joven y apoyar proyectos y comunidades de alto impacto.
+- Voluntariado: participar en la producción, comunicaciones y logística del evento.
+- Expositor: compartir una visión o proyecto innovador para inspirar y conectar con escolares y universitarios.
+
+---
+
+# Congreso HiveYoung 2025
+
+URL: https://congreso.hiveyoung.org/2025
+
+El Congreso HiveYoung 2025, realizado el 7 y 8 de julio en el Centro de Extensión Instituto Nacional (CEINA), fue presentado como el evento juvenil más importante de Chile, hecho por y para jóvenes.
+
+Fue un espacio donde líderes del emprendimiento, el mundo empresarial y la innovación se unieron para activar a una generación sin barreras.
+
+## Experiencias y temáticas
+
+- Charlas inspiradoras.
+- Talleres y conversatorios.
+- Feria universitaria.
+- Emprendimiento.
+- Innovación.
+- Finanzas.
+- Arte.
+- Marketing.
+- Tecnología.
+
+## Lugar
+
+CEINA — Centro de Extensión Instituto Nacional
+Arturo Prat 33, Santiago Centro, Chile.
+
+## Preguntas frecuentes
+
+### ¿Quiénes pueden asistir?
+
+El evento está abierto a jóvenes escolares y universitarios, emprendedores y personas interesadas en aprender.
+
+### ¿Tiene costo la entrada?
+
+El Congreso HiveYoung es gratuito, pero requiere inscripción previa porque los cupos son limitados.
+
+---
+
+# Recursos oficiales
+
+- Sitio principal: https://www.hiveyoung.org/
+- Quiénes somos: https://www.hiveyoung.org/somos
+- Historia: https://www.hiveyoung.org/historia
+- Equipo: https://www.hiveyoung.org/equipo
+- Advisory Board: https://www.hiveyoung.org/advisory-board
+- Únete: https://www.hiveyoung.org/unete
+- Contacto: https://www.hiveyoung.org/contacto
+- Congreso HiveYoung: https://congreso.hiveyoung.org/
+- Congreso HiveYoung 2025: https://congreso.hiveyoung.org/2025
+- Plataforma HiveYoung: https://app.hiveyoung.org/
+- Kit de marca: https://www.hiveyoung.org/brand
+
+Última actualización del archivo: 27 de octubre de 2026.

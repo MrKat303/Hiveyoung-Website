@@ -239,7 +239,7 @@ function Navbar() {
                                             <a href="https://www.linkedin.com/company/hiveyoung/" target="_blank" rel="noopener noreferrer">
                                                 <LogoLinkedin width={22} height={22} />
                                             </a>
-                                            <a href="mailto:contacto@hiveyoung.com">
+                                            <a href="mailto:HIVEYOUNG@GMAIL.COM">
                                                 <Envelope width={22} height={22} />
                                             </a>
                                         </div>

@@ -40,7 +40,7 @@ export default function Hero() {
                                 <TextType
                                     key={shouldRestart ? 'active' : 'inactive'}
                                     text="Únete a la<br/><span class='hero__accent'>comunidad</span> que<br/>crea el cambio."
-                                    typingSpeed={90}
+                                    typingSpeed={70}
                                     showCursor={true}
                                     cursorCharacter="|"
                                 />

@@ -174,6 +174,16 @@
     color: rgba(255, 255, 255, 0.3);
 }
 
+.footer__legal-link--active {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.footer__legal-link--active:hover,
+.footer__legal-link--active:focus-visible {
+    color: #5cd494;
+}
+
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
     .footer__main {

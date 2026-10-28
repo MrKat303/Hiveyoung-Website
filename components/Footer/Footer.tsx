@@ -36,7 +36,7 @@ export default function Footer() {
                                 <a href="https://cl.linkedin.com/company/hiveyoung" target="_blank" rel="noopener noreferrer" className="footer__social-btn" aria-label="LinkedIn">
                                     <Linkedin size={20} strokeWidth={2} />
                                 </a>
-                                <a href="mailto:HiveYoung@gmail.com" className="footer__social-btn" aria-label="Email">
+                                <a href="mailto:HIVEYOUNG@GMAIL.COM" className="footer__social-btn" aria-label="Email">
                                     <Mail size={20} strokeWidth={2} />
                                 </a>
                             </div>
@@ -74,6 +74,13 @@ export default function Footer() {
                     <div className="footer__legal-links">
                         <span className="footer__legal-link">Términos</span>
                         <span className="footer__legal-link">Privacidad</span>
+                        <a
+                            href="/llms.txt"
+                            className="footer__legal-link footer__legal-link--active"
+                            aria-label="Contenido completo de HiveYoung para modelos de lenguaje"
+                        >
+                            llms.txt
+                        </a>
                     </div>
                 </div>
             </div>
